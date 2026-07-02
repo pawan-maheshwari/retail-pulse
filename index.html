@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RetailOps Pulse — Retail Service Intelligence</title>
+<style>
+  :root{
+    --ink:#0a0a0a; --paper:#ffffff; --bone:#f5f4f1; --line:#e5e3dd;
+    --green:#1b7b3c; --green-soft:#e8f2ec; --amber:#c67a00; --red:#b3261e;
+    --mute:#6f6d68;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--paper);color:var(--ink);font-size:14px;line-height:1.5}
+  .micro{font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:600}
+  .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px}
+  button{font-family:inherit;cursor:pointer}
+  button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+
+  /* ---------- masthead ---------- */
+  .mast{background:var(--ink);color:#fff;padding:0 20px}
+  .mast-in{max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px;flex-wrap:wrap;padding:10px 0}
+  .brand{display:flex;align-items:baseline;gap:10px}
+  .brand-dot{width:9px;height:9px;background:var(--green);display:inline-block;transform:translateY(-1px)}
+  .brand h1{font-size:17px;font-weight:700;letter-spacing:.30em;text-transform:uppercase}
+  .brand .sub{color:#9b9995;font-size:9px;letter-spacing:.22em;text-transform:uppercase;font-weight:500}
+  .mode{display:flex;border:1px solid #3a3a3a}
+  .mode button{background:transparent;color:#b9b7b2;border:0;padding:9px 16px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:600}
+  .mode button.on{background:#fff;color:var(--ink)}
+  .mode button .led{display:inline-block;width:6px;height:6px;border-radius:50%;background:#555;margin-right:7px;vertical-align:1px}
+  .mode button.on .led{background:var(--green)}
+  .mode button.on .led.live{animation:pulse 1.6s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+  /* ---------- kpi band ---------- */
+  .kpis{border-bottom:1px solid var(--line);background:var(--bone)}
+  .kpis-in{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr)}
+  .kpi{padding:14px 20px;border-left:1px solid var(--line)}
+  .kpi:first-child{border-left:0}
+  .kpi .v{font-size:24px;font-weight:700;letter-spacing:-.02em;line-height:1.1}
+  .kpi .l{color:var(--mute);margin-top:2px}
+  @media(max-width:900px){.kpis-in{grid-template-columns:repeat(2,1fr)}.kpi{border-top:1px solid var(--line)}}
+
+  /* ---------- layout ---------- */
+  .wrap{max-width:1400px;margin:0 auto;padding:20px;display:grid;grid-template-columns:280px 1fr 360px;gap:20px;align-items:start}
+  @media(max-width:1180px){.wrap{grid-template-columns:280px 1fr}.dock{grid-column:1/-1}}
+  @media(max-width:820px){.wrap{grid-template-columns:1fr}}
+  .card{border:1px solid var(--line);background:#fff}
+  .card-h{padding:12px 16px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .card-h .micro{color:var(--ink)}
+  .card-b{padding:16px}
+
+  /* ---------- sources / uploads ---------- */
+  .up{border:1px dashed #c9c7c0;padding:12px;margin-bottom:10px;background:var(--bone)}
+  .up .t{font-weight:700;font-size:12px;margin-bottom:2px}
+  .up .d{color:var(--mute);font-size:11px;margin-bottom:8px}
+  .up input[type=file]{display:none}
+  .btn{display:inline-block;border:1px solid var(--ink);background:#fff;color:var(--ink);padding:7px 13px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:700}
+  .btn:hover{background:var(--ink);color:#fff}
+  .btn.solid{background:var(--ink);color:#fff}
+  .btn.solid:hover{background:var(--green);border-color:var(--green)}
+  .btn.green{background:var(--green);border-color:var(--green);color:#fff}
+  .btn.green:hover{background:var(--ink);border-color:var(--ink)}
+  .chip-ok{color:var(--green);font-size:11px;font-weight:700;margin-left:8px}
+  .src-count{display:flex;justify-content:space-between;font-size:12px;padding:6px 0;border-top:1px solid var(--line)}
+  .src-count b{font-variant-numeric:tabular-nums}
+
+  /* ---------- connectors ---------- */
+  .conn{border:1px solid var(--line);padding:12px;margin-bottom:10px}
+  .conn-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+  .conn-h .n{font-weight:700;font-size:13px}
+  .pill{font-size:9px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;padding:3px 8px;border:1px solid var(--line);color:var(--mute)}
+  .pill.ok{border-color:var(--green);color:var(--green);background:var(--green-soft)}
+  .pill.busy{border-color:var(--amber);color:var(--amber)}
+  .conn input[type=text],.conn input[type=password]{width:100%;border:1px solid var(--line);padding:7px 9px;font-size:12px;margin-bottom:6px;font-family:inherit}
+  .note{font-size:11px;color:var(--mute);line-height:1.45;margin-top:10px;border-top:1px solid var(--line);padding-top:10px}
+
+  /* ---------- alert feed ---------- */
+  .feed{max-height:340px;overflow:auto}
+  .alert{border-left:3px solid var(--ink);background:var(--bone);padding:10px 12px;margin-bottom:8px}
+  .alert.p1{border-left-color:var(--red)}
+  .alert.p2{border-left-color:var(--amber)}
+  .alert .top{display:flex;justify-content:space-between;gap:8px;margin-bottom:3px}
+  .alert .id{font-weight:700}
+  .alert .tm{color:var(--mute);font-size:11px;white-space:nowrap}
+  .alert .s{font-size:12px;line-height:1.4}
+  .alert .act{margin-top:7px}
+  .alert .act button{border:0;background:none;color:var(--green);font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;padding:0}
+  .alert .act button:hover{text-decoration:underline}
+
+  /* ---------- heat wall ---------- */
+  .seg{display:flex;border:1px solid var(--line)}
+  .seg button{border:0;background:#fff;padding:6px 11px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--mute)}
+  .seg button.on{background:var(--ink);color:#fff}
+  .heat-scroll{overflow-x:auto}
+  table.heat{border-collapse:collapse;width:100%;min-width:640px}
+  table.heat th{font-size:9px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--mute);padding:6px 4px;text-align:center;white-space:nowrap}
+  table.heat th.rowh{text-align:right;padding-right:10px;font-size:10px;color:var(--ink);max-width:170px}
+  table.heat td.cell{border:1px solid #fff;text-align:center;font-size:11px;font-weight:600;height:34px;min-width:44px;cursor:pointer;font-variant-numeric:tabular-nums;position:relative}
+  table.heat td.cell:hover,table.heat td.cell:focus-visible{outline:2px solid var(--green);outline-offset:-2px;z-index:2}
+  table.heat td.tot{font-weight:700;color:var(--ink);border-left:2px solid var(--ink);background:#fff}
+  .legend{display:flex;align-items:center;gap:8px;margin-top:12px;color:var(--mute);font-size:10px;letter-spacing:.1em;text-transform:uppercase}
+  .legend .sw{display:flex}
+  .legend .sw i{width:22px;height:10px;display:block}
+  .empty{padding:48px 24px;text-align:center;color:var(--mute)}
+  .empty .big{font-size:15px;font-weight:700;color:var(--ink);letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}
+
+  /* ---------- agent dock ---------- */
+  .dock{position:sticky;top:20px}
+  .chat{height:430px;overflow-y:auto;padding:14px;background:var(--bone)}
+  .msg{max-width:92%;margin-bottom:12px}
+  .msg.user{margin-left:auto}
+  .msg.user .bub{background:var(--ink);color:#fff;padding:9px 12px;font-size:13px}
+  .msg.agent .bub{background:#fff;border:1px solid var(--line);padding:12px 13px;font-size:13px}
+  .msg .who{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);margin-bottom:4px;font-weight:700}
+  .sec{margin-top:10px}
+  .sec .sh{font-size:9px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--green);border-bottom:1px solid var(--line);padding-bottom:3px;margin-bottom:5px}
+  .sec.rca .sh{color:var(--ink)}
+  .sec ol,.sec ul{padding-left:17px}
+  .sec li{margin-bottom:4px;font-size:12.5px;line-height:1.45}
+  .sec p{font-size:12.5px;line-height:1.5}
+  .sopref{font-size:10px;color:var(--mute);margin-top:10px;border-top:1px dashed var(--line);padding-top:6px;letter-spacing:.05em}
+  .stat-line{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+  .stat-line span{font-size:10px;border:1px solid var(--line);padding:3px 7px;background:var(--bone);font-variant-numeric:tabular-nums}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;padding:10px 14px;border-top:1px solid var(--line);background:#fff}
+  .chips button{border:1px solid var(--line);background:#fff;font-size:10px;padding:5px 9px;color:var(--ink)}
+  .chips button:hover{border-color:var(--green);color:var(--green)}
+  .ask{display:flex;border-top:1px solid var(--line)}
+  .ask input{flex:1;border:0;padding:13px 14px;font-size:13px;font-family:inherit}
+  .ask input:focus{outline:none;background:var(--green-soft)}
+  .ask button{border:0;background:var(--ink);color:#fff;padding:0 18px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:700}
+  .ask button:hover{background:var(--green)}
+  .badge{font-size:9px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--green);border:1px solid var(--green);padding:3px 7px}
+
+  /* ---------- drawer ---------- */
+  .ovl{position:fixed;inset:0;background:rgba(10,10,10,.45);display:none;z-index:40}
+  .ovl.open{display:block}
+  .drawer{position:fixed;top:0;right:0;bottom:0;width:min(480px,94vw);background:#fff;z-index:50;transform:translateX(102%);transition:transform .25s ease;display:flex;flex-direction:column;border-left:1px solid var(--line)}
+  .drawer.open{transform:none}
+  .drawer-h{padding:16px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+  .drawer-h .t{font-size:15px;font-weight:700;letter-spacing:.02em}
+  .drawer-h .x{border:0;background:none;font-size:20px;line-height:1;padding:2px 6px}
+  .drawer-b{overflow-y:auto;padding:14px 18px;flex:1}
+  .rec{border:1px solid var(--line);padding:10px 12px;margin-bottom:8px}
+  .rec .r1{display:flex;justify-content:space-between;gap:8px;margin-bottom:2px}
+  .rec .rid{font-weight:700}
+  .rec .st{font-size:10px;color:var(--mute);text-transform:uppercase;letter-spacing:.08em;white-space:nowrap}
+  .rec .rs{font-size:12px;line-height:1.4}
+  .rec .meta{font-size:10px;color:var(--mute);margin-top:4px}
+  .p-tag{display:inline-block;font-size:9px;font-weight:700;padding:2px 6px;margin-right:6px;letter-spacing:.08em}
+  .p-P1{background:var(--red);color:#fff}.p-P2{background:var(--amber);color:#fff}
+  .p-P3{background:var(--ink);color:#fff}.p-P4{background:var(--line);color:var(--ink)}
+  .drawer-f{padding:14px 18px;border-top:1px solid var(--line)}
+
+  .toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(80px);background:var(--ink);color:#fff;padding:10px 18px;font-size:12px;z-index:60;transition:transform .25s ease;letter-spacing:.04em}
+  .toast.show{transform:translateX(-50%)}
+  .foot{border-top:1px solid var(--line);margin-top:8px}
+  .foot-in{max-width:1400px;margin:0 auto;padding:16px 20px;color:var(--mute);font-size:11px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .hide{display:none!important}
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="mast-in">
+    <div class="brand">
+      <span class="brand-dot" aria-hidden="true"></span>
+      <h1>RetailOps&nbsp;Pulse</h1>
+      <span class="sub">Retail service intelligence</span>
+    </div>
+    <div class="mode" role="tablist" aria-label="Mode">
+      <button id="tabOffline" class="on" role="tab" aria-selected="true"><span class="led"></span>Offline archive</button>
+      <button id="tabLive" role="tab" aria-selected="false"><span class="led live"></span>Real-time</button>
+    </div>
+  </div>
+</header>
+
+<div class="kpis"><div class="kpis-in" id="kpis"></div></div>
+
+<main class="wrap">
+
+  <!-- LEFT: sources / connectors -->
+  <section>
+    <div class="card" id="panelOffline">
+      <div class="card-h"><span class="micro">Data sources</span><span class="micro" style="color:var(--mute)">Offline</span></div>
+      <div class="card-b">
+        <div class="up">
+          <div class="t">Jira dump <span class="chip-ok hide" id="okJira">Loaded ✓</span></div>
+          <div class="d">CSV export — issues from your retail project</div>
+          <label class="btn">Choose file<input type="file" id="fileJira" accept=".csv"></label>
+        </div>
+        <div class="up">
+          <div class="t">ServiceNow dump <span class="chip-ok hide" id="okSnow">Loaded ✓</span></div>
+          <div class="d">CSV — incidents, problems, change requests</div>
+          <label class="btn">Choose file<input type="file" id="fileSnow" accept=".csv"></label>
+        </div>
+        <div class="up">
+          <div class="t">Knowledge bank <span class="chip-ok hide" id="okKb">Loaded ✓</span></div>
+          <div class="d">JSON — SOPs for retail services</div>
+          <label class="btn">Choose file<input type="file" id="fileKb" accept=".json"></label>
+        </div>
+        <button class="btn green" id="btnDemo" style="width:100%;padding:10px">Load demo data — 1,000 + 1,000 records</button>
+        <div style="margin-top:14px">
+          <div class="src-count"><span>Jira issues</span><b id="cntJira">0</b></div>
+          <div class="src-count"><span>ServiceNow records</span><b id="cntSnow">0</b></div>
+          <div class="src-count"><span>SOP articles</span><b id="cntKb">0</b></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card hide" id="panelLive">
+      <div class="card-h"><span class="micro">Connectors</span><span class="micro" style="color:var(--green)">Real-time</span></div>
+      <div class="card-b" id="connList"></div>
+    </div>
+
+    <div class="card hide" id="panelFeed" style="margin-top:20px">
+      <div class="card-h">
+        <span class="micro">Proactive alerts</span>
+        <label class="micro" style="color:var(--mute);font-weight:600;cursor:pointer">
+          <input type="checkbox" id="feedOn" checked style="vertical-align:-2px;accent-color:var(--green)"> Stream
+        </label>
+      </div>
+      <div class="card-b feed" id="feed">
+        <div class="empty" style="padding:24px"><div>Connect a source to start receiving alerts.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CENTER: heat wall -->
+  <section class="card">
+    <div class="card-h" style="flex-wrap:wrap">
+      <span class="micro">Issue heat wall</span>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <div class="seg" id="segDim">
+          <button data-dim="month" class="on">By month</button>
+          <button data-dim="region">By region</button>
+          <button data-dim="priority">By priority</button>
+        </div>
+        <div class="seg" id="segSrc">
+          <button data-src="all" class="on">All</button>
+          <button data-src="jira">Jira</button>
+          <button data-src="snow">ServiceNow</button>
+        </div>
+      </div>
+    </div>
+    <div class="card-b">
+      <div id="heatHost">
+        <div class="empty">
+          <div class="big">No data loaded</div>
+          <div>Upload your Jira / ServiceNow dumps on the left, or load the demo dataset.<br>The heat wall maps issue frequency across category and time.</div>
+        </div>
+      </div>
+      <div class="legend hide" id="legend">
+        <span>Low</span>
+        <span class="sw" id="legendSw"></span>
+        <span>High</span>
+        <span style="margin-left:auto">Tap a cell to drill down</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- RIGHT: agent -->
+  <section class="card dock">
+    <div class="card-h">
+      <span class="micro">Service agent</span>
+      <span class="badge" id="engineBadge">Local KB retrieval</span>
+    </div>
+    <div class="chat" id="chat"></div>
+    <div class="chips" id="chips"></div>
+    <div class="ask">
+      <input id="askInput" type="text" placeholder="Describe the problem, or paste an INC / RET number…" aria-label="Ask the service agent">
+      <button id="askBtn">Ask</button>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="foot-in">
+    <span>RetailOps Pulse · Demo build styled on a black-and-white retail brand theme · Data shown is synthetic</span>
+    <span>Offline: local analysis only — nothing leaves this page</span>
+  </div>
+</footer>
+
+<div class="ovl" id="ovl"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Cell details">
+  <div class="drawer-h">
+    <div><div class="micro" style="color:var(--mute)" id="dSub"></div><div class="t" id="dTitle"></div></div>
+    <button class="x" id="dClose" aria-label="Close">×</button>
+  </div>
+  <div class="drawer-b" id="dBody"></div>
+  <div class="drawer-f"><button class="btn solid" id="dAsk" style="width:100%;padding:11px">Ask agent about this pattern</button></div>
+</aside>
+<div class="toast" id="toast"></div>
+
+<script>
+/* RetailOps Pulse — shared data generator (runs in Node and in the browser) */
+(function (root) {
+  function mulberry32(a) {
+    return function () {
+      a |= 0; a = (a + 0x6D2B79F5) | 0;
+      var t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  var CATEGORIES = [
+    { name: 'POS & Tills', weight: 14, team: 'Store Systems', ci: 'POS-Terminal' },
+    { name: 'Payments & EFT', weight: 13, team: 'Payments Ops', ci: 'EFT-Switch' },
+    { name: 'Online Checkout', weight: 12, team: 'Digital Commerce', ci: 'Checkout-Service' },
+    { name: 'Inventory & Stock Sync', weight: 10, team: 'Merch Systems', ci: 'Stock-Sync-Job' },
+    { name: 'Pricing & Promotions', weight: 9, team: 'Merch Systems', ci: 'Promo-Engine' },
+    { name: 'Order Fulfilment', weight: 8, team: 'Fulfilment Tech', ci: 'OMS-Core' },
+    { name: 'WRewards Loyalty', weight: 7, team: 'Loyalty Platform', ci: 'Loyalty-API' },
+    { name: 'Supply Chain EDI', weight: 6, team: 'Integration Hub', ci: 'EDI-Gateway' },
+    { name: 'Store Network & Connectivity', weight: 6, team: 'Network Ops', ci: 'Store-Router' },
+    { name: 'Mobile App', weight: 6, team: 'Digital Commerce', ci: 'Mobile-BFF' },
+    { name: 'Gift Cards & Vouchers', weight: 5, team: 'Payments Ops', ci: 'GiftCard-Service' },
+    { name: 'Product Master Data', weight: 4, team: 'Data Services', ci: 'PIM-Hub' }
+  ];
+
+  var REGIONS = ['Gauteng', 'Western Cape', 'KwaZulu-Natal', 'Eastern Cape', 'Free State', 'Limpopo', 'Mpumalanga', 'North West', 'Northern Cape', 'National / Online'];
+  var REGION_W = [22, 18, 14, 8, 6, 5, 5, 4, 3, 15];
+
+  var TEMPLATES = {
+    'POS & Tills': [
+      'Till {n} frozen on tender screen at store {s}',
+      'POS terminal offline — store {s} unable to trade on {c} lanes',
+      'Receipt printer failure on till {n}, store {s}',
+      'POS EOD batch stuck at store {s}, trading day not closed',
+      'Barcode scanner intermittently not reading at store {s}'
+    ],
+    'Payments & EFT': [
+      'EFT declines spiking at store {s} — response code 91',
+      'Card payments timing out across {r} stores',
+      'Dual-message settlement mismatch for trading date {d}',
+      'Tap-to-pay failing on new terminals, store {s}',
+      'Bank switch latency above 8s causing tender timeouts'
+    ],
+    'Online Checkout': [
+      'Checkout payment step returning 502 for {c}% of sessions',
+      'Basket total mismatch after promo applied at checkout',
+      'Delivery slot selection failing for {r} customers',
+      'Checkout stuck on "processing payment" — orders duplicated',
+      '3-D Secure redirect loop on mobile web checkout'
+    ],
+    'Inventory & Stock Sync': [
+      'Stock-on-hand not syncing to online for DC {n} range',
+      'Negative SOH values appearing for {c} SKUs after nightly sync',
+      'Store {s} receiving not reflecting in inventory ledger',
+      'Stock sync job overran window by {c} hours — online availability stale',
+      'Cycle-count variance file rejected for store {s}'
+    ],
+    'Pricing & Promotions': [
+      'Promo price not applying at till for advertised line, store {s}',
+      'Price file failed to deploy to {c} stores overnight',
+      'Mismatch between shelf-edge label and till price, store {s}',
+      'Promotion {p} double-discounting online',
+      'Markdown batch stuck — clearance prices not live'
+    ],
+    'Order Fulfilment': [
+      'Click-and-collect orders stuck in ALLOCATED for store {s}',
+      'Picking app not releasing waves at DC {n}',
+      'Courier manifest not generated for {c} orders',
+      'Order {o} split incorrectly across fulfilment nodes',
+      'Same-day delivery cutoff not enforced — late promises made'
+    ],
+    'WRewards Loyalty': [
+      'WRewards points not awarded on qualifying basket',
+      'Loyalty card lookup timing out at till, store {s}',
+      'Duplicate vouchers issued to {c} members',
+      'Tier recalculation job failed — member benefits downgraded',
+      'WRewards linking failing in app with error {e}'
+    ],
+    'Supply Chain EDI': [
+      'ASN messages from vendor {v} failing schema validation',
+      'EDI 856 backlog of {c} messages at gateway',
+      'Purchase order acknowledgements not reaching vendor {v}',
+      'Invoice EDI mismatch blocking GRN for DC {n}',
+      'AS2 certificate expiry caused vendor {v} channel outage'
+    ],
+    'Store Network & Connectivity': [
+      'Store {s} on 4G failover — degraded POS response',
+      'Primary link down at store {s}, all cloud services impacted',
+      'Wi-Fi outage in backup area of store {s} — RF guns offline',
+      'High packet loss to data centre from {r} stores',
+      'Router config drift detected at store {s} after change'
+    ],
+    'Mobile App': [
+      'App crash on product page for Android {c}% of sessions',
+      'Push notifications not delivered for order updates',
+      'App login failing with error {e} after release {p}',
+      'Images not loading on home screen — CDN 403s',
+      'App checkout button unresponsive on iOS {c}'
+    ],
+    'Gift Cards & Vouchers': [
+      'Gift card redemption declining with error {e} at store {s}',
+      'Voucher {p} redeemable multiple times — exposure risk',
+      'Gift card balance enquiry timing out online',
+      'Bulk corporate gift card load failed for {c} cards',
+      'Voucher barcode not scanning at till, store {s}'
+    ],
+    'Product Master Data': [
+      'New season SKUs missing attributes — {c} lines blocked from listing',
+      'Duplicate barcodes detected for {c} products',
+      'Product images not propagating from PIM to web',
+      'Unit-of-measure mismatch causing receiving failures at DC {n}',
+      'Brand attribute overwritten in bulk update — {c} SKUs affected'
+    ]
+  };
+
+  var PRIORITY = ['P1', 'P2', 'P3', 'P4'];
+  var PRIORITY_W = [7, 20, 45, 28];
+  var JIRA_STATUS = ['Open', 'In Progress', 'Blocked', 'Resolved', 'Closed'];
+  var JIRA_STATUS_W = [10, 14, 4, 28, 44];
+  var SNOW_TYPE_W = { Incident: 60, Problem: 18, 'Change Request': 22 };
+  var MONTH_HEAT = [7, 6, 7, 8, 8, 9, 10, 8, 9, 11, 14, 16]; // Jul-25 .. Jun-26, festive spike
+
+  function pickW(rnd, items, weights) {
+    var total = 0, i;
+    for (i = 0; i < weights.length; i++) total += weights[i];
+    var x = rnd() * total;
+    for (i = 0; i < items.length; i++) { x -= weights[i]; if (x <= 0) return items[i]; }
+    return items[items.length - 1];
+  }
+  function pick(rnd, arr) { return arr[Math.floor(rnd() * arr.length)]; }
+  function pad(n, w) { n = String(n); while (n.length < w) n = '0' + n; return n; }
+
+  function fill(rnd, tpl) {
+    return tpl
+      .replace('{s}', 'W' + pad(100 + Math.floor(rnd() * 480), 3))
+      .replace('{n}', String(1 + Math.floor(rnd() * 18)))
+      .replace('{c}', String(2 + Math.floor(rnd() * 60)))
+      .replace('{r}', pick(rnd, REGIONS.slice(0, 9)))
+      .replace('{d}', '2026-0' + (1 + Math.floor(rnd() * 6)) + '-' + pad(1 + Math.floor(rnd() * 28), 2))
+      .replace('{p}', 'PRM-' + pad(Math.floor(rnd() * 9000) + 1000, 4))
+      .replace('{o}', 'ORD-' + pad(Math.floor(rnd() * 900000) + 100000, 6))
+      .replace('{e}', 'ERR-' + pad(Math.floor(rnd() * 900) + 100, 3))
+      .replace('{v}', pick(rnd, ['FreshCo', 'CapeMills', 'TextilePro', 'AgriSupply', 'HomewareHub', 'DairyDirect']));
+  }
+
+  function randDate(rnd) {
+    // Jul 2025 .. Jun 2026, weighted by MONTH_HEAT
+    var m = pickW(rnd, [0,1,2,3,4,5,6,7,8,9,10,11], MONTH_HEAT);
+    var base = new Date(Date.UTC(2025, 6 + m, 1));
+    var days = new Date(Date.UTC(base.getUTCFullYear(), base.getUTCMonth() + 1, 0)).getUTCDate();
+    var d = new Date(base.getTime());
+    d.setUTCDate(1 + Math.floor(rnd() * days));
+    d.setUTCHours(6 + Math.floor(rnd() * 15), Math.floor(rnd() * 60), 0, 0);
+    return d;
+  }
+  function iso(d) { return d.toISOString().replace('T', ' ').slice(0, 16); }
+
+  function catByWeight(rnd) {
+    return pickW(rnd, CATEGORIES, CATEGORIES.map(function (c) { return c.weight; }));
+  }
+
+  function genJira(count) {
+    var rnd = mulberry32(20260701);
+    var rows = [];
+    for (var i = 0; i < count; i++) {
+      var cat = catByWeight(rnd);
+      var created = randDate(rnd);
+      var status = pickW(rnd, JIRA_STATUS, JIRA_STATUS_W);
+      var pr = pickW(rnd, PRIORITY, PRIORITY_W);
+      var resolved = '';
+      if (status === 'Resolved' || status === 'Closed') {
+        var hrs = pr === 'P1' ? 2 + rnd() * 10 : pr === 'P2' ? 4 + rnd() * 30 : 8 + rnd() * 120;
+        resolved = iso(new Date(created.getTime() + hrs * 3600000));
+      }
+      rows.push({
+        key: 'RET-' + (1000 + i),
+        summary: fill(rnd, pick(rnd, TEMPLATES[cat.name])),
+        category: cat.name,
+        priority: pr,
+        status: status,
+        created: iso(created),
+        resolved: resolved,
+        team: cat.team,
+        region: pickW(rnd, REGIONS, REGION_W),
+        labels: cat.name.toLowerCase().replace(/[^a-z]+/g, '-')
+      });
+    }
+    return rows;
+  }
+
+  function genSnow(count) {
+    var rnd = mulberry32(19870412);
+    var rows = [], types = Object.keys(SNOW_TYPE_W), tw = types.map(function (t) { return SNOW_TYPE_W[t]; });
+    var seq = { Incident: 10000, Problem: 4000, 'Change Request': 7000 };
+    for (var i = 0; i < count; i++) {
+      var type = pickW(rnd, types, tw);
+      var cat = catByWeight(rnd);
+      var opened = randDate(rnd);
+      var pr = pickW(rnd, ['1', '2', '3', '4'], PRIORITY_W);
+      var state, resolved = '';
+      if (type === 'Incident') {
+        state = pickW(rnd, ['New', 'In Progress', 'On Hold', 'Resolved', 'Closed'], [8, 12, 5, 25, 50]);
+      } else if (type === 'Problem') {
+        state = pickW(rnd, ['New', 'Root Cause Analysis', 'Fix in Progress', 'Resolved', 'Closed'], [8, 22, 18, 22, 30]);
+      } else {
+        state = pickW(rnd, ['Assess', 'Authorise', 'Scheduled', 'Implement', 'Closed'], [10, 12, 18, 15, 45]);
+      }
+      if (state === 'Resolved' || state === 'Closed') {
+        var hrs = pr === '1' ? 1 + rnd() * 8 : pr === '2' ? 3 + rnd() * 24 : 6 + rnd() * 96;
+        resolved = iso(new Date(opened.getTime() + hrs * 3600000));
+      }
+      var prefix = type === 'Incident' ? 'INC' : type === 'Problem' ? 'PRB' : 'CHG';
+      var desc = type === 'Change Request'
+        ? pick(rnd, ['Deploy fix for ', 'Patch release for ', 'Config change: ', 'Emergency change: ']) + fill(rnd, pick(rnd, TEMPLATES[cat.name])).toLowerCase()
+        : fill(rnd, pick(rnd, TEMPLATES[cat.name]));
+      rows.push({
+        number: prefix + pad(seq[type]++, 7),
+        type: type,
+        short_description: desc,
+        category: cat.name,
+        priority: pr,
+        state: state,
+        opened_at: iso(opened),
+        resolved_at: resolved,
+        assignment_group: cat.team,
+        region: pickW(rnd, REGIONS, REGION_W),
+        related_ci: cat.ci + '-' + pad(1 + Math.floor(rnd() * 40), 2)
+      });
+    }
+    return rows;
+  }
+
+  var SOPS = [
+    { id: 'SOP-POS-001', title: 'POS terminal offline or frozen — restore trading', area: 'POS & Tills', keywords: ['pos', 'till', 'terminal', 'frozen', 'offline', 'not trading', 'lane', 'tender screen', 'hung'], rca: 'Most POS lockups trace to the local transaction queue filling up when the store link degrades, or a memory leak in the tender module after long uptime. Terminals that have not been rebooted in 14+ days are 4x more likely to freeze during peak trade.', fix: ['Confirm scope: single till vs whole store (whole store → check network SOP first).', 'Soft-restart the POS application from the lane controller; do not power-cycle mid-tender.', 'If frozen mid-payment, verify the last EFT auth on the acquirer portal before re-ringing to avoid double charge.', 'Clear the offline transaction queue once the link is confirmed healthy.', 'If hardware fault suspected, swap in the store spare terminal and log an asset ticket.'], mitigation: ['Enable the weekly automated rolling reboot for all lanes (out of trading hours).', 'Set queue-depth alerting at 200 offline transactions per terminal.', 'Keep one configured spare terminal per 10 lanes at each store.'] },
+    { id: 'SOP-POS-002', title: 'POS end-of-day batch stuck — trading day not closing', area: 'POS & Tills', keywords: ['eod', 'end of day', 'batch', 'stuck', 'trading day', 'close', 'settlement batch'], rca: 'EOD hangs are almost always one unsettled tender (usually a reversed EFT left in PENDING) or a lane that was powered off before cash-up, leaving an open session that blocks the store close.', fix: ['Identify the blocking lane/session from the EOD console.', 'Settle or void the pending tender after confirming with the acquirer report.', 'Force-close the orphaned session, then re-run the EOD job.', 'Verify the trading-day totals posted to finance before releasing the store.'], mitigation: ['Add a pre-EOD sweep job at 21:30 that flags pending tenders to the store manager.', 'Train cash-up staff to close lanes via the controller, never by powering off.'] },
+    { id: 'SOP-PAY-001', title: 'EFT declines or timeouts spiking', area: 'Payments & EFT', keywords: ['eft', 'decline', 'code 91', 'card', 'payment', 'timeout', 'tender timeout', 'switch', 'acquirer', 'tap'], rca: 'Response code 91 spikes indicate the issuer/switch is unreachable — typically bank-side congestion, an expired connection pool on the EFT switch, or latency on the store link pushing auths past the 8-second timeout.', fix: ['Check the switch dashboard: is the spike national (bank-side) or one region/store (link-side)?', 'If bank-side, enable stand-in/offline floor limits per the risk matrix and notify the acquirer.', 'If link-side, fail the store over to the secondary link and recycle the EFT connection pool.', 'Communicate tender guidance to affected stores (encourage alternate tender types).', 'Reconcile stand-in transactions within 24h of restoration.'], mitigation: ['Set latency alerting at 5s p95 on auth round-trips (before customers feel 8s timeouts).', 'Quarterly failover test of the secondary acquirer route.', 'Automate connection-pool recycling on sustained error-rate breach.'] },
+    { id: 'SOP-PAY-002', title: 'Settlement / dual-message mismatch', area: 'Payments & EFT', keywords: ['settlement', 'mismatch', 'reconciliation', 'dual-message', 'recon', 'trading date'], rca: 'Mismatches occur when auth and clearing legs land on different trading dates — usually after an EOD delay, a switch restart mid-batch, or duplicate clearing files from the acquirer.', fix: ['Pull the recon exception report for the trading date and classify: missing clearing vs duplicate vs amount variance.', 'For duplicates, confirm with the acquirer before any customer refund.', 'Re-request the clearing file for missing legs; do not manually journal until file recovery fails.', 'Post approved adjustments through the recon tool so the audit trail stays intact.'], mitigation: ['Automate day+1 three-way recon (POS vs switch vs acquirer) with exception alerting.', 'Freeze switch restarts during the settlement window (22:00–02:00).'] },
+    { id: 'SOP-WEB-001', title: 'Online checkout failing or timing out', area: 'Online Checkout', keywords: ['checkout', '502', 'payment step', 'processing payment', 'duplicated', 'orders duplicated', '3-d secure', '3ds', 'redirect loop', 'basket'], rca: 'Checkout 5xx bursts usually come from payment-provider latency exhausting the checkout service thread pool. Duplicate orders happen when the client retries while the first payment is still settling — a missing idempotency key on the order-create call.', fix: ['Check payment-provider status and checkout service saturation (thread pool, p95 latency).', 'Enable the degraded-checkout mode: queue orders, defer non-critical calls (recommendations, stock badges).', 'For duplicates, run the dedupe script on orders sharing basket-hash within 10 minutes; cancel and auto-refund the later ones.', 'For 3-DS loops, verify the ACS return URL matches the current release; roll back the routing change if it drifted.'], mitigation: ['Enforce idempotency keys on order creation.', 'Circuit-breaker on payment provider with automatic queue-and-retry.', 'Synthetic checkout probe every 2 minutes with alerting at 2 consecutive failures.'] },
+    { id: 'SOP-WEB-002', title: 'Basket / promo total mismatch at checkout', area: 'Online Checkout', keywords: ['basket total', 'promo', 'mismatch', 'discount', 'double-discount', 'price different'], rca: 'Totals drift when the promo engine and checkout price differently — typically a promotion cached in the basket after it expired, or stacking rules evaluated in different order between web and checkout service.', fix: ['Reproduce with the exact basket; capture both price traces (web vs checkout).', 'Flush the promo cache for the affected promotion IDs.', 'Disable the offending promotion online if exposure is ongoing; honour advertised price at support level.', 'Log a defect with both traces attached for the stacking-order fix.'], mitigation: ['Contract test between promo engine and checkout on every promo-rule release.', 'Cache TTL on basket promos capped at 15 minutes.'] },
+    { id: 'SOP-INV-001', title: 'Stock-on-hand not syncing / stale online availability', area: 'Inventory & Stock Sync', keywords: ['stock', 'soh', 'sync', 'availability', 'stale', 'inventory', 'not syncing', 'overran'], rca: 'The nightly SOH sync overruns when the delta feed degrades to a full extract (usually after a failed prior run) — downstream, online availability then serves stale positions all morning.', fix: ['Check whether last night\'s job ran delta or full; find the failure that triggered the full extract.', 'Prioritise the online-fulfilment ranges: push a targeted delta for active online SKUs first.', 'Temporarily raise safety-stock thresholds online to reduce oversell risk while stale.', 'Backfill the remainder and verify record counts against the ledger.'], mitigation: ['Split the sync into priority lanes (online-active SKUs first).', 'Alert if the job passes 60% of its window with under 80% records processed.'] },
+    { id: 'SOP-INV-002', title: 'Negative SOH / receiving not reflecting', area: 'Inventory & Stock Sync', keywords: ['negative', 'soh', 'receiving', 'grn', 'ledger', 'variance', 'cycle count'], rca: 'Negative positions appear when sales decrement before the matching GRN posts — a sequencing issue between the receiving interface and the sales feed, often after a store scanned goods to the floor before completing receiving.', fix: ['Identify affected SKUs/stores from the negative-SOH report.', 'Post the outstanding GRNs; where paperwork is missing, raise a stock adjustment with store sign-off.', 'Re-run the ledger rebuild for the affected store-days.', 'Confirm online availability recalculated after correction.'], mitigation: ['Block floor movement scans until receiving completes for the delivery.', 'Daily negative-SOH exception report to store ops before 08:00.'] },
+    { id: 'SOP-PRC-001', title: 'Promo price not applying at till / price file failures', area: 'Pricing & Promotions', keywords: ['promo price', 'price file', 'shelf-edge', 'label', 'till price', 'not applying', 'markdown', 'deploy'], rca: 'Till/shelf mismatches are nearly always a price file that failed to deploy to a subset of stores overnight — commonly a locked file on the store controller or a store that was offline in the deployment window.', fix: ['Pull the deployment report: list stores that missed the file.', 'Re-push the price file to failed stores; verify checksum on the controller.', 'Until live, authorise manual price override at till per the advertised-price policy.', 'For double-discounting, suspend the promotion and quantify exposure from transaction logs.'], mitigation: ['Retry-with-alerting on price deployment (3 attempts, then page Merch Systems).', 'Morning price-verification scan of 20 promo lines per store via the RF gun app.'] },
+    { id: 'SOP-FUL-001', title: 'Click-and-collect / orders stuck in allocation', area: 'Order Fulfilment', keywords: ['click-and-collect', 'allocated', 'stuck', 'oms', 'picking', 'waves', 'manifest', 'courier', 'orders stuck'], rca: 'Orders wedge in ALLOCATED when the OMS reserves stock at a node whose picking app never acknowledges — usually the store device is offline or the wave-release scheduler died after a deploy.', fix: ['Check the OMS→node acknowledgement queue for the affected store/DC.', 'Restart the wave-release scheduler; confirm heartbeats from picking devices.', 'For orders past promise time, re-source to the next-best node in bulk via the re-allocation tool.', 'Trigger customer comms for any revised collection/delivery times.'], mitigation: ['Heartbeat alerting on picking devices per node (silence > 15 min pages Fulfilment Tech).', 'Auto re-source rule when a node holds an order unacknowledged > 30 min.'] },
+    { id: 'SOP-LOY-001', title: 'WRewards points/vouchers not awarding correctly', area: 'WRewards Loyalty', keywords: ['wrewards', 'points', 'loyalty', 'voucher', 'duplicate voucher', 'tier', 'not awarded', 'lookup timing out', 'linking'], rca: 'Missed awards are usually the loyalty API timing out at the till (basket still completes, award event lost). Duplicate vouchers come from the issuing job re-running after a partial failure without an issued-flag check.', fix: ['For missed points: replay lost award events from the transaction log (T-log) for the affected window.', 'For till timeouts: raise the till-side timeout to async mode so tender never blocks on loyalty.', 'For duplicate vouchers: invalidate the later duplicates and notify affected members with a goodwill message.', 'Verify tier recalculation after any bulk replay.'], mitigation: ['Make voucher issuing idempotent on member+campaign key.', 'Loyalty calls at till fire-and-forget with guaranteed event queue.'] },
+    { id: 'SOP-EDI-001', title: 'Vendor EDI failures (ASN / PO ack / invoices)', area: 'Supply Chain EDI', keywords: ['edi', 'asn', '856', 'vendor', 'schema validation', 'backlog', 'as2', 'certificate', 'grn blocked', 'invoice'], rca: 'Bulk EDI failures cluster around three causes: a vendor system change breaking the message schema, AS2 certificate expiry killing the channel, or a gateway mapping deploy that regressed one document type.', fix: ['Classify the failures by vendor and document type from the gateway console.', 'Schema errors: send the vendor the validation report; reprocess once corrected.', 'Certificate expiry: install the renewed cert and replay the queued messages in sequence.', 'If GRNs are blocked at a DC, authorise manual receiving against the PO with recon flag.'], mitigation: ['Certificate expiry alerting at 30/7/1 days across all vendor channels.', 'Canary validation on gateway mapping deploys using golden message samples.'] },
+    { id: 'SOP-NET-001', title: 'Store link down or degraded (4G failover)', area: 'Store Network & Connectivity', keywords: ['link down', 'network', '4g', 'failover', 'packet loss', 'router', 'connectivity', 'wi-fi', 'rf guns', 'offline store'], rca: 'Primary-link outages are mostly carrier-side (fibre cuts, exchange faults). Degraded trading on failover happens when non-essential traffic (CCTV backup, patching) is not throttled and saturates the 4G path.', fix: ['Confirm failover engaged; log the carrier fault with reference number.', 'Apply the failover QoS profile: POS/EFT priority, block CCTV upload and patch traffic.', 'If both paths are down, switch the store to offline trading mode per the POS offline SOP.', 'Monitor until primary restores; verify queue drain and auto-failback.'], mitigation: ['Enforce QoS templates on all store routers, audited monthly for config drift.', 'Dual-carrier SIMs for the top 100 revenue stores.'] },
+    { id: 'SOP-APP-001', title: 'Mobile app crashes, login failures or content not loading', area: 'Mobile App', keywords: ['app crash', 'login failing', 'push notifications', 'cdn', '403', 'images not loading', 'android', 'ios', 'release', 'app checkout'], rca: 'Post-release crash spikes are typically an untested OS/device combination or a backend contract change the app didn\'t handle. CDN 403s point at token/key rotation not propagated to the image origin config.', fix: ['Segment the crash spike by app version, OS and endpoint in the crash tool.', 'If tied to the new release, halt the phased rollout and feature-flag off the offending screen.', 'For login failures, check the identity provider status and token clock-skew before app-side fixes.', 'For CDN 403s, re-sync the origin access keys and purge affected paths.'], mitigation: ['Phased rollouts capped at 10% for 24h with auto-halt on crash-rate breach.', 'Contract tests between app BFF and backend on every backend release.'] },
+    { id: 'SOP-GC-001', title: 'Gift card / voucher redemption failures', area: 'Gift Cards & Vouchers', keywords: ['gift card', 'redemption', 'declining', 'voucher', 'balance enquiry', 'bulk load', 'barcode not scanning', 'multiple times'], rca: 'Redemption declines usually mean the gift-card processor session pool expired after a network blip. Multi-redeemable vouchers indicate the redemption flag update failed after approval — a two-phase update without compensation.', fix: ['Recycle the processor session pool; test with a known-good card.', 'For a multi-redeemable voucher, block the voucher code immediately and quantify redemptions from logs.', 'For failed bulk corporate loads, reverse partial loads before re-running to avoid double credit.', 'Barcode issues at till: verify symbology config on scanner profile against the voucher spec.'], mitigation: ['Make redemption a single atomic operation at the processor.', 'Daily exception report: vouchers with redemption count > 1.'] },
+    { id: 'SOP-PIM-001', title: 'Product master data gaps blocking listing or receiving', area: 'Product Master Data', keywords: ['master data', 'sku', 'attributes missing', 'duplicate barcode', 'pim', 'images not propagating', 'unit of measure', 'uom', 'blocked from listing'], rca: 'Listing blocks after a season load usually mean the supplier onboarding template changed and mandatory attributes arrived blank. Duplicate barcodes and UoM mismatches come from manual captures bypassing PIM validation.', fix: ['Export the blocked SKU list with missing-attribute reasons from PIM.', 'Bulk-enrich from the supplier portal where data exists; chase suppliers for the remainder with a deadline.', 'For duplicate barcodes, deactivate the newer capture and re-issue internal codes where needed.', 'Replay the PIM→web publish for corrected SKUs and verify image propagation.'], mitigation: ['Validation gate: no SKU leaves PIM without the mandatory attribute set per department.', 'Lock manual barcode entry; all captures via the supplier portal with checksum validation.'] }
+  ];
+
+  var api = {
+    CATEGORIES: CATEGORIES, REGIONS: REGIONS, TEMPLATES: TEMPLATES, SOPS: SOPS,
+    genJira: genJira, genSnow: genSnow, fill: fill, mulberry32: mulberry32, pick: pick, pickW: pickW
+  };
+  if (typeof module !== 'undefined' && module.exports) module.exports = api;
+  else root.RetailData = api;
+})(typeof window !== 'undefined' ? window : globalThis);
+
+</script>
+<script>
+/* RetailOps Pulse — app logic */
+(function () {
+  'use strict';
+  var D = window.RetailData;
+  var $ = function (id) { return document.getElementById(id); };
+
+  var state = {
+    mode: 'offline',
+    jira: [], snow: [], sops: [],
+    dim: 'month', src: 'all',
+    feedTimer: null, alertSeq: 1, drawerCtx: null
+  };
+
+  /* ---------- helpers ---------- */
+  function toast(t) {
+    var el = $('toast'); el.textContent = t; el.classList.add('show');
+    clearTimeout(toast._t); toast._t = setTimeout(function () { el.classList.remove('show'); }, 2600);
+  }
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function parseCSV(text) {
+    var rows = [], row = [], cur = '', q = false, i, c;
+    text = text.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+    for (i = 0; i < text.length; i++) {
+      c = text[i];
+      if (q) {
+        if (c === '"') { if (text[i + 1] === '"') { cur += '"'; i++; } else q = false; }
+        else cur += c;
+      } else if (c === '"') q = true;
+      else if (c === ',') { row.push(cur); cur = ''; }
+      else if (c === '\n') { row.push(cur); rows.push(row); row = []; cur = ''; }
+      else cur += c;
+    }
+    if (cur !== '' || row.length) { row.push(cur); rows.push(row); }
+    if (!rows.length) return [];
+    var head = rows[0].map(function (h) { return h.trim().toLowerCase(); });
+    return rows.slice(1).filter(function (r) { return r.length > 1; }).map(function (r) {
+      var o = {}; head.forEach(function (h, j) { o[h] = (r[j] || '').trim(); }); return o;
+    });
+  }
+
+  /* ---------- normalisation ---------- */
+  function guessCategory(text) {
+    var t = (text || '').toLowerCase(), best = 'Other', bestN = 0;
+    D.CATEGORIES.forEach(function (c) {
+      var words = c.name.toLowerCase().split(/[^a-z]+/).filter(function (w) { return w.length > 2; });
+      var n = words.filter(function (w) { return t.indexOf(w) >= 0; }).length;
+      if (n > bestN) { bestN = n; best = c.name; }
+    });
+    return best;
+  }
+  function normPriority(p) {
+    p = String(p || '').toUpperCase().trim();
+    if (/^P?[1-4]$/.test(p)) return 'P' + p.replace('P', '');
+    if (/CRIT|HIGHEST/.test(p)) return 'P1';
+    if (/HIGH/.test(p)) return 'P2';
+    if (/LOW/.test(p)) return 'P4';
+    return 'P3';
+  }
+  function normJira(rows) {
+    return rows.map(function (r) {
+      return {
+        id: r.key || r.id || r['issue key'] || '—',
+        source: 'jira',
+        summary: r.summary || r.title || '',
+        category: r.category || guessCategory(r.summary),
+        priority: normPriority(r.priority),
+        status: r.status || 'Open',
+        opened: new Date((r.created || r.opened || '').replace(' ', 'T')),
+        resolved: r.resolved ? new Date(r.resolved.replace(' ', 'T')) : null,
+        region: r.region || 'National / Online',
+        extra: r.team || ''
+      };
+    }).filter(function (r) { return !isNaN(r.opened); });
+  }
+  function normSnow(rows) {
+    return rows.map(function (r) {
+      return {
+        id: r.number || r.id || '—',
+        source: 'snow',
+        rtype: r.type || 'Incident',
+        summary: r.short_description || r.description || '',
+        category: r.category || guessCategory(r.short_description),
+        priority: normPriority(r.priority),
+        status: r.state || r.status || 'New',
+        opened: new Date((r.opened_at || r.opened || '').replace(' ', 'T')),
+        resolved: r.resolved_at ? new Date(r.resolved_at.replace(' ', 'T')) : null,
+        region: r.region || 'National / Online',
+        extra: r.assignment_group || r.related_ci || ''
+      };
+    }).filter(function (r) { return !isNaN(r.opened); });
+  }
+  function allRecords() {
+    if (state.src === 'jira') return state.jira;
+    if (state.src === 'snow') return state.snow;
+    return state.jira.concat(state.snow);
+  }
+  function isOpen(r) { return !/resolved|closed/i.test(r.status); }
+
+  /* ---------- KPIs ---------- */
+  function renderKpis() {
+    var recs = state.jira.concat(state.snow);
+    var open = recs.filter(isOpen).length;
+    var sev = recs.filter(function (r) { return r.priority === 'P1' || r.priority === 'P2'; }).length;
+    var res = recs.filter(function (r) { return r.resolved; });
+    var mttr = res.length ? res.reduce(function (a, r) { return a + (r.resolved - r.opened); }, 0) / res.length / 3600000 : 0;
+    var byCat = {}; recs.forEach(function (r) { byCat[r.category] = (byCat[r.category] || 0) + 1; });
+    var hot = Object.keys(byCat).sort(function (a, b) { return byCat[b] - byCat[a]; })[0] || '—';
+    var k = [
+      [recs.length.toLocaleString(), 'Records loaded'],
+      [open.toLocaleString(), 'Open right now'],
+      [recs.length ? Math.round(sev / recs.length * 100) + '%' : '0%', 'P1–P2 share'],
+      [mttr ? mttr.toFixed(1) + 'h' : '—', 'Avg time to resolve'],
+      [hot, 'Hottest category']
+    ];
+    $('kpis').innerHTML = k.map(function (x) {
+      return '<div class="kpi"><div class="v">' + esc(x[0]) + '</div><div class="l micro" style="font-weight:600">' + esc(x[1]) + '</div></div>';
+    }).join('');
+  }
+
+  /* ---------- heat wall ---------- */
+  var MONTHS = (function () {
+    var out = [], d = new Date(Date.UTC(2025, 6, 1));
+    for (var i = 0; i < 12; i++) {
+      out.push({ key: d.getUTCFullYear() + '-' + (d.getUTCMonth() + 1), label: d.toLocaleString('en', { month: 'short', timeZone: 'UTC' }) + ' ' + String(d.getUTCFullYear()).slice(2) });
+      d.setUTCMonth(d.getUTCMonth() + 1);
+    }
+    return out;
+  })();
+  function colKey(r) {
+    if (state.dim === 'month') return r.opened.getUTCFullYear() + '-' + (r.opened.getUTCMonth() + 1);
+    if (state.dim === 'region') return r.region;
+    return r.priority;
+  }
+  function shade(v, max) {
+    if (!v) return { bg: '#f4f3ef', fg: '#b9b7b1' };
+    var t = Math.pow(v / max, 0.6);
+    var c = Math.round(244 - t * 234); // 244 -> 10
+    var bg = 'rgb(' + c + ',' + c + ',' + (c === 10 ? 10 : c - 2) + ')';
+    return { bg: bg, fg: t > 0.45 ? '#fff' : '#0a0a0a' };
+  }
+  function renderHeat() {
+    var recs = allRecords();
+    if (!recs.length) return;
+    var cols;
+    if (state.dim === 'month') cols = MONTHS;
+    else if (state.dim === 'region') cols = D.REGIONS.map(function (r) { return { key: r, label: r.replace(' / Online', '/Onl').split(' ')[0] + (r.indexOf('National') === 0 ? '/Onl' : '') }; });
+    else cols = ['P1', 'P2', 'P3', 'P4'].map(function (p) { return { key: p, label: p }; });
+
+    var cats = {}, grid = {}, max = 1;
+    recs.forEach(function (r) {
+      cats[r.category] = (cats[r.category] || 0) + 1;
+      var k = r.category + '||' + colKey(r);
+      grid[k] = (grid[k] || 0) + 1;
+      if (grid[k] > max) max = grid[k];
+    });
+    var catList = Object.keys(cats).sort(function (a, b) { return cats[b] - cats[a]; });
+
+    var h = '<div class="heat-scroll"><table class="heat"><thead><tr><th class="rowh">Category ↓</th>';
+    cols.forEach(function (c) { h += '<th>' + esc(c.label) + '</th>'; });
+    h += '<th>Total</th></tr></thead><tbody>';
+    catList.forEach(function (cat) {
+      h += '<tr><th class="rowh" scope="row">' + esc(cat) + '</th>';
+      cols.forEach(function (c) {
+        var v = grid[cat + '||' + c.key] || 0, s = shade(v, max);
+        h += '<td class="cell" tabindex="0" role="button" data-cat="' + esc(cat) + '" data-col="' + esc(c.key) + '" data-lab="' + esc(c.label) + '" style="background:' + s.bg + ';color:' + s.fg + '" aria-label="' + esc(cat) + ', ' + esc(c.label) + ': ' + v + ' records">' + (v || '·') + '</td>';
+      });
+      h += '<td class="cell tot">' + cats[cat] + '</td></tr>';
+    });
+    h += '</tbody></table></div>';
+    $('heatHost').innerHTML = h;
+    $('legend').classList.remove('hide');
+    $('legendSw').innerHTML = [0.08, 0.25, 0.45, 0.7, 1].map(function (t) {
+      var s = shade(t * max, max); return '<i style="background:' + s.bg + '"></i>';
+    }).join('');
+
+    $('heatHost').querySelectorAll('td.cell:not(.tot)').forEach(function (td) {
+      var open = function () { openDrawer(td.dataset.cat, td.dataset.col, td.dataset.lab); };
+      td.addEventListener('click', open);
+      td.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+    });
+  }
+
+  /* ---------- drawer ---------- */
+  function openDrawer(cat, col, lab) {
+    var recs = allRecords().filter(function (r) { return r.category === cat && String(colKey(r)) === String(col); });
+    recs.sort(function (a, b) { return (a.priority > b.priority ? 1 : -1) || (b.opened - a.opened); });
+    state.drawerCtx = { cat: cat, lab: lab, count: recs.length };
+    $('dSub').textContent = (state.dim === 'month' ? 'Month' : state.dim === 'region' ? 'Region' : 'Priority') + ' · ' + lab + ' · ' + recs.length + ' records';
+    $('dTitle').textContent = cat;
+    $('dBody').innerHTML = recs.slice(0, 40).map(function (r) {
+      return '<div class="rec"><div class="r1"><span class="rid mono">' + esc(r.id) + '</span><span class="st">' + esc(r.status) + '</span></div>' +
+        '<div class="rs">' + esc(r.summary) + '</div>' +
+        '<div class="meta"><span class="p-tag p-' + r.priority + '">' + r.priority + '</span>' +
+        esc((r.rtype ? r.rtype + ' · ' : '') + r.region + ' · ' + r.opened.toISOString().slice(0, 10)) + '</div></div>';
+    }).join('') + (recs.length > 40 ? '<div class="meta" style="text-align:center;padding:8px;color:var(--mute)">+ ' + (recs.length - 40) + ' more…</div>' : '');
+    $('ovl').classList.add('open'); $('drawer').classList.add('open');
+  }
+  function closeDrawer() { $('ovl').classList.remove('open'); $('drawer').classList.remove('open'); }
+  $('dClose').addEventListener('click', closeDrawer);
+  $('ovl').addEventListener('click', closeDrawer);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeDrawer(); });
+  $('dAsk').addEventListener('click', function () {
+    var c = state.drawerCtx; if (!c) return;
+    closeDrawer();
+    ask('We are seeing ' + c.count + ' ' + c.cat + ' issues clustered in ' + c.lab + '. What is the likely root cause, how do we fix it now, and how do we avoid it?');
+  });
+
+  /* ---------- agent ---------- */
+  function tokenize(s) {
+    return String(s || '').toLowerCase().replace(/[^a-z0-9\- ]+/g, ' ').split(/\s+/).filter(function (w) { return w.length > 2; });
+  }
+  function scoreSop(sop, qTokens, qRaw) {
+    var s = 0;
+    sop.keywords.forEach(function (k) { if (qRaw.indexOf(k) >= 0) s += 4; });
+    tokenize(sop.title).forEach(function (w) { if (qTokens.indexOf(w) >= 0) s += 2; });
+    tokenize(sop.area).forEach(function (w) { if (qTokens.indexOf(w) >= 0) s += 2; });
+    tokenize(sop.rca).forEach(function (w) { if (qTokens.indexOf(w) >= 0) s += 0.4; });
+    return s;
+  }
+  function findRecord(q) {
+    var m = q.toUpperCase().match(/\b(RET-\d+|INC\d{5,}|PRB\d{4,}|CHG\d{4,})\b/);
+    if (!m) return null;
+    var id = m[1];
+    var all = state.jira.concat(state.snow);
+    for (var i = 0; i < all.length; i++) if (all[i].id.toUpperCase() === id) return all[i];
+    return null;
+  }
+  function categoryStats(area) {
+    var recs = state.jira.concat(state.snow).filter(function (r) { return r.category === area; });
+    if (!recs.length) return null;
+    var open = recs.filter(isOpen).length;
+    var res = recs.filter(function (r) { return r.resolved; });
+    var mttr = res.length ? (res.reduce(function (a, r) { return a + (r.resolved - r.opened); }, 0) / res.length / 3600000).toFixed(1) : '—';
+    var byReg = {}; recs.forEach(function (r) { byReg[r.region] = (byReg[r.region] || 0) + 1; });
+    var topReg = Object.keys(byReg).sort(function (a, b) { return byReg[b] - byReg[a]; })[0];
+    var now = new Date(Date.UTC(2026, 5, 1)), prev = new Date(Date.UTC(2026, 4, 1));
+    var cur = recs.filter(function (r) { return r.opened >= now; }).length;
+    var pri = recs.filter(function (r) { return r.opened >= prev && r.opened < now; }).length;
+    return { total: recs.length, open: open, mttr: mttr, topReg: topReg, trend: pri ? Math.round((cur - pri) / pri * 100) : 0 };
+  }
+  function addMsg(who, html) {
+    var chat = $('chat');
+    var div = document.createElement('div');
+    div.className = 'msg ' + who;
+    div.innerHTML = '<div class="who">' + (who === 'user' ? 'You' : 'Service agent') + '</div><div class="bub">' + html + '</div>';
+    chat.appendChild(div);
+    chat.scrollTop = chat.scrollHeight;
+  }
+  function agentAnswer(q) {
+    if (!state.sops.length) {
+      addMsg('agent', '<p>No knowledge bank is loaded yet. Load the demo data or upload your SOP JSON on the left, then ask me again.</p>');
+      return;
+    }
+    var rec = findRecord(q);
+    var qRaw = q.toLowerCase(), qTokens = tokenize(q);
+    if (rec) { qRaw += ' ' + rec.summary.toLowerCase() + ' ' + rec.category.toLowerCase(); qTokens = qTokens.concat(tokenize(rec.summary), tokenize(rec.category)); }
+
+    var ranked = state.sops.map(function (s) { return { s: s, sc: scoreSop(s, qTokens, qRaw) }; })
+      .sort(function (a, b) { return b.sc - a.sc; });
+    var best = ranked[0];
+
+    if (!best || best.sc < 3) {
+      addMsg('agent', '<p>I could not confidently match that to an SOP in the knowledge bank. Try naming the service area (e.g. <b>POS</b>, <b>EFT</b>, <b>checkout</b>, <b>stock sync</b>, <b>WRewards</b>) or paste a record number like <span class="mono">INC0010042</span>.</p>');
+      return;
+    }
+    var sop = best.s, st = categoryStats(sop.area);
+    var h = '';
+    if (rec) {
+      h += '<p style="margin-bottom:4px"><span class="mono"><b>' + esc(rec.id) + '</b></span> — ' + esc(rec.summary) + '<br><span style="color:var(--mute);font-size:11px">' + esc(rec.priority + ' · ' + rec.status + ' · ' + rec.region) + '</span></p>';
+    }
+    h += '<p><b>' + esc(sop.title) + '</b></p>';
+    h += '<div class="sec rca"><div class="sh">Root cause analysis</div><p>' + esc(sop.rca) + '</p></div>';
+    h += '<div class="sec"><div class="sh">Fix now</div><ol>' + sop.fix.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ol></div>';
+    h += '<div class="sec"><div class="sh">Mitigate for the future</div><ul>' + sop.mitigation.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul></div>';
+    if (st) {
+      h += '<div class="stat-line">' +
+        '<span>' + st.total + ' matching records loaded</span>' +
+        '<span>' + st.open + ' open</span>' +
+        '<span>avg resolve ' + st.mttr + 'h</span>' +
+        '<span>hotspot: ' + esc(st.topReg) + '</span>' +
+        (st.trend ? '<span>' + (st.trend > 0 ? '▲ +' : '▼ ') + st.trend + '% vs last month</span>' : '') + '</div>';
+    }
+    h += '<div class="sopref">Source: ' + esc(sop.id) + ' · ' + esc(sop.area) + ' · match confidence ' + (best.sc >= 8 ? 'high' : 'medium') + '</div>';
+    addMsg('agent', h);
+  }
+  function ask(q) {
+    q = (q || '').trim(); if (!q) return;
+    addMsg('user', esc(q));
+    setTimeout(function () { agentAnswer(q); }, 220);
+  }
+  $('askBtn').addEventListener('click', function () { ask($('askInput').value); $('askInput').value = ''; });
+  $('askInput').addEventListener('keydown', function (e) { if (e.key === 'Enter') { ask(this.value); this.value = ''; } });
+
+  var CHIPS = [
+    'EFT declines spiking with code 91',
+    'Checkout creating duplicate orders',
+    'Promo price not applying at till',
+    'Click-and-collect orders stuck',
+    'WRewards points not awarded'
+  ];
+  $('chips').innerHTML = CHIPS.map(function (c) { return '<button type="button">' + esc(c) + '</button>'; }).join('');
+  $('chips').querySelectorAll('button').forEach(function (b) {
+    b.addEventListener('click', function () { ask(b.textContent); });
+  });
+
+  /* ---------- uploads / demo ---------- */
+  function readFile(input, cb) {
+    var f = input.files && input.files[0]; if (!f) return;
+    var r = new FileReader();
+    r.onload = function () { cb(String(r.result)); };
+    r.readAsText(f);
+  }
+  $('fileJira').addEventListener('change', function () {
+    readFile(this, function (txt) {
+      state.jira = normJira(parseCSV(txt));
+      $('okJira').classList.remove('hide'); refresh(); toast(state.jira.length + ' Jira issues loaded');
+    });
+  });
+  $('fileSnow').addEventListener('change', function () {
+    readFile(this, function (txt) {
+      state.snow = normSnow(parseCSV(txt));
+      $('okSnow').classList.remove('hide'); refresh(); toast(state.snow.length + ' ServiceNow records loaded');
+    });
+  });
+  $('fileKb').addEventListener('change', function () {
+    readFile(this, function (txt) {
+      try {
+        var j = JSON.parse(txt);
+        state.sops = j.sops || (Array.isArray(j) ? j : []);
+        $('okKb').classList.remove('hide'); refresh(); toast(state.sops.length + ' SOPs loaded');
+      } catch (e) { toast('Could not read that JSON — check the format.'); }
+    });
+  });
+  $('btnDemo').addEventListener('click', function () {
+    state.jira = normJira(D.genJira(1000).map(function (r) { return { key: r.key, summary: r.summary, category: r.category, priority: r.priority, status: r.status, created: r.created, resolved: r.resolved, region: r.region, team: r.team }; }));
+    state.snow = normSnow(D.genSnow(1000).map(function (r) { return { number: r.number, type: r.type, short_description: r.short_description, category: r.category, priority: r.priority, state: r.state, opened_at: r.opened_at, resolved_at: r.resolved_at, region: r.region, assignment_group: r.assignment_group }; }));
+    state.sops = D.SOPS;
+    ['okJira', 'okSnow', 'okKb'].forEach(function (id) { $(id).classList.remove('hide'); });
+    refresh(); toast('Demo dataset loaded — 2,000 records, ' + D.SOPS.length + ' SOPs');
+  });
+
+  /* ---------- segments ---------- */
+  function wireSeg(id, attr, key) {
+    $(id).querySelectorAll('button').forEach(function (b) {
+      b.addEventListener('click', function () {
+        $(id).querySelectorAll('button').forEach(function (x) { x.classList.remove('on'); });
+        b.classList.add('on'); state[key] = b.dataset[attr]; renderHeat();
+      });
+    });
+  }
+  wireSeg('segDim', 'dim', 'dim');
+  wireSeg('segSrc', 'src', 'src');
+
+  /* ---------- real-time mode ---------- */
+  var CONNECTORS = [
+    { id: 'jira', name: 'Jira', hint: 'https://yourorg.atlassian.net' },
+    { id: 'snow', name: 'ServiceNow', hint: 'https://yourorg.service-now.com' },
+    { id: 'conf', name: 'Confluence', hint: 'https://yourorg.atlassian.net/wiki' },
+    { id: 'sp', name: 'SharePoint', hint: 'https://yourorg.sharepoint.com' }
+  ];
+  var connState = {};
+  function renderConnectors() {
+    $('connList').innerHTML = CONNECTORS.map(function (c) {
+      var st = connState[c.id] || 'off';
+      var pill = st === 'ok' ? '<span class="pill ok">Linked · sim</span>' : st === 'busy' ? '<span class="pill busy">Linking…</span>' : '<span class="pill">Not linked</span>';
+      return '<div class="conn" data-c="' + c.id + '"><div class="conn-h"><span class="n">' + c.name + '</span>' + pill + '</div>' +
+        '<input type="text" placeholder="' + c.hint + '" aria-label="' + c.name + ' instance URL">' +
+        '<input type="password" placeholder="API token" aria-label="' + c.name + ' API token">' +
+        '<button class="btn" style="width:100%" ' + (st === 'ok' ? 'disabled' : '') + '>' + (st === 'ok' ? 'Connected' : 'Connect') + '</button></div>';
+    }).join('') +
+      '<div class="note">This demo simulates the live link in-browser. In production these connectors call the Jira / ServiceNow REST APIs and Confluence / SharePoint search APIs through a small backend (needed for auth &amp; CORS), with webhooks pushing new records into the alert stream.</div>';
+    $('connList').querySelectorAll('.conn button').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var id = b.closest('.conn').dataset.c;
+        connState[id] = 'busy'; renderConnectors();
+        setTimeout(function () {
+          connState[id] = 'ok'; renderConnectors();
+          toast(CONNECTORS.filter(function (x) { return x.id === id; })[0].name + ' linked (simulated)');
+          startFeed();
+        }, 1100);
+      });
+    });
+  }
+  function makeAlert() {
+    var rnd = Math.random;
+    var cat = D.CATEGORIES[Math.floor(rnd() * D.CATEGORIES.length)];
+    var tpl = D.TEMPLATES[cat.name][Math.floor(rnd() * D.TEMPLATES[cat.name].length)];
+    var seeded = D.mulberry32(Date.now() % 2147483647);
+    var summary = D.fill(seeded, tpl);
+    var pr = rnd() < 0.12 ? 'P1' : rnd() < 0.4 ? 'P2' : rnd() < 0.8 ? 'P3' : 'P4';
+    var isJ = rnd() < 0.35;
+    var id = isJ ? 'RET-' + (2000 + state.alertSeq) : 'INC' + String(11000 + state.alertSeq).padStart(7, '0');
+    state.alertSeq++;
+    return { id: id, source: isJ ? 'Jira' : 'ServiceNow', summary: summary, category: cat.name, priority: pr, region: D.REGIONS[Math.floor(rnd() * D.REGIONS.length)], at: new Date() };
+  }
+  function pushAlert(a) {
+    var feed = $('feed');
+    if (feed.querySelector('.empty')) feed.innerHTML = '';
+    var div = document.createElement('div');
+    div.className = 'alert ' + (a.priority === 'P1' ? 'p1' : a.priority === 'P2' ? 'p2' : '');
+    div.innerHTML = '<div class="top"><span class="id mono">' + esc(a.id) + '</span><span class="tm">' + a.at.toTimeString().slice(0, 5) + ' · ' + esc(a.source) + '</span></div>' +
+      '<div class="s"><span class="p-tag p-' + a.priority + '">' + a.priority + '</span>' + esc(a.summary) + '</div>' +
+      '<div class="act"><button type="button">Diagnose with agent →</button></div>';
+    div.querySelector('button').addEventListener('click', function () {
+      ask('New ' + a.priority + ' alert ' + a.id + ': ' + a.summary + ' — give me RCA, immediate fix and mitigation.');
+    });
+    feed.insertBefore(div, feed.firstChild);
+    while (feed.children.length > 25) feed.removeChild(feed.lastChild);
+    // feed the heat wall too
+    var rec = { id: a.id, source: a.source === 'Jira' ? 'jira' : 'snow', rtype: 'Incident', summary: a.summary, category: a.category, priority: a.priority, status: 'New', opened: a.at, resolved: null, region: a.region, extra: '' };
+    (rec.source === 'jira' ? state.jira : state.snow).push(rec);
+    renderKpis(); renderHeat();
+    if (a.priority === 'P1') toast('P1 alert — ' + a.id + ' · ' + a.category);
+  }
+  function startFeed() {
+    if (state.feedTimer || state.mode !== 'live') return;
+    pushAlert(makeAlert());
+    state.feedTimer = setInterval(function () {
+      if ($('feedOn').checked && state.mode === 'live') pushAlert(makeAlert());
+    }, 8000);
+  }
+  function stopFeed() { clearInterval(state.feedTimer); state.feedTimer = null; }
+  $('feedOn').addEventListener('change', function () { toast(this.checked ? 'Alert stream on' : 'Alert stream paused'); });
+
+  /* ---------- mode switch ---------- */
+  function setMode(m) {
+    state.mode = m;
+    $('tabOffline').classList.toggle('on', m === 'offline');
+    $('tabLive').classList.toggle('on', m === 'live');
+    $('tabOffline').setAttribute('aria-selected', m === 'offline');
+    $('tabLive').setAttribute('aria-selected', m === 'live');
+    $('panelOffline').classList.toggle('hide', m !== 'offline');
+    $('panelLive').classList.toggle('hide', m !== 'live');
+    $('panelFeed').classList.toggle('hide', m !== 'live');
+    if (m === 'live') {
+      if (!state.sops.length) { $('btnDemo').click(); }
+      renderConnectors();
+      addMsg('agent', '<p><b>Real-time mode.</b> Link your Jira, ServiceNow, Confluence and SharePoint instances on the left. I will alert you proactively as new records land, and you can ask me about anything reactively — I answer from the knowledge bank with RCA, immediate fix and future mitigation.</p>');
+    } else {
+      stopFeed();
+    }
+  }
+  $('tabOffline').addEventListener('click', function () { setMode('offline'); });
+  $('tabLive').addEventListener('click', function () { setMode('live'); });
+
+  /* ---------- refresh / boot ---------- */
+  function refresh() {
+    $('cntJira').textContent = state.jira.length.toLocaleString();
+    $('cntSnow').textContent = state.snow.length.toLocaleString();
+    $('cntKb').textContent = state.sops.length;
+    renderKpis();
+    if (state.jira.length || state.snow.length) renderHeat();
+  }
+  renderKpis();
+  addMsg('agent', '<p><b>Welcome to RetailOps Pulse.</b> I am your retail service agent.</p><p style="margin-top:6px">Load the demo dataset (or upload your own Jira / ServiceNow dumps and SOP knowledge bank), then describe any problem — or tap a hot cell on the heat wall. I will respond with the <b>root cause</b>, <b>steps to fix now</b> and <b>mitigation</b> to avoid it in future.</p>');
+})();
+
+</script>
+</body>
+</html>
