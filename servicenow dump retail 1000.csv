@@ -1,0 +1,1001 @@
+number,type,short_description,category,priority,state,opened_at,resolved_at,assignment_group,region,related_ci
+INC0010000,Incident,Store W373 on 4G failover — degraded POS response,Store Network & Connectivity,3,In Progress,2025-12-21 19:12,,Network Ops,Gauteng,Store-Router-10
+CHG0007000,Change Request,"Emergency change: promo price not applying at till for advertised line, store w504",Pricing & Promotions,3,Implement,2025-11-17 06:19,,Merch Systems,National / Online,Promo-Engine-12
+INC0010001,Incident,Voucher PRM-4667 redeemable multiple times — exposure risk,Gift Cards & Vouchers,4,Resolved,2026-01-11 17:34,2026-01-14 10:41,Payments Ops,Gauteng,GiftCard-Service-26
+INC0010002,Incident,Markdown batch stuck — clearance prices not live,Pricing & Promotions,3,Closed,2026-04-24 19:59,2026-04-26 06:34,Merch Systems,Limpopo,Promo-Engine-12
+CHG0007001,Change Request,Patch release for eft declines spiking at store w148 — response code 91,Payments & EFT,4,Authorise,2026-06-12 18:12,,Payments Ops,Limpopo,EFT-Switch-29
+INC0010003,Incident,High packet loss to data centre from Limpopo stores,Store Network & Connectivity,1,Resolved,2025-12-03 07:13,2025-12-03 14:42,Network Ops,Western Cape,Store-Router-29
+CHG0007002,Change Request,Patch release for push notifications not delivered for order updates,Mobile App,3,Implement,2026-02-08 19:30,,Digital Commerce,KwaZulu-Natal,Mobile-BFF-29
+CHG0007003,Change Request,Deploy fix for promotion prm-4030 double-discounting online,Pricing & Promotions,1,Scheduled,2025-12-13 15:36,,Merch Systems,Free State,Promo-Engine-39
+INC0010004,Incident,Checkout payment step returning 502 for 18% of sessions,Online Checkout,2,In Progress,2026-05-12 12:19,,Digital Commerce,National / Online,Checkout-Service-23
+INC0010005,Incident,Same-day delivery cutoff not enforced — late promises made,Order Fulfilment,3,Closed,2025-10-28 08:57,2025-10-28 22:27,Fulfilment Tech,National / Online,OMS-Core-38
+PRB0004000,Problem,WRewards points not awarded on qualifying basket,WRewards Loyalty,4,Root Cause Analysis,2025-09-11 19:50,,Loyalty Platform,Gauteng,Loyalty-API-24
+CHG0007004,Change Request,"Patch release for tap-to-pay failing on new terminals, store w264",Payments & EFT,3,Closed,2026-06-22 15:46,2026-06-25 14:30,Payments Ops,Free State,EFT-Switch-32
+INC0010006,Incident,Markdown batch stuck — clearance prices not live,Pricing & Promotions,4,Closed,2026-01-30 06:45,2026-02-01 09:17,Merch Systems,North West,Promo-Engine-40
+CHG0007005,Change Request,Deploy fix for markdown batch stuck — clearance prices not live,Pricing & Promotions,4,Scheduled,2025-08-11 18:17,,Merch Systems,National / Online,Promo-Engine-16
+INC0010007,Incident,EDI 856 backlog of 49 messages at gateway,Supply Chain EDI,3,On Hold,2026-06-03 09:49,,Integration Hub,Limpopo,EDI-Gateway-25
+CHG0007006,Change Request,Patch release for courier manifest not generated for 49 orders,Order Fulfilment,4,Authorise,2026-06-21 17:30,,Fulfilment Tech,KwaZulu-Natal,OMS-Core-13
+INC0010008,Incident,Invoice EDI mismatch blocking GRN for DC 15,Supply Chain EDI,4,Closed,2026-03-16 10:56,2026-03-18 16:50,Integration Hub,Western Cape,EDI-Gateway-32
+CHG0007007,Change Request,Patch release for invoice edi mismatch blocking grn for dc 16,Supply Chain EDI,4,Closed,2026-04-06 13:46,2026-04-07 13:18,Integration Hub,Free State,EDI-Gateway-09
+CHG0007008,Change Request,"Deploy fix for loyalty card lookup timing out at till, store w318",WRewards Loyalty,4,Implement,2026-05-13 16:35,,Loyalty Platform,Gauteng,Loyalty-API-38
+INC0010009,Incident,Card payments timing out across Northern Cape stores,Payments & EFT,3,Closed,2026-04-29 13:30,2026-04-30 07:00,Payments Ops,Gauteng,EFT-Switch-35
+INC0010010,Incident,"Tap-to-pay failing on new terminals, store W193",Payments & EFT,3,Resolved,2025-11-18 09:24,2025-11-19 02:04,Payments Ops,Gauteng,EFT-Switch-28
+CHG0007009,Change Request,Emergency change: images not loading on home screen — cdn 403s,Mobile App,3,Assess,2026-01-02 07:00,,Digital Commerce,Western Cape,Mobile-BFF-22
+INC0010011,Incident,Bank switch latency above 8s causing tender timeouts,Payments & EFT,1,Closed,2026-01-28 12:06,2026-01-28 16:42,Payments Ops,Western Cape,EFT-Switch-07
+INC0010012,Incident,"POS EOD batch stuck at store W524, trading day not closed",POS & Tills,3,Resolved,2025-10-04 06:58,2025-10-04 15:16,Store Systems,Gauteng,POS-Terminal-18
+PRB0004001,Problem,"POS EOD batch stuck at store W417, trading day not closed",POS & Tills,3,Resolved,2026-06-15 14:41,2026-06-16 07:33,Store Systems,Gauteng,POS-Terminal-04
+PRB0004002,Problem,Delivery slot selection failing for Western Cape customers,Online Checkout,4,Closed,2025-11-21 19:36,2025-11-24 10:46,Digital Commerce,Western Cape,Checkout-Service-29
+CHG0007010,Change Request,Emergency change: app crash on product page for android 16% of sessions,Mobile App,3,Scheduled,2026-02-13 14:03,,Digital Commerce,Eastern Cape,Mobile-BFF-32
+PRB0004003,Problem,Images not loading on home screen — CDN 403s,Mobile App,3,Fix in Progress,2026-06-27 16:49,,Digital Commerce,National / Online,Mobile-BFF-39
+INC0010013,Incident,Invoice EDI mismatch blocking GRN for DC 5,Supply Chain EDI,2,New,2026-06-25 14:14,,Integration Hub,KwaZulu-Natal,EDI-Gateway-13
+INC0010014,Incident,EFT declines spiking at store W465 — response code 91,Payments & EFT,3,Closed,2026-04-15 06:29,2026-04-18 19:04,Payments Ops,Limpopo,EFT-Switch-18
+INC0010015,Incident,WRewards linking failing in app with error ERR-510,WRewards Loyalty,2,In Progress,2025-12-02 06:28,,Loyalty Platform,KwaZulu-Natal,Loyalty-API-04
+INC0010016,Incident,Basket total mismatch after promo applied at checkout,Online Checkout,3,Closed,2026-01-23 06:32,2026-01-26 11:18,Digital Commerce,KwaZulu-Natal,Checkout-Service-17
+INC0010017,Incident,Invoice EDI mismatch blocking GRN for DC 17,Supply Chain EDI,1,New,2026-05-09 17:52,,Integration Hub,KwaZulu-Natal,EDI-Gateway-17
+CHG0007011,Change Request,"Emergency change: mismatch between shelf-edge label and till price, store w283",Pricing & Promotions,2,Closed,2026-06-26 14:15,2026-06-27 01:08,Merch Systems,KwaZulu-Natal,Promo-Engine-17
+INC0010018,Incident,Stock-on-hand not syncing to online for DC 3 range,Inventory & Stock Sync,4,Closed,2025-09-27 08:20,2025-09-28 05:50,Merch Systems,Western Cape,Stock-Sync-Job-23
+PRB0004004,Problem,App login failing with error ERR-640 after release PRM-9980,Mobile App,3,Root Cause Analysis,2026-02-21 19:58,,Digital Commerce,National / Online,Mobile-BFF-19
+PRB0004005,Problem,Stock-on-hand not syncing to online for DC 18 range,Inventory & Stock Sync,3,Fix in Progress,2026-01-07 19:52,,Merch Systems,Western Cape,Stock-Sync-Job-24
+INC0010019,Incident,Click-and-collect orders stuck in ALLOCATED for store W397,Order Fulfilment,2,Closed,2026-03-30 12:51,2026-03-31 08:35,Fulfilment Tech,Gauteng,OMS-Core-21
+INC0010020,Incident,Store W403 receiving not reflecting in inventory ledger,Inventory & Stock Sync,3,Closed,2025-12-31 18:43,2026-01-03 17:18,Merch Systems,Eastern Cape,Stock-Sync-Job-39
+INC0010021,Incident,App crash on product page for Android 44% of sessions,Mobile App,3,Closed,2025-12-08 10:42,2025-12-10 00:34,Digital Commerce,Limpopo,Mobile-BFF-39
+INC0010022,Incident,Dual-message settlement mismatch for trading date 2026-03-05,Payments & EFT,2,Resolved,2026-01-11 07:49,2026-01-12 08:36,Payments Ops,Free State,EFT-Switch-33
+PRB0004006,Problem,Basket total mismatch after promo applied at checkout,Online Checkout,3,Resolved,2026-04-17 10:31,2026-04-18 16:13,Digital Commerce,Gauteng,Checkout-Service-20
+INC0010023,Incident,App login failing with error ERR-604 after release PRM-1342,Mobile App,2,Closed,2026-05-09 12:44,2026-05-10 14:58,Digital Commerce,National / Online,Mobile-BFF-29
+PRB0004007,Problem,Till 15 frozen on tender screen at store W421,POS & Tills,3,Root Cause Analysis,2025-10-03 13:59,,Store Systems,Gauteng,POS-Terminal-08
+PRB0004008,Problem,Purchase order acknowledgements not reaching vendor TextilePro,Supply Chain EDI,1,Root Cause Analysis,2026-05-28 13:38,,Integration Hub,Northern Cape,EDI-Gateway-08
+INC0010024,Incident,Router config drift detected at store W477 after change,Store Network & Connectivity,3,Resolved,2026-02-21 20:57,2026-02-24 10:56,Network Ops,Mpumalanga,Store-Router-23
+INC0010025,Incident,"Loyalty card lookup timing out at till, store W111",WRewards Loyalty,3,New,2026-04-10 11:59,,Loyalty Platform,KwaZulu-Natal,Loyalty-API-10
+INC0010026,Incident,Card payments timing out across Mpumalanga stores,Payments & EFT,3,Resolved,2025-07-04 14:29,2025-07-06 02:52,Payments Ops,Eastern Cape,EFT-Switch-38
+INC0010027,Incident,Invoice EDI mismatch blocking GRN for DC 2,Supply Chain EDI,4,In Progress,2025-11-30 16:48,,Integration Hub,National / Online,EDI-Gateway-28
+PRB0004009,Problem,WRewards points not awarded on qualifying basket,WRewards Loyalty,1,Fix in Progress,2025-10-17 18:25,,Loyalty Platform,Gauteng,Loyalty-API-37
+INC0010028,Incident,"POS EOD batch stuck at store W161, trading day not closed",POS & Tills,3,Resolved,2025-07-08 14:31,2025-07-11 01:15,Store Systems,Mpumalanga,POS-Terminal-22
+INC0010029,Incident,Basket total mismatch after promo applied at checkout,Online Checkout,3,New,2026-05-13 16:45,,Digital Commerce,KwaZulu-Natal,Checkout-Service-29
+INC0010030,Incident,"Receipt printer failure on till 3, store W360",POS & Tills,3,New,2025-09-19 06:11,,Store Systems,Gauteng,POS-Terminal-31
+CHG0007012,Change Request,Deploy fix for promotion prm-4396 double-discounting online,Pricing & Promotions,3,Closed,2026-06-12 20:37,2026-06-14 00:56,Merch Systems,Western Cape,Promo-Engine-11
+INC0010031,Incident,App checkout button unresponsive on iOS 55,Mobile App,4,Resolved,2026-05-23 08:55,2026-05-25 20:22,Digital Commerce,Western Cape,Mobile-BFF-13
+INC0010032,Incident,Dual-message settlement mismatch for trading date 2026-06-17,Payments & EFT,3,Closed,2025-07-26 09:12,2025-07-28 22:15,Payments Ops,National / Online,EFT-Switch-32
+INC0010033,Incident,"Mismatch between shelf-edge label and till price, store W375",Pricing & Promotions,3,Closed,2026-06-24 20:51,2026-06-26 14:04,Merch Systems,KwaZulu-Natal,Promo-Engine-20
+CHG0007013,Change Request,Config change: store w162 receiving not reflecting in inventory ledger,Inventory & Stock Sync,3,Implement,2025-11-15 08:39,,Merch Systems,KwaZulu-Natal,Stock-Sync-Job-34
+INC0010034,Incident,App checkout button unresponsive on iOS 54,Mobile App,3,Closed,2026-06-15 16:19,2026-06-18 13:22,Digital Commerce,Gauteng,Mobile-BFF-30
+INC0010035,Incident,Delivery slot selection failing for KwaZulu-Natal customers,Online Checkout,3,Resolved,2025-10-09 13:31,2025-10-13 01:16,Digital Commerce,National / Online,Checkout-Service-38
+PRB0004010,Problem,EFT declines spiking at store W304 — response code 91,Payments & EFT,3,Root Cause Analysis,2026-03-15 07:42,,Payments Ops,Eastern Cape,EFT-Switch-17
+PRB0004011,Problem,Bank switch latency above 8s causing tender timeouts,Payments & EFT,2,Root Cause Analysis,2025-09-05 18:23,,Payments Ops,North West,EFT-Switch-23
+INC0010036,Incident,3-D Secure redirect loop on mobile web checkout,Online Checkout,3,Resolved,2026-06-14 07:50,2026-06-17 20:01,Digital Commerce,Western Cape,Checkout-Service-24
+INC0010037,Incident,Dual-message settlement mismatch for trading date 2026-01-04,Payments & EFT,3,Resolved,2025-11-11 19:36,2025-11-14 07:15,Payments Ops,Limpopo,EFT-Switch-01
+INC0010038,Incident,Store W288 receiving not reflecting in inventory ledger,Inventory & Stock Sync,3,In Progress,2026-03-26 08:09,,Merch Systems,Eastern Cape,Stock-Sync-Job-30
+CHG0007014,Change Request,Emergency change: same-day delivery cutoff not enforced — late promises made,Order Fulfilment,3,Closed,2026-03-19 08:53,2026-03-22 00:09,Fulfilment Tech,Western Cape,OMS-Core-02
+INC0010039,Incident,Courier manifest not generated for 25 orders,Order Fulfilment,3,Closed,2025-08-25 19:52,2025-08-29 06:17,Fulfilment Tech,North West,OMS-Core-14
+CHG0007015,Change Request,Patch release for markdown batch stuck — clearance prices not live,Pricing & Promotions,3,Closed,2026-06-15 15:33,2026-06-19 06:34,Merch Systems,National / Online,Promo-Engine-26
+INC0010040,Incident,"Voucher barcode not scanning at till, store W444",Gift Cards & Vouchers,1,Closed,2026-01-11 08:48,2026-01-11 16:17,Payments Ops,Free State,GiftCard-Service-31
+INC0010041,Incident,Dual-message settlement mismatch for trading date 2026-05-27,Payments & EFT,2,In Progress,2026-05-05 11:42,,Payments Ops,National / Online,EFT-Switch-06
+INC0010042,Incident,Router config drift detected at store W144 after change,Store Network & Connectivity,3,Closed,2026-01-27 16:58,2026-01-28 05:42,Network Ops,Eastern Cape,Store-Router-04
+CHG0007016,Change Request,Config change: invoice edi mismatch blocking grn for dc 13,Supply Chain EDI,2,Closed,2026-04-06 14:08,2026-04-07 05:41,Integration Hub,Western Cape,EDI-Gateway-15
+INC0010043,Incident,Barcode scanner intermittently not reading at store W112,POS & Tills,2,Resolved,2025-07-31 06:32,2025-08-01 03:55,Store Systems,KwaZulu-Natal,POS-Terminal-30
+INC0010044,Incident,High packet loss to data centre from KwaZulu-Natal stores,Store Network & Connectivity,3,Closed,2026-03-31 20:30,2026-04-03 11:58,Network Ops,North West,Store-Router-12
+INC0010045,Incident,EFT declines spiking at store W221 — response code 91,Payments & EFT,4,On Hold,2026-05-03 08:22,,Payments Ops,Gauteng,EFT-Switch-34
+INC0010046,Incident,"POS EOD batch stuck at store W501, trading day not closed",POS & Tills,3,In Progress,2026-02-03 16:19,,Store Systems,Eastern Cape,POS-Terminal-34
+CHG0007017,Change Request,"Config change: tap-to-pay failing on new terminals, store w282",Payments & EFT,4,Closed,2025-11-27 13:46,2025-11-30 10:04,Payments Ops,Western Cape,EFT-Switch-05
+PRB0004012,Problem,Barcode scanner intermittently not reading at store W261,POS & Tills,3,Resolved,2026-05-29 15:21,2026-05-31 04:17,Store Systems,Western Cape,POS-Terminal-22
+INC0010047,Incident,"Promo price not applying at till for advertised line, store W263",Pricing & Promotions,4,New,2025-11-01 14:38,,Merch Systems,National / Online,Promo-Engine-13
+INC0010048,Incident,Store W158 on 4G failover — degraded POS response,Store Network & Connectivity,2,Closed,2025-10-07 18:03,2025-10-08 10:22,Network Ops,National / Online,Store-Router-13
+INC0010049,Incident,Router config drift detected at store W422 after change,Store Network & Connectivity,2,Closed,2025-08-23 20:41,2025-08-24 15:43,Network Ops,Western Cape,Store-Router-16
+CHG0007018,Change Request,"Emergency change: pos eod batch stuck at store w560, trading day not closed",POS & Tills,2,Closed,2026-05-28 19:28,2026-05-29 09:12,Store Systems,Gauteng,POS-Terminal-05
+INC0010050,Incident,Wi-Fi outage in backup area of store W358 — RF guns offline,Store Network & Connectivity,3,New,2025-07-11 20:19,,Network Ops,Western Cape,Store-Router-10
+INC0010051,Incident,High packet loss to data centre from Eastern Cape stores,Store Network & Connectivity,3,Closed,2026-03-05 07:14,2026-03-06 16:41,Network Ops,Western Cape,Store-Router-24
+PRB0004013,Problem,Product images not propagating from PIM to web,Product Master Data,3,Fix in Progress,2026-05-14 19:59,,Data Services,Gauteng,PIM-Hub-38
+INC0010052,Incident,"Primary link down at store W530, all cloud services impacted",Store Network & Connectivity,4,New,2025-07-29 20:30,,Network Ops,Mpumalanga,Store-Router-23
+INC0010053,Incident,EFT declines spiking at store W156 — response code 91,Payments & EFT,2,Closed,2025-08-17 08:29,2025-08-18 00:16,Payments Ops,Gauteng,EFT-Switch-24
+INC0010054,Incident,Same-day delivery cutoff not enforced — late promises made,Order Fulfilment,4,Resolved,2025-10-18 17:40,2025-10-19 13:31,Fulfilment Tech,National / Online,OMS-Core-31
+INC0010055,Incident,Bank switch latency above 8s causing tender timeouts,Payments & EFT,2,Closed,2026-05-20 13:39,2026-05-21 02:29,Payments Ops,KwaZulu-Natal,EFT-Switch-24
+INC0010056,Incident,Basket total mismatch after promo applied at checkout,Online Checkout,3,New,2026-04-22 16:28,,Digital Commerce,KwaZulu-Natal,Checkout-Service-31
+INC0010057,Incident,Gift card balance enquiry timing out online,Gift Cards & Vouchers,4,Resolved,2025-09-07 19:31,2025-09-10 13:33,Payments Ops,National / Online,GiftCard-Service-28
+PRB0004014,Problem,Card payments timing out across Eastern Cape stores,Payments & EFT,4,Fix in Progress,2026-02-14 09:33,,Payments Ops,KwaZulu-Natal,EFT-Switch-19
+PRB0004015,Problem,Courier manifest not generated for 23 orders,Order Fulfilment,2,Closed,2026-04-17 16:27,2026-04-18 14:53,Fulfilment Tech,Eastern Cape,OMS-Core-08
+INC0010058,Incident,Card payments timing out across North West stores,Payments & EFT,3,Resolved,2026-04-09 06:14,2026-04-12 07:58,Payments Ops,KwaZulu-Natal,EFT-Switch-33
+PRB0004016,Problem,Price file failed to deploy to 30 stores overnight,Pricing & Promotions,2,Fix in Progress,2025-07-25 15:32,,Merch Systems,National / Online,Promo-Engine-17
+PRB0004017,Problem,Till 15 frozen on tender screen at store W456,POS & Tills,4,Closed,2025-09-01 13:41,2025-09-03 19:34,Store Systems,North West,POS-Terminal-04
+INC0010059,Incident,Courier manifest not generated for 43 orders,Order Fulfilment,3,New,2026-05-27 09:15,,Fulfilment Tech,Gauteng,OMS-Core-39
+INC0010060,Incident,EFT declines spiking at store W354 — response code 91,Payments & EFT,2,In Progress,2026-04-02 08:33,,Payments Ops,Free State,EFT-Switch-36
+INC0010061,Incident,Router config drift detected at store W233 after change,Store Network & Connectivity,2,On Hold,2026-05-05 13:08,,Network Ops,Western Cape,Store-Router-23
+INC0010062,Incident,WRewards points not awarded on qualifying basket,WRewards Loyalty,4,Closed,2026-05-21 06:57,2026-05-24 07:22,Loyalty Platform,National / Online,Loyalty-API-24
+CHG0007019,Change Request,Emergency change: picking app not releasing waves at dc 8,Order Fulfilment,2,Assess,2025-10-05 07:42,,Fulfilment Tech,National / Online,OMS-Core-30
+INC0010063,Incident,Barcode scanner intermittently not reading at store W433,POS & Tills,2,Closed,2026-01-06 10:55,2026-01-06 23:30,Store Systems,KwaZulu-Natal,POS-Terminal-30
+INC0010064,Incident,Bulk corporate gift card load failed for 26 cards,Gift Cards & Vouchers,3,Resolved,2025-12-04 19:43,2025-12-08 16:55,Payments Ops,Gauteng,GiftCard-Service-24
+PRB0004018,Problem,Courier manifest not generated for 56 orders,Order Fulfilment,2,New,2026-06-30 11:11,,Fulfilment Tech,KwaZulu-Natal,OMS-Core-13
+PRB0004019,Problem,Dual-message settlement mismatch for trading date 2026-03-19,Payments & EFT,4,Closed,2025-10-18 08:52,2025-10-19 19:36,Payments Ops,Limpopo,EFT-Switch-02
+INC0010065,Incident,"Tap-to-pay failing on new terminals, store W383",Payments & EFT,3,Resolved,2025-12-13 15:33,2025-12-17 11:10,Payments Ops,Gauteng,EFT-Switch-22
+INC0010066,Incident,Card payments timing out across Northern Cape stores,Payments & EFT,3,On Hold,2026-03-12 09:47,,Payments Ops,Gauteng,EFT-Switch-36
+CHG0007020,Change Request,Deploy fix for bank switch latency above 8s causing tender timeouts,Payments & EFT,3,Closed,2026-06-20 12:47,2026-06-22 12:33,Payments Ops,Gauteng,EFT-Switch-35
+PRB0004020,Problem,AS2 certificate expiry caused vendor HomewareHub channel outage,Supply Chain EDI,1,Fix in Progress,2026-05-07 18:56,,Integration Hub,KwaZulu-Natal,EDI-Gateway-20
+INC0010067,Incident,Delivery slot selection failing for Western Cape customers,Online Checkout,3,On Hold,2026-06-13 07:32,,Digital Commerce,Gauteng,Checkout-Service-23
+INC0010068,Incident,Markdown batch stuck — clearance prices not live,Pricing & Promotions,4,New,2026-04-28 20:19,,Merch Systems,Northern Cape,Promo-Engine-33
+INC0010069,Incident,Product images not propagating from PIM to web,Product Master Data,4,Closed,2025-07-15 10:34,2025-07-16 10:01,Data Services,North West,PIM-Hub-01
+INC0010070,Incident,Stock-on-hand not syncing to online for DC 4 range,Inventory & Stock Sync,3,New,2026-04-04 08:10,,Merch Systems,National / Online,Stock-Sync-Job-38
+INC0010071,Incident,"Tap-to-pay failing on new terminals, store W450",Payments & EFT,4,In Progress,2026-05-17 07:04,,Payments Ops,Western Cape,EFT-Switch-31
+PRB0004021,Problem,Wi-Fi outage in backup area of store W249 — RF guns offline,Store Network & Connectivity,3,Root Cause Analysis,2025-10-20 13:08,,Network Ops,National / Online,Store-Router-18
+INC0010072,Incident,Click-and-collect orders stuck in ALLOCATED for store W136,Order Fulfilment,3,Resolved,2026-03-05 09:33,2026-03-06 03:59,Fulfilment Tech,National / Online,OMS-Core-33
+PRB0004022,Problem,Voucher PRM-3043 redeemable multiple times — exposure risk,Gift Cards & Vouchers,4,Closed,2026-05-20 08:11,2026-05-21 05:17,Payments Ops,Gauteng,GiftCard-Service-24
+CHG0007021,Change Request,Deploy fix for pos terminal offline — store w116 unable to trade on 38 lanes,POS & Tills,4,Scheduled,2025-11-01 19:05,,Store Systems,Western Cape,POS-Terminal-31
+CHG0007022,Change Request,Config change: cycle-count variance file rejected for store w153,Inventory & Stock Sync,4,Implement,2025-10-06 12:19,,Merch Systems,KwaZulu-Natal,Stock-Sync-Job-17
+INC0010073,Incident,Basket total mismatch after promo applied at checkout,Online Checkout,3,Resolved,2025-08-16 19:07,2025-08-20 14:41,Digital Commerce,Western Cape,Checkout-Service-25
+INC0010074,Incident,Courier manifest not generated for 20 orders,Order Fulfilment,3,Closed,2026-03-05 09:51,2026-03-09 15:03,Fulfilment Tech,Gauteng,OMS-Core-02
+PRB0004023,Problem,"Tap-to-pay failing on new terminals, store W227",Payments & EFT,3,Closed,2025-09-17 10:30,2025-09-19 16:27,Payments Ops,Limpopo,EFT-Switch-35
+INC0010075,Incident,Same-day delivery cutoff not enforced — late promises made,Order Fulfilment,3,Closed,2026-05-24 19:39,2026-05-27 09:28,Fulfilment Tech,National / Online,OMS-Core-21
+INC0010076,Incident,Same-day delivery cutoff not enforced — late promises made,Order Fulfilment,3,Closed,2026-06-28 19:04,2026-07-02 19:31,Fulfilment Tech,Eastern Cape,OMS-Core-33
+CHG0007023,Change Request,Patch release for stock-on-hand not syncing to online for dc 6 range,Inventory & Stock Sync,3,Authorise,2025-10-02 08:44,,Merch Systems,Eastern Cape,Stock-Sync-Job-25
+INC0010077,Incident,Unit-of-measure mismatch causing receiving failures at DC 8,Product Master Data,3,Closed,2025-07-05 17:38,2025-07-07 17:43,Data Services,Limpopo,PIM-Hub-30
+INC0010078,Incident,Store W157 receiving not reflecting in inventory ledger,Inventory & Stock Sync,3,Closed,2026-01-04 07:16,2026-01-04 18:53,Merch Systems,National / Online,Stock-Sync-Job-13
+INC0010079,Incident,Push notifications not delivered for order updates,Mobile App,3,Closed,2025-07-21 17:13,2025-07-25 20:02,Digital Commerce,Gauteng,Mobile-BFF-28
+INC0010080,Incident,EFT declines spiking at store W292 — response code 91,Payments & EFT,4,Closed,2026-06-13 16:29,2026-06-16 17:11,Payments Ops,KwaZulu-Natal,EFT-Switch-31
+PRB0004024,Problem,Negative SOH values appearing for 60 SKUs after nightly sync,Inventory & Stock Sync,2,Resolved,2026-04-30 13:39,2026-05-01 02:24,Merch Systems,North West,Stock-Sync-Job-13
+INC0010081,Incident,Picking app not releasing waves at DC 12,Order Fulfilment,2,In Progress,2025-12-04 19:29,,Fulfilment Tech,Gauteng,OMS-Core-27
+INC0010082,Incident,Duplicate vouchers issued to 41 members,WRewards Loyalty,3,Closed,2026-03-04 06:32,2026-03-07 16:31,Loyalty Platform,Northern Cape,Loyalty-API-02
+CHG0007024,Change Request,Deploy fix for courier manifest not generated for 31 orders,Order Fulfilment,3,Scheduled,2026-06-22 11:19,,Fulfilment Tech,Gauteng,OMS-Core-08
+INC0010083,Incident,Price file failed to deploy to 61 stores overnight,Pricing & Promotions,3,Closed,2025-11-01 10:44,2025-11-04 05:47,Merch Systems,National / Online,Promo-Engine-13
+INC0010084,Incident,"Voucher barcode not scanning at till, store W211",Gift Cards & Vouchers,3,Closed,2026-05-04 10:59,2026-05-07 08:19,Payments Ops,Mpumalanga,GiftCard-Service-40
+INC0010085,Incident,"POS EOD batch stuck at store W428, trading day not closed",POS & Tills,3,Closed,2025-11-03 16:41,2025-11-06 23:42,Store Systems,KwaZulu-Natal,POS-Terminal-24
+PRB0004025,Problem,Markdown batch stuck — clearance prices not live,Pricing & Promotions,3,Fix in Progress,2026-04-22 18:14,,Merch Systems,North West,Promo-Engine-19
+INC0010086,Incident,Price file failed to deploy to 24 stores overnight,Pricing & Promotions,2,Resolved,2025-09-13 20:38,2025-09-13 23:49,Merch Systems,KwaZulu-Natal,Promo-Engine-05
+INC0010087,Incident,App crash on product page for Android 11% of sessions,Mobile App,3,Closed,2026-02-14 09:51,2026-02-15 16:16,Digital Commerce,North West,Mobile-BFF-21
+INC0010088,Incident,App checkout button unresponsive on iOS 31,Mobile App,4,Closed,2025-12-14 08:37,2025-12-16 05:34,Digital Commerce,Mpumalanga,Mobile-BFF-36
+INC0010089,Incident,Negative SOH values appearing for 19 SKUs after nightly sync,Inventory & Stock Sync,3,In Progress,2025-11-11 11:55,,Merch Systems,Free State,Stock-Sync-Job-29
+INC0010090,Incident,Picking app not releasing waves at DC 16,Order Fulfilment,3,Closed,2026-06-23 18:38,2026-06-27 12:35,Fulfilment Tech,Eastern Cape,OMS-Core-02
+PRB0004026,Problem,App checkout button unresponsive on iOS 41,Mobile App,2,Closed,2026-06-24 12:04,2026-06-25 03:32,Digital Commerce,Eastern Cape,Mobile-BFF-16
+CHG0007025,Change Request,Patch release for high packet loss to data centre from northern cape stores,Store Network & Connectivity,1,Assess,2025-10-16 11:19,,Network Ops,Gauteng,Store-Router-24
+CHG0007026,Change Request,Emergency change: bank switch latency above 8s causing tender timeouts,Payments & EFT,3,Assess,2025-11-13 18:38,,Payments Ops,North West,EFT-Switch-31
+INC0010091,Incident,Checkout payment step returning 502 for 2% of sessions,Online Checkout,3,New,2025-07-21 13:34,,Digital Commerce,KwaZulu-Natal,Checkout-Service-08
+INC0010092,Incident,Till 12 frozen on tender screen at store W373,POS & Tills,2,Resolved,2025-08-09 14:01,2025-08-09 19:04,Store Systems,National / Online,POS-Terminal-03
+INC0010093,Incident,Purchase order acknowledgements not reaching vendor CapeMills,Supply Chain EDI,2,Closed,2026-06-27 15:26,2026-06-28 08:50,Integration Hub,Western Cape,EDI-Gateway-20
+INC0010094,Incident,Push notifications not delivered for order updates,Mobile App,3,Closed,2026-06-27 20:31,2026-07-01 08:20,Digital Commerce,Gauteng,Mobile-BFF-33
+CHG0007027,Change Request,Config change: till 15 frozen on tender screen at store w490,POS & Tills,3,Closed,2025-08-23 19:27,2025-08-27 14:04,Store Systems,Western Cape,POS-Terminal-40
+CHG0007028,Change Request,Config change: checkout payment step returning 502 for 16% of sessions,Online Checkout,2,Implement,2026-06-28 19:16,,Digital Commerce,National / Online,Checkout-Service-28
+INC0010095,Incident,Router config drift detected at store W440 after change,Store Network & Connectivity,4,Closed,2025-07-17 10:03,2025-07-19 10:07,Network Ops,Western Cape,Store-Router-40
+INC0010096,Incident,WRewards points not awarded on qualifying basket,WRewards Loyalty,1,Resolved,2026-05-20 17:14,2026-05-21 00:44,Loyalty Platform,Limpopo,Loyalty-API-38
+INC0010097,Incident,"Tap-to-pay failing on new terminals, store W506",Payments & EFT,1,Closed,2025-11-13 07:47,2025-11-13 14:01,Payments Ops,National / Online,EFT-Switch-20
+INC0010098,Incident,"Loyalty card lookup timing out at till, store W557",WRewards Loyalty,4,Closed,2026-05-30 07:24,2026-05-31 06:59,Loyalty Platform,Limpopo,Loyalty-API-08
+INC0010099,Incident,Dual-message settlement mismatch for trading date 2026-01-19,Payments & EFT,4,Closed,2025-12-15 08:36,2025-12-16 04:26,Payments Ops,Gauteng,EFT-Switch-35
+INC0010100,Incident,"Promo price not applying at till for advertised line, store W397",Pricing & Promotions,3,Closed,2026-05-14 12:15,2026-05-15 11:22,Merch Systems,KwaZulu-Natal,Promo-Engine-35
+PRB0004027,Problem,Wi-Fi outage in backup area of store W385 — RF guns offline,Store Network & Connectivity,2,Resolved,2025-07-30 11:57,2025-07-30 15:39,Network Ops,National / Online,Store-Router-11
+PRB0004028,Problem,"Loyalty card lookup timing out at till, store W137",WRewards Loyalty,4,Fix in Progress,2026-05-23 10:38,,Loyalty Platform,KwaZulu-Natal,Loyalty-API-09
+CHG0007029,Change Request,Deploy fix for bank switch latency above 8s causing tender timeouts,Payments & EFT,3,Authorise,2025-08-28 16:06,,Payments Ops,KwaZulu-Natal,EFT-Switch-39
+INC0010101,Incident,EFT declines spiking at store W454 — response code 91,Payments & EFT,3,Closed,2025-12-10 17:34,2025-12-11 10:20,Payments Ops,KwaZulu-Natal,EFT-Switch-07
+PRB0004029,Problem,"Receipt printer failure on till 2, store W254",POS & Tills,3,Root Cause Analysis,2026-06-09 07:47,,Store Systems,Free State,POS-Terminal-33
+PRB0004030,Problem,Same-day delivery cutoff not enforced — late promises made,Order Fulfilment,2,Root Cause Analysis,2026-05-28 18:19,,Fulfilment Tech,Mpumalanga,OMS-Core-17
+INC0010102,Incident,WRewards points not awarded on qualifying basket,WRewards Loyalty,4,Resolved,2026-02-08 07:34,2026-02-10 16:34,Loyalty Platform,Western Cape,Loyalty-API-07
+INC0010103,Incident,Picking app not releasing waves at DC 11,Order Fulfilment,3,Resolved,2026-06-07 12:27,2026-06-09 07:45,Fulfilment Tech,KwaZulu-Natal,OMS-Core-22
+PRB0004031,Problem,Stock sync job overran window by 23 hours — online availability stale,Inventory & Stock Sync,3,Resolved,2025-08-09 17:39,2025-08-11 22:50,Merch Systems,Western Cape,Stock-Sync-Job-08
+INC0010104,Incident,App checkout button unresponsive on iOS 21,Mobile App,1,Resolved,2026-05-28 15:11,2026-05-28 22:33,Digital Commerce,Gauteng,Mobile-BFF-18
+PRB0004032,Problem,Purchase order acknowledgements not reaching vendor FreshCo,Supply Chain EDI,4,Closed,2025-09-26 11:17,2025-09-28 15:35,Integration Hub,KwaZulu-Natal,EDI-Gateway-06
+CHG0007030,Change Request,Deploy fix for stock sync job overran window by 21 hours — online availability stale,Inventory & Stock Sync,4,Closed,2026-05-29 06:30,2026-05-30 13:18,Merch Systems,Free State,Stock-Sync-Job-34
+INC0010105,Incident,Dual-message settlement mismatch for trading date 2026-02-04,Payments & EFT,2,Resolved,2026-05-17 10:37,2026-05-18 05:48,Payments Ops,Gauteng,EFT-Switch-03
+CHG0007031,Change Request,"Emergency change: pos eod batch stuck at store w289, trading day not closed",POS & Tills,4,Closed,2026-04-21 06:29,2026-04-24 09:32,Store Systems,KwaZulu-Natal,POS-Terminal-04
+INC0010106,Incident,EFT declines spiking at store W521 — response code 91,Payments & EFT,4,New,2026-04-10 06:08,,Payments Ops,KwaZulu-Natal,EFT-Switch-17
+INC0010107,Incident,Card payments timing out across Free State stores,Payments & EFT,4,Resolved,2025-12-30 10:42,2026-01-02 01:43,Payments Ops,KwaZulu-Natal,EFT-Switch-19
+PRB0004033,Problem,Gift card balance enquiry timing out online,Gift Cards & Vouchers,4,Closed,2026-05-12 10:13,2026-05-12 19:57,Payments Ops,KwaZulu-Natal,GiftCard-Service-07
+PRB0004034,Problem,WRewards linking failing in app with error ERR-616,WRewards Loyalty,2,Root Cause Analysis,2025-07-27 19:59,,Loyalty Platform,Eastern Cape,Loyalty-API-30
+PRB0004035,Problem,High packet loss to data centre from KwaZulu-Natal stores,Store Network & Connectivity,4,New,2025-08-06 10:09,,Network Ops,Mpumalanga,Store-Router-21
+INC0010108,Incident,WRewards linking failing in app with error ERR-345,WRewards Loyalty,3,Closed,2026-03-29 12:51,2026-04-01 09:41,Loyalty Platform,National / Online,Loyalty-API-12
+PRB0004036,Problem,Wi-Fi outage in backup area of store W464 — RF guns offline,Store Network & Connectivity,3,Root Cause Analysis,2026-01-27 13:08,,Network Ops,Western Cape,Store-Router-13
+INC0010109,Incident,"Mismatch between shelf-edge label and till price, store W210",Pricing & Promotions,1,In Progress,2025-07-19 08:54,,Merch Systems,Gauteng,Promo-Engine-37
+INC0010110,Incident,"Loyalty card lookup timing out at till, store W261",WRewards Loyalty,3,Resolved,2026-01-13 16:35,2026-01-16 23:02,Loyalty Platform,Gauteng,Loyalty-API-33
+INC0010111,Incident,Card payments timing out across Limpopo stores,Payments & EFT,3,Closed,2025-10-14 18:19,2025-10-17 01:03,Payments Ops,Mpumalanga,EFT-Switch-33
+PRB0004037,Problem,Negative SOH values appearing for 47 SKUs after nightly sync,Inventory & Stock Sync,3,Closed,2025-10-03 11:55,2025-10-07 14:32,Merch Systems,National / Online,Stock-Sync-Job-33
+PRB0004038,Problem,Click-and-collect orders stuck in ALLOCATED for store W395,Order Fulfilment,3,Root Cause Analysis,2026-03-21 10:32,,Fulfilment Tech,Western Cape,OMS-Core-23
+INC0010112,Incident,3-D Secure redirect loop on mobile web checkout,Online Checkout,2,Closed,2026-02-22 07:31,2026-02-23 08:54,Digital Commerce,Gauteng,Checkout-Service-28
+CHG0007032,Change Request,Deploy fix for router config drift detected at store w124 after change,Store Network & Connectivity,3,Authorise,2025-10-01 19:18,,Network Ops,National / Online,Store-Router-03
+INC0010113,Incident,Same-day delivery cutoff not enforced — late promises made,Order Fulfilment,4,Resolved,2026-01-18 20:22,2026-01-22 11:14,Fulfilment Tech,Western Cape,OMS-Core-05
+INC0010114,Incident,Stock sync job overran window by 29 hours — online availability stale,Inventory & Stock Sync,3,Resolved,2025-08-16 17:39,2025-08-17 18:17,Merch Systems,Western Cape,Stock-Sync-Job-25
+INC0010115,Incident,Barcode scanner intermittently not reading at store W235,POS & Tills,3,Resolved,2026-03-28 08:03,2026-03-29 11:27,Store Systems,KwaZulu-Natal,POS-Terminal-24
+CHG0007033,Change Request,Emergency change: order ord-839599 split incorrectly across fulfilment nodes,Order Fulfilment,4,Implement,2026-04-06 15:37,,Fulfilment Tech,Eastern Cape,OMS-Core-13
+CHG0007034,Change Request,Config change: duplicate vouchers issued to 34 members,WRewards Loyalty,3,Closed,2025-10-24 10:13,2025-10-26 02:25,Loyalty Platform,Northern Cape,Loyalty-API-07
+INC0010116,Incident,EFT declines spiking at store W147 — response code 91,Payments & EFT,3,In Progress,2026-06-27 06:37,,Payments Ops,Free State,EFT-Switch-18
+INC0010117,Incident,"Receipt printer failure on till 8, store W507",POS & Tills,3,Closed,2025-09-02 07:10,2025-09-06 12:13,Store Systems,KwaZulu-Natal,POS-Terminal-09
+INC0010118,Incident,Card payments timing out across Mpumalanga stores,Payments & EFT,4,Closed,2025-08-10 10:11,2025-08-12 19:44,Payments Ops,Gauteng,EFT-Switch-15
+INC0010119,Incident,Push notifications not delivered for order updates,Mobile App,1,Closed,2026-05-22 18:49,2026-05-23 03:40,Digital Commerce,Eastern Cape,Mobile-BFF-17
+INC0010120,Incident,Stock sync job overran window by 2 hours — online availability stale,Inventory & Stock Sync,4,Closed,2026-06-05 10:07,2026-06-08 15:32,Merch Systems,National / Online,Stock-Sync-Job-18
+PRB0004039,Problem,Brand attribute overwritten in bulk update — 5 SKUs affected,Product Master Data,4,Closed,2026-01-06 10:40,2026-01-09 20:02,Data Services,Western Cape,PIM-Hub-25
+INC0010121,Incident,EFT declines spiking at store W491 — response code 91,Payments & EFT,3,On Hold,2026-01-09 14:06,,Payments Ops,Western Cape,EFT-Switch-37
+INC0010122,Incident,"Tap-to-pay failing on new terminals, store W393",Payments & EFT,3,Closed,2026-03-06 17:33,2026-03-08 03:04,Payments Ops,Gauteng,EFT-Switch-15
+INC0010123,Incident,"POS EOD batch stuck at store W461, trading day not closed",POS & Tills,2,Closed,2026-03-02 20:30,2026-03-03 18:08,Store Systems,Limpopo,POS-Terminal-38
+INC0010124,Incident,Stock-on-hand not syncing to online for DC 6 range,Inventory & Stock Sync,3,Closed,2026-06-20 09:43,2026-06-20 18:17,Merch Systems,National / Online,Stock-Sync-Job-26
+INC0010125,Incident,Invoice EDI mismatch blocking GRN for DC 5,Supply Chain EDI,4,Closed,2026-04-14 06:14,2026-04-18 02:53,Integration Hub,Western Cape,EDI-Gateway-06
+INC0010126,Incident,"Receipt printer failure on till 13, store W275",POS & Tills,3,Resolved,2026-06-22 18:29,2026-06-24 22:02,Store Systems,North West,POS-Terminal-09
+CHG0007035,Change Request,Config change: pos terminal offline — store w184 unable to trade on 41 lanes,POS & Tills,3,Implement,2026-06-01 19:50,,Store Systems,Eastern Cape,POS-Terminal-35
+INC0010127,Incident,Brand attribute overwritten in bulk update — 35 SKUs affected,Product Master Data,3,Closed,2025-08-21 13:50,2025-08-23 20:24,Data Services,Free State,PIM-Hub-08
+INC0010128,Incident,Card payments timing out across Western Cape stores,Payments & EFT,4,Closed,2025-09-09 16:52,2025-09-10 06:38,Payments Ops,Gauteng,EFT-Switch-37
+INC0010129,Incident,"Primary link down at store W262, all cloud services impacted",Store Network & Connectivity,1,Resolved,2026-06-28 16:18,2026-06-28 17:51,Network Ops,Free State,Store-Router-24
+INC0010130,Incident,Barcode scanner intermittently not reading at store W278,POS & Tills,3,Resolved,2025-10-13 14:54,2025-10-16 23:32,Store Systems,Gauteng,POS-Terminal-01
+INC0010131,Incident,Courier manifest not generated for 17 orders,Order Fulfilment,2,Resolved,2025-08-07 20:49,2025-08-08 10:09,Fulfilment Tech,Western Cape,OMS-Core-05
+INC0010132,Incident,AS2 certificate expiry caused vendor CapeMills channel outage,Supply Chain EDI,2,Resolved,2026-03-27 19:28,2026-03-28 22:19,Integration Hub,Limpopo,EDI-Gateway-20
+CHG0007036,Change Request,Deploy fix for dual-message settlement mismatch for trading date 2026-05-27,Payments & EFT,3,Closed,2026-05-06 17:52,2026-05-07 07:14,Payments Ops,KwaZulu-Natal,EFT-Switch-26
+PRB0004040,Problem,Till 6 frozen on tender screen at store W233,POS & Tills,3,Root Cause Analysis,2025-08-27 15:37,,Store Systems,Gauteng,POS-Terminal-04
+INC0010133,Incident,Stock sync job overran window by 49 hours — online availability stale,Inventory & Stock Sync,4,Closed,2026-03-30 12:07,2026-04-02 21:30,Merch Systems,Gauteng,Stock-Sync-Job-33
+INC0010134,Incident,Courier manifest not generated for 35 orders,Order Fulfilment,4,New,2026-06-19 18:44,,Fulfilment Tech,Gauteng,OMS-Core-15
+CHG0007037,Change Request,"Patch release for pos eod batch stuck at store w164, trading day not closed",POS & Tills,4,Scheduled,2026-06-24 19:12,,Store Systems,Western Cape,POS-Terminal-01
+CHG0007038,Change Request,"Deploy fix for promo price not applying at till for advertised line, store w548",Pricing & Promotions,4,Scheduled,2026-06-12 06:03,,Merch Systems,Gauteng,Promo-Engine-21
+INC0010135,Incident,"Checkout stuck on ""processing payment"" — orders duplicated",Online Checkout,2,New,2026-01-08 15:38,,Digital Commerce,Free State,Checkout-Service-19
+INC0010136,Incident,EFT declines spiking at store W517 — response code 91,Payments & EFT,3,Closed,2025-09-02 15:51,2025-09-04 12:08,Payments Ops,KwaZulu-Natal,EFT-Switch-08
+PRB0004041,Problem,Picking app not releasing waves at DC 1,Order Fulfilment,3,Fix in Progress,2026-06-12 15:28,,Fulfilment Tech,Western Cape,OMS-Core-14
+INC0010137,Incident,Gift card redemption declining with error ERR-269 at store W404,Gift Cards & Vouchers,4,Resolved,2026-03-30 10:17,2026-04-02 04:04,Payments Ops,Gauteng,GiftCard-Service-20
+INC0010138,Incident,Same-day delivery cutoff not enforced — late promises made,Order Fulfilment,2,Closed,2025-09-22 20:38,2025-09-23 04:50,Fulfilment Tech,Eastern Cape,OMS-Core-23
+CHG0007039,Change Request,Emergency change: till 3 frozen on tender screen at store w357,POS & Tills,3,Closed,2026-02-08 07:30,2026-02-09 07:22,Store Systems,KwaZulu-Natal,POS-Terminal-02
+PRB0004042,Problem,Card payments timing out across Mpumalanga stores,Payments & EFT,3,Resolved,2025-10-11 09:13,2025-10-12 02:51,Payments Ops,Gauteng,EFT-Switch-36
+INC0010139,Incident,New season SKUs missing attributes — 42 lines blocked from listing,Product Master Data,3,Closed,2026-04-16 18:20,2026-04-17 06:57,Data Services,National / Online,PIM-Hub-01
+CHG0007040,Change Request,Patch release for images not loading on home screen — cdn 403s,Mobile App,3,Closed,2026-04-22 17:21,2026-04-25 08:09,Digital Commerce,Free State,Mobile-BFF-36
+INC0010140,Incident,Voucher PRM-5509 redeemable multiple times — exposure risk,Gift Cards & Vouchers,4,Closed,2026-01-30 17:24,2026-01-31 20:50,Payments Ops,Limpopo,GiftCard-Service-09
+PRB0004043,Problem,3-D Secure redirect loop on mobile web checkout,Online Checkout,3,New,2025-12-25 20:44,,Digital Commerce,KwaZulu-Natal,Checkout-Service-13
+CHG0007041,Change Request,Emergency change: duplicate barcodes detected for 47 products,Product Master Data,1,Authorise,2026-05-13 16:26,,Data Services,KwaZulu-Natal,PIM-Hub-20
+INC0010141,Incident,Dual-message settlement mismatch for trading date 2026-04-03,Payments & EFT,3,New,2025-12-16 08:47,,Payments Ops,Gauteng,EFT-Switch-07
+INC0010142,Incident,"Receipt printer failure on till 7, store W503",POS & Tills,3,Resolved,2026-06-12 10:41,2026-06-14 03:26,Store Systems,Western Cape,POS-Terminal-25
+INC0010143,Incident,Barcode scanner intermittently not reading at store W200,POS & Tills,3,Closed,2026-06-16 16:32,2026-06-20 16:20,Store Systems,Free State,POS-Terminal-20
+PRB0004044,Problem,Courier manifest not generated for 26 orders,Order Fulfilment,4,Root Cause Analysis,2026-03-21 17:02,,Fulfilment Tech,Free State,OMS-Core-24
+CHG0007042,Change Request,Emergency change: barcode scanner intermittently not reading at store w306,POS & Tills,4,Authorise,2026-06-26 12:17,,Store Systems,Western Cape,POS-Terminal-02
+PRB0004045,Problem,EFT declines spiking at store W361 — response code 91,Payments & EFT,2,Closed,2026-04-27 06:10,2026-04-28 08:16,Payments Ops,KwaZulu-Natal,EFT-Switch-38
+INC0010144,Incident,"Receipt printer failure on till 10, store W317",POS & Tills,2,On Hold,2025-11-06 20:45,,Store Systems,Limpopo,POS-Terminal-16
+PRB0004046,Problem,Purchase order acknowledgements not reaching vendor HomewareHub,Supply Chain EDI,3,Closed,2026-01-14 10:25,2026-01-18 15:03,Integration Hub,Gauteng,EDI-Gateway-02
+PRB0004047,Problem,Store W510 on 4G failover — degraded POS response,Store Network & Connectivity,3,Closed,2025-10-29 09:59,2025-10-29 20:20,Network Ops,Gauteng,Store-Router-14
+CHG0007043,Change Request,Patch release for asn messages from vendor homewarehub failing schema validation,Supply Chain EDI,3,Implement,2026-05-17 12:33,,Integration Hub,National / Online,EDI-Gateway-17
+INC0010145,Incident,Delivery slot selection failing for Limpopo customers,Online Checkout,1,Closed,2026-06-12 09:04,2026-06-12 17:46,Digital Commerce,Gauteng,Checkout-Service-29
+PRB0004048,Problem,Gift card balance enquiry timing out online,Gift Cards & Vouchers,4,Resolved,2026-06-01 19:39,2026-06-03 01:43,Payments Ops,Western Cape,GiftCard-Service-08
+CHG0007044,Change Request,Patch release for pos terminal offline — store w186 unable to trade on 25 lanes,POS & Tills,2,Assess,2025-10-13 18:38,,Store Systems,Western Cape,POS-Terminal-16
+INC0010146,Incident,Basket total mismatch after promo applied at checkout,Online Checkout,3,Closed,2025-11-29 16:04,2025-12-01 20:17,Digital Commerce,Gauteng,Checkout-Service-28
+INC0010147,Incident,Till 11 frozen on tender screen at store W553,POS & Tills,3,Resolved,2026-05-13 06:43,2026-05-14 15:02,Store Systems,KwaZulu-Natal,POS-Terminal-10
+INC0010148,Incident,App login failing with error ERR-772 after release PRM-4209,Mobile App,3,Closed,2025-07-25 16:10,2025-07-26 18:09,Digital Commerce,National / Online,Mobile-BFF-07
+PRB0004049,Problem,EDI 856 backlog of 32 messages at gateway,Supply Chain EDI,3,New,2026-01-24 10:10,,Integration Hub,National / Online,EDI-Gateway-01
+INC0010149,Incident,Gift card balance enquiry timing out online,Gift Cards & Vouchers,3,In Progress,2026-06-17 13:29,,Payments Ops,National / Online,GiftCard-Service-29
+INC0010150,Incident,Card payments timing out across KwaZulu-Natal stores,Payments & EFT,3,Closed,2025-08-20 11:58,2025-08-23 05:09,Payments Ops,Limpopo,EFT-Switch-31
+INC0010151,Incident,Same-day delivery cutoff not enforced — late promises made,Order Fulfilment,4,On Hold,2025-10-14 16:36,,Fulfilment Tech,KwaZulu-Natal,OMS-Core-25
+PRB0004050,Problem,POS terminal offline — store W349 unable to trade on 61 lanes,POS & Tills,4,Closed,2026-06-26 13:52,2026-06-28 03:08,Store Systems,KwaZulu-Natal,POS-Terminal-14
+INC0010152,Incident,Courier manifest not generated for 21 orders,Order Fulfilment,2,Resolved,2026-06-10 13:06,2026-06-11 07:30,Fulfilment Tech,Western Cape,OMS-Core-08
+INC0010153,Incident,Images not loading on home screen — CDN 403s,Mobile App,3,In Progress,2025-12-18 20:03,,Digital Commerce,Gauteng,Mobile-BFF-18
+INC0010154,Incident,Voucher PRM-7769 redeemable multiple times — exposure risk,Gift Cards & Vouchers,3,In Progress,2026-01-07 11:14,,Payments Ops,KwaZulu-Natal,GiftCard-Service-09
+INC0010155,Incident,"Receipt printer failure on till 2, store W288",POS & Tills,4,In Progress,2025-10-31 07:10,,Store Systems,Mpumalanga,POS-Terminal-36
+CHG0007045,Change Request,Patch release for duplicate barcodes detected for 37 products,Product Master Data,3,Authorise,2025-09-11 12:33,,Data Services,Free State,PIM-Hub-07
+INC0010156,Incident,Same-day delivery cutoff not enforced — late promises made,Order Fulfilment,4,Closed,2026-03-03 13:51,2026-03-04 23:18,Fulfilment Tech,Limpopo,OMS-Core-06
+CHG0007046,Change Request,Deploy fix for unit-of-measure mismatch causing receiving failures at dc 7,Product Master Data,4,Closed,2026-01-01 06:18,2026-01-01 20:02,Data Services,KwaZulu-Natal,PIM-Hub-08
+INC0010157,Incident,"Promo price not applying at till for advertised line, store W111",Pricing & Promotions,1,Closed,2026-04-11 09:58,2026-04-11 17:48,Merch Systems,Western Cape,Promo-Engine-26
+INC0010158,Incident,Brand attribute overwritten in bulk update — 52 SKUs affected,Product Master Data,4,Resolved,2025-12-09 09:28,2025-12-11 12:12,Data Services,Gauteng,PIM-Hub-24
+INC0010159,Incident,"Mismatch between shelf-edge label and till price, store W214",Pricing & Promotions,4,Closed,2025-11-11 12:50,2025-11-12 16:18,Merch Systems,Gauteng,Promo-Engine-03
+INC0010160,Incident,Delivery slot selection failing for Western Cape customers,Online Checkout,4,Resolved,2026-02-02 17:34,2026-02-03 02:11,Digital Commerce,Eastern Cape,Checkout-Service-08
+INC0010161,Incident,Gift card balance enquiry timing out online,Gift Cards & Vouchers,4,Closed,2026-03-16 15:53,2026-03-20 16:32,Payments Ops,Northern Cape,GiftCard-Service-08
+CHG0007047,Change Request,Deploy fix for pos terminal offline — store w331 unable to trade on 54 lanes,POS & Tills,3,Assess,2026-05-31 07:36,,Store Systems,North West,POS-Terminal-15
+INC0010162,Incident,Basket total mismatch after promo applied at checkout,Online Checkout,3,Closed,2026-04-08 13:14,2026-04-11 07:02,Digital Commerce,Limpopo,Checkout-Service-23
+INC0010163,Incident,Same-day delivery cutoff not enforced — late promises made,Order Fulfilment,2,New,2025-11-01 09:12,,Fulfilment Tech,North West,OMS-Core-19
+PRB0004051,Problem,"Mismatch between shelf-edge label and till price, store W395",Pricing & Promotions,3,Fix in Progress,2025-07-31 13:16,,Merch Systems,Western Cape,Promo-Engine-19
+PRB0004052,Problem,EFT declines spiking at store W214 — response code 91,Payments & EFT,2,Closed,2026-01-16 10:59,2026-01-16 22:27,Payments Ops,Eastern Cape,EFT-Switch-13
+INC0010164,Incident,POS terminal offline — store W410 unable to trade on 32 lanes,POS & Tills,3,Closed,2026-04-18 14:37,2026-04-20 03:39,Store Systems,Free State,POS-Terminal-28
+INC0010165,Incident,"Voucher barcode not scanning at till, store W497",Gift Cards & Vouchers,3,Closed,2026-05-23 13:44,2026-05-25 21:39,Payments Ops,KwaZulu-Natal,GiftCard-Service-05
+PRB0004053,Problem,ASN messages from vendor FreshCo failing schema validation,Supply Chain EDI,1,Root Cause Analysis,2026-04-21 10:22,,Integration Hub,KwaZulu-Natal,EDI-Gateway-07
+INC0010166,Incident,Stock sync job overran window by 18 hours — online availability stale,Inventory & Stock Sync,4,Resolved,2025-07-05 20:52,2025-07-08 06:33,Merch Systems,National / Online,Stock-Sync-Job-08
+CHG0007048,Change Request,Deploy fix for eft declines spiking at store w125 — response code 91,Payments & EFT,3,Closed,2026-06-03 09:49,2026-06-05 13:47,Payments Ops,Western Cape,EFT-Switch-39
+PRB0004054,Problem,Bank switch latency above 8s causing tender timeouts,Payments & EFT,2,Fix in Progress,2026-01-03 18:05,,Payments Ops,Gauteng,EFT-Switch-04
+CHG0007049,Change Request,Deploy fix for till 6 frozen on tender screen at store w357,POS & Tills,3,Implement,2026-04-24 16:10,,Store Systems,Western Cape,POS-Terminal-34
+INC0010167,Incident,Click-and-collect orders stuck in ALLOCATED for store W532,Order Fulfilment,3,On Hold,2026-06-29 18:30,,Fulfilment Tech,Gauteng,OMS-Core-17
+INC0010168,Incident,Negative SOH values appearing for 53 SKUs after nightly sync,Inventory & Stock Sync,2,Resolved,2026-06-15 08:59,2026-06-15 18:51,Merch Systems,Free State,Stock-Sync-Job-33
+INC0010169,Incident,Bank switch latency above 8s causing tender timeouts,Payments & EFT,3,Closed,2025-10-31 10:39,2025-10-31 16:45,Payments Ops,Gauteng,EFT-Switch-28
+PRB0004055,Problem,"Tap-to-pay failing on new terminals, store W556",Payments & EFT,3,Closed,2026-04-17 13:53,2026-04-20 05:59,Payments Ops,Western Cape,EFT-Switch-22
+PRB0004056,Problem,"Receipt printer failure on till 2, store W320",POS & Tills,2,Fix in Progress,2025-08-20 16:14,,Store Systems,National / Online,POS-Terminal-15
+INC0010170,Incident,Till 8 frozen on tender screen at store W124,POS & Tills,3,Closed,2025-08-26 09:48,2025-08-29 05:34,Store Systems,Gauteng,POS-Terminal-11
+INC0010171,Incident,Dual-message settlement mismatch for trading date 2026-04-09,Payments & EFT,2,Closed,2026-02-08 16:34,2026-02-09 18:27,Payments Ops,National / Online,EFT-Switch-14
+INC0010172,Incident,Bank switch latency above 8s causing tender timeouts,Payments & EFT,3,On Hold,2025-12-02 06:26,,Payments Ops,KwaZulu-Natal,EFT-Switch-22
+CHG0007050,Change Request,Emergency change: cycle-count variance file rejected for store w312,Inventory & Stock Sync,3,Authorise,2026-02-04 16:31,,Merch Systems,Western Cape,Stock-Sync-Job-39
+INC0010173,Incident,High packet loss to data centre from North West stores,Store Network & Connectivity,4,In Progress,2026-06-10 09:11,,Network Ops,Mpumalanga,Store-Router-28
+INC0010174,Incident,Bank switch latency above 8s causing tender timeouts,Payments & EFT,3,Resolved,2025-10-23 15:44,2025-10-26 21:52,Payments Ops,Free State,EFT-Switch-23
+PRB0004057,Problem,Store W565 on 4G failover — degraded POS response,Store Network & Connectivity,3,Fix in Progress,2026-06-10 07:41,,Network Ops,KwaZulu-Natal,Store-Router-19
+CHG0007051,Change Request,Config change: order ord-784941 split incorrectly across fulfilment nodes,Order Fulfilment,3,Closed,2026-04-17 14:05,2026-04-20 19:30,Fulfilment Tech,Western Cape,OMS-Core-14
+INC0010175,Incident,"Receipt printer failure on till 4, store W209",POS & Tills,3,Closed,2026-03-07 11:42,2026-03-07 20:23,Store Systems,KwaZulu-Natal,POS-Terminal-04
+INC0010176,Incident,Cycle-count variance file rejected for store W334,Inventory & Stock Sync,2,Closed,2026-05-03 12:19,2026-05-03 22:31,Merch Systems,KwaZulu-Natal,Stock-Sync-Job-18
+INC0010177,Incident,High packet loss to data centre from North West stores,Store Network & Connectivity,2,In Progress,2026-03-24 15:17,,Network Ops,Gauteng,Store-Router-35
+INC0010178,Incident,Bank switch latency above 8s causing tender timeouts,Payments & EFT,2,Resolved,2026-05-06 12:34,2026-05-07 04:47,Payments Ops,Gauteng,EFT-Switch-40
+CHG0007052,Change Request,Patch release for 3-d secure redirect loop on mobile web checkout,Online Checkout,3,Implement,2025-08-24 15:44,,Digital Commerce,Western Cape,Checkout-Service-10
+INC0010179,Incident,POS terminal offline — store W440 unable to trade on 27 lanes,POS & Tills,3,Closed,2026-06-29 07:51,2026-07-01 22:26,Store Systems,KwaZulu-Natal,POS-Terminal-40
+INC0010180,Incident,POS terminal offline — store W468 unable to trade on 13 lanes,POS & Tills,2,Closed,2026-02-08 20:41,2026-02-09 16:15,Store Systems,Western Cape,POS-Terminal-27
+PRB0004058,Problem,Gift card balance enquiry timing out online,Gift Cards & Vouchers,2,Closed,2025-10-08 20:34,2025-10-09 01:35,Payments Ops,Gauteng,GiftCard-Service-39
+PRB0004059,Problem,WRewards linking failing in app with error ERR-842,WRewards Loyalty,3,Fix in Progress,2026-06-18 11:17,,Loyalty Platform,Gauteng,Loyalty-API-38
+INC0010181,Incident,Router config drift detected at store W449 after change,Store Network & Connectivity,3,Closed,2026-05-31 15:42,2026-05-31 23:53,Network Ops,KwaZulu-Natal,Store-Router-10
+INC0010182,Incident,EFT declines spiking at store W279 — response code 91,Payments & EFT,4,Closed,2025-11-16 20:06,2025-11-18 22:08,Payments Ops,National / Online,EFT-Switch-36
+PRB0004060,Problem,Courier manifest not generated for 4 orders,Order Fulfilment,2,Closed,2025-12-24 07:53,2025-12-25 02:32,Fulfilment Tech,Western Cape,OMS-Core-28
+PRB0004061,Problem,Delivery slot selection failing for KwaZulu-Natal customers,Online Checkout,3,Fix in Progress,2026-05-07 20:14,,Digital Commerce,North West,Checkout-Service-18
+INC0010183,Incident,App crash on product page for Android 44% of sessions,Mobile App,4,Closed,2025-07-27 19:49,2025-07-29 15:34,Digital Commerce,North West,Mobile-BFF-17
+INC0010184,Incident,3-D Secure redirect loop on mobile web checkout,Online Checkout,3,Resolved,2025-09-10 11:25,2025-09-13 15:25,Digital Commerce,Limpopo,Checkout-Service-20
+INC0010185,Incident,Duplicate vouchers issued to 56 members,WRewards Loyalty,3,Closed,2026-06-18 17:05,2026-06-20 17:11,Loyalty Platform,Western Cape,Loyalty-API-11
+INC0010186,Incident,Duplicate barcodes detected for 29 products,Product Master Data,3,Resolved,2025-07-21 18:56,2025-07-24 17:26,Data Services,Western Cape,PIM-Hub-22
+PRB0004062,Problem,Delivery slot selection failing for Eastern Cape customers,Online Checkout,3,New,2026-03-05 12:38,,Digital Commerce,Eastern Cape,Checkout-Service-05
+PRB0004063,Problem,Same-day delivery cutoff not enforced — late promises made,Order Fulfilment,2,New,2026-06-19 18:53,,Fulfilment Tech,KwaZulu-Natal,OMS-Core-32
+INC0010187,Incident,Duplicate vouchers issued to 56 members,WRewards Loyalty,3,Closed,2025-08-25 12:25,2025-08-28 11:41,Loyalty Platform,Western Cape,Loyalty-API-25
+CHG0007053,Change Request,Deploy fix for delivery slot selection failing for mpumalanga customers,Online Checkout,4,Implement,2026-05-24 19:25,,Digital Commerce,Gauteng,Checkout-Service-08
+INC0010188,Incident,EDI 856 backlog of 14 messages at gateway,Supply Chain EDI,1,Closed,2025-07-10 13:36,2025-07-10 17:16,Integration Hub,National / Online,EDI-Gateway-20
+CHG0007054,Change Request,Patch release for picking app not releasing waves at dc 14,Order Fulfilment,4,Closed,2026-01-18 08:45,2026-01-21 01:37,Fulfilment Tech,Eastern Cape,OMS-Core-30
+INC0010189,Incident,Stock-on-hand not syncing to online for DC 1 range,Inventory & Stock Sync,3,Closed,2025-07-30 12:04,2025-07-30 20:29,Merch Systems,Mpumalanga,Stock-Sync-Job-39
+INC0010190,Incident,"Receipt printer failure on till 4, store W459",POS & Tills,4,In Progress,2025-07-04 16:27,,Store Systems,Gauteng,POS-Terminal-40
+CHG0007055,Change Request,Patch release for wrewards points not awarded on qualifying basket,WRewards Loyalty,3,Authorise,2026-05-27 09:12,,Loyalty Platform,Gauteng,Loyalty-API-11
+INC0010191,Incident,App crash on product page for Android 23% of sessions,Mobile App,2,Resolved,2026-03-24 06:05,2026-03-25 01:45,Digital Commerce,Gauteng,Mobile-BFF-24
+INC0010192,Incident,Delivery slot selection failing for Mpumalanga customers,Online Checkout,2,Closed,2025-08-26 06:27,2025-08-26 12:45,Digital Commerce,National / Online,Checkout-Service-02
+CHG0007056,Change Request,Config change: pos terminal offline — store w180 unable to trade on 20 lanes,POS & Tills,4,Closed,2025-11-16 13:01,2025-11-20 13:55,Store Systems,Northern Cape,POS-Terminal-05
+INC0010193,Incident,WRewards points not awarded on qualifying basket,WRewards Loyalty,4,Closed,2026-06-23 12:38,2026-06-26 02:38,Loyalty Platform,KwaZulu-Natal,Loyalty-API-34
+INC0010194,Incident,EDI 856 backlog of 32 messages at gateway,Supply Chain EDI,3,Closed,2026-05-21 10:08,2026-05-23 23:19,Integration Hub,Gauteng,EDI-Gateway-04
+PRB0004064,Problem,Courier manifest not generated for 55 orders,Order Fulfilment,4,Fix in Progress,2026-03-02 09:55,,Fulfilment Tech,Mpumalanga,OMS-Core-15
+INC0010195,Incident,Invoice EDI mismatch blocking GRN for DC 17,Supply Chain EDI,4,Resolved,2025-11-18 11:02,2025-11-19 17:17,Integration Hub,KwaZulu-Natal,EDI-Gateway-26
+PRB0004065,Problem,"Loyalty card lookup timing out at till, store W321",WRewards Loyalty,2,Root Cause Analysis,2026-05-12 19:23,,Loyalty Platform,National / Online,Loyalty-API-16
+CHG0007057,Change Request,Deploy fix for eft declines spiking at store w370 — response code 91,Payments & EFT,3,Closed,2025-12-14 15:46,2025-12-15 04:34,Payments Ops,National / Online,EFT-Switch-05
+PRB0004066,Problem,"Loyalty card lookup timing out at till, store W433",WRewards Loyalty,3,Fix in Progress,2026-06-11 09:16,,Loyalty Platform,Western Cape,Loyalty-API-33
+PRB0004067,Problem,"Voucher barcode not scanning at till, store W226",Gift Cards & Vouchers,3,Root Cause Analysis,2026-05-19 10:14,,Payments Ops,Western Cape,GiftCard-Service-13
+PRB0004068,Problem,Barcode scanner intermittently not reading at store W131,POS & Tills,2,Root Cause Analysis,2026-03-02 15:54,,Store Systems,Western Cape,POS-Terminal-19
+PRB0004069,Problem,POS terminal offline — store W410 unable to trade on 8 lanes,POS & Tills,3,New,2025-09-16 20:58,,Store Systems,Gauteng,POS-Terminal-11
+CHG0007058,Change Request,Emergency change: dual-message settlement mismatch for trading date 2026-01-01,Payments & EFT,3,Closed,2025-09-12 11:21,2025-09-14 06:16,Payments Ops,North West,EFT-Switch-17
+PRB0004070,Problem,EDI 856 backlog of 27 messages at gateway,Supply Chain EDI,3,Closed,2026-06-02 19:49,2026-06-03 22:01,Integration Hub,Gauteng,EDI-Gateway-07
+INC0010196,Incident,WRewards linking failing in app with error ERR-547,WRewards Loyalty,2,Closed,2025-09-18 20:00,2025-09-19 08:05,Loyalty Platform,National / Online,Loyalty-API-33
+INC0010197,Incident,"POS EOD batch stuck at store W455, trading day not closed",POS & Tills,4,Resolved,2025-10-21 17:15,2025-10-25 01:35,Store Systems,Western Cape,POS-Terminal-19
+INC0010198,Incident,Card payments timing out across Gauteng stores,Payments & EFT,2,New,2025-07-18 15:30,,Payments Ops,Western Cape,EFT-Switch-08
+INC0010199,Incident,Duplicate barcodes detected for 38 products,Product Master Data,3,Resolved,2026-06-29 12:00,2026-07-02 15:02,Data Services,Gauteng,PIM-Hub-38
+CHG0007059,Change Request,"Emergency change: tap-to-pay failing on new terminals, store w237",Payments & EFT,4,Closed,2026-04-02 15:04,2026-04-04 17:52,Payments Ops,KwaZulu-Natal,EFT-Switch-22
+INC0010200,Incident,"Receipt printer failure on till 3, store W365",POS & Tills,1,Closed,2026-05-19 07:41,2026-05-19 15:05,Store Systems,National / Online,POS-Terminal-28
+INC0010201,Incident,Same-day delivery cutoff not enforced — late promises made,Order Fulfilment,4,Closed,2026-04-26 08:14,2026-04-27 14:10,Fulfilment Tech,Western Cape,OMS-Core-29
+INC0010202,Incident,Delivery slot selection failing for Western Cape customers,Online Checkout,4,In Progress,2026-02-10 13:25,,Digital Commerce,Gauteng,Checkout-Service-01
+INC0010203,Incident,"Tap-to-pay failing on new terminals, store W424",Payments & EFT,2,Closed,2025-08-18 16:42,2025-08-18 23:26,Payments Ops,National / Online,EFT-Switch-39
+INC0010204,Incident,Cycle-count variance file rejected for store W168,Inventory & Stock Sync,3,Closed,2026-01-15 19:01,2026-01-19 05:39,Merch Systems,Free State,Stock-Sync-Job-04
+PRB0004071,Problem,Barcode scanner intermittently not reading at store W556,POS & Tills,4,Root Cause Analysis,2026-02-14 14:13,,Store Systems,National / Online,POS-Terminal-32
+INC0010205,Incident,Cycle-count variance file rejected for store W144,Inventory & Stock Sync,3,Closed,2025-09-07 14:52,2025-09-08 11:07,Merch Systems,Limpopo,Stock-Sync-Job-34
+PRB0004072,Problem,Card payments timing out across North West stores,Payments & EFT,3,Closed,2026-01-30 12:45,2026-01-31 05:43,Payments Ops,Western Cape,EFT-Switch-08
+INC0010206,Incident,Promotion PRM-2265 double-discounting online,Pricing & Promotions,3,Closed,2025-11-17 14:28,2025-11-18 11:04,Merch Systems,National / Online,Promo-Engine-17
+INC0010207,Incident,"Checkout stuck on ""processing payment"" — orders duplicated",Online Checkout,3,Closed,2026-05-11 18:30,2026-05-12 04:03,Digital Commerce,Limpopo,Checkout-Service-22
+PRB0004073,Problem,"Loyalty card lookup timing out at till, store W526",WRewards Loyalty,3,Resolved,2026-05-30 15:16,2026-06-03 13:08,Loyalty Platform,Free State,Loyalty-API-05
+INC0010208,Incident,Tier recalculation job failed — member benefits downgraded,WRewards Loyalty,2,Closed,2026-04-23 06:51,2026-04-23 11:56,Loyalty Platform,Limpopo,Loyalty-API-24
+CHG0007060,Change Request,Emergency change: asn messages from vendor dairydirect failing schema validation,Supply Chain EDI,3,Closed,2026-06-17 13:01,2026-06-18 22:31,Integration Hub,Western Cape,EDI-Gateway-05
+CHG0007061,Change Request,Config change: high packet loss to data centre from free state stores,Store Network & Connectivity,1,Closed,2025-11-11 15:23,2025-11-11 19:56,Network Ops,National / Online,Store-Router-18
+INC0010209,Incident,New season SKUs missing attributes — 22 lines blocked from listing,Product Master Data,3,Closed,2026-05-07 07:56,2026-05-09 07:16,Data Services,National / Online,PIM-Hub-30
+CHG0007062,Change Request,Emergency change: markdown batch stuck — clearance prices not live,Pricing & Promotions,2,Closed,2025-07-29 20:44,2025-07-30 07:18,Merch Systems,National / Online,Promo-Engine-15
+INC0010210,Incident,Gift card balance enquiry timing out online,Gift Cards & Vouchers,4,Resolved,2026-02-25 10:54,2026-03-01 06:47,Payments Ops,KwaZulu-Natal,GiftCard-Service-16
+INC0010211,Incident,Stock sync job overran window by 60 hours — online availability stale,Inventory & Stock Sync,3,Closed,2025-09-10 06:38,2025-09-14 02:17,Merch Systems,Limpopo,Stock-Sync-Job-15
+INC0010212,Incident,Picking app not releasing waves at DC 4,Order Fulfilment,3,Closed,2026-06-01 07:04,2026-06-05 01:26,Fulfilment Tech,Gauteng,OMS-Core-15
+INC0010213,Incident,Duplicate barcodes detected for 8 products,Product Master Data,3,Resolved,2026-04-01 20:56,2026-04-03 01:27,Data Services,Gauteng,PIM-Hub-26
+INC0010214,Incident,"Receipt printer failure on till 2, store W420",POS & Tills,3,Closed,2026-06-01 19:20,2026-06-05 02:43,Store Systems,KwaZulu-Natal,POS-Terminal-39
+INC0010215,Incident,Bank switch latency above 8s causing tender timeouts,Payments & EFT,4,Resolved,2026-06-16 17:39,2026-06-19 18:19,Payments Ops,Western Cape,EFT-Switch-35
+CHG0007063,Change Request,"Deploy fix for pos eod batch stuck at store w559, trading day not closed",POS & Tills,3,Closed,2026-05-24 18:43,2026-05-25 15:43,Store Systems,Mpumalanga,POS-Terminal-20
+INC0010216,Incident,Same-day delivery cutoff not enforced — late promises made,Order Fulfilment,3,On Hold,2026-06-28 09:13,,Fulfilment Tech,Northern Cape,OMS-Core-24
+INC0010217,Incident,Dual-message settlement mismatch for trading date 2026-06-07,Payments & EFT,2,Closed,2025-10-31 11:13,2025-11-01 03:01,Payments Ops,Gauteng,EFT-Switch-23
+INC0010218,Incident,"Promo price not applying at till for advertised line, store W347",Pricing & Promotions,1,Closed,2025-08-23 20:12,2025-08-23 23:29,Merch Systems,Free State,Promo-Engine-21
+INC0010219,Incident,Barcode scanner intermittently not reading at store W364,POS & Tills,3,Closed,2026-02-02 18:26,2026-02-03 03:55,Store Systems,Mpumalanga,POS-Terminal-35
+INC0010220,Incident,Order ORD-265719 split incorrectly across fulfilment nodes,Order Fulfilment,3,In Progress,2026-02-22 17:20,,Fulfilment Tech,KwaZulu-Natal,OMS-Core-10
+INC0010221,Incident,"POS EOD batch stuck at store W103, trading day not closed",POS & Tills,4,Closed,2025-12-23 15:52,2025-12-24 05:43,Store Systems,Western Cape,POS-Terminal-27
+PRB0004074,Problem,"POS EOD batch stuck at store W221, trading day not closed",POS & Tills,4,Root Cause Analysis,2026-04-17 07:47,,Store Systems,Free State,POS-Terminal-20
+CHG0007064,Change Request,Deploy fix for duplicate vouchers issued to 49 members,WRewards Loyalty,2,Authorise,2026-05-29 18:56,,Loyalty Platform,KwaZulu-Natal,Loyalty-API-22
+INC0010222,Incident,WRewards linking failing in app with error ERR-133,WRewards Loyalty,4,Closed,2025-08-03 20:47,2025-08-06 05:52,Loyalty Platform,Eastern Cape,Loyalty-API-11
+PRB0004075,Problem,Store W234 on 4G failover — degraded POS response,Store Network & Connectivity,4,Resolved,2026-02-03 20:30,2026-02-07 06:02,Network Ops,Western Cape,Store-Router-27
+INC0010223,Incident,Gift card redemption declining with error ERR-304 at store W196,Gift Cards & Vouchers,1,In Progress,2025-11-09 08:56,,Payments Ops,KwaZulu-Natal,GiftCard-Service-03
+INC0010224,Incident,Duplicate barcodes detected for 4 products,Product Master Data,2,In Progress,2026-05-21 10:49,,Data Services,Mpumalanga,PIM-Hub-33
+INC0010225,Incident,ASN messages from vendor DairyDirect failing schema validation,Supply Chain EDI,3,Closed,2026-02-24 13:36,2026-02-25 19:23,Integration Hub,Free State,EDI-Gateway-14
+PRB0004076,Problem,Price file failed to deploy to 10 stores overnight,Pricing & Promotions,1,Resolved,2025-08-01 16:57,2025-08-01 20:50,Merch Systems,Western Cape,Promo-Engine-08
+PRB0004077,Problem,"Receipt printer failure on till 10, store W196",POS & Tills,3,Closed,2025-11-05 11:14,2025-11-06 17:12,Store Systems,Western Cape,POS-Terminal-35
+INC0010226,Incident,Store W260 receiving not reflecting in inventory ledger,Inventory & Stock Sync,2,Resolved,2026-05-10 15:18,2026-05-10 20:28,Merch Systems,KwaZulu-Natal,Stock-Sync-Job-23
+INC0010227,Incident,WRewards linking failing in app with error ERR-906,WRewards Loyalty,4,Resolved,2026-01-10 07:56,2026-01-10 20:51,Loyalty Platform,KwaZulu-Natal,Loyalty-API-30
+INC0010228,Incident,"Receipt printer failure on till 4, store W485",POS & Tills,2,New,2026-06-25 18:17,,Store Systems,Eastern Cape,POS-Terminal-28
+CHG0007065,Change Request,Config change: voucher prm-4060 redeemable multiple times — exposure risk,Gift Cards & Vouchers,3,Implement,2025-12-05 15:02,,Payments Ops,Northern Cape,GiftCard-Service-37
+INC0010229,Incident,"POS EOD batch stuck at store W416, trading day not closed",POS & Tills,4,Closed,2026-01-11 13:48,2026-01-15 16:05,Store Systems,North West,POS-Terminal-29
+PRB0004078,Problem,"Checkout stuck on ""processing payment"" — orders duplicated",Online Checkout,3,Root Cause Analysis,2025-07-30 20:55,,Digital Commerce,Northern Cape,Checkout-Service-02
+INC0010230,Incident,Click-and-collect orders stuck in ALLOCATED for store W464,Order Fulfilment,4,Resolved,2026-03-21 06:06,2026-03-21 22:16,Fulfilment Tech,Gauteng,OMS-Core-20
+PRB0004079,Problem,Till 14 frozen on tender screen at store W506,POS & Tills,4,Resolved,2026-04-08 17:37,2026-04-12 10:53,Store Systems,Free State,POS-Terminal-26
+INC0010231,Incident,ASN messages from vendor CapeMills failing schema validation,Supply Chain EDI,3,Resolved,2026-05-11 12:46,2026-05-12 06:27,Integration Hub,North West,EDI-Gateway-11
+INC0010232,Incident,Bank switch latency above 8s causing tender timeouts,Payments & EFT,3,Closed,2025-08-15 12:06,2025-08-18 15:35,Payments Ops,Western Cape,EFT-Switch-08
+INC0010233,Incident,Delivery slot selection failing for Western Cape customers,Online Checkout,2,Closed,2026-05-26 08:36,2026-05-26 13:31,Digital Commerce,Eastern Cape,Checkout-Service-06
+INC0010234,Incident,Gift card balance enquiry timing out online,Gift Cards & Vouchers,3,On Hold,2026-04-11 15:54,,Payments Ops,National / Online,GiftCard-Service-37
+INC0010235,Incident,3-D Secure redirect loop on mobile web checkout,Online Checkout,3,Closed,2026-05-07 20:41,2026-05-09 10:35,Digital Commerce,Mpumalanga,Checkout-Service-05
+INC0010236,Incident,EFT declines spiking at store W410 — response code 91,Payments & EFT,3,Closed,2026-04-29 13:41,2026-05-02 11:08,Payments Ops,Northern Cape,EFT-Switch-18
+CHG0007066,Change Request,Deploy fix for order ord-471401 split incorrectly across fulfilment nodes,Order Fulfilment,4,Closed,2026-06-30 12:12,2026-07-01 01:09,Fulfilment Tech,KwaZulu-Natal,OMS-Core-21
+CHG0007067,Change Request,"Config change: loyalty card lookup timing out at till, store w535",WRewards Loyalty,4,Closed,2026-06-08 17:19,2026-06-10 13:32,Loyalty Platform,Western Cape,Loyalty-API-39
+PRB0004080,Problem,Markdown batch stuck — clearance prices not live,Pricing & Promotions,2,Root Cause Analysis,2026-05-10 10:17,,Merch Systems,National / Online,Promo-Engine-20
+CHG0007068,Change Request,Emergency change: order ord-799308 split incorrectly across fulfilment nodes,Order Fulfilment,4,Closed,2026-02-01 18:10,2026-02-04 15:27,Fulfilment Tech,KwaZulu-Natal,OMS-Core-26
+CHG0007069,Change Request,Patch release for till 5 frozen on tender screen at store w289,POS & Tills,2,Closed,2025-07-20 16:39,2025-07-21 14:47,Store Systems,North West,POS-Terminal-40
+INC0010237,Incident,Voucher PRM-5799 redeemable multiple times — exposure risk,Gift Cards & Vouchers,2,Closed,2025-12-28 11:56,2025-12-29 09:14,Payments Ops,Western Cape,GiftCard-Service-32
+CHG0007070,Change Request,Emergency change: picking app not releasing waves at dc 18,Order Fulfilment,3,Implement,2026-04-21 06:44,,Fulfilment Tech,Gauteng,OMS-Core-21
+INC0010238,Incident,"Checkout stuck on ""processing payment"" — orders duplicated",Online Checkout,3,Closed,2025-10-15 06:04,2025-10-17 17:06,Digital Commerce,Western Cape,Checkout-Service-19
+PRB0004081,Problem,Cycle-count variance file rejected for store W220,Inventory & Stock Sync,3,Closed,2026-06-06 14:18,2026-06-07 08:05,Merch Systems,Mpumalanga,Stock-Sync-Job-07
+INC0010239,Incident,Price file failed to deploy to 22 stores overnight,Pricing & Promotions,2,Closed,2025-08-17 13:34,2025-08-18 06:13,Merch Systems,National / Online,Promo-Engine-23
+INC0010240,Incident,EFT declines spiking at store W111 — response code 91,Payments & EFT,3,Resolved,2026-05-10 14:33,2026-05-11 15:35,Payments Ops,Gauteng,EFT-Switch-23
+INC0010241,Incident,EFT declines spiking at store W200 — response code 91,Payments & EFT,4,Closed,2026-06-12 19:31,2026-06-14 17:24,Payments Ops,Free State,EFT-Switch-32
+PRB0004082,Problem,Images not loading on home screen — CDN 403s,Mobile App,2,Closed,2025-11-09 08:50,2025-11-09 15:47,Digital Commerce,KwaZulu-Natal,Mobile-BFF-03
+INC0010242,Incident,Barcode scanner intermittently not reading at store W454,POS & Tills,2,On Hold,2026-06-14 10:20,,Store Systems,National / Online,POS-Terminal-34
+INC0010243,Incident,Basket total mismatch after promo applied at checkout,Online Checkout,4,Resolved,2025-08-18 07:03,2025-08-19 08:59,Digital Commerce,Gauteng,Checkout-Service-22
+INC0010244,Incident,"Loyalty card lookup timing out at till, store W112",WRewards Loyalty,3,Resolved,2026-06-05 10:20,2026-06-06 00:03,Loyalty Platform,Free State,Loyalty-API-09
+INC0010245,Incident,App crash on product page for Android 49% of sessions,Mobile App,4,On Hold,2025-12-31 16:50,,Digital Commerce,KwaZulu-Natal,Mobile-BFF-38
+INC0010246,Incident,3-D Secure redirect loop on mobile web checkout,Online Checkout,3,Closed,2026-05-08 10:19,2026-05-11 06:48,Digital Commerce,National / Online,Checkout-Service-10
+INC0010247,Incident,EDI 856 backlog of 38 messages at gateway,Supply Chain EDI,4,Closed,2025-12-10 06:06,2025-12-12 19:12,Integration Hub,KwaZulu-Natal,EDI-Gateway-40
+INC0010248,Incident,Router config drift detected at store W301 after change,Store Network & Connectivity,2,Closed,2026-03-24 09:23,2026-03-25 06:48,Network Ops,Free State,Store-Router-35
+INC0010249,Incident,"Loyalty card lookup timing out at till, store W535",WRewards Loyalty,3,Closed,2026-01-23 08:29,2026-01-24 23:39,Loyalty Platform,Gauteng,Loyalty-API-14
+PRB0004083,Problem,"Receipt printer failure on till 12, store W502",POS & Tills,3,Fix in Progress,2026-05-20 20:35,,Store Systems,KwaZulu-Natal,POS-Terminal-16
+INC0010250,Incident,"Mismatch between shelf-edge label and till price, store W239",Pricing & Promotions,3,Closed,2025-09-18 07:09,2025-09-18 19:41,Merch Systems,North West,Promo-Engine-40
+INC0010251,Incident,Gift card redemption declining with error ERR-321 at store W453,Gift Cards & Vouchers,3,Closed,2025-08-26 10:01,2025-08-28 19:52,Payments Ops,Mpumalanga,GiftCard-Service-08
+INC0010252,Incident,"POS EOD batch stuck at store W532, trading day not closed",POS & Tills,3,Closed,2026-01-06 20:54,2026-01-07 19:10,Store Systems,Eastern Cape,POS-Terminal-13
+INC0010253,Incident,Stock sync job overran window by 29 hours — online availability stale,Inventory & Stock Sync,2,Resolved,2026-05-03 14:01,2026-05-03 21:05,Merch Systems,Gauteng,Stock-Sync-Job-36
+CHG0007071,Change Request,Config change: 3-d secure redirect loop on mobile web checkout,Online Checkout,4,Closed,2026-01-19 14:26,2026-01-20 11:21,Digital Commerce,Gauteng,Checkout-Service-31
+INC0010254,Incident,Till 5 frozen on tender screen at store W188,POS & Tills,4,On Hold,2026-04-18 12:55,,Store Systems,KwaZulu-Natal,POS-Terminal-10
+PRB0004084,Problem,Wi-Fi outage in backup area of store W339 — RF guns offline,Store Network & Connectivity,1,Closed,2025-09-13 14:35,2025-09-13 21:45,Network Ops,Northern Cape,Store-Router-28
+INC0010255,Incident,Stock sync job overran window by 17 hours — online availability stale,Inventory & Stock Sync,4,Resolved,2025-09-13 09:34,2025-09-14 03:06,Merch Systems,Gauteng,Stock-Sync-Job-28
+INC0010256,Incident,Till 11 frozen on tender screen at store W229,POS & Tills,3,Resolved,2026-04-29 12:28,2026-04-29 23:40,Store Systems,Gauteng,POS-Terminal-39
+INC0010257,Incident,Till 8 frozen on tender screen at store W234,POS & Tills,1,Closed,2025-11-18 14:21,2025-11-18 19:58,Store Systems,KwaZulu-Natal,POS-Terminal-39
+INC0010258,Incident,"Promo price not applying at till for advertised line, store W359",Pricing & Promotions,2,Closed,2026-01-03 08:47,2026-01-04 06:12,Merch Systems,National / Online,Promo-Engine-15
+INC0010259,Incident,Stock-on-hand not syncing to online for DC 12 range,Inventory & Stock Sync,4,Closed,2025-09-09 17:29,2025-09-10 10:27,Merch Systems,Limpopo,Stock-Sync-Job-26
+INC0010260,Incident,App checkout button unresponsive on iOS 53,Mobile App,3,Closed,2026-06-22 07:26,2026-06-25 06:59,Digital Commerce,Western Cape,Mobile-BFF-28
+INC0010261,Incident,EFT declines spiking at store W498 — response code 91,Payments & EFT,3,Closed,2026-06-03 07:55,2026-06-05 06:08,Payments Ops,KwaZulu-Natal,EFT-Switch-21
+CHG0007072,Change Request,Deploy fix for delivery slot selection failing for limpopo customers,Online Checkout,2,Closed,2026-01-25 18:02,2026-01-26 00:32,Digital Commerce,KwaZulu-Natal,Checkout-Service-04
+INC0010262,Incident,Basket total mismatch after promo applied at checkout,Online Checkout,3,New,2026-04-29 09:47,,Digital Commerce,North West,Checkout-Service-12
+CHG0007073,Change Request,Emergency change: till 3 frozen on tender screen at store w209,POS & Tills,3,Scheduled,2026-06-02 18:37,,Store Systems,National / Online,POS-Terminal-02
+INC0010263,Incident,Unit-of-measure mismatch causing receiving failures at DC 13,Product Master Data,4,In Progress,2025-08-22 09:11,,Data Services,Gauteng,PIM-Hub-33
+PRB0004085,Problem,Promotion PRM-8034 double-discounting online,Pricing & Promotions,3,New,2025-09-29 11:01,,Merch Systems,Gauteng,Promo-Engine-28
+INC0010264,Incident,Markdown batch stuck — clearance prices not live,Pricing & Promotions,3,Resolved,2026-02-02 06:49,2026-02-05 14:54,Merch Systems,Gauteng,Promo-Engine-38
+INC0010265,Incident,Till 10 frozen on tender screen at store W542,POS & Tills,3,Closed,2026-01-27 17:20,2026-01-30 04:41,Store Systems,Western Cape,POS-Terminal-34
+CHG0007074,Change Request,"Patch release for checkout stuck on ""processing payment"" — orders duplicated",Online Checkout,3,Closed,2026-05-03 19:35,2026-05-07 06:32,Digital Commerce,Eastern Cape,Checkout-Service-32
+INC0010266,Incident,Bank switch latency above 8s causing tender timeouts,Payments & EFT,4,In Progress,2026-04-24 16:19,,Payments Ops,National / Online,EFT-Switch-17
+INC0010267,Incident,Basket total mismatch after promo applied at checkout,Online Checkout,2,In Progress,2026-01-12 17:09,,Digital Commerce,Western Cape,Checkout-Service-35
+INC0010268,Incident,WRewards linking failing in app with error ERR-259,WRewards Loyalty,4,Closed,2026-03-14 08:51,2026-03-15 12:33,Loyalty Platform,National / Online,Loyalty-API-36
+CHG0007075,Change Request,Config change: store w486 receiving not reflecting in inventory ledger,Inventory & Stock Sync,4,Implement,2026-05-24 10:40,,Merch Systems,Gauteng,Stock-Sync-Job-36
+CHG0007076,Change Request,Emergency change: till 6 frozen on tender screen at store w261,POS & Tills,3,Closed,2025-12-07 11:43,2025-12-09 19:13,Store Systems,Western Cape,POS-Terminal-16
+PRB0004086,Problem,Checkout payment step returning 502 for 59% of sessions,Online Checkout,4,Closed,2025-11-14 17:54,2025-11-17 17:47,Digital Commerce,Gauteng,Checkout-Service-36
+INC0010269,Incident,Cycle-count variance file rejected for store W289,Inventory & Stock Sync,3,Closed,2025-07-11 15:15,2025-07-12 00:40,Merch Systems,North West,Stock-Sync-Job-05
+PRB0004087,Problem,"Checkout stuck on ""processing payment"" — orders duplicated",Online Checkout,3,Closed,2026-05-02 09:10,2026-05-02 18:57,Digital Commerce,Northern Cape,Checkout-Service-23
+PRB0004088,Problem,Dual-message settlement mismatch for trading date 2026-06-14,Payments & EFT,4,Root Cause Analysis,2026-02-19 11:10,,Payments Ops,Western Cape,EFT-Switch-05
+INC0010270,Incident,Click-and-collect orders stuck in ALLOCATED for store W388,Order Fulfilment,3,Resolved,2025-11-21 16:36,2025-11-25 02:35,Fulfilment Tech,Gauteng,OMS-Core-18
+CHG0007077,Change Request,Patch release for edi 856 backlog of 26 messages at gateway,Supply Chain EDI,4,Closed,2026-01-23 10:10,2026-01-27 14:58,Integration Hub,Eastern Cape,EDI-Gateway-12
+CHG0007078,Change Request,Config change: invoice edi mismatch blocking grn for dc 14,Supply Chain EDI,3,Authorise,2025-10-04 06:44,,Integration Hub,Gauteng,EDI-Gateway-20
+PRB0004089,Problem,WRewards points not awarded on qualifying basket,WRewards Loyalty,2,Closed,2026-04-30 20:01,2026-04-30 23:27,Loyalty Platform,Free State,Loyalty-API-05
+INC0010271,Incident,New season SKUs missing attributes — 49 lines blocked from listing,Product Master Data,3,Closed,2025-11-11 16:06,2025-11-14 01:31,Data Services,KwaZulu-Natal,PIM-Hub-39
+CHG0007079,Change Request,Patch release for eft declines spiking at store w318 — response code 91,Payments & EFT,2,Closed,2026-05-25 13:30,2026-05-25 17:32,Payments Ops,Mpumalanga,EFT-Switch-06
+INC0010272,Incident,Bank switch latency above 8s causing tender timeouts,Payments & EFT,4,On Hold,2026-06-03 16:41,,Payments Ops,National / Online,EFT-Switch-01
+CHG0007080,Change Request,Config change: barcode scanner intermittently not reading at store w297,POS & Tills,3,Closed,2026-06-04 12:06,2026-06-08 10:31,Store Systems,Eastern Cape,POS-Terminal-21
+PRB0004090,Problem,Gift card balance enquiry timing out online,Gift Cards & Vouchers,1,New,2025-12-11 20:22,,Payments Ops,Mpumalanga,GiftCard-Service-07
+INC0010273,Incident,"Receipt printer failure on till 17, store W399",POS & Tills,3,Closed,2026-03-01 11:30,2026-03-03 19:40,Store Systems,Gauteng,POS-Terminal-02
+PRB0004091,Problem,Invoice EDI mismatch blocking GRN for DC 5,Supply Chain EDI,3,Closed,2025-09-18 16:08,2025-09-21 10:46,Integration Hub,Eastern Cape,EDI-Gateway-32
+INC0010274,Incident,"Receipt printer failure on till 14, store W336",POS & Tills,3,In Progress,2025-07-06 16:25,,Store Systems,National / Online,POS-Terminal-06
+CHG0007081,Change Request,"Emergency change: receipt printer failure on till 11, store w553",POS & Tills,2,Closed,2026-01-31 09:24,2026-01-31 13:09,Store Systems,Gauteng,POS-Terminal-34
+INC0010275,Incident,Stock-on-hand not syncing to online for DC 2 range,Inventory & Stock Sync,3,Resolved,2026-04-12 13:23,2026-04-13 18:18,Merch Systems,Gauteng,Stock-Sync-Job-10
+INC0010276,Incident,Product images not propagating from PIM to web,Product Master Data,3,Resolved,2026-05-21 06:48,2026-05-22 20:24,Data Services,Gauteng,PIM-Hub-14
+INC0010277,Incident,Barcode scanner intermittently not reading at store W475,POS & Tills,4,Closed,2026-02-11 11:20,2026-02-14 10:50,Store Systems,Gauteng,POS-Terminal-29
+INC0010278,Incident,Till 1 frozen on tender screen at store W525,POS & Tills,4,Closed,2025-09-02 07:06,2025-09-04 15:14,Store Systems,Gauteng,POS-Terminal-24
+INC0010279,Incident,"Promo price not applying at till for advertised line, store W456",Pricing & Promotions,4,Closed,2026-04-23 19:09,2026-04-26 15:16,Merch Systems,Gauteng,Promo-Engine-22
+INC0010280,Incident,Markdown batch stuck — clearance prices not live,Pricing & Promotions,1,On Hold,2026-04-15 18:37,,Merch Systems,Gauteng,Promo-Engine-22
+PRB0004092,Problem,"Mismatch between shelf-edge label and till price, store W532",Pricing & Promotions,4,Resolved,2026-02-19 19:40,2026-02-23 03:20,Merch Systems,Mpumalanga,Promo-Engine-04
+INC0010281,Incident,Till 17 frozen on tender screen at store W160,POS & Tills,3,Resolved,2026-05-29 08:20,2026-05-31 15:16,Store Systems,Free State,POS-Terminal-32
+INC0010282,Incident,ASN messages from vendor TextilePro failing schema validation,Supply Chain EDI,3,Closed,2025-08-04 20:21,2025-08-07 21:42,Integration Hub,KwaZulu-Natal,EDI-Gateway-05
+INC0010283,Incident,Unit-of-measure mismatch causing receiving failures at DC 9,Product Master Data,3,In Progress,2026-06-08 15:44,,Data Services,KwaZulu-Natal,PIM-Hub-29
+CHG0007082,Change Request,"Deploy fix for loyalty card lookup timing out at till, store w536",WRewards Loyalty,4,Scheduled,2026-05-17 17:23,,Loyalty Platform,Limpopo,Loyalty-API-04
+CHG0007083,Change Request,Deploy fix for till 5 frozen on tender screen at store w181,POS & Tills,2,Closed,2026-01-12 13:43,2026-01-13 11:05,Store Systems,KwaZulu-Natal,POS-Terminal-29
+INC0010284,Incident,POS terminal offline — store W250 unable to trade on 32 lanes,POS & Tills,3,On Hold,2026-04-22 10:25,,Store Systems,Western Cape,POS-Terminal-25
+INC0010285,Incident,Bank switch latency above 8s causing tender timeouts,Payments & EFT,4,Closed,2026-05-02 18:36,2026-05-03 22:43,Payments Ops,Eastern Cape,EFT-Switch-24
+INC0010286,Incident,ASN messages from vendor DairyDirect failing schema validation,Supply Chain EDI,4,Closed,2026-05-18 09:02,2026-05-20 06:04,Integration Hub,Western Cape,EDI-Gateway-31
+PRB0004093,Problem,Unit-of-measure mismatch causing receiving failures at DC 9,Product Master Data,3,Resolved,2026-05-13 17:35,2026-05-14 18:38,Data Services,Gauteng,PIM-Hub-01
+INC0010287,Incident,Duplicate vouchers issued to 4 members,WRewards Loyalty,3,On Hold,2026-06-10 20:35,,Loyalty Platform,Mpumalanga,Loyalty-API-29
+INC0010288,Incident,Order ORD-243449 split incorrectly across fulfilment nodes,Order Fulfilment,4,Resolved,2026-01-10 08:00,2026-01-12 10:52,Fulfilment Tech,Western Cape,OMS-Core-03
+INC0010289,Incident,Courier manifest not generated for 8 orders,Order Fulfilment,2,Closed,2026-04-28 14:54,2026-04-29 10:40,Fulfilment Tech,KwaZulu-Natal,OMS-Core-02
+INC0010290,Incident,"Loyalty card lookup timing out at till, store W156",WRewards Loyalty,2,On Hold,2025-10-30 09:51,,Loyalty Platform,Gauteng,Loyalty-API-39
+INC0010291,Incident,"Primary link down at store W238, all cloud services impacted",Store Network & Connectivity,4,New,2026-06-11 13:37,,Network Ops,Northern Cape,Store-Router-37
+CHG0007084,Change Request,Emergency change: click-and-collect orders stuck in allocated for store w299,Order Fulfilment,3,Scheduled,2026-05-26 14:57,,Fulfilment Tech,National / Online,OMS-Core-11
+INC0010292,Incident,"Checkout stuck on ""processing payment"" — orders duplicated",Online Checkout,1,Closed,2025-07-19 14:19,2025-07-19 21:24,Digital Commerce,Northern Cape,Checkout-Service-20
+PRB0004094,Problem,Bank switch latency above 8s causing tender timeouts,Payments & EFT,3,Closed,2026-04-01 17:45,2026-04-02 06:17,Payments Ops,National / Online,EFT-Switch-23
+INC0010293,Incident,Till 13 frozen on tender screen at store W132,POS & Tills,3,New,2026-02-05 09:37,,Store Systems,North West,POS-Terminal-20
+CHG0007085,Change Request,Config change: wrewards points not awarded on qualifying basket,WRewards Loyalty,4,Scheduled,2026-05-20 20:15,,Loyalty Platform,KwaZulu-Natal,Loyalty-API-30
+CHG0007086,Change Request,"Patch release for pos eod batch stuck at store w506, trading day not closed",POS & Tills,3,Scheduled,2025-12-05 09:51,,Store Systems,Western Cape,POS-Terminal-23
+INC0010294,Incident,Store W204 receiving not reflecting in inventory ledger,Inventory & Stock Sync,3,Closed,2026-05-28 18:20,2026-05-30 11:28,Merch Systems,KwaZulu-Natal,Stock-Sync-Job-27
+PRB0004095,Problem,App login failing with error ERR-452 after release PRM-3683,Mobile App,4,New,2025-10-24 16:57,,Digital Commerce,Gauteng,Mobile-BFF-38
+INC0010295,Incident,Checkout payment step returning 502 for 10% of sessions,Online Checkout,2,Closed,2026-05-10 16:17,2026-05-11 10:44,Digital Commerce,Gauteng,Checkout-Service-22
+INC0010296,Incident,Push notifications not delivered for order updates,Mobile App,4,New,2025-07-23 19:31,,Digital Commerce,Northern Cape,Mobile-BFF-35
+INC0010297,Incident,Markdown batch stuck — clearance prices not live,Pricing & Promotions,3,In Progress,2026-04-29 07:15,,Merch Systems,Mpumalanga,Promo-Engine-27
+INC0010298,Incident,Brand attribute overwritten in bulk update — 58 SKUs affected,Product Master Data,4,Closed,2025-11-25 06:24,2025-11-26 12:43,Data Services,Free State,PIM-Hub-36
+INC0010299,Incident,"Checkout stuck on ""processing payment"" — orders duplicated",Online Checkout,2,On Hold,2026-02-05 10:51,,Digital Commerce,KwaZulu-Natal,Checkout-Service-19
+PRB0004096,Problem,"Voucher barcode not scanning at till, store W123",Gift Cards & Vouchers,1,Root Cause Analysis,2026-05-30 15:28,,Payments Ops,National / Online,GiftCard-Service-24
+INC0010300,Incident,Dual-message settlement mismatch for trading date 2026-03-25,Payments & EFT,1,Closed,2026-04-01 19:21,2026-04-01 21:51,Payments Ops,Western Cape,EFT-Switch-26
+INC0010301,Incident,Basket total mismatch after promo applied at checkout,Online Checkout,4,Closed,2025-07-28 14:12,2025-07-31 03:14,Digital Commerce,Mpumalanga,Checkout-Service-23
+PRB0004097,Problem,"Checkout stuck on ""processing payment"" — orders duplicated",Online Checkout,3,Fix in Progress,2025-10-15 12:03,,Digital Commerce,National / Online,Checkout-Service-20
+INC0010302,Incident,Router config drift detected at store W214 after change,Store Network & Connectivity,3,Closed,2025-12-04 09:04,2025-12-07 09:51,Network Ops,KwaZulu-Natal,Store-Router-22
+INC0010303,Incident,Gift card redemption declining with error ERR-363 at store W136,Gift Cards & Vouchers,2,Resolved,2025-11-12 19:58,2025-11-13 11:36,Payments Ops,Gauteng,GiftCard-Service-13
+CHG0007087,Change Request,Emergency change: dual-message settlement mismatch for trading date 2026-06-06,Payments & EFT,3,Closed,2025-07-13 07:36,2025-07-17 03:41,Payments Ops,North West,EFT-Switch-01
+INC0010304,Incident,"Checkout stuck on ""processing payment"" — orders duplicated",Online Checkout,4,Resolved,2026-01-19 19:52,2026-01-20 09:47,Digital Commerce,Mpumalanga,Checkout-Service-36
+INC0010305,Incident,Store W218 receiving not reflecting in inventory ledger,Inventory & Stock Sync,2,Resolved,2026-04-14 13:33,2026-04-14 20:17,Merch Systems,Gauteng,Stock-Sync-Job-32
+CHG0007088,Change Request,Emergency change: eft declines spiking at store w484 — response code 91,Payments & EFT,3,Closed,2025-12-03 10:55,2025-12-06 07:10,Payments Ops,Eastern Cape,EFT-Switch-12
+INC0010306,Incident,EFT declines spiking at store W259 — response code 91,Payments & EFT,4,Closed,2026-01-20 17:27,2026-01-23 02:34,Payments Ops,National / Online,EFT-Switch-22
+INC0010307,Incident,App crash on product page for Android 21% of sessions,Mobile App,3,Resolved,2026-02-13 11:25,2026-02-15 07:55,Digital Commerce,National / Online,Mobile-BFF-33
+INC0010308,Incident,Till 12 frozen on tender screen at store W308,POS & Tills,4,Closed,2026-05-08 09:30,2026-05-11 09:57,Store Systems,Gauteng,POS-Terminal-23
+PRB0004098,Problem,Store W516 on 4G failover — degraded POS response,Store Network & Connectivity,4,Resolved,2026-04-11 10:28,2026-04-14 00:27,Network Ops,KwaZulu-Natal,Store-Router-02
+INC0010309,Incident,Store W256 on 4G failover — degraded POS response,Store Network & Connectivity,4,Resolved,2026-06-02 13:48,2026-06-05 23:27,Network Ops,Gauteng,Store-Router-12
+CHG0007089,Change Request,Emergency change: bank switch latency above 8s causing tender timeouts,Payments & EFT,4,Scheduled,2026-05-04 17:56,,Payments Ops,Western Cape,EFT-Switch-09
+INC0010310,Incident,Cycle-count variance file rejected for store W547,Inventory & Stock Sync,3,New,2026-05-10 12:18,,Merch Systems,National / Online,Stock-Sync-Job-36
+INC0010311,Incident,Wi-Fi outage in backup area of store W274 — RF guns offline,Store Network & Connectivity,3,On Hold,2025-09-22 13:21,,Network Ops,Mpumalanga,Store-Router-32
+INC0010312,Incident,Till 5 frozen on tender screen at store W240,POS & Tills,4,Closed,2026-05-07 16:04,2026-05-08 06:04,Store Systems,Western Cape,POS-Terminal-18
+INC0010313,Incident,Barcode scanner intermittently not reading at store W128,POS & Tills,3,Resolved,2025-09-27 18:53,2025-10-01 01:56,Store Systems,KwaZulu-Natal,POS-Terminal-20
+CHG0007090,Change Request,Patch release for duplicate vouchers issued to 14 members,WRewards Loyalty,3,Closed,2025-12-18 17:56,2025-12-21 02:28,Loyalty Platform,KwaZulu-Natal,Loyalty-API-23
+CHG0007091,Change Request,Deploy fix for dual-message settlement mismatch for trading date 2026-04-10,Payments & EFT,2,Closed,2026-02-05 12:58,2026-02-06 07:20,Payments Ops,North West,EFT-Switch-24
+INC0010314,Incident,Markdown batch stuck — clearance prices not live,Pricing & Promotions,2,New,2026-05-14 17:08,,Merch Systems,Gauteng,Promo-Engine-24
+CHG0007092,Change Request,Patch release for eft declines spiking at store w496 — response code 91,Payments & EFT,3,Scheduled,2026-05-27 07:06,,Payments Ops,Mpumalanga,EFT-Switch-02
+INC0010315,Incident,Same-day delivery cutoff not enforced — late promises made,Order Fulfilment,4,Resolved,2026-02-03 14:17,2026-02-06 16:20,Fulfilment Tech,Eastern Cape,OMS-Core-37
+INC0010316,Incident,Checkout payment step returning 502 for 3% of sessions,Online Checkout,4,Closed,2026-06-23 12:56,2026-06-25 09:41,Digital Commerce,North West,Checkout-Service-34
+INC0010317,Incident,EDI 856 backlog of 40 messages at gateway,Supply Chain EDI,4,Closed,2026-02-28 08:27,2026-03-03 16:32,Integration Hub,KwaZulu-Natal,EDI-Gateway-21
+INC0010318,Incident,Barcode scanner intermittently not reading at store W355,POS & Tills,3,On Hold,2026-05-11 15:53,,Store Systems,Gauteng,POS-Terminal-07
+CHG0007093,Change Request,Config change: as2 certificate expiry caused vendor freshco channel outage,Supply Chain EDI,3,Closed,2025-12-23 09:25,2025-12-27 02:00,Integration Hub,National / Online,EDI-Gateway-34
+CHG0007094,Change Request,Config change: duplicate vouchers issued to 40 members,WRewards Loyalty,3,Closed,2026-03-10 14:58,2026-03-13 20:42,Loyalty Platform,Limpopo,Loyalty-API-19
+INC0010319,Incident,"Primary link down at store W226, all cloud services impacted",Store Network & Connectivity,3,Resolved,2026-06-30 15:51,2026-07-03 06:55,Network Ops,Free State,Store-Router-31
+CHG0007095,Change Request,Deploy fix for as2 certificate expiry caused vendor agrisupply channel outage,Supply Chain EDI,1,Closed,2026-05-26 07:47,2026-05-26 11:55,Integration Hub,Western Cape,EDI-Gateway-35
+INC0010320,Incident,Store W211 receiving not reflecting in inventory ledger,Inventory & Stock Sync,3,On Hold,2025-12-03 11:05,,Merch Systems,Western Cape,Stock-Sync-Job-38
+PRB0004099,Problem,Basket total mismatch after promo applied at checkout,Online Checkout,3,Closed,2025-12-09 14:30,2025-12-11 08:54,Digital Commerce,Mpumalanga,Checkout-Service-14
+INC0010321,Incident,Stock sync job overran window by 38 hours — online availability stale,Inventory & Stock Sync,2,New,2026-04-27 12:14,,Merch Systems,Mpumalanga,Stock-Sync-Job-30
+INC0010322,Incident,Courier manifest not generated for 43 orders,Order Fulfilment,3,Closed,2026-04-25 07:52,2026-04-27 15:02,Fulfilment Tech,Gauteng,OMS-Core-28
+INC0010323,Incident,Voucher PRM-4395 redeemable multiple times — exposure risk,Gift Cards & Vouchers,3,Closed,2025-11-29 14:14,2025-12-03 17:28,Payments Ops,Gauteng,GiftCard-Service-35
+CHG0007096,Change Request,Deploy fix for app crash on product page for android 29% of sessions,Mobile App,4,Implement,2026-01-12 17:12,,Digital Commerce,Mpumalanga,Mobile-BFF-36
+PRB0004100,Problem,Store W339 on 4G failover — degraded POS response,Store Network & Connectivity,4,Root Cause Analysis,2026-01-22 16:27,,Network Ops,National / Online,Store-Router-03
+INC0010324,Incident,App crash on product page for Android 10% of sessions,Mobile App,4,Resolved,2026-01-23 10:17,2026-01-25 04:04,Digital Commerce,Eastern Cape,Mobile-BFF-28
+PRB0004101,Problem,AS2 certificate expiry caused vendor FreshCo channel outage,Supply Chain EDI,3,Fix in Progress,2026-05-02 11:08,,Integration Hub,Western Cape,EDI-Gateway-06
+PRB0004102,Problem,"Receipt printer failure on till 5, store W120",POS & Tills,4,Resolved,2025-12-11 20:19,2025-12-13 05:50,Store Systems,Gauteng,POS-Terminal-22
+PRB0004103,Problem,Card payments timing out across Western Cape stores,Payments & EFT,2,Root Cause Analysis,2025-11-21 18:53,,Payments Ops,Eastern Cape,EFT-Switch-09
+INC0010325,Incident,"Mismatch between shelf-edge label and till price, store W515",Pricing & Promotions,4,In Progress,2025-10-16 10:52,,Merch Systems,KwaZulu-Natal,Promo-Engine-21
+INC0010326,Incident,EFT declines spiking at store W189 — response code 91,Payments & EFT,3,Closed,2025-12-07 14:49,2025-12-08 12:03,Payments Ops,Mpumalanga,EFT-Switch-13
+INC0010327,Incident,WRewards linking failing in app with error ERR-530,WRewards Loyalty,2,Resolved,2026-06-07 14:30,2026-06-07 21:09,Loyalty Platform,Eastern Cape,Loyalty-API-02
+INC0010328,Incident,Delivery slot selection failing for Gauteng customers,Online Checkout,3,Closed,2025-12-05 08:56,2025-12-06 15:44,Digital Commerce,Gauteng,Checkout-Service-09
+CHG0007097,Change Request,Config change: bulk corporate gift card load failed for 26 cards,Gift Cards & Vouchers,3,Closed,2026-05-22 13:21,2026-05-23 09:09,Payments Ops,Gauteng,GiftCard-Service-23
+CHG0007098,Change Request,Config change: as2 certificate expiry caused vendor freshco channel outage,Supply Chain EDI,2,Implement,2026-02-27 10:23,,Integration Hub,KwaZulu-Natal,EDI-Gateway-01
+INC0010329,Incident,Bank switch latency above 8s causing tender timeouts,Payments & EFT,3,Closed,2026-01-30 06:30,2026-02-03 08:34,Payments Ops,Eastern Cape,EFT-Switch-12
+CHG0007099,Change Request,Config change: store w531 on 4g failover — degraded pos response,Store Network & Connectivity,3,Implement,2025-10-01 18:29,,Network Ops,Northern Cape,Store-Router-22
+INC0010330,Incident,Delivery slot selection failing for Free State customers,Online Checkout,2,Closed,2026-04-27 12:28,2026-04-28 02:49,Digital Commerce,KwaZulu-Natal,Checkout-Service-04
+CHG0007100,Change Request,"Deploy fix for promo price not applying at till for advertised line, store w170",Pricing & Promotions,3,Closed,2026-04-05 06:42,2026-04-05 16:36,Merch Systems,Gauteng,Promo-Engine-32
+INC0010331,Incident,Courier manifest not generated for 52 orders,Order Fulfilment,3,Closed,2026-06-01 16:26,2026-06-03 15:44,Fulfilment Tech,KwaZulu-Natal,OMS-Core-11
+CHG0007101,Change Request,Emergency change: click-and-collect orders stuck in allocated for store w213,Order Fulfilment,4,Assess,2026-06-17 09:13,,Fulfilment Tech,Gauteng,OMS-Core-12
+INC0010332,Incident,Stock sync job overran window by 33 hours — online availability stale,Inventory & Stock Sync,4,In Progress,2025-07-22 11:57,,Merch Systems,Eastern Cape,Stock-Sync-Job-05
+INC0010333,Incident,Checkout payment step returning 502 for 11% of sessions,Online Checkout,1,New,2026-06-01 07:22,,Digital Commerce,Western Cape,Checkout-Service-27
+CHG0007102,Change Request,Config change: edi 856 backlog of 3 messages at gateway,Supply Chain EDI,3,Authorise,2026-02-26 14:21,,Integration Hub,KwaZulu-Natal,EDI-Gateway-34
+CHG0007103,Change Request,Emergency change: barcode scanner intermittently not reading at store w176,POS & Tills,3,Implement,2026-02-25 12:41,,Store Systems,Gauteng,POS-Terminal-37
+INC0010334,Incident,Price file failed to deploy to 36 stores overnight,Pricing & Promotions,3,Closed,2025-08-24 08:08,2025-08-24 16:03,Merch Systems,Eastern Cape,Promo-Engine-17
+INC0010335,Incident,AS2 certificate expiry caused vendor AgriSupply channel outage,Supply Chain EDI,4,Closed,2026-05-07 14:39,2026-05-09 01:56,Integration Hub,Western Cape,EDI-Gateway-16
+PRB0004104,Problem,3-D Secure redirect loop on mobile web checkout,Online Checkout,1,Resolved,2026-04-28 17:20,2026-04-29 01:23,Digital Commerce,National / Online,Checkout-Service-28
+PRB0004105,Problem,Till 11 frozen on tender screen at store W226,POS & Tills,2,Resolved,2026-03-27 15:09,2026-03-27 22:50,Store Systems,Western Cape,POS-Terminal-04
+INC0010336,Incident,Picking app not releasing waves at DC 12,Order Fulfilment,3,In Progress,2026-03-12 07:06,,Fulfilment Tech,National / Online,OMS-Core-24
+CHG0007104,Change Request,Emergency change: eft declines spiking at store w371 — response code 91,Payments & EFT,3,Closed,2026-04-09 16:33,2026-04-10 03:53,Payments Ops,Western Cape,EFT-Switch-33
+INC0010337,Incident,Barcode scanner intermittently not reading at store W191,POS & Tills,3,Resolved,2025-12-20 10:07,2025-12-23 00:50,Store Systems,Western Cape,POS-Terminal-06
+CHG0007105,Change Request,Config change: invoice edi mismatch blocking grn for dc 1,Supply Chain EDI,2,Closed,2025-08-15 09:36,2025-08-15 14:13,Integration Hub,Western Cape,EDI-Gateway-26
+CHG0007106,Change Request,Patch release for picking app not releasing waves at dc 13,Order Fulfilment,2,Assess,2026-06-17 10:38,,Fulfilment Tech,National / Online,OMS-Core-37
+CHG0007107,Change Request,Config change: till 12 frozen on tender screen at store w326,POS & Tills,3,Authorise,2026-06-03 16:19,,Store Systems,Gauteng,POS-Terminal-31
+INC0010338,Incident,Card payments timing out across Gauteng stores,Payments & EFT,2,Closed,2026-01-22 15:49,2026-01-22 21:32,Payments Ops,Gauteng,EFT-Switch-15
+CHG0007108,Change Request,Emergency change: wrewards points not awarded on qualifying basket,WRewards Loyalty,3,Implement,2026-03-19 13:50,,Loyalty Platform,North West,Loyalty-API-34
+CHG0007109,Change Request,Patch release for pos terminal offline — store w287 unable to trade on 13 lanes,POS & Tills,4,Assess,2025-12-04 06:08,,Store Systems,Western Cape,POS-Terminal-30
+INC0010339,Incident,"Mismatch between shelf-edge label and till price, store W240",Pricing & Promotions,3,Closed,2025-11-11 15:18,2025-11-14 08:09,Merch Systems,KwaZulu-Natal,Promo-Engine-01
+INC0010340,Incident,Card payments timing out across Gauteng stores,Payments & EFT,4,In Progress,2025-11-08 12:37,,Payments Ops,Free State,EFT-Switch-31
+INC0010341,Incident,Checkout payment step returning 502 for 33% of sessions,Online Checkout,2,Closed,2025-08-13 16:48,2025-08-14 01:14,Digital Commerce,KwaZulu-Natal,Checkout-Service-25
+INC0010342,Incident,Click-and-collect orders stuck in ALLOCATED for store W386,Order Fulfilment,4,In Progress,2026-04-23 09:46,,Fulfilment Tech,Gauteng,OMS-Core-14
+INC0010343,Incident,"Loyalty card lookup timing out at till, store W512",WRewards Loyalty,3,Resolved,2026-03-30 18:56,2026-03-31 09:14,Loyalty Platform,KwaZulu-Natal,Loyalty-API-32
+PRB0004106,Problem,App checkout button unresponsive on iOS 61,Mobile App,3,Fix in Progress,2026-03-08 15:14,,Digital Commerce,Northern Cape,Mobile-BFF-13
+CHG0007110,Change Request,Deploy fix for price file failed to deploy to 29 stores overnight,Pricing & Promotions,2,Scheduled,2025-12-20 07:31,,Merch Systems,Eastern Cape,Promo-Engine-08
+INC0010344,Incident,Negative SOH values appearing for 8 SKUs after nightly sync,Inventory & Stock Sync,3,Resolved,2025-12-01 10:05,2025-12-05 14:31,Merch Systems,Gauteng,Stock-Sync-Job-16
+INC0010345,Incident,Checkout payment step returning 502 for 39% of sessions,Online Checkout,2,Closed,2026-05-16 18:11,2026-05-16 21:30,Digital Commerce,North West,Checkout-Service-07
+INC0010346,Incident,"Receipt printer failure on till 12, store W377",POS & Tills,4,Resolved,2026-01-22 06:02,2026-01-22 15:31,Store Systems,Eastern Cape,POS-Terminal-35
+INC0010347,Incident,"Checkout stuck on ""processing payment"" — orders duplicated",Online Checkout,4,New,2025-11-07 19:44,,Digital Commerce,Free State,Checkout-Service-11
+PRB0004107,Problem,"Loyalty card lookup timing out at till, store W372",WRewards Loyalty,3,New,2026-03-22 09:40,,Loyalty Platform,Eastern Cape,Loyalty-API-28
+INC0010348,Incident,"Checkout stuck on ""processing payment"" — orders duplicated",Online Checkout,2,Closed,2026-02-05 07:46,2026-02-05 20:55,Digital Commerce,Western Cape,Checkout-Service-03
+PRB0004108,Problem,Stock sync job overran window by 49 hours — online availability stale,Inventory & Stock Sync,1,Resolved,2025-08-07 14:43,2025-08-07 15:43,Merch Systems,National / Online,Stock-Sync-Job-23
+CHG0007111,Change Request,Config change: barcode scanner intermittently not reading at store w504,POS & Tills,2,Authorise,2026-06-21 11:39,,Store Systems,Western Cape,POS-Terminal-38
+INC0010349,Incident,Product images not propagating from PIM to web,Product Master Data,2,Resolved,2026-03-16 09:22,2026-03-17 01:42,Data Services,Gauteng,PIM-Hub-26
+INC0010350,Incident,Same-day delivery cutoff not enforced — late promises made,Order Fulfilment,3,Resolved,2025-07-09 19:33,2025-07-10 20:48,Fulfilment Tech,National / Online,OMS-Core-36
+INC0010351,Incident,App checkout button unresponsive on iOS 49,Mobile App,4,Closed,2025-10-05 15:29,2025-10-09 17:30,Digital Commerce,Gauteng,Mobile-BFF-14
+INC0010352,Incident,Order ORD-418564 split incorrectly across fulfilment nodes,Order Fulfilment,3,Closed,2026-06-15 17:45,2026-06-18 13:32,Fulfilment Tech,Gauteng,OMS-Core-03
+INC0010353,Incident,Stock sync job overran window by 14 hours — online availability stale,Inventory & Stock Sync,3,Closed,2025-12-24 15:47,2025-12-28 02:34,Merch Systems,Gauteng,Stock-Sync-Job-06
+CHG0007112,Change Request,Config change: invoice edi mismatch blocking grn for dc 7,Supply Chain EDI,4,Scheduled,2025-09-15 09:55,,Integration Hub,North West,EDI-Gateway-03
+CHG0007113,Change Request,"Deploy fix for mismatch between shelf-edge label and till price, store w303",Pricing & Promotions,3,Scheduled,2025-10-18 08:14,,Merch Systems,Gauteng,Promo-Engine-21
+CHG0007114,Change Request,Patch release for app crash on product page for android 51% of sessions,Mobile App,2,Closed,2025-11-27 13:16,2025-11-28 03:28,Digital Commerce,Eastern Cape,Mobile-BFF-21
+PRB0004109,Problem,"Checkout stuck on ""processing payment"" — orders duplicated",Online Checkout,3,New,2025-10-02 08:38,,Digital Commerce,KwaZulu-Natal,Checkout-Service-40
+PRB0004110,Problem,"Loyalty card lookup timing out at till, store W493",WRewards Loyalty,2,Closed,2026-05-14 18:23,2026-05-15 02:43,Loyalty Platform,Western Cape,Loyalty-API-29
+INC0010354,Incident,Store W559 receiving not reflecting in inventory ledger,Inventory & Stock Sync,3,Closed,2026-04-10 17:30,2026-04-13 02:02,Merch Systems,KwaZulu-Natal,Stock-Sync-Job-14
+PRB0004111,Problem,Same-day delivery cutoff not enforced — late promises made,Order Fulfilment,3,Fix in Progress,2025-09-06 16:45,,Fulfilment Tech,North West,OMS-Core-34
+INC0010355,Incident,"POS EOD batch stuck at store W340, trading day not closed",POS & Tills,3,Resolved,2025-12-28 07:28,2026-01-01 05:21,Store Systems,Gauteng,POS-Terminal-04
+PRB0004112,Problem,"Promo price not applying at till for advertised line, store W412",Pricing & Promotions,2,Root Cause Analysis,2026-04-03 20:20,,Merch Systems,National / Online,Promo-Engine-02
+INC0010356,Incident,Stock sync job overran window by 46 hours — online availability stale,Inventory & Stock Sync,3,Closed,2025-08-01 07:26,2025-08-01 19:23,Merch Systems,KwaZulu-Natal,Stock-Sync-Job-07
+CHG0007115,Change Request,Deploy fix for stock-on-hand not syncing to online for dc 5 range,Inventory & Stock Sync,3,Closed,2026-06-01 07:41,2026-06-04 12:43,Merch Systems,Eastern Cape,Stock-Sync-Job-23
+INC0010357,Incident,POS terminal offline — store W379 unable to trade on 50 lanes,POS & Tills,4,Resolved,2026-06-20 10:37,2026-06-22 15:26,Store Systems,Northern Cape,POS-Terminal-11
+PRB0004113,Problem,Purchase order acknowledgements not reaching vendor DairyDirect,Supply Chain EDI,1,Closed,2026-04-12 16:53,2026-04-13 00:28,Integration Hub,Western Cape,EDI-Gateway-30
+CHG0007116,Change Request,Emergency change: store w510 on 4g failover — degraded pos response,Store Network & Connectivity,3,Scheduled,2026-03-09 13:12,,Network Ops,Gauteng,Store-Router-37
+CHG0007117,Change Request,Deploy fix for delivery slot selection failing for free state customers,Online Checkout,3,Implement,2025-11-18 08:43,,Digital Commerce,Free State,Checkout-Service-14
+INC0010358,Incident,Delivery slot selection failing for Eastern Cape customers,Online Checkout,2,Closed,2026-06-08 16:14,2026-06-09 05:38,Digital Commerce,Gauteng,Checkout-Service-13
+CHG0007118,Change Request,"Deploy fix for receipt printer failure on till 14, store w165",POS & Tills,4,Closed,2025-09-21 10:26,2025-09-21 23:22,Store Systems,National / Online,POS-Terminal-31
+CHG0007119,Change Request,Config change: high packet loss to data centre from free state stores,Store Network & Connectivity,2,Scheduled,2025-09-27 14:26,,Network Ops,Gauteng,Store-Router-05
+PRB0004114,Problem,ASN messages from vendor TextilePro failing schema validation,Supply Chain EDI,4,Root Cause Analysis,2025-11-27 10:24,,Integration Hub,Western Cape,EDI-Gateway-05
+INC0010359,Incident,Delivery slot selection failing for Limpopo customers,Online Checkout,2,New,2026-01-12 11:43,,Digital Commerce,KwaZulu-Natal,Checkout-Service-05
+CHG0007120,Change Request,Patch release for click-and-collect orders stuck in allocated for store w277,Order Fulfilment,3,Authorise,2026-04-12 15:38,,Fulfilment Tech,Gauteng,OMS-Core-02
+INC0010360,Incident,Duplicate vouchers issued to 57 members,WRewards Loyalty,4,Resolved,2026-04-04 06:59,2026-04-07 19:54,Loyalty Platform,Eastern Cape,Loyalty-API-12
+PRB0004115,Problem,Picking app not releasing waves at DC 12,Order Fulfilment,2,Fix in Progress,2025-09-01 13:31,,Fulfilment Tech,National / Online,OMS-Core-37
+INC0010361,Incident,"Tap-to-pay failing on new terminals, store W443",Payments & EFT,2,Closed,2026-04-01 14:02,2026-04-02 04:09,Payments Ops,Mpumalanga,EFT-Switch-34
+INC0010362,Incident,Unit-of-measure mismatch causing receiving failures at DC 8,Product Master Data,3,Closed,2026-02-12 15:23,2026-02-16 16:04,Data Services,Limpopo,PIM-Hub-38
+INC0010363,Incident,Order ORD-872965 split incorrectly across fulfilment nodes,Order Fulfilment,3,Closed,2026-06-04 17:33,2026-06-08 14:25,Fulfilment Tech,Western Cape,OMS-Core-11
+INC0010364,Incident,Barcode scanner intermittently not reading at store W534,POS & Tills,4,Closed,2026-05-25 20:24,2026-05-27 18:01,Store Systems,National / Online,POS-Terminal-37
+PRB0004116,Problem,Basket total mismatch after promo applied at checkout,Online Checkout,4,Root Cause Analysis,2025-10-29 16:58,,Digital Commerce,KwaZulu-Natal,Checkout-Service-40
+INC0010365,Incident,EFT declines spiking at store W404 — response code 91,Payments & EFT,3,Resolved,2025-09-01 07:57,2025-09-02 18:36,Payments Ops,Gauteng,EFT-Switch-22
+INC0010366,Incident,Order ORD-494802 split incorrectly across fulfilment nodes,Order Fulfilment,4,New,2026-06-01 14:33,,Fulfilment Tech,North West,OMS-Core-01
+INC0010367,Incident,Markdown batch stuck — clearance prices not live,Pricing & Promotions,3,Closed,2025-11-02 09:43,2025-11-05 01:13,Merch Systems,National / Online,Promo-Engine-35
+PRB0004117,Problem,Price file failed to deploy to 21 stores overnight,Pricing & Promotions,4,Closed,2026-05-09 08:46,2026-05-12 13:31,Merch Systems,National / Online,Promo-Engine-39
+PRB0004118,Problem,Till 6 frozen on tender screen at store W330,POS & Tills,3,Root Cause Analysis,2026-06-06 08:27,,Store Systems,Limpopo,POS-Terminal-14
+INC0010368,Incident,Store W509 on 4G failover — degraded POS response,Store Network & Connectivity,4,Closed,2026-05-28 13:58,2026-06-01 00:00,Network Ops,KwaZulu-Natal,Store-Router-17
+INC0010369,Incident,WRewards linking failing in app with error ERR-682,WRewards Loyalty,3,In Progress,2026-04-15 06:29,,Loyalty Platform,Limpopo,Loyalty-API-12
+PRB0004119,Problem,3-D Secure redirect loop on mobile web checkout,Online Checkout,3,Closed,2025-07-14 06:37,2025-07-16 02:07,Digital Commerce,Eastern Cape,Checkout-Service-32
+INC0010370,Incident,Card payments timing out across Eastern Cape stores,Payments & EFT,1,Closed,2026-05-25 16:25,2026-05-25 17:56,Payments Ops,KwaZulu-Natal,EFT-Switch-10
+CHG0007121,Change Request,Emergency change: barcode scanner intermittently not reading at store w164,POS & Tills,4,Closed,2025-11-20 20:05,2025-11-22 05:13,Store Systems,Gauteng,POS-Terminal-16
+CHG0007122,Change Request,Patch release for high packet loss to data centre from western cape stores,Store Network & Connectivity,3,Closed,2026-03-04 06:33,2026-03-08 05:39,Network Ops,Western Cape,Store-Router-32
+INC0010371,Incident,"Tap-to-pay failing on new terminals, store W116",Payments & EFT,3,Closed,2025-09-02 06:19,2025-09-06 02:47,Payments Ops,Free State,EFT-Switch-18
+CHG0007123,Change Request,Config change: courier manifest not generated for 7 orders,Order Fulfilment,3,Implement,2026-01-20 06:59,,Fulfilment Tech,Western Cape,OMS-Core-20
+INC0010372,Incident,Dual-message settlement mismatch for trading date 2026-04-25,Payments & EFT,3,Closed,2026-06-09 09:29,2026-06-10 13:40,Payments Ops,Limpopo,EFT-Switch-20
+INC0010373,Incident,App checkout button unresponsive on iOS 5,Mobile App,1,In Progress,2026-04-05 13:38,,Digital Commerce,Gauteng,Mobile-BFF-17
+PRB0004120,Problem,Promotion PRM-5875 double-discounting online,Pricing & Promotions,3,New,2025-11-10 06:57,,Merch Systems,Gauteng,Promo-Engine-25
+CHG0007124,Change Request,Emergency change: pos terminal offline — store w267 unable to trade on 19 lanes,POS & Tills,2,Scheduled,2025-07-02 07:58,,Store Systems,KwaZulu-Natal,POS-Terminal-16
+CHG0007125,Change Request,"Patch release for receipt printer failure on till 4, store w341",POS & Tills,4,Scheduled,2025-08-10 14:01,,Store Systems,Western Cape,POS-Terminal-25
+PRB0004121,Problem,Stock sync job overran window by 43 hours — online availability stale,Inventory & Stock Sync,4,Root Cause Analysis,2026-01-24 13:34,,Merch Systems,KwaZulu-Natal,Stock-Sync-Job-09
+INC0010374,Incident,Images not loading on home screen — CDN 403s,Mobile App,3,Resolved,2025-12-15 19:52,2025-12-16 12:48,Digital Commerce,Eastern Cape,Mobile-BFF-26
+PRB0004122,Problem,POS terminal offline — store W460 unable to trade on 48 lanes,POS & Tills,4,Fix in Progress,2026-05-02 06:25,,Store Systems,Gauteng,POS-Terminal-06
+PRB0004123,Problem,Stock sync job overran window by 15 hours — online availability stale,Inventory & Stock Sync,2,Closed,2026-05-08 15:08,2026-05-09 13:32,Merch Systems,Eastern Cape,Stock-Sync-Job-21
+PRB0004124,Problem,"Checkout stuck on ""processing payment"" — orders duplicated",Online Checkout,4,Closed,2026-05-02 14:48,2026-05-06 07:34,Digital Commerce,KwaZulu-Natal,Checkout-Service-39
+INC0010375,Incident,"Promo price not applying at till for advertised line, store W495",Pricing & Promotions,2,Resolved,2026-01-19 08:02,2026-01-19 23:15,Merch Systems,KwaZulu-Natal,Promo-Engine-35
+INC0010376,Incident,Checkout payment step returning 502 for 24% of sessions,Online Checkout,2,Resolved,2026-06-11 16:16,2026-06-11 19:32,Digital Commerce,Eastern Cape,Checkout-Service-31
+INC0010377,Incident,Invoice EDI mismatch blocking GRN for DC 7,Supply Chain EDI,4,On Hold,2026-05-14 08:06,,Integration Hub,Gauteng,EDI-Gateway-24
+INC0010378,Incident,Bank switch latency above 8s causing tender timeouts,Payments & EFT,2,Resolved,2025-08-17 09:03,2025-08-18 05:26,Payments Ops,Western Cape,EFT-Switch-31
+INC0010379,Incident,Negative SOH values appearing for 29 SKUs after nightly sync,Inventory & Stock Sync,3,Closed,2025-12-10 10:05,2025-12-12 22:17,Merch Systems,National / Online,Stock-Sync-Job-15
+CHG0007126,Change Request,Emergency change: card payments timing out across kwazulu-natal stores,Payments & EFT,4,Assess,2025-12-14 20:42,,Payments Ops,Limpopo,EFT-Switch-09
+INC0010380,Incident,Stock sync job overran window by 49 hours — online availability stale,Inventory & Stock Sync,2,In Progress,2026-06-18 18:12,,Merch Systems,Gauteng,Stock-Sync-Job-12
+INC0010381,Incident,Negative SOH values appearing for 31 SKUs after nightly sync,Inventory & Stock Sync,1,Closed,2025-08-30 13:09,2025-08-30 14:13,Merch Systems,Western Cape,Stock-Sync-Job-01
+INC0010382,Incident,App checkout button unresponsive on iOS 56,Mobile App,4,Resolved,2026-01-08 19:43,2026-01-11 04:06,Digital Commerce,National / Online,Mobile-BFF-04
+PRB0004125,Problem,ASN messages from vendor FreshCo failing schema validation,Supply Chain EDI,4,Root Cause Analysis,2025-07-01 10:11,,Integration Hub,National / Online,EDI-Gateway-03
+INC0010383,Incident,Purchase order acknowledgements not reaching vendor HomewareHub,Supply Chain EDI,4,Closed,2026-04-27 10:43,2026-04-30 05:50,Integration Hub,Eastern Cape,EDI-Gateway-16
+PRB0004126,Problem,Markdown batch stuck — clearance prices not live,Pricing & Promotions,4,Fix in Progress,2026-03-28 12:03,,Merch Systems,National / Online,Promo-Engine-20
+INC0010384,Incident,"Tap-to-pay failing on new terminals, store W231",Payments & EFT,3,In Progress,2026-06-18 19:44,,Payments Ops,National / Online,EFT-Switch-05
+INC0010385,Incident,Bank switch latency above 8s causing tender timeouts,Payments & EFT,3,In Progress,2026-06-28 17:25,,Payments Ops,Western Cape,EFT-Switch-28
+INC0010386,Incident,Images not loading on home screen — CDN 403s,Mobile App,4,On Hold,2026-06-13 06:17,,Digital Commerce,National / Online,Mobile-BFF-19
+CHG0007127,Change Request,Patch release for bank switch latency above 8s causing tender timeouts,Payments & EFT,3,Closed,2025-11-20 06:29,2025-11-24 03:04,Payments Ops,Western Cape,EFT-Switch-24
+INC0010387,Incident,Same-day delivery cutoff not enforced — late promises made,Order Fulfilment,2,Closed,2026-03-13 13:44,2026-03-14 01:08,Fulfilment Tech,Gauteng,OMS-Core-12
+CHG0007128,Change Request,Patch release for asn messages from vendor agrisupply failing schema validation,Supply Chain EDI,1,Closed,2026-01-23 09:53,2026-01-23 18:09,Integration Hub,Western Cape,EDI-Gateway-02
+INC0010388,Incident,Stock sync job overran window by 32 hours — online availability stale,Inventory & Stock Sync,4,Closed,2026-05-19 19:29,2026-05-20 02:38,Merch Systems,KwaZulu-Natal,Stock-Sync-Job-17
+INC0010389,Incident,Tier recalculation job failed — member benefits downgraded,WRewards Loyalty,2,New,2026-03-27 16:55,,Loyalty Platform,KwaZulu-Natal,Loyalty-API-21
+INC0010390,Incident,"Tap-to-pay failing on new terminals, store W543",Payments & EFT,3,New,2026-06-28 18:11,,Payments Ops,National / Online,EFT-Switch-39
+INC0010391,Incident,EDI 856 backlog of 22 messages at gateway,Supply Chain EDI,3,Closed,2026-03-28 06:21,2026-03-30 20:28,Integration Hub,Eastern Cape,EDI-Gateway-11
+CHG0007129,Change Request,Patch release for pos terminal offline — store w174 unable to trade on 7 lanes,POS & Tills,3,Implement,2026-06-03 06:04,,Store Systems,Northern Cape,POS-Terminal-27
+INC0010392,Incident,Barcode scanner intermittently not reading at store W166,POS & Tills,4,On Hold,2026-04-21 15:10,,Store Systems,Western Cape,POS-Terminal-33
+INC0010393,Incident,High packet loss to data centre from KwaZulu-Natal stores,Store Network & Connectivity,3,Resolved,2026-06-12 15:20,2026-06-13 15:33,Network Ops,Western Cape,Store-Router-15
+INC0010394,Incident,Wi-Fi outage in backup area of store W571 — RF guns offline,Store Network & Connectivity,3,Closed,2026-02-05 16:21,2026-02-08 17:27,Network Ops,North West,Store-Router-35
+INC0010395,Incident,"POS EOD batch stuck at store W190, trading day not closed",POS & Tills,3,Resolved,2026-06-14 09:00,2026-06-16 12:18,Store Systems,Limpopo,POS-Terminal-03
+CHG0007130,Change Request,Patch release for checkout payment step returning 502 for 19% of sessions,Online Checkout,3,Closed,2025-09-01 08:26,2025-09-03 00:17,Digital Commerce,KwaZulu-Natal,Checkout-Service-36
+INC0010396,Incident,Same-day delivery cutoff not enforced — late promises made,Order Fulfilment,3,In Progress,2026-05-29 08:54,,Fulfilment Tech,Gauteng,OMS-Core-12
+INC0010397,Incident,Store W492 receiving not reflecting in inventory ledger,Inventory & Stock Sync,3,Closed,2025-11-29 06:54,2025-11-30 17:36,Merch Systems,Eastern Cape,Stock-Sync-Job-40
+PRB0004127,Problem,Store W323 on 4G failover — degraded POS response,Store Network & Connectivity,3,Resolved,2025-09-25 16:40,2025-09-27 05:21,Network Ops,National / Online,Store-Router-07
+CHG0007131,Change Request,"Emergency change: checkout stuck on ""processing payment"" — orders duplicated",Online Checkout,3,Implement,2025-07-10 20:52,,Digital Commerce,Gauteng,Checkout-Service-03
+CHG0007132,Change Request,Config change: stock sync job overran window by 8 hours — online availability stale,Inventory & Stock Sync,3,Assess,2026-05-20 17:21,,Merch Systems,Eastern Cape,Stock-Sync-Job-02
+INC0010398,Incident,Brand attribute overwritten in bulk update — 2 SKUs affected,Product Master Data,3,Closed,2026-02-21 06:02,2026-02-23 18:16,Data Services,KwaZulu-Natal,PIM-Hub-32
+INC0010399,Incident,"Checkout stuck on ""processing payment"" — orders duplicated",Online Checkout,3,In Progress,2026-04-19 18:01,,Digital Commerce,Free State,Checkout-Service-26
+INC0010400,Incident,Click-and-collect orders stuck in ALLOCATED for store W247,Order Fulfilment,2,Closed,2025-08-14 17:22,2025-08-15 17:22,Fulfilment Tech,North West,OMS-Core-13
+INC0010401,Incident,Markdown batch stuck — clearance prices not live,Pricing & Promotions,4,In Progress,2025-11-27 19:05,,Merch Systems,Gauteng,Promo-Engine-20
+INC0010402,Incident,Price file failed to deploy to 4 stores overnight,Pricing & Promotions,3,Closed,2026-01-12 08:56,2026-01-13 15:24,Merch Systems,Gauteng,Promo-Engine-30
+PRB0004128,Problem,ASN messages from vendor CapeMills failing schema validation,Supply Chain EDI,4,New,2025-10-21 09:57,,Integration Hub,Western Cape,EDI-Gateway-21
+CHG0007133,Change Request,Patch release for till 3 frozen on tender screen at store w450,POS & Tills,4,Implement,2026-03-29 19:22,,Store Systems,Mpumalanga,POS-Terminal-37
+CHG0007134,Change Request,"Patch release for loyalty card lookup timing out at till, store w476",WRewards Loyalty,3,Closed,2025-12-30 09:55,2025-12-31 10:42,Loyalty Platform,Mpumalanga,Loyalty-API-01
+PRB0004129,Problem,POS terminal offline — store W326 unable to trade on 34 lanes,POS & Tills,2,Fix in Progress,2026-03-22 06:45,,Store Systems,Western Cape,POS-Terminal-27
+INC0010403,Incident,App checkout button unresponsive on iOS 28,Mobile App,4,In Progress,2025-09-19 06:58,,Digital Commerce,National / Online,Mobile-BFF-38
+INC0010404,Incident,New season SKUs missing attributes — 45 lines blocked from listing,Product Master Data,2,Closed,2026-01-12 19:23,2026-01-13 13:57,Data Services,Gauteng,PIM-Hub-34
+PRB0004130,Problem,Bank switch latency above 8s causing tender timeouts,Payments & EFT,3,Fix in Progress,2026-04-18 18:37,,Payments Ops,Gauteng,EFT-Switch-28
+CHG0007135,Change Request,Patch release for tier recalculation job failed — member benefits downgraded,WRewards Loyalty,4,Closed,2026-06-03 13:28,2026-06-06 08:06,Loyalty Platform,Eastern Cape,Loyalty-API-04
+INC0010405,Incident,Duplicate vouchers issued to 50 members,WRewards Loyalty,3,New,2025-12-23 07:03,,Loyalty Platform,Free State,Loyalty-API-14
+PRB0004131,Problem,"Tap-to-pay failing on new terminals, store W398",Payments & EFT,3,Fix in Progress,2025-11-09 07:35,,Payments Ops,Western Cape,EFT-Switch-17
+INC0010406,Incident,Dual-message settlement mismatch for trading date 2026-03-26,Payments & EFT,1,Resolved,2025-10-22 09:28,2025-10-22 18:24,Payments Ops,Western Cape,EFT-Switch-19
+INC0010407,Incident,"Voucher barcode not scanning at till, store W459",Gift Cards & Vouchers,4,In Progress,2026-05-07 10:28,,Payments Ops,KwaZulu-Natal,GiftCard-Service-03
+INC0010408,Incident,EFT declines spiking at store W451 — response code 91,Payments & EFT,3,Resolved,2026-01-02 15:35,2026-01-06 05:55,Payments Ops,Free State,EFT-Switch-28
+INC0010409,Incident,App login failing with error ERR-175 after release PRM-3004,Mobile App,3,Resolved,2026-06-20 20:42,2026-06-21 08:21,Digital Commerce,National / Online,Mobile-BFF-28
+PRB0004132,Problem,EFT declines spiking at store W153 — response code 91,Payments & EFT,3,Resolved,2025-10-17 09:52,2025-10-19 06:05,Payments Ops,Gauteng,EFT-Switch-05
+INC0010410,Incident,3-D Secure redirect loop on mobile web checkout,Online Checkout,1,New,2025-10-03 08:24,,Digital Commerce,Limpopo,Checkout-Service-39
+INC0010411,Incident,Tier recalculation job failed — member benefits downgraded,WRewards Loyalty,3,Closed,2026-01-05 16:48,2026-01-06 04:45,Loyalty Platform,Western Cape,Loyalty-API-40
+INC0010412,Incident,Voucher PRM-1240 redeemable multiple times — exposure risk,Gift Cards & Vouchers,2,New,2026-06-12 12:02,,Payments Ops,National / Online,GiftCard-Service-04
+INC0010413,Incident,AS2 certificate expiry caused vendor HomewareHub channel outage,Supply Chain EDI,1,Resolved,2026-01-13 13:45,2026-01-13 20:30,Integration Hub,National / Online,EDI-Gateway-26
+PRB0004133,Problem,Click-and-collect orders stuck in ALLOCATED for store W204,Order Fulfilment,3,New,2026-06-16 10:29,,Fulfilment Tech,Limpopo,OMS-Core-36
+INC0010414,Incident,POS terminal offline — store W197 unable to trade on 17 lanes,POS & Tills,4,Closed,2026-03-14 10:36,2026-03-16 04:21,Store Systems,Western Cape,POS-Terminal-02
+CHG0007136,Change Request,Config change: checkout payment step returning 502 for 26% of sessions,Online Checkout,1,Scheduled,2025-09-04 13:43,,Digital Commerce,Gauteng,Checkout-Service-06
+CHG0007137,Change Request,"Emergency change: loyalty card lookup timing out at till, store w337",WRewards Loyalty,3,Implement,2026-06-23 16:30,,Loyalty Platform,Gauteng,Loyalty-API-02
+INC0010415,Incident,Checkout payment step returning 502 for 19% of sessions,Online Checkout,2,Closed,2025-10-22 20:47,2025-10-23 11:11,Digital Commerce,Free State,Checkout-Service-11
+INC0010416,Incident,Product images not propagating from PIM to web,Product Master Data,1,Resolved,2025-07-08 12:32,2025-07-08 15:45,Data Services,Gauteng,PIM-Hub-17
+INC0010417,Incident,New season SKUs missing attributes — 25 lines blocked from listing,Product Master Data,3,On Hold,2025-09-11 09:01,,Data Services,Gauteng,PIM-Hub-34
+INC0010418,Incident,Delivery slot selection failing for North West customers,Online Checkout,2,Closed,2026-04-24 08:09,2026-04-24 18:58,Digital Commerce,Gauteng,Checkout-Service-10
+INC0010419,Incident,Stock sync job overran window by 53 hours — online availability stale,Inventory & Stock Sync,3,Resolved,2025-11-12 11:06,2025-11-16 03:14,Merch Systems,KwaZulu-Natal,Stock-Sync-Job-35
+INC0010420,Incident,Gift card balance enquiry timing out online,Gift Cards & Vouchers,3,In Progress,2026-02-06 18:23,,Payments Ops,KwaZulu-Natal,GiftCard-Service-08
+CHG0007138,Change Request,Deploy fix for checkout payment step returning 502 for 37% of sessions,Online Checkout,2,Scheduled,2025-09-11 08:56,,Digital Commerce,Free State,Checkout-Service-15
+INC0010421,Incident,Barcode scanner intermittently not reading at store W458,POS & Tills,4,Resolved,2026-06-13 18:30,2026-06-17 02:39,Store Systems,Eastern Cape,POS-Terminal-12
+CHG0007139,Change Request,Emergency change: basket total mismatch after promo applied at checkout,Online Checkout,3,Implement,2026-05-05 18:22,,Digital Commerce,Western Cape,Checkout-Service-06
+PRB0004134,Problem,Bank switch latency above 8s causing tender timeouts,Payments & EFT,4,Resolved,2026-01-12 06:35,2026-01-13 20:53,Payments Ops,National / Online,EFT-Switch-02
+INC0010422,Incident,Markdown batch stuck — clearance prices not live,Pricing & Promotions,4,Closed,2026-05-28 07:36,2026-05-30 20:58,Merch Systems,KwaZulu-Natal,Promo-Engine-35
+CHG0007140,Change Request,Emergency change: store w157 receiving not reflecting in inventory ledger,Inventory & Stock Sync,2,Authorise,2026-05-28 18:31,,Merch Systems,Gauteng,Stock-Sync-Job-38
+CHG0007141,Change Request,"Patch release for mismatch between shelf-edge label and till price, store w214",Pricing & Promotions,4,Implement,2026-01-22 10:58,,Merch Systems,Western Cape,Promo-Engine-14
+PRB0004135,Problem,Cycle-count variance file rejected for store W335,Inventory & Stock Sync,3,Fix in Progress,2025-12-22 11:30,,Merch Systems,Northern Cape,Stock-Sync-Job-18
+PRB0004136,Problem,AS2 certificate expiry caused vendor HomewareHub channel outage,Supply Chain EDI,4,Fix in Progress,2025-07-07 18:47,,Integration Hub,North West,EDI-Gateway-16
+PRB0004137,Problem,"Checkout stuck on ""processing payment"" — orders duplicated",Online Checkout,1,Resolved,2026-06-27 15:16,2026-06-27 17:11,Digital Commerce,Eastern Cape,Checkout-Service-03
+PRB0004138,Problem,Invoice EDI mismatch blocking GRN for DC 6,Supply Chain EDI,4,Resolved,2026-01-25 20:51,2026-01-29 00:07,Integration Hub,National / Online,EDI-Gateway-03
+INC0010423,Incident,"Tap-to-pay failing on new terminals, store W259",Payments & EFT,3,Closed,2026-01-05 14:35,2026-01-07 19:28,Payments Ops,Gauteng,EFT-Switch-06
+CHG0007142,Change Request,Patch release for high packet loss to data centre from eastern cape stores,Store Network & Connectivity,4,Authorise,2026-04-24 17:21,,Network Ops,Western Cape,Store-Router-27
+PRB0004139,Problem,Picking app not releasing waves at DC 14,Order Fulfilment,4,Closed,2026-02-26 12:14,2026-02-27 17:29,Fulfilment Tech,Gauteng,OMS-Core-02
+PRB0004140,Problem,Voucher PRM-6893 redeemable multiple times — exposure risk,Gift Cards & Vouchers,4,Closed,2026-01-29 14:25,2026-02-02 20:00,Payments Ops,Gauteng,GiftCard-Service-19
+INC0010424,Incident,3-D Secure redirect loop on mobile web checkout,Online Checkout,3,New,2026-04-13 13:00,,Digital Commerce,Gauteng,Checkout-Service-09
+PRB0004141,Problem,"Receipt printer failure on till 11, store W135",POS & Tills,2,Resolved,2026-05-20 06:07,2026-05-21 06:56,Store Systems,KwaZulu-Natal,POS-Terminal-25
+INC0010425,Incident,Invoice EDI mismatch blocking GRN for DC 9,Supply Chain EDI,1,Closed,2026-03-10 15:47,2026-03-10 20:28,Integration Hub,North West,EDI-Gateway-08
+INC0010426,Incident,Delivery slot selection failing for Free State customers,Online Checkout,4,Resolved,2026-02-16 07:14,2026-02-19 08:10,Digital Commerce,Western Cape,Checkout-Service-35
+PRB0004142,Problem,Duplicate vouchers issued to 35 members,WRewards Loyalty,3,Fix in Progress,2026-06-09 20:41,,Loyalty Platform,KwaZulu-Natal,Loyalty-API-28
+INC0010427,Incident,Courier manifest not generated for 8 orders,Order Fulfilment,3,Resolved,2026-02-21 09:13,2026-02-25 01:44,Fulfilment Tech,Gauteng,OMS-Core-22
+INC0010428,Incident,Cycle-count variance file rejected for store W510,Inventory & Stock Sync,4,Closed,2025-10-22 12:04,2025-10-22 23:27,Merch Systems,Gauteng,Stock-Sync-Job-05
+PRB0004143,Problem,AS2 certificate expiry caused vendor DairyDirect channel outage,Supply Chain EDI,4,New,2026-06-27 14:14,,Integration Hub,North West,EDI-Gateway-34
+INC0010429,Incident,Duplicate barcodes detected for 5 products,Product Master Data,4,On Hold,2026-04-11 09:56,,Data Services,Free State,PIM-Hub-15
+INC0010430,Incident,Dual-message settlement mismatch for trading date 2026-02-02,Payments & EFT,3,Resolved,2026-01-13 19:47,2026-01-14 07:30,Payments Ops,Mpumalanga,EFT-Switch-10
+INC0010431,Incident,Wi-Fi outage in backup area of store W428 — RF guns offline,Store Network & Connectivity,2,Closed,2025-12-20 10:41,2025-12-21 11:29,Network Ops,Gauteng,Store-Router-22
+PRB0004144,Problem,Checkout payment step returning 502 for 14% of sessions,Online Checkout,3,Closed,2025-11-12 10:36,2025-11-16 10:25,Digital Commerce,North West,Checkout-Service-26
+CHG0007143,Change Request,Emergency change: checkout payment step returning 502 for 6% of sessions,Online Checkout,4,Closed,2026-06-24 06:37,2026-06-24 13:24,Digital Commerce,Western Cape,Checkout-Service-26
+CHG0007144,Change Request,"Emergency change: tap-to-pay failing on new terminals, store w578",Payments & EFT,3,Closed,2026-02-18 18:12,2026-02-19 03:46,Payments Ops,Gauteng,EFT-Switch-05
+INC0010432,Incident,"Receipt printer failure on till 4, store W497",POS & Tills,3,Resolved,2025-10-26 12:24,2025-10-30 05:14,Store Systems,Gauteng,POS-Terminal-12
+INC0010433,Incident,Cycle-count variance file rejected for store W215,Inventory & Stock Sync,3,In Progress,2026-04-29 08:26,,Merch Systems,Gauteng,Stock-Sync-Job-35
+PRB0004145,Problem,Voucher PRM-3501 redeemable multiple times — exposure risk,Gift Cards & Vouchers,3,Resolved,2025-11-23 11:07,2025-11-27 14:42,Payments Ops,Free State,GiftCard-Service-38
+INC0010434,Incident,Push notifications not delivered for order updates,Mobile App,2,Closed,2026-06-05 12:44,2026-06-05 17:23,Digital Commerce,Gauteng,Mobile-BFF-04
+INC0010435,Incident,Price file failed to deploy to 20 stores overnight,Pricing & Promotions,3,Closed,2026-04-11 06:36,2026-04-13 19:53,Merch Systems,Gauteng,Promo-Engine-22
+INC0010436,Incident,Voucher PRM-8855 redeemable multiple times — exposure risk,Gift Cards & Vouchers,2,Closed,2025-09-04 07:02,2025-09-05 00:06,Payments Ops,KwaZulu-Natal,GiftCard-Service-21
+INC0010437,Incident,Gift card balance enquiry timing out online,Gift Cards & Vouchers,1,Closed,2026-02-07 11:15,2026-02-07 13:42,Payments Ops,Limpopo,GiftCard-Service-09
+INC0010438,Incident,Brand attribute overwritten in bulk update — 52 SKUs affected,Product Master Data,2,Closed,2026-02-23 11:44,2026-02-24 11:44,Data Services,Free State,PIM-Hub-32
+INC0010439,Incident,Basket total mismatch after promo applied at checkout,Online Checkout,1,Closed,2026-06-10 10:39,2026-06-10 15:43,Digital Commerce,Western Cape,Checkout-Service-09
+CHG0007145,Change Request,Emergency change: delivery slot selection failing for kwazulu-natal customers,Online Checkout,2,Implement,2026-01-26 11:25,,Digital Commerce,Western Cape,Checkout-Service-26
+CHG0007146,Change Request,"Config change: pos eod batch stuck at store w169, trading day not closed",POS & Tills,2,Scheduled,2026-06-12 12:25,,Store Systems,Western Cape,POS-Terminal-20
+INC0010440,Incident,"POS EOD batch stuck at store W457, trading day not closed",POS & Tills,2,Closed,2026-05-15 13:12,2026-05-16 14:26,Store Systems,National / Online,POS-Terminal-20
+INC0010441,Incident,Card payments timing out across Gauteng stores,Payments & EFT,4,Closed,2026-01-11 18:38,2026-01-14 01:12,Payments Ops,National / Online,EFT-Switch-22
+PRB0004146,Problem,Price file failed to deploy to 10 stores overnight,Pricing & Promotions,4,Root Cause Analysis,2026-06-12 13:56,,Merch Systems,Western Cape,Promo-Engine-10
+INC0010442,Incident,Price file failed to deploy to 52 stores overnight,Pricing & Promotions,4,Resolved,2025-10-13 10:41,2025-10-15 16:53,Merch Systems,National / Online,Promo-Engine-31
+INC0010443,Incident,Dual-message settlement mismatch for trading date 2026-01-14,Payments & EFT,1,Closed,2025-07-19 20:29,2025-07-19 21:45,Payments Ops,Eastern Cape,EFT-Switch-31
+CHG0007147,Change Request,Config change: till 3 frozen on tender screen at store w385,POS & Tills,4,Closed,2026-06-23 08:32,2026-06-27 03:29,Store Systems,Mpumalanga,POS-Terminal-10
+INC0010444,Incident,Basket total mismatch after promo applied at checkout,Online Checkout,2,Closed,2026-06-28 11:53,2026-06-29 14:52,Digital Commerce,Northern Cape,Checkout-Service-25
+CHG0007148,Change Request,Deploy fix for basket total mismatch after promo applied at checkout,Online Checkout,3,Closed,2026-05-05 11:18,2026-05-06 04:31,Digital Commerce,National / Online,Checkout-Service-19
+INC0010445,Incident,"POS EOD batch stuck at store W232, trading day not closed",POS & Tills,4,Resolved,2025-07-28 16:06,2025-08-01 11:33,Store Systems,Western Cape,POS-Terminal-37
+PRB0004147,Problem,"POS EOD batch stuck at store W151, trading day not closed",POS & Tills,2,Closed,2026-03-21 18:35,2026-03-22 11:12,Store Systems,Gauteng,POS-Terminal-36
+PRB0004148,Problem,Push notifications not delivered for order updates,Mobile App,3,Root Cause Analysis,2026-04-18 10:24,,Digital Commerce,Western Cape,Mobile-BFF-36
+INC0010446,Incident,Duplicate vouchers issued to 44 members,WRewards Loyalty,2,New,2025-09-26 09:07,,Loyalty Platform,Northern Cape,Loyalty-API-09
+INC0010447,Incident,AS2 certificate expiry caused vendor HomewareHub channel outage,Supply Chain EDI,2,Closed,2025-07-17 18:45,2025-07-17 23:15,Integration Hub,KwaZulu-Natal,EDI-Gateway-02
+PRB0004149,Problem,Basket total mismatch after promo applied at checkout,Online Checkout,4,Closed,2025-07-16 16:09,2025-07-17 18:06,Digital Commerce,North West,Checkout-Service-08
+INC0010448,Incident,Unit-of-measure mismatch causing receiving failures at DC 9,Product Master Data,3,On Hold,2025-10-03 18:11,,Data Services,KwaZulu-Natal,PIM-Hub-22
+INC0010449,Incident,Router config drift detected at store W495 after change,Store Network & Connectivity,3,Resolved,2025-10-20 10:38,2025-10-21 13:21,Network Ops,Mpumalanga,Store-Router-15
+PRB0004150,Problem,Card payments timing out across Free State stores,Payments & EFT,3,Closed,2026-05-10 13:44,2026-05-13 09:43,Payments Ops,National / Online,EFT-Switch-19
+INC0010450,Incident,App checkout button unresponsive on iOS 41,Mobile App,2,Closed,2026-05-22 15:22,2026-05-22 21:02,Digital Commerce,Free State,Mobile-BFF-34
+INC0010451,Incident,"POS EOD batch stuck at store W128, trading day not closed",POS & Tills,4,Closed,2025-10-30 09:28,2025-11-02 02:15,Store Systems,North West,POS-Terminal-37
+INC0010452,Incident,POS terminal offline — store W466 unable to trade on 35 lanes,POS & Tills,3,Resolved,2025-10-19 13:25,2025-10-22 00:37,Store Systems,KwaZulu-Natal,POS-Terminal-32
+CHG0007149,Change Request,Deploy fix for eft declines spiking at store w405 — response code 91,Payments & EFT,2,Closed,2026-02-12 12:53,2026-02-12 18:00,Payments Ops,Gauteng,EFT-Switch-06
+CHG0007150,Change Request,Patch release for order ord-715006 split incorrectly across fulfilment nodes,Order Fulfilment,3,Authorise,2026-02-23 16:26,,Fulfilment Tech,Gauteng,OMS-Core-07
+INC0010453,Incident,"Tap-to-pay failing on new terminals, store W217",Payments & EFT,2,New,2025-09-12 08:06,,Payments Ops,North West,EFT-Switch-05
+INC0010454,Incident,ASN messages from vendor AgriSupply failing schema validation,Supply Chain EDI,3,Closed,2026-01-03 15:42,2026-01-06 17:47,Integration Hub,Free State,EDI-Gateway-03
+CHG0007151,Change Request,Config change: price file failed to deploy to 51 stores overnight,Pricing & Promotions,4,Closed,2026-02-12 17:01,2026-02-16 15:00,Merch Systems,Western Cape,Promo-Engine-12
+PRB0004151,Problem,"Loyalty card lookup timing out at till, store W165",WRewards Loyalty,3,Root Cause Analysis,2026-04-03 16:59,,Loyalty Platform,National / Online,Loyalty-API-31
+PRB0004152,Problem,"Mismatch between shelf-edge label and till price, store W393",Pricing & Promotions,3,Root Cause Analysis,2026-04-10 15:21,,Merch Systems,Mpumalanga,Promo-Engine-28
+PRB0004153,Problem,Bank switch latency above 8s causing tender timeouts,Payments & EFT,4,Closed,2026-06-02 20:50,2026-06-06 04:56,Payments Ops,Western Cape,EFT-Switch-31
+INC0010455,Incident,Same-day delivery cutoff not enforced — late promises made,Order Fulfilment,3,Closed,2026-02-21 19:04,2026-02-22 11:15,Fulfilment Tech,Gauteng,OMS-Core-39
+INC0010456,Incident,Basket total mismatch after promo applied at checkout,Online Checkout,4,Resolved,2026-02-27 16:40,2026-02-28 10:22,Digital Commerce,North West,Checkout-Service-17
+PRB0004154,Problem,Duplicate vouchers issued to 23 members,WRewards Loyalty,2,Resolved,2025-10-29 09:17,2025-10-30 06:08,Loyalty Platform,Western Cape,Loyalty-API-29
+INC0010457,Incident,Price file failed to deploy to 23 stores overnight,Pricing & Promotions,4,New,2026-03-11 14:53,,Merch Systems,Eastern Cape,Promo-Engine-37
+INC0010458,Incident,Gift card redemption declining with error ERR-356 at store W307,Gift Cards & Vouchers,2,Resolved,2026-02-23 17:36,2026-02-24 10:11,Payments Ops,North West,GiftCard-Service-13
+CHG0007152,Change Request,Patch release for stock-on-hand not syncing to online for dc 4 range,Inventory & Stock Sync,3,Closed,2026-03-20 18:28,2026-03-23 06:36,Merch Systems,KwaZulu-Natal,Stock-Sync-Job-39
+PRB0004155,Problem,Checkout payment step returning 502 for 19% of sessions,Online Checkout,3,Resolved,2025-08-20 09:53,2025-08-22 22:40,Digital Commerce,North West,Checkout-Service-29
+INC0010459,Incident,WRewards linking failing in app with error ERR-709,WRewards Loyalty,3,New,2025-10-30 13:28,,Loyalty Platform,National / Online,Loyalty-API-14
+INC0010460,Incident,Duplicate barcodes detected for 4 products,Product Master Data,3,Closed,2026-05-04 20:24,2026-05-05 09:05,Data Services,KwaZulu-Natal,PIM-Hub-02
+INC0010461,Incident,Purchase order acknowledgements not reaching vendor DairyDirect,Supply Chain EDI,3,Closed,2026-04-29 12:47,2026-05-03 04:45,Integration Hub,Eastern Cape,EDI-Gateway-01
+INC0010462,Incident,"Checkout stuck on ""processing payment"" — orders duplicated",Online Checkout,3,Closed,2026-02-09 19:21,2026-02-10 04:05,Digital Commerce,Northern Cape,Checkout-Service-35
+CHG0007153,Change Request,Patch release for app crash on product page for android 39% of sessions,Mobile App,4,Assess,2025-10-06 08:04,,Digital Commerce,KwaZulu-Natal,Mobile-BFF-40
+INC0010463,Incident,App login failing with error ERR-953 after release PRM-7728,Mobile App,2,In Progress,2026-04-16 06:11,,Digital Commerce,KwaZulu-Natal,Mobile-BFF-09
+INC0010464,Incident,"Tap-to-pay failing on new terminals, store W539",Payments & EFT,3,Closed,2026-01-05 13:59,2026-01-06 16:50,Payments Ops,Gauteng,EFT-Switch-26
+INC0010465,Incident,Basket total mismatch after promo applied at checkout,Online Checkout,3,Resolved,2025-09-30 15:40,2025-10-02 14:53,Digital Commerce,KwaZulu-Natal,Checkout-Service-15
+CHG0007154,Change Request,Emergency change: cycle-count variance file rejected for store w569,Inventory & Stock Sync,3,Scheduled,2025-12-02 15:58,,Merch Systems,KwaZulu-Natal,Stock-Sync-Job-12
+INC0010466,Incident,Invoice EDI mismatch blocking GRN for DC 13,Supply Chain EDI,2,Closed,2026-03-02 10:00,2026-03-02 20:58,Integration Hub,National / Online,EDI-Gateway-05
+INC0010467,Incident,Wi-Fi outage in backup area of store W560 — RF guns offline,Store Network & Connectivity,2,Closed,2026-04-16 14:15,2026-04-17 10:20,Network Ops,Eastern Cape,Store-Router-16
+INC0010468,Incident,Picking app not releasing waves at DC 10,Order Fulfilment,3,Resolved,2026-05-06 14:08,2026-05-07 16:10,Fulfilment Tech,National / Online,OMS-Core-22
+INC0010469,Incident,"Receipt printer failure on till 3, store W485",POS & Tills,3,Closed,2026-02-28 19:02,2026-03-02 18:37,Store Systems,Western Cape,POS-Terminal-25
+CHG0007155,Change Request,Patch release for promotion prm-9909 double-discounting online,Pricing & Promotions,3,Closed,2025-11-24 18:02,2025-11-25 14:36,Merch Systems,Gauteng,Promo-Engine-09
+PRB0004156,Problem,Tier recalculation job failed — member benefits downgraded,WRewards Loyalty,2,Root Cause Analysis,2026-03-19 10:38,,Loyalty Platform,Gauteng,Loyalty-API-02
+PRB0004157,Problem,Courier manifest not generated for 10 orders,Order Fulfilment,4,Resolved,2026-03-24 14:40,2026-03-26 01:21,Fulfilment Tech,KwaZulu-Natal,OMS-Core-06
+INC0010470,Incident,Stock-on-hand not syncing to online for DC 5 range,Inventory & Stock Sync,4,In Progress,2025-11-08 07:23,,Merch Systems,KwaZulu-Natal,Stock-Sync-Job-09
+INC0010471,Incident,WRewards linking failing in app with error ERR-801,WRewards Loyalty,3,Resolved,2026-03-08 20:23,2026-03-11 16:39,Loyalty Platform,KwaZulu-Natal,Loyalty-API-23
+CHG0007156,Change Request,Patch release for voucher prm-6608 redeemable multiple times — exposure risk,Gift Cards & Vouchers,4,Implement,2026-05-27 17:29,,Payments Ops,Gauteng,GiftCard-Service-25
+INC0010472,Incident,Dual-message settlement mismatch for trading date 2026-02-27,Payments & EFT,4,In Progress,2025-12-08 17:15,,Payments Ops,National / Online,EFT-Switch-15
+CHG0007157,Change Request,"Patch release for checkout stuck on ""processing payment"" — orders duplicated",Online Checkout,3,Scheduled,2026-06-22 07:07,,Digital Commerce,Western Cape,Checkout-Service-14
+INC0010473,Incident,Basket total mismatch after promo applied at checkout,Online Checkout,3,Closed,2025-10-15 10:43,2025-10-17 15:10,Digital Commerce,Free State,Checkout-Service-11
+INC0010474,Incident,Stock sync job overran window by 27 hours — online availability stale,Inventory & Stock Sync,4,Resolved,2026-05-24 18:17,2026-05-28 18:09,Merch Systems,KwaZulu-Natal,Stock-Sync-Job-14
+INC0010475,Incident,Dual-message settlement mismatch for trading date 2026-05-28,Payments & EFT,4,Closed,2025-10-24 07:18,2025-10-26 09:47,Payments Ops,National / Online,EFT-Switch-04
+INC0010476,Incident,Barcode scanner intermittently not reading at store W470,POS & Tills,4,Closed,2025-10-14 12:53,2025-10-18 14:24,Store Systems,National / Online,POS-Terminal-10
+PRB0004158,Problem,Stock sync job overran window by 43 hours — online availability stale,Inventory & Stock Sync,2,Closed,2025-09-28 15:29,2025-09-29 00:33,Merch Systems,Western Cape,Stock-Sync-Job-25
+CHG0007158,Change Request,Deploy fix for product images not propagating from pim to web,Product Master Data,3,Scheduled,2025-12-30 20:27,,Data Services,Western Cape,PIM-Hub-04
+INC0010477,Incident,"Voucher barcode not scanning at till, store W290",Gift Cards & Vouchers,4,Closed,2026-04-05 11:15,2026-04-08 19:42,Payments Ops,Western Cape,GiftCard-Service-37
+PRB0004159,Problem,Courier manifest not generated for 56 orders,Order Fulfilment,3,Resolved,2025-11-20 16:40,2025-11-21 15:59,Fulfilment Tech,Western Cape,OMS-Core-09
+PRB0004160,Problem,"Receipt printer failure on till 7, store W378",POS & Tills,4,Closed,2026-03-30 16:18,2026-04-03 17:24,Store Systems,Gauteng,POS-Terminal-37
+INC0010478,Incident,"Loyalty card lookup timing out at till, store W195",WRewards Loyalty,2,Closed,2026-01-17 07:51,2026-01-18 05:22,Loyalty Platform,KwaZulu-Natal,Loyalty-API-08
+PRB0004161,Problem,Cycle-count variance file rejected for store W263,Inventory & Stock Sync,3,Root Cause Analysis,2026-06-13 17:23,,Merch Systems,Limpopo,Stock-Sync-Job-04
+INC0010479,Incident,Courier manifest not generated for 29 orders,Order Fulfilment,3,In Progress,2026-03-27 09:28,,Fulfilment Tech,Gauteng,OMS-Core-32
+INC0010480,Incident,Price file failed to deploy to 58 stores overnight,Pricing & Promotions,2,Closed,2025-11-21 14:23,2025-11-21 22:48,Merch Systems,Gauteng,Promo-Engine-34
+INC0010481,Incident,"POS EOD batch stuck at store W261, trading day not closed",POS & Tills,2,Closed,2026-02-11 19:43,2026-02-12 00:37,Store Systems,Gauteng,POS-Terminal-16
+INC0010482,Incident,Same-day delivery cutoff not enforced — late promises made,Order Fulfilment,3,Closed,2026-01-19 20:36,2026-01-20 21:37,Fulfilment Tech,Eastern Cape,OMS-Core-29
+INC0010483,Incident,"Mismatch between shelf-edge label and till price, store W253",Pricing & Promotions,3,Closed,2026-03-08 14:18,2026-03-12 17:56,Merch Systems,National / Online,Promo-Engine-07
+INC0010484,Incident,Dual-message settlement mismatch for trading date 2026-02-11,Payments & EFT,3,Closed,2026-06-14 06:44,2026-06-15 18:40,Payments Ops,Northern Cape,EFT-Switch-06
+PRB0004162,Problem,Gift card balance enquiry timing out online,Gift Cards & Vouchers,2,Fix in Progress,2025-12-27 17:46,,Payments Ops,National / Online,GiftCard-Service-17
+INC0010485,Incident,Markdown batch stuck — clearance prices not live,Pricing & Promotions,3,Closed,2025-10-07 12:27,2025-10-10 04:59,Merch Systems,National / Online,Promo-Engine-20
+CHG0007159,Change Request,Deploy fix for checkout payment step returning 502 for 44% of sessions,Online Checkout,2,Implement,2025-11-19 12:21,,Digital Commerce,KwaZulu-Natal,Checkout-Service-34
+PRB0004163,Problem,Tier recalculation job failed — member benefits downgraded,WRewards Loyalty,3,Root Cause Analysis,2026-04-12 16:02,,Loyalty Platform,Western Cape,Loyalty-API-19
+INC0010486,Incident,App checkout button unresponsive on iOS 61,Mobile App,3,New,2026-01-09 18:02,,Digital Commerce,KwaZulu-Natal,Mobile-BFF-35
+INC0010487,Incident,Stock-on-hand not syncing to online for DC 8 range,Inventory & Stock Sync,2,Resolved,2025-09-24 12:17,2025-09-25 07:41,Merch Systems,Gauteng,Stock-Sync-Job-19
+INC0010488,Incident,"Loyalty card lookup timing out at till, store W356",WRewards Loyalty,3,Closed,2025-07-14 09:18,2025-07-16 02:33,Loyalty Platform,Gauteng,Loyalty-API-18
+CHG0007160,Change Request,"Config change: receipt printer failure on till 8, store w418",POS & Tills,1,Authorise,2025-07-23 18:12,,Store Systems,National / Online,POS-Terminal-25
+INC0010489,Incident,Checkout payment step returning 502 for 33% of sessions,Online Checkout,4,New,2026-03-14 06:27,,Digital Commerce,Northern Cape,Checkout-Service-28
+INC0010490,Incident,Promotion PRM-9902 double-discounting online,Pricing & Promotions,3,On Hold,2025-08-10 11:31,,Merch Systems,National / Online,Promo-Engine-25
+INC0010491,Incident,Negative SOH values appearing for 48 SKUs after nightly sync,Inventory & Stock Sync,3,Closed,2025-08-24 12:13,2025-08-28 17:31,Merch Systems,Gauteng,Stock-Sync-Job-16
+INC0010492,Incident,Bulk corporate gift card load failed for 17 cards,Gift Cards & Vouchers,2,In Progress,2026-06-16 16:21,,Payments Ops,Western Cape,GiftCard-Service-36
+INC0010493,Incident,Basket total mismatch after promo applied at checkout,Online Checkout,3,Closed,2025-11-06 08:19,2025-11-08 16:43,Digital Commerce,Gauteng,Checkout-Service-08
+INC0010494,Incident,Markdown batch stuck — clearance prices not live,Pricing & Promotions,3,Closed,2025-08-28 19:44,2025-08-31 01:30,Merch Systems,Western Cape,Promo-Engine-28
+INC0010495,Incident,Gift card balance enquiry timing out online,Gift Cards & Vouchers,4,Closed,2025-10-31 11:26,2025-11-01 18:33,Payments Ops,Western Cape,GiftCard-Service-30
+PRB0004164,Problem,3-D Secure redirect loop on mobile web checkout,Online Checkout,4,Fix in Progress,2026-03-10 15:04,,Digital Commerce,Eastern Cape,Checkout-Service-36
+INC0010496,Incident,WRewards linking failing in app with error ERR-783,WRewards Loyalty,4,Closed,2025-07-22 14:40,2025-07-23 21:07,Loyalty Platform,Western Cape,Loyalty-API-19
+INC0010497,Incident,Till 15 frozen on tender screen at store W142,POS & Tills,3,Closed,2025-10-03 14:16,2025-10-06 09:00,Store Systems,Gauteng,POS-Terminal-15
+INC0010498,Incident,WRewards linking failing in app with error ERR-788,WRewards Loyalty,3,Closed,2026-05-11 11:21,2026-05-12 08:31,Loyalty Platform,Western Cape,Loyalty-API-36
+CHG0007161,Change Request,"Config change: loyalty card lookup timing out at till, store w374",WRewards Loyalty,3,Scheduled,2026-06-10 13:26,,Loyalty Platform,National / Online,Loyalty-API-14
+INC0010499,Incident,Till 10 frozen on tender screen at store W231,POS & Tills,4,Resolved,2026-06-17 17:52,2026-06-21 09:53,Store Systems,Limpopo,POS-Terminal-35
+INC0010500,Incident,Promotion PRM-1158 double-discounting online,Pricing & Promotions,4,Closed,2026-02-20 19:25,2026-02-22 23:57,Merch Systems,Western Cape,Promo-Engine-33
+INC0010501,Incident,Push notifications not delivered for order updates,Mobile App,3,Closed,2025-12-31 09:13,2026-01-02 02:11,Digital Commerce,Gauteng,Mobile-BFF-34
+INC0010502,Incident,Gift card balance enquiry timing out online,Gift Cards & Vouchers,3,In Progress,2026-04-20 09:02,,Payments Ops,National / Online,GiftCard-Service-11
+INC0010503,Incident,POS terminal offline — store W365 unable to trade on 6 lanes,POS & Tills,3,In Progress,2025-11-23 15:02,,Store Systems,Eastern Cape,POS-Terminal-15
+INC0010504,Incident,Bank switch latency above 8s causing tender timeouts,Payments & EFT,3,Resolved,2025-08-22 16:05,2025-08-25 15:17,Payments Ops,Western Cape,EFT-Switch-17
+CHG0007162,Change Request,Deploy fix for wrewards linking failing in app with error err-752,WRewards Loyalty,4,Closed,2026-06-12 17:24,2026-06-14 18:45,Loyalty Platform,National / Online,Loyalty-API-02
+INC0010505,Incident,"POS EOD batch stuck at store W326, trading day not closed",POS & Tills,3,In Progress,2026-04-19 16:12,,Store Systems,Western Cape,POS-Terminal-12
+INC0010506,Incident,Basket total mismatch after promo applied at checkout,Online Checkout,2,Closed,2026-05-30 06:14,2026-05-30 18:24,Digital Commerce,Western Cape,Checkout-Service-22
+INC0010507,Incident,AS2 certificate expiry caused vendor FreshCo channel outage,Supply Chain EDI,4,New,2026-05-12 06:35,,Integration Hub,Free State,EDI-Gateway-20
+CHG0007163,Change Request,"Deploy fix for pos eod batch stuck at store w195, trading day not closed",POS & Tills,4,Implement,2026-02-01 17:49,,Store Systems,Western Cape,POS-Terminal-38
+INC0010508,Incident,"Voucher barcode not scanning at till, store W358",Gift Cards & Vouchers,2,On Hold,2026-06-05 11:40,,Payments Ops,Eastern Cape,GiftCard-Service-29
+INC0010509,Incident,Delivery slot selection failing for Free State customers,Online Checkout,4,Closed,2025-09-23 10:21,2025-09-24 23:58,Digital Commerce,Northern Cape,Checkout-Service-12
+INC0010510,Incident,Purchase order acknowledgements not reaching vendor HomewareHub,Supply Chain EDI,3,Closed,2026-03-05 19:02,2026-03-09 14:21,Integration Hub,Northern Cape,EDI-Gateway-02
+INC0010511,Incident,High packet loss to data centre from KwaZulu-Natal stores,Store Network & Connectivity,4,Closed,2026-05-17 14:08,2026-05-19 18:51,Network Ops,North West,Store-Router-27
+INC0010512,Incident,Basket total mismatch after promo applied at checkout,Online Checkout,2,Closed,2026-02-23 15:55,2026-02-24 00:56,Digital Commerce,Western Cape,Checkout-Service-22
+INC0010513,Incident,Store W207 receiving not reflecting in inventory ledger,Inventory & Stock Sync,2,Resolved,2026-05-29 08:05,2026-05-29 17:37,Merch Systems,Western Cape,Stock-Sync-Job-26
+INC0010514,Incident,"Checkout stuck on ""processing payment"" — orders duplicated",Online Checkout,3,Resolved,2025-09-07 20:22,2025-09-10 06:17,Digital Commerce,Western Cape,Checkout-Service-30
+CHG0007164,Change Request,"Config change: tap-to-pay failing on new terminals, store w503",Payments & EFT,3,Authorise,2026-03-20 15:53,,Payments Ops,Gauteng,EFT-Switch-39
+INC0010515,Incident,Product images not propagating from PIM to web,Product Master Data,4,Closed,2025-12-11 09:42,2025-12-15 09:52,Data Services,National / Online,PIM-Hub-06
+PRB0004165,Problem,Cycle-count variance file rejected for store W538,Inventory & Stock Sync,4,Resolved,2025-09-04 09:10,2025-09-07 11:05,Merch Systems,National / Online,Stock-Sync-Job-06
+CHG0007165,Change Request,Emergency change: duplicate vouchers issued to 58 members,WRewards Loyalty,2,Authorise,2026-04-12 17:15,,Loyalty Platform,KwaZulu-Natal,Loyalty-API-30
+INC0010516,Incident,Push notifications not delivered for order updates,Mobile App,3,Closed,2025-10-18 12:05,2025-10-20 00:56,Digital Commerce,Gauteng,Mobile-BFF-21
+INC0010517,Incident,Voucher PRM-3417 redeemable multiple times — exposure risk,Gift Cards & Vouchers,2,Closed,2025-11-09 16:12,2025-11-10 16:09,Payments Ops,KwaZulu-Natal,GiftCard-Service-14
+PRB0004166,Problem,Order ORD-378515 split incorrectly across fulfilment nodes,Order Fulfilment,3,Fix in Progress,2026-05-19 06:03,,Fulfilment Tech,Western Cape,OMS-Core-40
+PRB0004167,Problem,Barcode scanner intermittently not reading at store W307,POS & Tills,2,Closed,2026-06-09 06:12,2026-06-09 11:32,Store Systems,KwaZulu-Natal,POS-Terminal-15
+PRB0004168,Problem,Courier manifest not generated for 44 orders,Order Fulfilment,3,Resolved,2026-02-09 16:21,2026-02-11 05:19,Fulfilment Tech,Gauteng,OMS-Core-11
+PRB0004169,Problem,Voucher PRM-9682 redeemable multiple times — exposure risk,Gift Cards & Vouchers,1,Closed,2025-09-03 19:29,2025-09-03 21:31,Payments Ops,Gauteng,GiftCard-Service-30
+INC0010518,Incident,"Checkout stuck on ""processing payment"" — orders duplicated",Online Checkout,3,Closed,2025-08-18 18:24,2025-08-20 07:54,Digital Commerce,Western Cape,Checkout-Service-39
+INC0010519,Incident,EFT declines spiking at store W539 — response code 91,Payments & EFT,4,Closed,2025-09-16 18:47,2025-09-18 16:32,Payments Ops,National / Online,EFT-Switch-10
+INC0010520,Incident,"Primary link down at store W117, all cloud services impacted",Store Network & Connectivity,4,Closed,2026-06-25 20:47,2026-06-27 05:20,Network Ops,KwaZulu-Natal,Store-Router-24
+PRB0004170,Problem,"POS EOD batch stuck at store W142, trading day not closed",POS & Tills,1,Root Cause Analysis,2026-06-26 11:54,,Store Systems,Eastern Cape,POS-Terminal-25
+INC0010521,Incident,Checkout payment step returning 502 for 25% of sessions,Online Checkout,3,Closed,2026-05-06 18:17,2026-05-09 06:16,Digital Commerce,Limpopo,Checkout-Service-17
+INC0010522,Incident,"Tap-to-pay failing on new terminals, store W449",Payments & EFT,4,Closed,2026-04-01 08:27,2026-04-04 19:43,Payments Ops,National / Online,EFT-Switch-15
+CHG0007166,Change Request,"Config change: receipt printer failure on till 5, store w398",POS & Tills,4,Closed,2026-03-17 16:50,2026-03-21 14:45,Store Systems,KwaZulu-Natal,POS-Terminal-20
+PRB0004171,Problem,Checkout payment step returning 502 for 8% of sessions,Online Checkout,2,Root Cause Analysis,2026-04-30 11:27,,Digital Commerce,Gauteng,Checkout-Service-39
+PRB0004172,Problem,"Tap-to-pay failing on new terminals, store W505",Payments & EFT,4,Resolved,2026-05-07 08:38,2026-05-09 21:57,Payments Ops,Gauteng,EFT-Switch-12
+INC0010523,Incident,Stock-on-hand not syncing to online for DC 12 range,Inventory & Stock Sync,2,New,2026-03-31 11:14,,Merch Systems,Gauteng,Stock-Sync-Job-06
+CHG0007167,Change Request,Emergency change: negative soh values appearing for 31 skus after nightly sync,Inventory & Stock Sync,3,Closed,2026-06-23 16:01,2026-06-25 16:19,Merch Systems,KwaZulu-Natal,Stock-Sync-Job-33
+INC0010524,Incident,EFT declines spiking at store W323 — response code 91,Payments & EFT,3,Resolved,2025-07-23 10:35,2025-07-27 07:55,Payments Ops,Western Cape,EFT-Switch-13
+CHG0007168,Change Request,Config change: asn messages from vendor dairydirect failing schema validation,Supply Chain EDI,2,Closed,2026-01-19 19:41,2026-01-20 21:27,Integration Hub,Eastern Cape,EDI-Gateway-32
+INC0010525,Incident,"Tap-to-pay failing on new terminals, store W312",Payments & EFT,2,Closed,2025-07-03 11:24,2025-07-03 19:47,Payments Ops,Gauteng,EFT-Switch-17
+CHG0007169,Change Request,Emergency change: barcode scanner intermittently not reading at store w529,POS & Tills,3,Closed,2026-01-13 11:44,2026-01-13 23:12,Store Systems,Gauteng,POS-Terminal-04
+CHG0007170,Change Request,Emergency change: eft declines spiking at store w140 — response code 91,Payments & EFT,3,Implement,2026-06-14 14:16,,Payments Ops,Limpopo,EFT-Switch-04
+CHG0007171,Change Request,"Patch release for checkout stuck on ""processing payment"" — orders duplicated",Online Checkout,3,Implement,2026-04-27 09:04,,Digital Commerce,KwaZulu-Natal,Checkout-Service-37
+CHG0007172,Change Request,Emergency change: duplicate barcodes detected for 32 products,Product Master Data,3,Closed,2025-11-02 20:53,2025-11-03 23:30,Data Services,Western Cape,PIM-Hub-39
+INC0010526,Incident,ASN messages from vendor TextilePro failing schema validation,Supply Chain EDI,3,Resolved,2025-09-12 08:24,2025-09-13 21:02,Integration Hub,Western Cape,EDI-Gateway-19
+PRB0004173,Problem,Order ORD-952302 split incorrectly across fulfilment nodes,Order Fulfilment,3,Root Cause Analysis,2025-12-17 16:14,,Fulfilment Tech,Free State,OMS-Core-23
+CHG0007173,Change Request,Deploy fix for gift card balance enquiry timing out online,Gift Cards & Vouchers,3,Authorise,2026-05-02 20:11,,Payments Ops,Gauteng,GiftCard-Service-02
+INC0010527,Incident,Cycle-count variance file rejected for store W367,Inventory & Stock Sync,2,In Progress,2026-01-06 20:01,,Merch Systems,Gauteng,Stock-Sync-Job-17
+INC0010528,Incident,Stock-on-hand not syncing to online for DC 5 range,Inventory & Stock Sync,4,Closed,2026-03-26 20:51,2026-03-29 09:08,Merch Systems,Gauteng,Stock-Sync-Job-19
+INC0010529,Incident,Till 8 frozen on tender screen at store W563,POS & Tills,2,New,2026-05-28 17:48,,Store Systems,Eastern Cape,POS-Terminal-32
+PRB0004174,Problem,Store W552 receiving not reflecting in inventory ledger,Inventory & Stock Sync,1,Closed,2026-05-28 06:36,2026-05-28 11:48,Merch Systems,Western Cape,Stock-Sync-Job-15
+CHG0007174,Change Request,Deploy fix for high packet loss to data centre from north west stores,Store Network & Connectivity,4,Scheduled,2025-08-02 12:21,,Network Ops,Free State,Store-Router-26
+INC0010530,Incident,Voucher PRM-4455 redeemable multiple times — exposure risk,Gift Cards & Vouchers,1,In Progress,2025-12-02 18:32,,Payments Ops,KwaZulu-Natal,GiftCard-Service-40
+INC0010531,Incident,EFT declines spiking at store W450 — response code 91,Payments & EFT,2,Closed,2026-03-28 13:04,2026-03-28 16:38,Payments Ops,National / Online,EFT-Switch-12
+INC0010532,Incident,Basket total mismatch after promo applied at checkout,Online Checkout,3,Closed,2026-05-21 20:59,2026-05-23 18:06,Digital Commerce,Gauteng,Checkout-Service-35
+PRB0004175,Problem,EFT declines spiking at store W137 — response code 91,Payments & EFT,3,Closed,2026-05-13 15:13,2026-05-14 20:28,Payments Ops,Mpumalanga,EFT-Switch-29
+CHG0007175,Change Request,Config change: gift card redemption declining with error err-139 at store w514,Gift Cards & Vouchers,4,Authorise,2025-11-07 15:36,,Payments Ops,Gauteng,GiftCard-Service-16
+INC0010533,Incident,"Receipt printer failure on till 3, store W461",POS & Tills,3,Closed,2026-01-13 14:52,2026-01-14 21:48,Store Systems,Western Cape,POS-Terminal-03
+PRB0004176,Problem,Stock sync job overran window by 34 hours — online availability stale,Inventory & Stock Sync,3,Root Cause Analysis,2026-04-03 13:28,,Merch Systems,National / Online,Stock-Sync-Job-01
+INC0010534,Incident,Router config drift detected at store W263 after change,Store Network & Connectivity,2,Closed,2026-02-14 09:13,2026-02-14 18:09,Network Ops,National / Online,Store-Router-33
+CHG0007176,Change Request,Patch release for eft declines spiking at store w247 — response code 91,Payments & EFT,3,Scheduled,2025-10-20 13:46,,Payments Ops,Mpumalanga,EFT-Switch-33
+INC0010535,Incident,ASN messages from vendor AgriSupply failing schema validation,Supply Chain EDI,1,In Progress,2026-06-02 10:23,,Integration Hub,Eastern Cape,EDI-Gateway-30
+CHG0007177,Change Request,Emergency change: wrewards linking failing in app with error err-275,WRewards Loyalty,4,Closed,2026-03-21 07:25,2026-03-22 10:13,Loyalty Platform,National / Online,Loyalty-API-31
+CHG0007178,Change Request,Emergency change: 3-d secure redirect loop on mobile web checkout,Online Checkout,2,Closed,2025-12-09 16:11,2025-12-09 22:29,Digital Commerce,KwaZulu-Natal,Checkout-Service-34
+INC0010536,Incident,3-D Secure redirect loop on mobile web checkout,Online Checkout,4,Closed,2025-09-22 14:44,2025-09-25 11:28,Digital Commerce,Mpumalanga,Checkout-Service-37
+CHG0007179,Change Request,Config change: router config drift detected at store w449 after change,Store Network & Connectivity,1,Closed,2025-07-20 19:34,2025-07-21 03:13,Network Ops,Free State,Store-Router-22
+INC0010537,Incident,3-D Secure redirect loop on mobile web checkout,Online Checkout,3,Resolved,2025-09-15 20:47,2025-09-17 02:39,Digital Commerce,KwaZulu-Natal,Checkout-Service-28
+PRB0004177,Problem,Bulk corporate gift card load failed for 39 cards,Gift Cards & Vouchers,3,Resolved,2025-09-20 20:50,2025-09-22 05:37,Payments Ops,National / Online,GiftCard-Service-34
+INC0010538,Incident,Cycle-count variance file rejected for store W166,Inventory & Stock Sync,3,In Progress,2025-09-25 09:04,,Merch Systems,Gauteng,Stock-Sync-Job-22
+PRB0004178,Problem,Gift card balance enquiry timing out online,Gift Cards & Vouchers,3,Root Cause Analysis,2026-04-09 14:39,,Payments Ops,Gauteng,GiftCard-Service-33
+INC0010539,Incident,AS2 certificate expiry caused vendor CapeMills channel outage,Supply Chain EDI,2,On Hold,2025-10-07 14:28,,Integration Hub,Gauteng,EDI-Gateway-25
+CHG0007180,Change Request,Patch release for eft declines spiking at store w405 — response code 91,Payments & EFT,2,Closed,2026-05-07 14:06,2026-05-08 16:16,Payments Ops,KwaZulu-Natal,EFT-Switch-03
+INC0010540,Incident,Bank switch latency above 8s causing tender timeouts,Payments & EFT,3,In Progress,2026-01-18 11:23,,Payments Ops,National / Online,EFT-Switch-39
+INC0010541,Incident,Dual-message settlement mismatch for trading date 2026-01-24,Payments & EFT,3,Resolved,2025-11-28 13:46,2025-12-01 17:45,Payments Ops,Free State,EFT-Switch-05
+INC0010542,Incident,Promotion PRM-5554 double-discounting online,Pricing & Promotions,2,Closed,2025-11-05 10:03,2025-11-05 20:06,Merch Systems,Western Cape,Promo-Engine-05
+CHG0007181,Change Request,Patch release for gift card redemption declining with error err-500 at store w275,Gift Cards & Vouchers,3,Closed,2026-02-16 18:08,2026-02-17 07:19,Payments Ops,Limpopo,GiftCard-Service-38
+INC0010543,Incident,Same-day delivery cutoff not enforced — late promises made,Order Fulfilment,3,On Hold,2025-08-09 10:36,,Fulfilment Tech,KwaZulu-Natal,OMS-Core-35
+INC0010544,Incident,Gift card balance enquiry timing out online,Gift Cards & Vouchers,2,In Progress,2025-09-21 09:10,,Payments Ops,Gauteng,GiftCard-Service-35
+PRB0004179,Problem,Order ORD-933727 split incorrectly across fulfilment nodes,Order Fulfilment,3,Root Cause Analysis,2025-08-12 19:55,,Fulfilment Tech,Eastern Cape,OMS-Core-39
+PRB0004180,Problem,Store W434 receiving not reflecting in inventory ledger,Inventory & Stock Sync,3,Resolved,2025-11-30 09:18,2025-12-02 06:17,Merch Systems,Free State,Stock-Sync-Job-06
+PRB0004181,Problem,App login failing with error ERR-916 after release PRM-1856,Mobile App,3,Closed,2026-05-24 07:08,2026-05-24 17:05,Digital Commerce,Gauteng,Mobile-BFF-24
+INC0010545,Incident,AS2 certificate expiry caused vendor HomewareHub channel outage,Supply Chain EDI,2,In Progress,2025-07-22 06:21,,Integration Hub,Western Cape,EDI-Gateway-21
+PRB0004182,Problem,Duplicate vouchers issued to 58 members,WRewards Loyalty,4,Closed,2026-03-10 13:29,2026-03-11 12:00,Loyalty Platform,North West,Loyalty-API-19
+INC0010546,Incident,Basket total mismatch after promo applied at checkout,Online Checkout,2,Closed,2026-01-01 10:31,2026-01-02 08:31,Digital Commerce,Gauteng,Checkout-Service-15
+INC0010547,Incident,Bulk corporate gift card load failed for 12 cards,Gift Cards & Vouchers,2,In Progress,2026-04-29 10:33,,Payments Ops,Eastern Cape,GiftCard-Service-35
+INC0010548,Incident,EFT declines spiking at store W561 — response code 91,Payments & EFT,2,In Progress,2025-12-14 08:32,,Payments Ops,Mpumalanga,EFT-Switch-33
+PRB0004183,Problem,Voucher PRM-8953 redeemable multiple times — exposure risk,Gift Cards & Vouchers,3,Resolved,2026-05-19 07:30,2026-05-20 12:38,Payments Ops,Western Cape,GiftCard-Service-05
+INC0010549,Incident,Voucher PRM-6296 redeemable multiple times — exposure risk,Gift Cards & Vouchers,3,On Hold,2026-03-20 06:18,,Payments Ops,Eastern Cape,GiftCard-Service-28
+PRB0004184,Problem,Checkout payment step returning 502 for 31% of sessions,Online Checkout,4,Root Cause Analysis,2025-10-14 16:46,,Digital Commerce,KwaZulu-Natal,Checkout-Service-04
+INC0010550,Incident,Brand attribute overwritten in bulk update — 13 SKUs affected,Product Master Data,2,On Hold,2026-03-02 12:47,,Data Services,Limpopo,PIM-Hub-31
+INC0010551,Incident,3-D Secure redirect loop on mobile web checkout,Online Checkout,3,Closed,2026-05-15 13:39,2026-05-18 12:18,Digital Commerce,KwaZulu-Natal,Checkout-Service-11
+INC0010552,Incident,Push notifications not delivered for order updates,Mobile App,3,Resolved,2026-06-07 13:26,2026-06-11 16:40,Digital Commerce,Western Cape,Mobile-BFF-19
+INC0010553,Incident,"Receipt printer failure on till 13, store W270",POS & Tills,2,Closed,2026-03-18 13:16,2026-03-19 03:13,Store Systems,National / Online,POS-Terminal-21
+CHG0007182,Change Request,Deploy fix for order ord-425904 split incorrectly across fulfilment nodes,Order Fulfilment,3,Implement,2025-10-17 13:08,,Fulfilment Tech,Northern Cape,OMS-Core-11
+INC0010554,Incident,"POS EOD batch stuck at store W291, trading day not closed",POS & Tills,3,New,2026-05-10 11:54,,Store Systems,Gauteng,POS-Terminal-18
+INC0010555,Incident,App login failing with error ERR-994 after release PRM-3333,Mobile App,3,In Progress,2026-03-09 06:26,,Digital Commerce,Gauteng,Mobile-BFF-21
+INC0010556,Incident,Store W431 receiving not reflecting in inventory ledger,Inventory & Stock Sync,3,Resolved,2025-09-04 14:45,2025-09-07 22:59,Merch Systems,Western Cape,Stock-Sync-Job-19
+CHG0007183,Change Request,Patch release for duplicate barcodes detected for 56 products,Product Master Data,3,Closed,2025-11-30 09:49,2025-12-03 18:43,Data Services,National / Online,PIM-Hub-39
+INC0010557,Incident,Order ORD-312499 split incorrectly across fulfilment nodes,Order Fulfilment,2,Resolved,2025-11-25 11:34,2025-11-26 13:25,Fulfilment Tech,Eastern Cape,OMS-Core-20
+INC0010558,Incident,Gift card balance enquiry timing out online,Gift Cards & Vouchers,1,New,2026-03-29 15:00,,Payments Ops,National / Online,GiftCard-Service-06
+INC0010559,Incident,Checkout payment step returning 502 for 9% of sessions,Online Checkout,1,Closed,2026-05-14 09:20,2026-05-14 14:51,Digital Commerce,Western Cape,Checkout-Service-34
+CHG0007184,Change Request,Emergency change: gift card redemption declining with error err-128 at store w310,Gift Cards & Vouchers,3,Implement,2026-01-04 20:40,,Payments Ops,Free State,GiftCard-Service-09
+INC0010560,Incident,Basket total mismatch after promo applied at checkout,Online Checkout,4,Resolved,2026-05-01 09:45,2026-05-02 13:12,Digital Commerce,National / Online,Checkout-Service-18
+INC0010561,Incident,Wi-Fi outage in backup area of store W231 — RF guns offline,Store Network & Connectivity,1,Closed,2026-06-21 08:38,2026-06-21 11:38,Network Ops,North West,Store-Router-21
+PRB0004185,Problem,Router config drift detected at store W400 after change,Store Network & Connectivity,4,Resolved,2025-08-27 11:37,2025-08-28 01:39,Network Ops,Western Cape,Store-Router-27
+INC0010562,Incident,"POS EOD batch stuck at store W415, trading day not closed",POS & Tills,4,New,2026-06-24 12:07,,Store Systems,National / Online,POS-Terminal-14
+CHG0007185,Change Request,Emergency change: as2 certificate expiry caused vendor textilepro channel outage,Supply Chain EDI,3,Closed,2026-02-11 08:24,2026-02-13 01:48,Integration Hub,Free State,EDI-Gateway-11
+INC0010563,Incident,Cycle-count variance file rejected for store W358,Inventory & Stock Sync,1,Closed,2026-03-21 20:07,2026-03-22 03:54,Merch Systems,Eastern Cape,Stock-Sync-Job-29
+PRB0004186,Problem,Bank switch latency above 8s causing tender timeouts,Payments & EFT,2,Closed,2026-02-19 09:19,2026-02-19 20:29,Payments Ops,National / Online,EFT-Switch-38
+PRB0004187,Problem,WRewards points not awarded on qualifying basket,WRewards Loyalty,4,Root Cause Analysis,2025-07-31 20:37,,Loyalty Platform,Western Cape,Loyalty-API-07
+INC0010564,Incident,Cycle-count variance file rejected for store W556,Inventory & Stock Sync,3,Closed,2025-12-11 18:13,2025-12-14 02:54,Merch Systems,Mpumalanga,Stock-Sync-Job-33
+INC0010565,Incident,Voucher PRM-3897 redeemable multiple times — exposure risk,Gift Cards & Vouchers,3,In Progress,2026-01-31 18:02,,Payments Ops,National / Online,GiftCard-Service-23
+INC0010566,Incident,Courier manifest not generated for 52 orders,Order Fulfilment,3,Resolved,2026-04-26 13:42,2026-04-28 20:01,Fulfilment Tech,National / Online,OMS-Core-40
+CHG0007186,Change Request,Emergency change: checkout payment step returning 502 for 40% of sessions,Online Checkout,3,Assess,2026-02-08 16:48,,Digital Commerce,Gauteng,Checkout-Service-03
+INC0010567,Incident,Tier recalculation job failed — member benefits downgraded,WRewards Loyalty,3,New,2026-02-16 18:02,,Loyalty Platform,KwaZulu-Natal,Loyalty-API-35
+PRB0004188,Problem,Images not loading on home screen — CDN 403s,Mobile App,4,Closed,2026-06-11 17:10,2026-06-15 18:58,Digital Commerce,Western Cape,Mobile-BFF-34
+INC0010568,Incident,Router config drift detected at store W315 after change,Store Network & Connectivity,3,Closed,2026-06-22 14:34,2026-06-25 16:50,Network Ops,Gauteng,Store-Router-29
+INC0010569,Incident,"Primary link down at store W365, all cloud services impacted",Store Network & Connectivity,3,Closed,2025-07-23 10:26,2025-07-24 08:43,Network Ops,Mpumalanga,Store-Router-26
+INC0010570,Incident,POS terminal offline — store W479 unable to trade on 56 lanes,POS & Tills,1,In Progress,2026-06-18 09:15,,Store Systems,National / Online,POS-Terminal-17
+INC0010571,Incident,"POS EOD batch stuck at store W545, trading day not closed",POS & Tills,3,Closed,2026-02-25 14:47,2026-02-28 21:49,Store Systems,Gauteng,POS-Terminal-10
+PRB0004189,Problem,Tier recalculation job failed — member benefits downgraded,WRewards Loyalty,3,Root Cause Analysis,2025-08-18 15:00,,Loyalty Platform,Free State,Loyalty-API-20
+CHG0007187,Change Request,Deploy fix for images not loading on home screen — cdn 403s,Mobile App,4,Closed,2026-01-13 07:41,2026-01-14 17:29,Digital Commerce,National / Online,Mobile-BFF-27
+PRB0004190,Problem,"Receipt printer failure on till 15, store W320",POS & Tills,3,Closed,2025-08-21 14:53,2025-08-24 04:15,Store Systems,KwaZulu-Natal,POS-Terminal-05
+PRB0004191,Problem,App login failing with error ERR-262 after release PRM-9267,Mobile App,3,Root Cause Analysis,2026-02-13 12:04,,Digital Commerce,National / Online,Mobile-BFF-19
+INC0010572,Incident,ASN messages from vendor DairyDirect failing schema validation,Supply Chain EDI,4,Closed,2025-07-22 19:15,2025-07-25 21:42,Integration Hub,Western Cape,EDI-Gateway-12
+INC0010573,Incident,Product images not propagating from PIM to web,Product Master Data,4,On Hold,2025-10-25 06:06,,Data Services,National / Online,PIM-Hub-09
+INC0010574,Incident,Checkout payment step returning 502 for 52% of sessions,Online Checkout,3,On Hold,2026-01-28 12:47,,Digital Commerce,Mpumalanga,Checkout-Service-24
+CHG0007188,Change Request,Deploy fix for duplicate vouchers issued to 60 members,WRewards Loyalty,4,Closed,2026-06-01 15:06,2026-06-05 14:58,Loyalty Platform,Gauteng,Loyalty-API-24
+INC0010575,Incident,Basket total mismatch after promo applied at checkout,Online Checkout,4,New,2025-11-14 15:48,,Digital Commerce,Gauteng,Checkout-Service-34
+CHG0007189,Change Request,Config change: eft declines spiking at store w234 — response code 91,Payments & EFT,4,Scheduled,2026-04-02 09:17,,Payments Ops,North West,EFT-Switch-37
+INC0010576,Incident,Card payments timing out across Gauteng stores,Payments & EFT,3,Closed,2026-03-25 20:21,2026-03-28 15:26,Payments Ops,Western Cape,EFT-Switch-07
+INC0010577,Incident,3-D Secure redirect loop on mobile web checkout,Online Checkout,4,Closed,2026-05-17 17:26,2026-05-19 10:24,Digital Commerce,Eastern Cape,Checkout-Service-08
+INC0010578,Incident,EFT declines spiking at store W218 — response code 91,Payments & EFT,2,Closed,2026-05-22 08:12,2026-05-22 16:22,Payments Ops,KwaZulu-Natal,EFT-Switch-13
+INC0010579,Incident,Barcode scanner intermittently not reading at store W207,POS & Tills,3,Closed,2026-05-25 10:32,2026-05-27 01:19,Store Systems,National / Online,POS-Terminal-15
+INC0010580,Incident,"POS EOD batch stuck at store W293, trading day not closed",POS & Tills,3,Closed,2025-07-14 09:00,2025-07-18 04:45,Store Systems,Western Cape,POS-Terminal-05
+INC0010581,Incident,Store W292 on 4G failover — degraded POS response,Store Network & Connectivity,3,Resolved,2026-04-12 11:01,2026-04-13 21:23,Network Ops,KwaZulu-Natal,Store-Router-07
+INC0010582,Incident,"Loyalty card lookup timing out at till, store W278",WRewards Loyalty,3,On Hold,2025-10-04 07:17,,Loyalty Platform,Western Cape,Loyalty-API-25
+CHG0007190,Change Request,Patch release for gift card redemption declining with error err-707 at store w388,Gift Cards & Vouchers,3,Implement,2026-06-27 07:56,,Payments Ops,Northern Cape,GiftCard-Service-39
+INC0010583,Incident,Cycle-count variance file rejected for store W299,Inventory & Stock Sync,3,Closed,2025-12-18 14:35,2025-12-19 12:26,Merch Systems,Western Cape,Stock-Sync-Job-19
+CHG0007191,Change Request,Emergency change: app checkout button unresponsive on ios 2,Mobile App,4,Assess,2025-10-12 17:33,,Digital Commerce,Western Cape,Mobile-BFF-27
+PRB0004192,Problem,High packet loss to data centre from Gauteng stores,Store Network & Connectivity,3,Root Cause Analysis,2026-05-28 11:33,,Network Ops,Mpumalanga,Store-Router-01
+INC0010584,Incident,Gift card balance enquiry timing out online,Gift Cards & Vouchers,3,Closed,2025-09-25 19:24,2025-09-26 22:46,Payments Ops,Western Cape,GiftCard-Service-06
+INC0010585,Incident,Courier manifest not generated for 27 orders,Order Fulfilment,4,Closed,2025-12-04 08:19,2025-12-05 03:41,Fulfilment Tech,North West,OMS-Core-07
+CHG0007192,Change Request,"Deploy fix for promo price not applying at till for advertised line, store w507",Pricing & Promotions,3,Scheduled,2025-09-26 13:49,,Merch Systems,Northern Cape,Promo-Engine-36
+INC0010586,Incident,Stock sync job overran window by 29 hours — online availability stale,Inventory & Stock Sync,3,Closed,2026-04-26 07:53,2026-04-26 17:30,Merch Systems,Limpopo,Stock-Sync-Job-25
+INC0010587,Incident,Push notifications not delivered for order updates,Mobile App,3,Resolved,2025-10-20 18:38,2025-10-23 22:35,Digital Commerce,Gauteng,Mobile-BFF-38
+INC0010588,Incident,App checkout button unresponsive on iOS 56,Mobile App,4,Closed,2025-10-06 06:10,2025-10-08 23:21,Digital Commerce,KwaZulu-Natal,Mobile-BFF-04
+INC0010589,Incident,POS terminal offline — store W471 unable to trade on 46 lanes,POS & Tills,4,Closed,2026-01-12 15:27,2026-01-15 09:16,Store Systems,Western Cape,POS-Terminal-24
+PRB0004193,Problem,Same-day delivery cutoff not enforced — late promises made,Order Fulfilment,3,Resolved,2025-08-04 09:06,2025-08-06 15:56,Fulfilment Tech,Western Cape,OMS-Core-28
+INC0010590,Incident,"Loyalty card lookup timing out at till, store W279",WRewards Loyalty,3,Resolved,2025-09-03 06:26,2025-09-06 14:47,Loyalty Platform,KwaZulu-Natal,Loyalty-API-05
+CHG0007193,Change Request,Config change: invoice edi mismatch blocking grn for dc 7,Supply Chain EDI,2,Scheduled,2026-06-08 12:22,,Integration Hub,Western Cape,EDI-Gateway-18
+INC0010591,Incident,Dual-message settlement mismatch for trading date 2026-04-15,Payments & EFT,3,In Progress,2026-05-08 11:15,,Payments Ops,National / Online,EFT-Switch-24
+INC0010592,Incident,Router config drift detected at store W231 after change,Store Network & Connectivity,3,Resolved,2025-10-25 16:45,2025-10-29 04:13,Network Ops,National / Online,Store-Router-22
+INC0010593,Incident,Basket total mismatch after promo applied at checkout,Online Checkout,4,Closed,2026-04-27 09:32,2026-04-29 00:46,Digital Commerce,National / Online,Checkout-Service-18
+CHG0007194,Change Request,"Deploy fix for receipt printer failure on till 10, store w491",POS & Tills,3,Closed,2025-08-06 10:28,2025-08-10 04:23,Store Systems,Eastern Cape,POS-Terminal-37
+PRB0004194,Problem,Checkout payment step returning 502 for 40% of sessions,Online Checkout,4,Root Cause Analysis,2025-07-18 13:47,,Digital Commerce,Gauteng,Checkout-Service-18
+INC0010594,Incident,Stock-on-hand not syncing to online for DC 15 range,Inventory & Stock Sync,2,Resolved,2026-04-21 08:52,2026-04-22 09:05,Merch Systems,Gauteng,Stock-Sync-Job-26
+CHG0007195,Change Request,Deploy fix for negative soh values appearing for 3 skus after nightly sync,Inventory & Stock Sync,3,Implement,2026-06-25 15:55,,Merch Systems,Gauteng,Stock-Sync-Job-23
+CHG0007196,Change Request,Config change: asn messages from vendor textilepro failing schema validation,Supply Chain EDI,3,Authorise,2026-04-17 19:04,,Integration Hub,National / Online,EDI-Gateway-35
+INC0010595,Incident,Push notifications not delivered for order updates,Mobile App,2,In Progress,2026-06-16 18:42,,Digital Commerce,Limpopo,Mobile-BFF-21
+PRB0004195,Problem,POS terminal offline — store W299 unable to trade on 41 lanes,POS & Tills,3,Resolved,2026-03-20 20:46,2026-03-22 23:59,Store Systems,Northern Cape,POS-Terminal-09
+CHG0007197,Change Request,Patch release for barcode scanner intermittently not reading at store w493,POS & Tills,4,Assess,2026-04-02 14:48,,Store Systems,Western Cape,POS-Terminal-34
+PRB0004196,Problem,POS terminal offline — store W440 unable to trade on 46 lanes,POS & Tills,4,Resolved,2026-05-01 18:54,2026-05-03 09:45,Store Systems,KwaZulu-Natal,POS-Terminal-05
+INC0010596,Incident,New season SKUs missing attributes — 6 lines blocked from listing,Product Master Data,4,Resolved,2026-01-30 08:44,2026-02-01 00:40,Data Services,Western Cape,PIM-Hub-25
+INC0010597,Incident,Barcode scanner intermittently not reading at store W330,POS & Tills,4,In Progress,2026-01-18 12:58,,Store Systems,National / Online,POS-Terminal-04
+INC0010598,Incident,Gift card redemption declining with error ERR-324 at store W251,Gift Cards & Vouchers,3,New,2026-06-16 09:11,,Payments Ops,Gauteng,GiftCard-Service-27
+INC0010599,Incident,Basket total mismatch after promo applied at checkout,Online Checkout,4,Resolved,2026-01-22 15:50,2026-01-25 04:17,Digital Commerce,National / Online,Checkout-Service-16
+INC0010600,Incident,Courier manifest not generated for 48 orders,Order Fulfilment,4,Closed,2025-12-07 12:47,2025-12-10 01:22,Fulfilment Tech,Gauteng,OMS-Core-18
+PRB0004197,Problem,High packet loss to data centre from North West stores,Store Network & Connectivity,2,Fix in Progress,2025-07-25 07:09,,Network Ops,Gauteng,Store-Router-09
+PRB0004198,Problem,Dual-message settlement mismatch for trading date 2026-03-08,Payments & EFT,4,Fix in Progress,2025-12-09 08:53,,Payments Ops,North West,EFT-Switch-30
+INC0010601,Incident,App crash on product page for Android 33% of sessions,Mobile App,1,Resolved,2026-01-07 09:41,2026-01-07 17:43,Digital Commerce,KwaZulu-Natal,Mobile-BFF-02
+INC0010602,Incident,Bank switch latency above 8s causing tender timeouts,Payments & EFT,4,Resolved,2025-12-11 07:36,2025-12-13 05:42,Payments Ops,Mpumalanga,EFT-Switch-04

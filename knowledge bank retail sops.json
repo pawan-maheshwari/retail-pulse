@@ -1,0 +1,435 @@
+{
+  "name": "Retail Services SOP Knowledge Bank",
+  "version": "1.0",
+  "sops": [
+    {
+      "id": "SOP-POS-001",
+      "title": "POS terminal offline or frozen — restore trading",
+      "area": "POS & Tills",
+      "keywords": [
+        "pos",
+        "till",
+        "terminal",
+        "frozen",
+        "offline",
+        "not trading",
+        "lane",
+        "tender screen",
+        "hung"
+      ],
+      "rca": "Most POS lockups trace to the local transaction queue filling up when the store link degrades, or a memory leak in the tender module after long uptime. Terminals that have not been rebooted in 14+ days are 4x more likely to freeze during peak trade.",
+      "fix": [
+        "Confirm scope: single till vs whole store (whole store → check network SOP first).",
+        "Soft-restart the POS application from the lane controller; do not power-cycle mid-tender.",
+        "If frozen mid-payment, verify the last EFT auth on the acquirer portal before re-ringing to avoid double charge.",
+        "Clear the offline transaction queue once the link is confirmed healthy.",
+        "If hardware fault suspected, swap in the store spare terminal and log an asset ticket."
+      ],
+      "mitigation": [
+        "Enable the weekly automated rolling reboot for all lanes (out of trading hours).",
+        "Set queue-depth alerting at 200 offline transactions per terminal.",
+        "Keep one configured spare terminal per 10 lanes at each store."
+      ]
+    },
+    {
+      "id": "SOP-POS-002",
+      "title": "POS end-of-day batch stuck — trading day not closing",
+      "area": "POS & Tills",
+      "keywords": [
+        "eod",
+        "end of day",
+        "batch",
+        "stuck",
+        "trading day",
+        "close",
+        "settlement batch"
+      ],
+      "rca": "EOD hangs are almost always one unsettled tender (usually a reversed EFT left in PENDING) or a lane that was powered off before cash-up, leaving an open session that blocks the store close.",
+      "fix": [
+        "Identify the blocking lane/session from the EOD console.",
+        "Settle or void the pending tender after confirming with the acquirer report.",
+        "Force-close the orphaned session, then re-run the EOD job.",
+        "Verify the trading-day totals posted to finance before releasing the store."
+      ],
+      "mitigation": [
+        "Add a pre-EOD sweep job at 21:30 that flags pending tenders to the store manager.",
+        "Train cash-up staff to close lanes via the controller, never by powering off."
+      ]
+    },
+    {
+      "id": "SOP-PAY-001",
+      "title": "EFT declines or timeouts spiking",
+      "area": "Payments & EFT",
+      "keywords": [
+        "eft",
+        "decline",
+        "code 91",
+        "card",
+        "payment",
+        "timeout",
+        "tender timeout",
+        "switch",
+        "acquirer",
+        "tap"
+      ],
+      "rca": "Response code 91 spikes indicate the issuer/switch is unreachable — typically bank-side congestion, an expired connection pool on the EFT switch, or latency on the store link pushing auths past the 8-second timeout.",
+      "fix": [
+        "Check the switch dashboard: is the spike national (bank-side) or one region/store (link-side)?",
+        "If bank-side, enable stand-in/offline floor limits per the risk matrix and notify the acquirer.",
+        "If link-side, fail the store over to the secondary link and recycle the EFT connection pool.",
+        "Communicate tender guidance to affected stores (encourage alternate tender types).",
+        "Reconcile stand-in transactions within 24h of restoration."
+      ],
+      "mitigation": [
+        "Set latency alerting at 5s p95 on auth round-trips (before customers feel 8s timeouts).",
+        "Quarterly failover test of the secondary acquirer route.",
+        "Automate connection-pool recycling on sustained error-rate breach."
+      ]
+    },
+    {
+      "id": "SOP-PAY-002",
+      "title": "Settlement / dual-message mismatch",
+      "area": "Payments & EFT",
+      "keywords": [
+        "settlement",
+        "mismatch",
+        "reconciliation",
+        "dual-message",
+        "recon",
+        "trading date"
+      ],
+      "rca": "Mismatches occur when auth and clearing legs land on different trading dates — usually after an EOD delay, a switch restart mid-batch, or duplicate clearing files from the acquirer.",
+      "fix": [
+        "Pull the recon exception report for the trading date and classify: missing clearing vs duplicate vs amount variance.",
+        "For duplicates, confirm with the acquirer before any customer refund.",
+        "Re-request the clearing file for missing legs; do not manually journal until file recovery fails.",
+        "Post approved adjustments through the recon tool so the audit trail stays intact."
+      ],
+      "mitigation": [
+        "Automate day+1 three-way recon (POS vs switch vs acquirer) with exception alerting.",
+        "Freeze switch restarts during the settlement window (22:00–02:00)."
+      ]
+    },
+    {
+      "id": "SOP-WEB-001",
+      "title": "Online checkout failing or timing out",
+      "area": "Online Checkout",
+      "keywords": [
+        "checkout",
+        "502",
+        "payment step",
+        "processing payment",
+        "duplicated",
+        "orders duplicated",
+        "3-d secure",
+        "3ds",
+        "redirect loop",
+        "basket"
+      ],
+      "rca": "Checkout 5xx bursts usually come from payment-provider latency exhausting the checkout service thread pool. Duplicate orders happen when the client retries while the first payment is still settling — a missing idempotency key on the order-create call.",
+      "fix": [
+        "Check payment-provider status and checkout service saturation (thread pool, p95 latency).",
+        "Enable the degraded-checkout mode: queue orders, defer non-critical calls (recommendations, stock badges).",
+        "For duplicates, run the dedupe script on orders sharing basket-hash within 10 minutes; cancel and auto-refund the later ones.",
+        "For 3-DS loops, verify the ACS return URL matches the current release; roll back the routing change if it drifted."
+      ],
+      "mitigation": [
+        "Enforce idempotency keys on order creation.",
+        "Circuit-breaker on payment provider with automatic queue-and-retry.",
+        "Synthetic checkout probe every 2 minutes with alerting at 2 consecutive failures."
+      ]
+    },
+    {
+      "id": "SOP-WEB-002",
+      "title": "Basket / promo total mismatch at checkout",
+      "area": "Online Checkout",
+      "keywords": [
+        "basket total",
+        "promo",
+        "mismatch",
+        "discount",
+        "double-discount",
+        "price different"
+      ],
+      "rca": "Totals drift when the promo engine and checkout price differently — typically a promotion cached in the basket after it expired, or stacking rules evaluated in different order between web and checkout service.",
+      "fix": [
+        "Reproduce with the exact basket; capture both price traces (web vs checkout).",
+        "Flush the promo cache for the affected promotion IDs.",
+        "Disable the offending promotion online if exposure is ongoing; honour advertised price at support level.",
+        "Log a defect with both traces attached for the stacking-order fix."
+      ],
+      "mitigation": [
+        "Contract test between promo engine and checkout on every promo-rule release.",
+        "Cache TTL on basket promos capped at 15 minutes."
+      ]
+    },
+    {
+      "id": "SOP-INV-001",
+      "title": "Stock-on-hand not syncing / stale online availability",
+      "area": "Inventory & Stock Sync",
+      "keywords": [
+        "stock",
+        "soh",
+        "sync",
+        "availability",
+        "stale",
+        "inventory",
+        "not syncing",
+        "overran"
+      ],
+      "rca": "The nightly SOH sync overruns when the delta feed degrades to a full extract (usually after a failed prior run) — downstream, online availability then serves stale positions all morning.",
+      "fix": [
+        "Check whether last night's job ran delta or full; find the failure that triggered the full extract.",
+        "Prioritise the online-fulfilment ranges: push a targeted delta for active online SKUs first.",
+        "Temporarily raise safety-stock thresholds online to reduce oversell risk while stale.",
+        "Backfill the remainder and verify record counts against the ledger."
+      ],
+      "mitigation": [
+        "Split the sync into priority lanes (online-active SKUs first).",
+        "Alert if the job passes 60% of its window with under 80% records processed."
+      ]
+    },
+    {
+      "id": "SOP-INV-002",
+      "title": "Negative SOH / receiving not reflecting",
+      "area": "Inventory & Stock Sync",
+      "keywords": [
+        "negative",
+        "soh",
+        "receiving",
+        "grn",
+        "ledger",
+        "variance",
+        "cycle count"
+      ],
+      "rca": "Negative positions appear when sales decrement before the matching GRN posts — a sequencing issue between the receiving interface and the sales feed, often after a store scanned goods to the floor before completing receiving.",
+      "fix": [
+        "Identify affected SKUs/stores from the negative-SOH report.",
+        "Post the outstanding GRNs; where paperwork is missing, raise a stock adjustment with store sign-off.",
+        "Re-run the ledger rebuild for the affected store-days.",
+        "Confirm online availability recalculated after correction."
+      ],
+      "mitigation": [
+        "Block floor movement scans until receiving completes for the delivery.",
+        "Daily negative-SOH exception report to store ops before 08:00."
+      ]
+    },
+    {
+      "id": "SOP-PRC-001",
+      "title": "Promo price not applying at till / price file failures",
+      "area": "Pricing & Promotions",
+      "keywords": [
+        "promo price",
+        "price file",
+        "shelf-edge",
+        "label",
+        "till price",
+        "not applying",
+        "markdown",
+        "deploy"
+      ],
+      "rca": "Till/shelf mismatches are nearly always a price file that failed to deploy to a subset of stores overnight — commonly a locked file on the store controller or a store that was offline in the deployment window.",
+      "fix": [
+        "Pull the deployment report: list stores that missed the file.",
+        "Re-push the price file to failed stores; verify checksum on the controller.",
+        "Until live, authorise manual price override at till per the advertised-price policy.",
+        "For double-discounting, suspend the promotion and quantify exposure from transaction logs."
+      ],
+      "mitigation": [
+        "Retry-with-alerting on price deployment (3 attempts, then page Merch Systems).",
+        "Morning price-verification scan of 20 promo lines per store via the RF gun app."
+      ]
+    },
+    {
+      "id": "SOP-FUL-001",
+      "title": "Click-and-collect / orders stuck in allocation",
+      "area": "Order Fulfilment",
+      "keywords": [
+        "click-and-collect",
+        "allocated",
+        "stuck",
+        "oms",
+        "picking",
+        "waves",
+        "manifest",
+        "courier",
+        "orders stuck"
+      ],
+      "rca": "Orders wedge in ALLOCATED when the OMS reserves stock at a node whose picking app never acknowledges — usually the store device is offline or the wave-release scheduler died after a deploy.",
+      "fix": [
+        "Check the OMS→node acknowledgement queue for the affected store/DC.",
+        "Restart the wave-release scheduler; confirm heartbeats from picking devices.",
+        "For orders past promise time, re-source to the next-best node in bulk via the re-allocation tool.",
+        "Trigger customer comms for any revised collection/delivery times."
+      ],
+      "mitigation": [
+        "Heartbeat alerting on picking devices per node (silence > 15 min pages Fulfilment Tech).",
+        "Auto re-source rule when a node holds an order unacknowledged > 30 min."
+      ]
+    },
+    {
+      "id": "SOP-LOY-001",
+      "title": "WRewards points/vouchers not awarding correctly",
+      "area": "WRewards Loyalty",
+      "keywords": [
+        "wrewards",
+        "points",
+        "loyalty",
+        "voucher",
+        "duplicate voucher",
+        "tier",
+        "not awarded",
+        "lookup timing out",
+        "linking"
+      ],
+      "rca": "Missed awards are usually the loyalty API timing out at the till (basket still completes, award event lost). Duplicate vouchers come from the issuing job re-running after a partial failure without an issued-flag check.",
+      "fix": [
+        "For missed points: replay lost award events from the transaction log (T-log) for the affected window.",
+        "For till timeouts: raise the till-side timeout to async mode so tender never blocks on loyalty.",
+        "For duplicate vouchers: invalidate the later duplicates and notify affected members with a goodwill message.",
+        "Verify tier recalculation after any bulk replay."
+      ],
+      "mitigation": [
+        "Make voucher issuing idempotent on member+campaign key.",
+        "Loyalty calls at till fire-and-forget with guaranteed event queue."
+      ]
+    },
+    {
+      "id": "SOP-EDI-001",
+      "title": "Vendor EDI failures (ASN / PO ack / invoices)",
+      "area": "Supply Chain EDI",
+      "keywords": [
+        "edi",
+        "asn",
+        "856",
+        "vendor",
+        "schema validation",
+        "backlog",
+        "as2",
+        "certificate",
+        "grn blocked",
+        "invoice"
+      ],
+      "rca": "Bulk EDI failures cluster around three causes: a vendor system change breaking the message schema, AS2 certificate expiry killing the channel, or a gateway mapping deploy that regressed one document type.",
+      "fix": [
+        "Classify the failures by vendor and document type from the gateway console.",
+        "Schema errors: send the vendor the validation report; reprocess once corrected.",
+        "Certificate expiry: install the renewed cert and replay the queued messages in sequence.",
+        "If GRNs are blocked at a DC, authorise manual receiving against the PO with recon flag."
+      ],
+      "mitigation": [
+        "Certificate expiry alerting at 30/7/1 days across all vendor channels.",
+        "Canary validation on gateway mapping deploys using golden message samples."
+      ]
+    },
+    {
+      "id": "SOP-NET-001",
+      "title": "Store link down or degraded (4G failover)",
+      "area": "Store Network & Connectivity",
+      "keywords": [
+        "link down",
+        "network",
+        "4g",
+        "failover",
+        "packet loss",
+        "router",
+        "connectivity",
+        "wi-fi",
+        "rf guns",
+        "offline store"
+      ],
+      "rca": "Primary-link outages are mostly carrier-side (fibre cuts, exchange faults). Degraded trading on failover happens when non-essential traffic (CCTV backup, patching) is not throttled and saturates the 4G path.",
+      "fix": [
+        "Confirm failover engaged; log the carrier fault with reference number.",
+        "Apply the failover QoS profile: POS/EFT priority, block CCTV upload and patch traffic.",
+        "If both paths are down, switch the store to offline trading mode per the POS offline SOP.",
+        "Monitor until primary restores; verify queue drain and auto-failback."
+      ],
+      "mitigation": [
+        "Enforce QoS templates on all store routers, audited monthly for config drift.",
+        "Dual-carrier SIMs for the top 100 revenue stores."
+      ]
+    },
+    {
+      "id": "SOP-APP-001",
+      "title": "Mobile app crashes, login failures or content not loading",
+      "area": "Mobile App",
+      "keywords": [
+        "app crash",
+        "login failing",
+        "push notifications",
+        "cdn",
+        "403",
+        "images not loading",
+        "android",
+        "ios",
+        "release",
+        "app checkout"
+      ],
+      "rca": "Post-release crash spikes are typically an untested OS/device combination or a backend contract change the app didn't handle. CDN 403s point at token/key rotation not propagated to the image origin config.",
+      "fix": [
+        "Segment the crash spike by app version, OS and endpoint in the crash tool.",
+        "If tied to the new release, halt the phased rollout and feature-flag off the offending screen.",
+        "For login failures, check the identity provider status and token clock-skew before app-side fixes.",
+        "For CDN 403s, re-sync the origin access keys and purge affected paths."
+      ],
+      "mitigation": [
+        "Phased rollouts capped at 10% for 24h with auto-halt on crash-rate breach.",
+        "Contract tests between app BFF and backend on every backend release."
+      ]
+    },
+    {
+      "id": "SOP-GC-001",
+      "title": "Gift card / voucher redemption failures",
+      "area": "Gift Cards & Vouchers",
+      "keywords": [
+        "gift card",
+        "redemption",
+        "declining",
+        "voucher",
+        "balance enquiry",
+        "bulk load",
+        "barcode not scanning",
+        "multiple times"
+      ],
+      "rca": "Redemption declines usually mean the gift-card processor session pool expired after a network blip. Multi-redeemable vouchers indicate the redemption flag update failed after approval — a two-phase update without compensation.",
+      "fix": [
+        "Recycle the processor session pool; test with a known-good card.",
+        "For a multi-redeemable voucher, block the voucher code immediately and quantify redemptions from logs.",
+        "For failed bulk corporate loads, reverse partial loads before re-running to avoid double credit.",
+        "Barcode issues at till: verify symbology config on scanner profile against the voucher spec."
+      ],
+      "mitigation": [
+        "Make redemption a single atomic operation at the processor.",
+        "Daily exception report: vouchers with redemption count > 1."
+      ]
+    },
+    {
+      "id": "SOP-PIM-001",
+      "title": "Product master data gaps blocking listing or receiving",
+      "area": "Product Master Data",
+      "keywords": [
+        "master data",
+        "sku",
+        "attributes missing",
+        "duplicate barcode",
+        "pim",
+        "images not propagating",
+        "unit of measure",
+        "uom",
+        "blocked from listing"
+      ],
+      "rca": "Listing blocks after a season load usually mean the supplier onboarding template changed and mandatory attributes arrived blank. Duplicate barcodes and UoM mismatches come from manual captures bypassing PIM validation.",
+      "fix": [
+        "Export the blocked SKU list with missing-attribute reasons from PIM.",
+        "Bulk-enrich from the supplier portal where data exists; chase suppliers for the remainder with a deadline.",
+        "For duplicate barcodes, deactivate the newer capture and re-issue internal codes where needed.",
+        "Replay the PIM→web publish for corrected SKUs and verify image propagation."
+      ],
+      "mitigation": [
+        "Validation gate: no SKU leaves PIM without the mandatory attribute set per department.",
+        "Lock manual barcode entry; all captures via the supplier portal with checksum validation."
+      ]
+    }
+  ]
+}
