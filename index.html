@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RetailOps Pulse — Retail Service Intelligence</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230a0a0a'/%3E%3Crect x='40' y='40' width='14' height='14' fill='%231b7b3c'/%3E%3Ctext x='10' y='44' font-family='Helvetica,Arial' font-size='34' font-weight='700' fill='%23fff'%3ER%3C/text%3E%3C/svg%3E">
 <style>
   :root{
     --ink:#0a0a0a; --paper:#ffffff; --bone:#f5f4f1; --line:#e5e3dd;
@@ -173,6 +174,56 @@
   .docview iframe{flex:1;border:0;width:100%;background:#fff}
   .docview-f{border-top:1px solid var(--line);background:var(--bone);color:var(--mute);font-size:11px;padding:8px 16px}
   .foot{border-top:1px solid var(--line);margin-top:8px}
+
+  /* ---------- up arrow ---------- */
+  .up-arrow{position:fixed;right:20px;bottom:20px;width:44px;height:44px;background:var(--ink);color:#fff;border:0;font-size:18px;z-index:35;opacity:0;pointer-events:none;transition:opacity .2s,background .2s}
+  .up-arrow.show{opacity:1;pointer-events:auto}
+  .up-arrow:hover{background:var(--green)}
+
+  /* ---------- credit ---------- */
+  .credit{display:flex;align-items:center;gap:12px}
+  .credit img{width:38px;height:38px;border-radius:50%;object-fit:cover;border:2px solid var(--green);display:block}
+  .credit .cn{line-height:1.35}
+  .credit .cn b{font-size:12px;letter-spacing:.04em}
+  .credit .cn a{color:var(--green);text-decoration:none;font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+  .credit .cn a:hover{text-decoration:underline}
+  .credit .cn .cl{color:var(--mute);font-size:9px;letter-spacing:.16em;text-transform:uppercase;font-weight:700}
+
+  /* ---------- enterprise panel ---------- */
+  .docsnav button.ent{color:var(--green)}
+  .entview{position:fixed;inset:0;background:#fff;z-index:80;display:none;flex-direction:column}
+  .entview.open{display:flex}
+  .entview-h{background:var(--ink);color:#fff;padding:0 16px;min-height:52px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .entview-h .t{display:flex;align-items:baseline;gap:10px}
+  .entview-h .t i{width:8px;height:8px;background:var(--green);display:inline-block}
+  .entview-h .t b{font-size:12px;letter-spacing:.22em;text-transform:uppercase}
+  .entview-h button{border:1px solid #3a3a3a;background:transparent;color:#e8e6e1;padding:7px 13px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:700}
+  .entview-h button:hover{background:var(--green);border-color:var(--green)}
+  .entbody{flex:1;overflow-y:auto;padding:24px 20px}
+  .entgrid{max-width:1100px;margin:0 auto}
+  .entsec{margin-bottom:34px}
+  .entsec h3{font-size:12px;letter-spacing:.2em;text-transform:uppercase;border-bottom:2px solid var(--ink);padding-bottom:7px;margin-bottom:14px;display:flex;gap:10px}
+  .entsec h3 em{color:var(--green);font-style:normal}
+  .entsec p{margin-bottom:10px;font-size:13.5px;line-height:1.6;max-width:860px}
+  .entsec table{width:100%;border-collapse:collapse;font-size:12.5px;margin:10px 0}
+  .entsec th{text-align:left;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);border-bottom:2px solid var(--ink);padding:7px 9px}
+  .entsec td{border-bottom:1px solid var(--line);padding:8px 9px;vertical-align:top}
+  .entsec td b.g{color:var(--green)}
+  .calc{border:1px solid var(--line);background:var(--bone);padding:16px;margin:12px 0}
+  .calc .cg{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+  .calc label{display:block;font-size:9px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--mute);margin-bottom:4px}
+  .calc input{width:100%;border:1px solid var(--line);padding:7px 9px;font-size:13px;font-family:inherit;font-variant-numeric:tabular-nums}
+  .calc .res{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+  .calc .res .r{background:#fff;border:1px solid var(--line);padding:10px 14px;min-width:150px}
+  .calc .res .r .rv{font-size:19px;font-weight:700;font-variant-numeric:tabular-nums}
+  .calc .res .r .rv.g{color:var(--green)}
+  .calc .res .r .rl{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);font-weight:700;margin-top:2px}
+  .phase{display:flex;gap:0;margin:14px 0;flex-wrap:wrap}
+  .ph{flex:1;min-width:170px;border:1px solid var(--line);border-left:3px solid var(--ink);padding:12px 14px;background:#fff}
+  .ph.now{border-left-color:var(--green);background:var(--green-soft)}
+  .ph .pw{font-size:9px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--green)}
+  .ph .pt{font-weight:700;font-size:13px;margin:3px 0 5px}
+  .ph .pd{font-size:11.5px;color:#444;line-height:1.45}
   .foot-in{max-width:1400px;margin:0 auto;padding:16px 20px;color:var(--mute);font-size:11px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   .hide{display:none!important}
 </style>
@@ -190,6 +241,7 @@
       <div class="docsnav">
         <button id="docGuide" type="button">User guide</button>
         <button id="docArch" type="button">Architecture</button>
+        <button id="entBtn" type="button" class="ent">Enterprise upgrade</button>
       </div>
       <div class="mode" role="tablist" aria-label="Mode">
         <button id="tabOffline" class="on" role="tab" aria-selected="true"><span class="led"></span>Offline archive</button>
@@ -299,11 +351,105 @@
 </main>
 
 <footer class="foot">
-  <div class="foot-in">
-    <span>RetailOps Pulse · Demo build styled on a black-and-white retail brand theme · Data shown is synthetic</span>
-    <span>Offline: local analysis only — nothing leaves this page</span>
+  <div class="foot-in" style="align-items:center">
+    <div class="credit">
+      <img src="data:image/jpeg;base64,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" alt="Pawan Maheshwari">
+      <div class="cn">
+        <div class="cl">Conceptualized by</div>
+        <b>Pawan Maheshwari</b> · AI Transformation Lead<br>
+        <a href="https://www.linkedin.com/in/pawan-maheshwari-4b9b4715" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </div>
+    </div>
+    <span style="text-align:right">RetailOps Pulse · Demo build styled on a black-and-white retail brand theme · Synthetic data<br>Offline: local analysis only — nothing leaves this page</span>
   </div>
 </footer>
+
+<button class="up-arrow" id="upArrow" aria-label="Back to top" title="Back to top">↑</button>
+
+<div class="entview" id="entview" role="dialog" aria-modal="true" aria-label="Enterprise upgrade">
+  <div class="entview-h">
+    <div class="t"><i></i><b>Enterprise upgrade path</b></div>
+    <button id="entClose" type="button">Close ×</button>
+  </div>
+  <div class="entbody"><div class="entgrid">
+
+    <div class="entsec">
+      <h3><em>01</em> Bringing an LLM into the picture</h3>
+      <p>The local retriever already produces exactly what an LLM needs as grounding: the top-matched SOPs plus a live data signal from your dumps. The upgrade slots a model in at the <b>Answer Composer</b> — nothing upstream changes, and the deterministic engine stays as the always-available fallback.</p>
+      <table>
+        <tr><th>Integration option</th><th>How it plugs in</th><th>Best when</th></tr>
+        <tr><td><b>Direct API</b> (Anthropic / OpenAI)</td><td>Backend proxies the composer call: query + top-3 SOPs + data signal → grounded narrative answer.</td><td>Fastest path; POCs and mid-size estates.</td></tr>
+        <tr><td><b>Cloud-hosted</b> (AWS Bedrock / Azure AI Foundry / GCP Vertex)</td><td>Same contract, model runs inside your cloud tenancy with VPC endpoints and existing IAM.</td><td>Data-residency and procurement alignment with your cloud ELA.</td></tr>
+        <tr><td><b>ITSM-native AI</b> (ServiceNow Now Assist, Atlassian Intelligence)</td><td>Replace the agent panel with platform AI; keep the heat wall as the analytics layer.</td><td>Licences already owned; single-platform estates.</td></tr>
+        <tr><td><b>Self-hosted open model</b> (Llama / Mistral on GPU)</td><td>Backend serves the model; identical composer contract.</td><td>Strict data controls; high query volumes where per-token cost dominates.</td></tr>
+      </table>
+      <p>Two-stage pattern recommended: <b>Stage A</b> — LLM composes over the existing keyword retrieval (weeks, low risk). <b>Stage B</b> — replace keyword scoring with embeddings + vector search (RAG) once volumes justify it; the answer contract (RCA → Fix now → Mitigation → data signal) never changes.</p>
+    </div>
+
+    <div class="entsec">
+      <h3><em>02</em> Token usage &amp; cost estimator</h3>
+      <p>Per query the composer sends: instruction prompt (~600 tok) + top-3 SOPs (~1,050) + data signal (~150) + user query (~100) ≈ <b>1,900 input tokens</b>, returning ≈ <b>450 output tokens</b>. One-time RAG indexing embeds every record (~40 tok) and SOP (~600 tok). Adjust the assumptions:</p>
+      <div class="calc" id="tokCalc">
+        <div class="cg">
+          <div><label>Records in estate</label><input type="number" id="tRec" value="50000" min="0"></div>
+          <div><label>SOP articles</label><input type="number" id="tSop" value="200" min="0"></div>
+          <div><label>Agent queries / day</label><input type="number" id="tQpd" value="120" min="0"></div>
+          <div><label>Input $ / MTok</label><input type="number" id="tIn" value="3" step="0.1" min="0"></div>
+          <div><label>Output $ / MTok</label><input type="number" id="tOut" value="15" step="0.1" min="0"></div>
+          <div><label>Embedding $ / MTok</label><input type="number" id="tEmb" value="0.1" step="0.01" min="0"></div>
+        </div>
+        <div class="res">
+          <div class="r"><div class="rv" id="rPerQ">—</div><div class="rl">Tokens / query (in + out)</div></div>
+          <div class="r"><div class="rv" id="rMonTok">—</div><div class="rl">Tokens / month</div></div>
+          <div class="r"><div class="rv g" id="rMonCost">—</div><div class="rl">LLM cost / month</div></div>
+          <div class="r"><div class="rv" id="rIdxTok">—</div><div class="rl">One-time index tokens</div></div>
+          <div class="r"><div class="rv" id="rIdxCost">—</div><div class="rl">One-time index cost</div></div>
+        </div>
+      </div>
+      <p style="font-size:11.5px;color:var(--mute)">Defaults reflect a Sonnet-class model; swap the $/MTok for the model you shortlist. Add ~20–30% headroom for retries and conversation follow-ups.</p>
+    </div>
+
+    <div class="entsec">
+      <h3><em>03</em> ROI on tool selection</h3>
+      <p>The value driver is <b>minutes saved per assisted ticket</b> — instant RCA and fix steps versus searching Confluence and tribal memory. Model it against your own volumes:</p>
+      <div class="calc" id="roiCalc">
+        <div class="cg">
+          <div><label>Tickets / month</label><input type="number" id="rTick" value="1000" min="0"></div>
+          <div><label>% tickets agent-assisted</label><input type="number" id="rPct" value="60" min="0" max="100"></div>
+          <div><label>Minutes saved / ticket</label><input type="number" id="rMin" value="12" min="0"></div>
+          <div><label>Loaded cost $ / hour</label><input type="number" id="rRate" value="35" min="0"></div>
+          <div><label>Platform + LLM $ / month</label><input type="number" id="rPlat" value="800" min="0"></div>
+        </div>
+        <div class="res">
+          <div class="r"><div class="rv" id="rHrs">—</div><div class="rl">Engineer hours saved / mo</div></div>
+          <div class="r"><div class="rv" id="rVal">—</div><div class="rl">Value / month</div></div>
+          <div class="r"><div class="rv g" id="rRoi">—</div><div class="rl">ROI</div></div>
+          <div class="r"><div class="rv" id="rPay">—</div><div class="rl">Payback</div></div>
+        </div>
+      </div>
+      <table>
+        <tr><th>Option</th><th>Cost profile</th><th>Answer quality</th><th>Control / residency</th><th>Time to market</th></tr>
+        <tr><td><b>Local retrieval</b> (this build)</td><td><b class="g">$0 run cost</b></td><td>Good on curated SOPs; rigid phrasing</td><td>Total — nothing leaves the page</td><td><b class="g">Live today</b></td></tr>
+        <tr><td><b>+ LLM compose</b> (API / cloud)</td><td>Token metered (see §02)</td><td>Fluent, contextual, multi-SOP synthesis</td><td>High with cloud tenancy option</td><td>2–3 weeks</td></tr>
+        <tr><td><b>+ RAG at scale</b></td><td>Tokens + vector store + backend</td><td>Best recall on large, messy KBs</td><td>High</td><td>6–10 weeks</td></tr>
+        <tr><td><b>ITSM-native AI suite</b></td><td>Per-seat licences (often largest)</td><td>Strong, but generic to platform</td><td>Vendor-bound</td><td>4–12 weeks + procurement</td></tr>
+      </table>
+    </div>
+
+    <div class="entsec">
+      <h3><em>04</em> Time-to-market readiness</h3>
+      <div class="phase">
+        <div class="ph now"><div class="pw">Phase 0 · Now</div><div class="pt">Offline intelligence</div><div class="pd">This file. Heat wall + deterministic agent on dumps. Zero infra, zero spend, demo-ready today.</div></div>
+        <div class="ph"><div class="pw">Phase 1 · Wk 1–3</div><div class="pt">LLM compose</div><div class="pd">Thin backend + model API at the Answer Composer. Local engine kept as fallback. First fluent answers.</div></div>
+        <div class="ph"><div class="pw">Phase 2 · Wk 3–6</div><div class="pt">Live connectors</div><div class="pd">Jira/ServiceNow webhooks → queue → SSE. Real proactive alerts replace the simulator, same card contract.</div></div>
+        <div class="ph"><div class="pw">Phase 3 · Wk 6–10</div><div class="pt">RAG at scale</div><div class="pd">Embed Confluence/SharePoint SOPs into a vector store; retrieval upgrades under the same answer contract.</div></div>
+        <div class="ph"><div class="pw">Phase 4 · Wk 8–12</div><div class="pt">Governed rollout</div><div class="pd">SSO, audit logging, prompt/response evals, feedback loop into SOP curation. Production SLAs.</div></div>
+      </div>
+      <p><b>Readiness checklist before Phase 1:</b> API/cloud account with billing guardrails · a backend host (Functions or container) · SOP owners identified for curation · security sign-off on the data-flow diagram (Architecture page) · baseline metrics captured now (MTTR, tickets/month) so ROI is provable, not asserted.</p>
+    </div>
+
+  </div></div>
+</div>
 
 <div class="ovl" id="ovl"></div>
 <aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Cell details">
@@ -802,6 +948,53 @@
     if (w) closeDoc(); else toast('Pop-up blocked \u2014 allow pop-ups for this page, or keep reading here.');
   });
 
+  /* ---------- up arrow ---------- */
+  window.addEventListener('scroll', function () {
+    $('upArrow').classList.toggle('show', window.scrollY > 320);
+  }, { passive: true });
+  $('upArrow').addEventListener('click', function () {
+    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' });
+  });
+
+  /* ---------- enterprise upgrade panel ---------- */
+  $('entBtn').addEventListener('click', function () { $('entview').classList.add('open'); $('entClose').focus(); });
+  $('entClose').addEventListener('click', function () { $('entview').classList.remove('open'); });
+  function fmt(n) {
+    if (n >= 1e9) return (n / 1e9).toFixed(2) + 'B';
+    if (n >= 1e6) return (n / 1e6).toFixed(2) + 'M';
+    if (n >= 1e3) return (n / 1e3).toFixed(1) + 'k';
+    return String(Math.round(n));
+  }
+  function money(n) { return '$' + (n >= 1000 ? Math.round(n).toLocaleString() : n.toFixed(2)); }
+  function num(id) { return Math.max(0, parseFloat($(id).value) || 0); }
+  function tokCalc() {
+    var inTok = 1900, outTok = 450;
+    var qm = num('tQpd') * 30;
+    var monTok = qm * (inTok + outTok);
+    var monCost = qm * (inTok * num('tIn') + outTok * num('tOut')) / 1e6;
+    var idxTok = num('tRec') * 40 + num('tSop') * 600;
+    var idxCost = idxTok * num('tEmb') / 1e6;
+    $('rPerQ').textContent = fmt(inTok + outTok);
+    $('rMonTok').textContent = fmt(monTok);
+    $('rMonCost').textContent = money(monCost);
+    $('rIdxTok').textContent = fmt(idxTok);
+    $('rIdxCost').textContent = money(idxCost);
+  }
+  function roiCalc() {
+    var hrs = num('rTick') * (num('rPct') / 100) * num('rMin') / 60;
+    var val = hrs * num('rRate');
+    var cost = num('rPlat');
+    var roi = cost > 0 ? (val - cost) / cost * 100 : 0;
+    $('rHrs').textContent = fmt(hrs);
+    $('rVal').textContent = money(val);
+    $('rRoi').textContent = (roi >= 0 ? '+' : '') + Math.round(roi) + '%';
+    $('rPay').textContent = val > 0 ? (cost / val < 1 ? '< 1 month' : (cost / val).toFixed(1) + ' months') : '—';
+  }
+  ['tRec', 'tSop', 'tQpd', 'tIn', 'tOut', 'tEmb'].forEach(function (id) { $(id).addEventListener('input', tokCalc); });
+  ['rTick', 'rPct', 'rMin', 'rRate', 'rPlat'].forEach(function (id) { $(id).addEventListener('input', roiCalc); });
+  tokCalc(); roiCalc();
+
   /* ---------- drawer ---------- */
   function openDrawer(cat, col, lab) {
     var recs = allRecords().filter(function (r) { return r.category === cat && String(colKey(r)) === String(col); });
@@ -822,6 +1015,7 @@
   $('ovl').addEventListener('click', closeDrawer);
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') {
+      if ($('entview').classList.contains('open')) { $('entview').classList.remove('open'); return; }
       if ($('docview').classList.contains('open')) { closeDoc(); return; }
       closeDrawer();
     }
