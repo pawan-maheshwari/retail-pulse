@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RetailOps Pulse — Architecture &amp; Control Flow</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230a0a0a'/%3E%3Crect x='40' y='40' width='14' height='14' fill='%231b7b3c'/%3E%3Ctext x='10' y='44' font-family='Helvetica,Arial' font-size='34' font-weight='700' fill='%23fff'%3ER%3C/text%3E%3C/svg%3E">
 <style>
   :root{--ink:#0a0a0a;--paper:#fff;--bone:#f5f4f1;--line:#e5e3dd;--green:#1b7b3c;--green-soft:#e8f2ec;--amber:#c67a00;--red:#b3261e;--mute:#6f6d68}
   *{box-sizing:border-box;margin:0;padding:0}
@@ -103,6 +104,7 @@
   .flowline i{color:var(--mute);font-style:normal}
   @media (prefers-reduced-motion:reduce){.particle{display:none}}
 </style>
+<style>.up-arrow{position:fixed;right:20px;bottom:20px;width:44px;height:44px;background:var(--ink);color:#fff;border:0;font-size:18px;z-index:35;opacity:0;pointer-events:none;transition:opacity .2s,background .2s;cursor:pointer}.up-arrow.show{opacity:1;pointer-events:auto}.up-arrow:hover{background:var(--green)}.up-arrow:focus-visible{outline:2px solid var(--green);outline-offset:2px}</style>
 </head>
 <body>
 
@@ -253,6 +255,7 @@ text = t &gt; 0.45 ? white : ink  // contrast flip for readability</code></pre>
     <p>The scorer's output (top-k SOPs + data signal) is exactly the retrieval context an LLM would want. In production the local engine stays as the deterministic fallback, and a model layer composes richer narratives over the same matches — same contract, same UI.</p>
   </div></div>
 </section>
+<footer style="border-top:1px solid var(--line);color:var(--mute);font-size:11px;padding:18px 0;margin-top:30px">Conceptualized by <b>Pawan Maheshwari</b> · AI Transformation Lead · <a href="https://www.linkedin.com/in/pawan-maheshwari-4b9b4715" target="_blank" rel="noopener" style="color:var(--green);text-decoration:none;font-weight:700">LinkedIn ↗</a> · RetailOps Pulse architecture v1.0</footer>
 </main>
 
 <script>
@@ -490,5 +493,6 @@ $('hSlider').addEventListener('input',heatDemo);
 heatDemo();
 })();
 </script>
+<button class="up-arrow" id="upArrow" aria-label="Back to top" title="Back to top">↑</button><script>(function(){var u=document.getElementById("upArrow");addEventListener("scroll",function(){u.classList.toggle("show",scrollY>320)},{passive:true});u.addEventListener("click",function(){var r=matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;scrollTo({top:0,behavior:r?"auto":"smooth"})});})();</script>
 </body>
 </html>
