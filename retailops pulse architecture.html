@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RetailOps Pulse — Architecture &amp; Control Flow</title>
+<style>
+  :root{--ink:#0a0a0a;--paper:#fff;--bone:#f5f4f1;--line:#e5e3dd;--green:#1b7b3c;--green-soft:#e8f2ec;--amber:#c67a00;--red:#b3261e;--mute:#6f6d68}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);background:var(--paper);font-size:14px;line-height:1.6}
+  .micro{font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:700}
+  .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px}
+  button{font-family:inherit;cursor:pointer}
+  button:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+  .mast{background:var(--ink);color:#fff;padding:0 20px}
+  .mast-in{max-width:1280px;margin:0 auto;min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:10px 0}
+  .brand{display:flex;align-items:baseline;gap:10px}
+  .brand i{width:9px;height:9px;background:var(--green);display:inline-block}
+  .brand h1{font-size:16px;letter-spacing:.28em;text-transform:uppercase;font-weight:700}
+  .brand span{color:#9b9995;font-size:9px;letter-spacing:.2em;text-transform:uppercase}
+  .tabs{display:flex;border:1px solid #3a3a3a;flex-wrap:wrap}
+  .tabs button{background:transparent;color:#b9b7b2;border:0;padding:9px 14px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:700}
+  .tabs button.on{background:#fff;color:var(--ink)}
+  .wrap{max-width:1280px;margin:0 auto;padding:20px}
+  .pane{display:none}.pane.on{display:block}
+  .card{border:1px solid var(--line);background:#fff}
+  .card-h{padding:12px 16px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+  .card-b{padding:16px}
+  h2{font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:700}
+  h3{font-size:14px;font-weight:700;margin:18px 0 8px}
+  p{margin-bottom:10px}
+  ul,ol{padding-left:20px;margin-bottom:12px}
+  li{margin-bottom:5px}
+  code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;background:var(--bone);border:1px solid var(--line);padding:1px 5px}
+  pre{background:var(--ink);color:#e8e6e1;padding:14px 16px;overflow-x:auto;font-size:12px;line-height:1.65;margin:12px 0}
+  pre code{background:none;border:0;padding:0;color:inherit}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13px}
+  th{text-align:left;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);border-bottom:2px solid var(--ink);padding:8px 10px}
+  td{border-bottom:1px solid var(--line);padding:8px 10px;vertical-align:top}
+  .seg{display:flex;border:1px solid var(--line)}
+  .seg button{border:0;background:#fff;padding:6px 12px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--mute)}
+  .seg button.on{background:var(--ink);color:#fff}
+  .btn{border:1px solid var(--ink);background:var(--ink);color:#fff;padding:7px 14px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:700}
+  .btn:hover{background:var(--green);border-color:var(--green)}
+  .btn.ghost{background:#fff;color:var(--ink)}
+  .btn.ghost:hover{background:var(--ink);color:#fff}
+
+  /* diagram */
+  .dia-grid{display:grid;grid-template-columns:1fr 320px;gap:16px;align-items:start}
+  @media(max-width:1000px){.dia-grid{grid-template-columns:1fr}}
+  .dia-scroll{overflow-x:auto;background:var(--bone);border:1px solid var(--line)}
+  svg{display:block;min-width:900px;width:100%;height:auto}
+  .node rect{fill:#fff;stroke:var(--ink);stroke-width:1.4}
+  .node.ui rect{fill:var(--ink)} .node.ui text.t{fill:#fff}
+  .node.kb rect{stroke:var(--green);stroke-dasharray:0}
+  .node text.t{font:700 11.5px "Helvetica Neue",Arial;fill:var(--ink);letter-spacing:.04em}
+  .node text.s{font:600 8px "Helvetica Neue",Arial;fill:var(--mute);letter-spacing:.14em;text-transform:uppercase}
+  .node.ui text.s{fill:#9b9995}
+  .node{cursor:pointer}
+  .node:hover rect,.node.sel rect{stroke:var(--green);stroke-width:2.4}
+  .node.dim{opacity:.18}
+  .node.hot rect{stroke:var(--green);stroke-width:3;fill:var(--green-soft)}
+  .node.ui.hot rect{fill:var(--green)}
+  .edge{fill:none;stroke:#b9b7b1;stroke-width:1.6}
+  .edge.dim{opacity:.12}
+  .edge.hot{stroke:var(--green);stroke-width:2.6}
+  .lanelab{font:700 9px "Helvetica Neue",Arial;fill:var(--mute);letter-spacing:.22em;text-transform:uppercase}
+  .particle{fill:var(--green)}
+  .caption{background:var(--ink);color:#fff;padding:12px 16px;font-size:13px;min-height:46px;display:flex;align-items:center;gap:12px}
+  .caption .stepno{background:var(--green);color:#fff;font-weight:700;font-size:11px;padding:2px 8px;flex:none}
+  .detail h4{font-size:13px;font-weight:700;margin-bottom:4px}
+  .detail .area{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--green);font-weight:700;margin-bottom:8px}
+  .detail p{font-size:12.5px}
+  .detail .io{font-size:11px;color:var(--mute);border-top:1px dashed var(--line);margin-top:8px;padding-top:8px}
+  .detail .tech{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+  .detail .tech span{font-size:10px;border:1px solid var(--line);background:var(--bone);padding:2px 7px}
+
+  /* stack */
+  .layer{border:1px solid var(--line);margin-bottom:12px}
+  .layer .lh{background:var(--ink);color:#fff;padding:9px 14px;display:flex;justify-content:space-between;gap:10px;align-items:center}
+  .layer .lh .micro{color:#fff}
+  .layer .lh .now{font-size:9px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--green)}
+  .layer .lh .fut{color:var(--amber)}
+  .layer .lb{padding:12px 14px;display:flex;flex-wrap:wrap;gap:8px}
+  .layer .lb span{border:1px solid var(--line);background:var(--bone);padding:5px 10px;font-size:12px}
+  .layer .lb span b{color:var(--green)}
+
+  /* heat demo */
+  .demo{border:1px solid var(--line);background:var(--bone);padding:16px;margin:14px 0}
+  .demo .row{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .demo input[type=range]{flex:1;min-width:180px;accent-color:var(--green)}
+  .demo .sw{width:84px;height:44px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:700;transition:background .2s}
+  .demo .out{font-variant-numeric:tabular-nums;font-size:12px;color:var(--mute);min-width:210px}
+  .ramp{display:flex;height:16px;margin-top:12px;border:1px solid var(--line)}
+  .ramp i{flex:1}
+  .uc{border-left:3px solid var(--ink);background:var(--bone);padding:12px 16px;margin-bottom:12px}
+  .uc .q{font-weight:700;margin-bottom:4px}
+  .uc .q em{font-weight:400;font-style:italic}
+  .uc .r{font-size:12.5px;color:#333}
+  .uc .r b{color:var(--green)}
+  .flowline{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:10px 0 16px}
+  .flowline span{border:1px solid var(--ink);padding:5px 10px;font-size:11px;font-weight:700;letter-spacing:.04em;background:#fff}
+  .flowline i{color:var(--mute);font-style:normal}
+  @media (prefers-reduced-motion:reduce){.particle{display:none}}
+</style>
+</head>
+<body>
+
+<header class="mast"><div class="mast-in">
+  <div class="brand"><i></i><h1>RetailOps Pulse</h1><span>Architecture &amp; control flow</span></div>
+  <div class="tabs" role="tablist">
+    <button class="on" data-pane="flow" role="tab">Control flow</button>
+    <button data-pane="stack" role="tab">Tech stack</button>
+    <button data-pane="heat" role="tab">Heat map logic</button>
+    <button data-pane="agent" role="tab">Agent logic</button>
+  </div>
+</div></header>
+
+<main class="wrap">
+
+<!-- ============ CONTROL FLOW ============ -->
+<section class="pane on" id="pane-flow">
+  <div class="card">
+    <div class="card-h">
+      <h2>Animated control flow</h2>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <div class="seg" id="modeSeg">
+          <button data-m="offline" class="on">Offline mode</button>
+          <button data-m="live">Real-time mode</button>
+        </div>
+        <button class="btn" id="playBtn">▶ Play flow</button>
+        <button class="btn ghost" id="stopBtn">Reset</button>
+      </div>
+    </div>
+    <div class="caption" id="caption"><span class="stepno">·</span><span>Green particles trace live data movement. Press <b>Play flow</b> to step through the sequence, or click any node for its role, tech and I/O.</span></div>
+    <div class="card-b">
+      <div class="dia-grid">
+        <div class="dia-scroll"><svg id="dia" viewBox="0 0 1180 680" role="img" aria-label="RetailOps Pulse architecture diagram"></svg></div>
+        <div class="card"><div class="card-h"><span class="micro">Component detail</span></div>
+          <div class="card-b detail" id="detail"><p style="color:var(--mute)">Click a node in the diagram to inspect it.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TECH STACK ============ -->
+<section class="pane" id="pane-stack">
+  <div class="card"><div class="card-h"><h2>Tech stack</h2><span class="micro" style="color:var(--mute)">Green = in this build · Amber = production wiring</span></div>
+  <div class="card-b">
+    <div class="layer"><div class="lh"><span class="micro">Presentation layer</span><span class="now">Current</span></div>
+      <div class="lb"><span><b>HTML5</b> single-file app</span><span><b>CSS3</b> custom properties, grid, print styles</span><span><b>SVG</b> heat wall &amp; diagram rendering</span><span>CSS keyframes + <b>SMIL animateMotion</b></span><span>ARIA roles · keyboard nav · reduced-motion</span></div></div>
+    <div class="layer"><div class="lh"><span class="micro">Application layer</span><span class="now">Current</span></div>
+      <div class="lb"><span><b>Vanilla JavaScript</b> (ES5-safe, zero dependencies)</span><span>Quote-aware <b>CSV parser</b></span><span><b>FileReader API</b> for local uploads</span><span>Record <b>normaliser</b> (Jira + ServiceNow → unified schema)</span><span>Heat aggregation engine</span><span><b>Retrieval agent</b>: tokeniser + weighted scorer</span><span>Event-driven UI (no framework)</span></div></div>
+    <div class="layer"><div class="lh"><span class="micro">Data layer</span><span class="now">Current</span></div>
+      <div class="lb"><span>In-memory unified record store</span><span>SOP <b>knowledge index</b> (JSON)</span><span><b>mulberry32</b> seeded PRNG demo generator</span><span>CSV / JSON dumps as interchange format</span><span>Nothing persisted, nothing transmitted</span></div></div>
+    <div class="layer"><div class="lh"><span class="micro">Integration layer</span><span class="fut micro">Production</span></div>
+      <div class="lb"><span><b>Jira REST v3</b> + issue webhooks</span><span><b>ServiceNow Table API</b> + Business Rules push</span><span><b>Confluence CQL</b> search</span><span><b>Microsoft Graph</b> /search for SharePoint</span><span>Webhook receiver → queue → <b>WebSocket/SSE</b> to page</span><span>Node.js / Azure Functions backend (auth + CORS)</span><span>Optional <b>LLM layer</b> composing over SOP matches</span></div></div>
+    <h3>Why zero-dependency vanilla?</h3>
+    <p>The app must open from a file share or email attachment inside a client network with no build step, no CDN reach and no install rights. Every capability — parsing, aggregation, retrieval, animation — is implemented in plain browser APIs, so the one HTML file <i>is</i> the deployment.</p>
+  </div></div>
+</section>
+
+<!-- ============ HEAT MAP LOGIC ============ -->
+<section class="pane" id="pane-heat">
+  <div class="card"><div class="card-h"><h2>Heat map calculation logic</h2></div>
+  <div class="card-b">
+    <div class="flowline"><span>Records</span><i>→</i><span>Bucket key</span><i>→</i><span>Count grid</span><i>→</i><span>Normalise</span><i>→</i><span>Gamma curve</span><i>→</i><span>Greyscale shade</span><i>→</i><span>Contrast flip</span></div>
+
+    <h3>1 · Bucketing</h3>
+    <p>Every record is mapped to a cell by the pair <code>(category, columnKey)</code>. The column key depends on the selected dimension:</p>
+    <pre><code>month    → opened.getUTCFullYear() + "-" + (opened.getUTCMonth()+1)   // "2025-11"
+region   → record.region                                              // "Gauteng"
+priority → record.priority                                            // "P1".."P4"</code></pre>
+
+    <h3>2 · Aggregation</h3>
+    <p>A single pass builds three structures: per-category totals (used to sort rows hottest-first), the cell grid <code>grid[cat + "||" + colKey] += 1</code>, and the running maximum <code>max</code> of any cell — the normalisation anchor.</p>
+
+    <h3>3 · Intensity with a gamma curve</h3>
+    <pre><code>t = (value / max) ^ 0.6        // gamma &lt; 1 lifts mid-range differences
+grey = round(244 − t × 234)    // 244 (near-white) … 10 (ink black)
+background = rgb(grey, grey, grey)
+text = t &gt; 0.45 ? white : ink  // contrast flip for readability</code></pre>
+    <p>Raw counts follow a long-tail distribution: one festive-season spike would otherwise wash every other cell to near-white. The <b>0.6 exponent</b> compresses the top and stretches the middle, so a cell at 30% of max still reads visibly darker than one at 10%.</p>
+
+    <div class="demo">
+      <div class="micro" style="margin-bottom:10px;color:var(--green)">Try it — cell intensity simulator</div>
+      <div class="row">
+        <span class="mono">value / max</span>
+        <input type="range" id="hSlider" min="0" max="100" value="35" aria-label="Cell value as percent of max">
+        <div class="sw" id="hSw">35</div>
+        <span class="out" id="hOut"></span>
+      </div>
+      <div class="ramp" id="hRamp" title="Full ramp 0 → max"></div>
+    </div>
+
+    <h3>4 · Zero cells &amp; the total column</h3>
+    <p>Empty cells render a fixed bone tone (<code>#f4f3ef</code>) with a middle-dot placeholder — visually silent so genuine heat stands out. The Total column sits outside the shading scheme (white, black rule) as the row anchor.</p>
+
+    <h3>Worked example</h3>
+    <table>
+      <tr><th>Cell</th><th>Count</th><th>v/max (max = 48)</th><th>t = (v/max)^0.6</th><th>Grey</th><th>Text</th></tr>
+      <tr><td>POS &amp; Tills · Dec 25</td><td>48</td><td>1.00</td><td>1.00</td><td>rgb(10,10,10)</td><td>white</td></tr>
+      <tr><td>Payments · Nov 25</td><td>24</td><td>0.50</td><td>0.66</td><td>rgb(90,90,88)</td><td>white</td></tr>
+      <tr><td>Mobile App · Mar 26</td><td>7</td><td>0.146</td><td>0.315</td><td>rgb(170,170,168)</td><td>ink</td></tr>
+      <tr><td>Gift Cards · Aug 25</td><td>0</td><td>—</td><td>—</td><td>#f4f3ef</td><td>placeholder ·</td></tr>
+    </table>
+    <p style="color:var(--mute);font-size:12px">Complexity: O(n) aggregation over records, O(rows × cols) render — instant at 2,000 records and comfortable well past 100k.</p>
+  </div></div>
+</section>
+
+<!-- ============ AGENT LOGIC ============ -->
+<section class="pane" id="pane-agent">
+  <div class="card"><div class="card-h"><h2>Agent interaction logic</h2><span class="micro" style="color:var(--mute)">Deterministic local retrieval — no API, no keys</span></div>
+  <div class="card-b">
+    <div class="flowline"><span>Query</span><i>→</i><span>ID detect</span><i>→</i><span>Tokenise</span><i>→</i><span>Score SOPs</span><i>→</i><span>Threshold gate</span><i>→</i><span>Data signal</span><i>→</i><span>RCA · Fix · Mitigation</span></div>
+
+    <h3>1 · Record-ID detection</h3>
+    <p>The query is first scanned with <code>/\b(RET-\d+|INC\d{5,}|PRB\d{4,}|CHG\d{4,})\b/</code>. On a hit, the record is looked up in the unified store and its <b>summary and category text are appended to the query</b> before scoring — so "what happened with INC0010042" routes to the right SOP even though the question itself carries no symptom words.</p>
+
+    <h3>2 · Weighted SOP scoring</h3>
+    <table>
+      <tr><th>Signal</th><th>Match against</th><th>Weight</th><th>Rationale</th></tr>
+      <tr><td>Curated keywords</td><td>Raw query substring</td><td><b>+4</b> each</td><td>Author-chosen phrases ("code 91", "3-d secure") are the strongest intent signal</td></tr>
+      <tr><td>Title words</td><td>Query tokens</td><td><b>+2</b> each</td><td>Titles name the failure mode</td></tr>
+      <tr><td>Service-area words</td><td>Query tokens</td><td><b>+2</b> each</td><td>Catches "POS", "loyalty", "EDI" style questions</td></tr>
+      <tr><td>RCA body words</td><td>Query tokens</td><td><b>+0.4</b> each</td><td>Weak corroboration only — long text must not dominate</td></tr>
+    </table>
+    <p>Tokens are lowercase, alphanumeric, length &gt; 2. SOPs are ranked by score; the winner must clear the <b>threshold of 3</b>. Score ≥ 8 is labelled <i>high</i> confidence, otherwise <i>medium</i> — printed on every answer's source line.</p>
+
+    <h3>3 · Honest fallback</h3>
+    <p>Below threshold, the agent refuses to guess. It says it can't match, and coaches the user: name a service area or paste a record ID. A wrong SOP presented confidently is worse than no SOP.</p>
+
+    <h3>4 · Data signal (grounding in <i>your</i> data)</h3>
+    <p>The matched SOP's service area is joined back to the loaded records to compute: total matching records, open count, mean resolve hours over resolved records, top region, and month-over-month trend (May → Jun 2026 in the demo window). The SOP tells you <i>what to do</i>; the data signal tells you <i>how big and how urgent</i>.</p>
+
+    <h3>5 · Answer contract</h3>
+    <p>Every successful answer renders the same five blocks, in order: matched record header (if an ID was given) → <b>Root cause analysis</b> → <b>Fix now</b> (ordered steps) → <b>Mitigate for the future</b> → data-signal chips → source line (SOP ID · area · confidence). Consistency is deliberate: on-call engineers learn the shape once and scan it in seconds.</p>
+
+    <h3>Use cases</h3>
+    <div class="uc"><div class="q">UC-1 · Symptom triage — <em>"EFT declines spiking with code 91"</em></div>
+      <div class="r">"code 91" and "eft" hit curated keywords (+8), "declines" hits the title (+2) → SOP-PAY-001 at <b>high confidence</b>. Answer: bank-side vs link-side isolation, stand-in floor limits, pool recycle; mitigation adds 5s p95 latency alerting. Data signal shows ~250 Payments &amp; EFT records with the Gauteng hotspot.</div></div>
+    <div class="uc"><div class="q">UC-2 · Record lookup — <em>"what happened with INC0010000"</em></div>
+      <div class="r">Regex detects the ID → record found (4G failover, Store Network &amp; Connectivity). Its summary text is folded into scoring → SOP-NET-001. The reply opens with the record card (P3 · In Progress · Gauteng) before RCA/Fix/Mitigation.</div></div>
+    <div class="uc"><div class="q">UC-3 · Heat-wall pattern — <em>drill into POS &amp; Tills × Dec 25, press "Ask agent about this pattern"</em></div>
+      <div class="r">The drawer composes the question automatically ("We are seeing 48 POS &amp; Tills issues clustered in Dec 25…"). Category words route to SOP-POS-001; the trend chip quantifies the festive spike — heat wall observation to action plan in two taps.</div></div>
+    <div class="uc"><div class="q">UC-4 · Proactive alert (real-time) — <em>P1 lands in the feed, user presses "Diagnose with agent"</em></div>
+      <div class="r">The alert injects its ID, priority and summary into the query. The same pipeline runs — proactive detection and reactive diagnosis share one engine, so answers are identical either way.</div></div>
+    <div class="uc"><div class="q">UC-5 · No match — <em>"printer in HR office jammed"</em></div>
+      <div class="r">Best score falls under the threshold → the agent declines and suggests naming a retail service area or pasting an ID. <b>No fabricated RCA.</b></div></div>
+
+    <h3>Upgrade path</h3>
+    <p>The scorer's output (top-k SOPs + data signal) is exactly the retrieval context an LLM would want. In production the local engine stays as the deterministic fallback, and a model layer composes richer narratives over the same matches — same contract, same UI.</p>
+  </div></div>
+</section>
+</main>
+
+<script>
+(function(){
+'use strict';
+var $=function(id){return document.getElementById(id);};
+var reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------- tabs ---------- */
+document.querySelectorAll('.tabs button').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('.tabs button').forEach(function(x){x.classList.remove('on');});
+    document.querySelectorAll('.pane').forEach(function(x){x.classList.remove('on');});
+    b.classList.add('on'); $('pane-'+b.dataset.pane).classList.add('on');
+  });
+});
+
+/* ---------- diagram data ---------- */
+var N=[
+ // offline sources
+ {id:'jira', x:20, y:70, w:160,h:46, t:'Jira dump (CSV)', s:'source · file', lane:'off',
+  d:'Issue export from the retail Jira project. Read locally via FileReader — never uploaded.', io:'IN user file · OUT raw CSV text', tech:['FileReader API','CSV']},
+ {id:'snow', x:20, y:140, w:160,h:46, t:'ServiceNow dump (CSV)', s:'source · file', lane:'off',
+  d:'Incidents, problems and change requests in one CSV.', io:'IN user file · OUT raw CSV text', tech:['FileReader API','CSV']},
+ {id:'sop', x:20, y:210, w:160,h:46, t:'SOP knowledge (JSON)', s:'source · file', lane:'off', kb:1,
+  d:'Retail-services SOP articles: keywords, RCA, fix steps, mitigations.', io:'IN user file · OUT SOP array', tech:['JSON']},
+ {id:'demo', x:20, y:280, w:160,h:46, t:'Demo generator', s:'source · synthetic', lane:'off',
+  d:'Seeded mulberry32 PRNG builds 1,000 + 1,000 records from category templates — identical to the shipped CSVs.', io:'OUT record arrays + SOPs', tech:['mulberry32 PRNG','Templates']},
+ // parse/normalise
+ {id:'parser', x:250, y:105, w:160,h:46, t:'CSV parser', s:'parse', lane:'off',
+  d:'Quote-aware, dependency-free state machine. Handles embedded commas, escaped quotes, CRLF.', io:'IN CSV text · OUT row objects', tech:['Vanilla JS']},
+ {id:'loader', x:250, y:210, w:160,h:46, t:'JSON loader', s:'parse', lane:'off', kb:1,
+  d:'Validates the knowledge file and accepts either {sops:[…]} or a bare array.', io:'IN JSON text · OUT SOP array', tech:['JSON.parse','Schema check']},
+ {id:'norm', x:470, y:105, w:170,h:46, t:'Normaliser', s:'transform', lane:'core',
+  d:'Maps both dumps to one schema: id, source, summary, category, P1–P4 priority, status, dates, region. Infers category from summary text when the column is missing; normalises Critical/High/Low to P-levels.', io:'IN row objects · OUT unified records', tech:['Category inference','Priority mapping']},
+ {id:'kidx', x:470, y:210, w:170,h:46, t:'Knowledge index', s:'store', lane:'core', kb:1,
+  d:'In-memory SOP set the agent scores against. Keywords are the highest-weight signal (+4 each).', io:'IN SOP array · OUT scored matches', tech:['In-memory','Weighted keywords']},
+ {id:'store', x:700, y:105, w:170,h:46, t:'Unified record store', s:'store', lane:'core',
+  d:'Single in-memory array feeding every downstream consumer: heat engine, KPI band, drill-down, agent stats. Real-time alerts append here too.', io:'IN unified records · OUT filtered views', tech:['In-memory array']},
+ // consumers
+ {id:'heatE', x:930, y:40, w:160,h:46, t:'Heat engine', s:'aggregate', lane:'core',
+  d:'One pass builds category totals, the cell grid and max. Shade = gamma-0.6 curve into a 244→10 greyscale (see Heat map logic tab).', io:'IN records · OUT grid + shades', tech:['O(n) aggregation','Gamma 0.6']},
+ {id:'heatUI', x:930, y:120, w:160,h:46, t:'Heat wall UI', s:'ui', lane:'core', ui:1,
+  d:'Rendered table with dimension (month/region/priority) and source (All/Jira/SNOW) controls. Cells are keyboard-operable buttons.', io:'IN grid · OUT cell selection', tech:['ARIA','Keyboard nav']},
+ {id:'kpi', x:930, y:200, w:160,h:46, t:'KPI band', s:'ui', lane:'core', ui:1,
+  d:'Records loaded, open now, P1–P2 share, mean resolve hours, hottest category. Recomputed on every data change.', io:'IN records · OUT 5 metrics', tech:['Derived metrics']},
+ {id:'drawer', x:930, y:280, w:160,h:46, t:'Drill-down drawer', s:'ui', lane:'core', ui:1,
+  d:'Lists up to 40 records behind a cell and can hand the whole pattern to the agent as a composed question.', io:'IN cell records · OUT agent query', tech:['Composed prompt']},
+ // agent lane
+ {id:'query', x:20, y:430, w:160,h:46, t:'User query', s:'agent · input', lane:'agent', ui:1,
+  d:'Free text, a pasted record ID, a suggestion chip, a drawer hand-off or an alert diagnose — all arrive here identically.', io:'OUT query string', tech:['Chat input']},
+ {id:'tok', x:250, y:430, w:160,h:46, t:'ID detect + tokenise', s:'agent', lane:'agent',
+  d:'Regex catches RET-/INC/PRB/CHG numbers and folds the found record\u2019s text into the query; then lowercase alphanumeric tokens (len > 2).', io:'IN query · OUT tokens (+record)', tech:['Regex','Tokeniser']},
+ {id:'scorer', x:470, y:430, w:170,h:46, t:'SOP scorer', s:'agent', lane:'agent',
+  d:'Weights: keyword +4, title +2, area +2, RCA +0.4. Threshold 3 gates the answer; ≥8 prints as high confidence.', io:'IN tokens + index · OUT best SOP', tech:['Weighted scoring','Threshold gate']},
+ {id:'stats', x:700, y:430, w:170,h:46, t:'Stats engine', s:'agent', lane:'agent',
+  d:'Joins the SOP\u2019s service area back to the store: matching count, open, mean resolve hrs, top region, MoM trend.', io:'IN area + records · OUT data signal', tech:['Live aggregation']},
+ {id:'composer', x:930, y:430, w:160,h:46, t:'Answer composer', s:'agent', lane:'agent',
+  d:'Fixed contract: record card → RCA → Fix now → Mitigation → data-signal chips → source line. Or the honest no-match reply.', io:'IN SOP + stats · OUT structured card', tech:['Answer contract']},
+ // realtime lane
+ {id:'conn', x:20, y:580, w:160,h:46, t:'Connectors ×4', s:'real-time · sim', lane:'live',
+  d:'Jira, ServiceNow, Confluence, SharePoint interfaces. Simulated here; in production a thin backend holds credentials and crosses CORS.', io:'IN URL + token · OUT link status', tech:['REST (prod)','Webhooks (prod)']},
+ {id:'stream', x:250, y:580, w:160,h:46, t:'Event stream', s:'real-time', lane:'live',
+  d:'~8s interval emitting synthetic records from the same templates; production swaps in webhook → queue → WebSocket/SSE with the same alert contract.', io:'OUT alert events', tech:['setInterval (sim)','SSE/WS (prod)']},
+ {id:'alerts', x:470, y:580, w:170,h:46, t:'Alert feed UI', s:'real-time · ui', lane:'live', ui:1,
+  d:'Proactive cards, newest first: P1 red edge + toast, P2 amber. Each has Diagnose-with-agent. Stream toggle pauses intake.', io:'IN alert events · OUT diagnose query', tech:['Toast alerts','Priority styling']}
+];
+var E=[
+ {a:'jira',b:'parser'},{a:'snow',b:'parser'},{a:'sop',b:'loader'},
+ {a:'demo',b:'norm',lane:'off'},{a:'demo',b:'kidx',lane:'off'},
+ {a:'parser',b:'norm'},{a:'loader',b:'kidx'},
+ {a:'norm',b:'store',lane:'core'},
+ {a:'store',b:'heatE',lane:'core'},{a:'heatE',b:'heatUI',lane:'core',v:1},
+ {a:'store',b:'kpi',lane:'core'},{a:'heatUI',b:'drawer',lane:'core',v:1},
+ {a:'drawer',b:'query',lane:'core',curve:1},
+ {a:'query',b:'tok',lane:'agent'},{a:'tok',b:'scorer',lane:'agent'},
+ {a:'kidx',b:'scorer',lane:'agent',v:1},
+ {a:'scorer',b:'stats',lane:'agent'},
+ {a:'store',b:'stats',lane:'agent',v:1},
+ {a:'stats',b:'composer',lane:'agent'},
+ {a:'conn',b:'stream',lane:'live'},{a:'stream',b:'alerts',lane:'live'},
+ {a:'alerts',b:'store',lane:'live',curve:1},
+ {a:'alerts',b:'query',lane:'live',curve:1}
+];
+var byId={}; N.forEach(function(n){byId[n.id]=n;});
+
+function edgePath(e){
+  var A=byId[e.a],B=byId[e.b];
+  if(e.v){ // vertical-ish
+    var x1=A.x+A.w/2, y1=(A.y<B.y? A.y+A.h : A.y), x2=B.x+B.w/2, y2=(A.y<B.y? B.y : B.y+B.h);
+    if(Math.abs(x1-x2)<4) return 'M'+x1+' '+y1+' L'+x2+' '+y2;
+    return 'M'+x1+' '+y1+' C '+x1+' '+((y1+y2)/2)+', '+x2+' '+((y1+y2)/2)+', '+x2+' '+y2;
+  }
+  if(e.curve){
+    var x1=A.x+A.w, y1=A.y+A.h/2, x2=B.x, y2=B.y+B.h/2;
+    if(B.y<A.y){ x1=A.x+A.w/2; y1=A.y; if(B.x<A.x){x2=B.x+B.w/2;y2=B.y+B.h;} else {x2=B.x;y2=B.y+B.h/2;} }
+    return 'M'+x1+' '+y1+' C '+(x1+60)+' '+(y1-90)+', '+(x2-80)+' '+(y2+80)+', '+x2+' '+y2;
+  }
+  var x1=A.x+A.w, y1=A.y+A.h/2, x2=B.x, y2=B.y+B.h/2;
+  var mx=(x1+x2)/2;
+  return 'M'+x1+' '+y1+' C '+mx+' '+y1+', '+mx+' '+y2+', '+x2+' '+y2;
+}
+
+var svg=$('dia'), SVGNS='http://www.w3.org/2000/svg';
+function el(tag,attrs){var e=document.createElementNS(SVGNS,tag);for(var k in attrs)e.setAttribute(k,attrs[k]);return e;}
+
+/* lane labels + separators */
+[['OFFLINE INGESTION',20,28],['CORE — SHARED',470,28],['SERVICE AGENT PIPELINE',20,405],['REAL-TIME PIPELINE',20,556]].forEach(function(l){
+  var t=el('text',{x:l[1],y:l[2],'class':'lanelab'}); t.textContent=l[0]; svg.appendChild(t);
+});
+svg.appendChild(el('line',{x1:0,y1:378,x2:1180,y2:378,stroke:'#dcdad4','stroke-dasharray':'4 5'}));
+svg.appendChild(el('line',{x1:0,y1:530,x2:1180,y2:530,stroke:'#dcdad4','stroke-dasharray':'4 5'}));
+
+/* edges */
+var edgeEls={};
+E.forEach(function(e,i){
+  e.id='e'+i;
+  var p=el('path',{d:edgePath(e),'class':'edge',id:e.id,'marker-end':'url(#arr)'});
+  svg.appendChild(p); edgeEls[e.id]=p;
+});
+/* arrow marker */
+var defs=el('defs',{});
+defs.innerHTML='<marker id="arr" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L8 4 L0 8 z" fill="#b9b7b1"/></marker>';
+svg.insertBefore(defs,svg.firstChild);
+
+/* nodes */
+var nodeEls={};
+N.forEach(function(n){
+  var g=el('g',{'class':'node'+(n.ui?' ui':'')+(n.kb?' kb':''),id:'n_'+n.id,tabindex:0,role:'button','aria-label':n.t});
+  g.appendChild(el('rect',{x:n.x,y:n.y,width:n.w,height:n.h,rx:0}));
+  var t1=el('text',{x:n.x+12,y:n.y+20,'class':'t'}); t1.textContent=n.t; g.appendChild(t1);
+  var t2=el('text',{x:n.x+12,y:n.y+35,'class':'s'}); t2.textContent=n.s; g.appendChild(t2);
+  svg.appendChild(g); nodeEls[n.id]=g;
+  var open=function(){selectNode(n.id);};
+  g.addEventListener('click',open);
+  g.addEventListener('keydown',function(ev){if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();open();}});
+});
+
+function selectNode(id){
+  N.forEach(function(n){nodeEls[n.id].classList.toggle('sel',n.id===id);});
+  var n=byId[id];
+  $('detail').innerHTML='<h4>'+n.t+'</h4><div class="area">'+n.s+'</div><p>'+n.d+'</p>'+
+    '<div class="io">'+n.io+'</div>'+
+    '<div class="tech">'+n.tech.map(function(t){return '<span>'+t+'</span>';}).join('')+'</div>';
+}
+
+/* ---------- mode: dim inactive lanes, run particles ---------- */
+var mode='offline', particles=[];
+function laneActive(l){
+  if(l==='core'||l==='agent')return true;
+  return mode==='offline' ? l==='off' : l==='live';
+}
+function edgeLane(e){ return e.lane || byId[e.a].lane; }
+function clearParticles(){ particles.forEach(function(p){p.remove();}); particles=[]; }
+function applyMode(){
+  N.forEach(function(n){ nodeEls[n.id].classList.toggle('dim',!laneActive(n.lane)); });
+  E.forEach(function(e){ edgeEls[e.id].classList.toggle('dim',!laneActive(edgeLane(e))); });
+  clearParticles();
+  if(reduced) return;
+  E.forEach(function(e,i){
+    if(!laneActive(edgeLane(e))) return;
+    var c=el('circle',{r:3.4,'class':'particle'});
+    var m=el('animateMotion',{dur:(2.6+ (i%5)*0.5)+'s',repeatCount:'indefinite',begin:(i*0.35)+'s'});
+    var mp=el('mpath',{}); mp.setAttributeNS('http://www.w3.org/1999/xlink','href','#'+e.id);
+    m.appendChild(mp); c.appendChild(m); svg.appendChild(c); particles.push(c);
+  });
+}
+$('modeSeg').querySelectorAll('button').forEach(function(b){
+  b.addEventListener('click',function(){
+    $('modeSeg').querySelectorAll('button').forEach(function(x){x.classList.remove('on');});
+    b.classList.add('on'); mode=b.dataset.m; stopPlay(); applyMode();
+    setCaption('·', mode==='offline'
+      ? 'Offline mode: files flow left → right into the shared core; the agent pipeline answers from the knowledge index plus live stats.'
+      : 'Real-time mode: connectors stream events into the alert feed, which appends to the record store (heat wall ticks live) and can hand any alert to the agent.');
+  });
+});
+
+/* ---------- stepper ---------- */
+var SEQ={
+ offline:[
+  {n:['jira','snow','sop'],e:[],c:'User uploads the Jira CSV, ServiceNow CSV and SOP JSON (or presses Load demo data).'},
+  {n:['parser','loader'],c:'The quote-aware CSV parser and JSON loader turn raw text into row objects — entirely in-browser.'},
+  {n:['norm'],c:'The normaliser maps both dumps to one schema, inferring category and normalising priority to P1–P4.'},
+  {n:['store','kidx'],c:'Records land in the unified store; SOPs land in the knowledge index. These two stores feed everything.'},
+  {n:['heatE','kpi'],c:'The heat engine aggregates counts per (category × month/region/priority); the KPI band recomputes.'},
+  {n:['heatUI','drawer'],c:'The heat wall renders — darkest cells are your hottest clusters. Tapping a cell opens the drill-down drawer.'},
+  {n:['query','tok'],c:'A question arrives — typed, a chip, a pasted INC/RET number, or the drawer\u2019s composed pattern question.'},
+  {n:['scorer','stats'],c:'SOPs are scored (keywords +4, title/area +2, RCA +0.4, threshold 3); live stats join the SOP\u2019s area back to your data.'},
+  {n:['composer'],c:'The answer composes: RCA → Fix now → Mitigation → data-signal chips → SOP source and confidence.'}
+ ],
+ live:[
+  {n:['conn'],c:'User links Jira / ServiceNow / Confluence / SharePoint (simulated here; REST + webhooks in production).'},
+  {n:['stream'],c:'The event stream pushes new records — every ~8s in the simulator, webhook-driven in production.'},
+  {n:['alerts'],c:'Proactive: alerts land newest-first. P1 gets a red edge and a toast; the Stream toggle pauses intake.'},
+  {n:['store','heatE','heatUI','kpi'],c:'Each alert appends to the unified store — the heat wall and KPIs tick up live.'},
+  {n:['query','tok'],c:'Reactive: the user presses Diagnose with agent, injecting the alert\u2019s ID, priority and summary as the query.'},
+  {n:['scorer','stats','composer'],c:'The same agent pipeline runs — proactive detection and reactive diagnosis share one engine.'}
+ ]
+};
+var playTimer=null, stepIdx=0;
+function setCaption(no,txt){ $('caption').innerHTML='<span class="stepno">'+no+'</span><span>'+txt+'</span>'; }
+function clearHot(){ N.forEach(function(n){nodeEls[n.id].classList.remove('hot');}); }
+function stopPlay(){ clearInterval(playTimer); playTimer=null; stepIdx=0; clearHot(); $('playBtn').textContent='▶ Play flow'; }
+function doStep(){
+  var seq=SEQ[mode==='offline'?'offline':'live'];
+  clearHot();
+  if(stepIdx>=seq.length){ stopPlay(); setCaption('✓','Flow complete. Switch modes or click nodes to explore.'); return; }
+  var s=seq[stepIdx];
+  s.n.forEach(function(id){ nodeEls[id].classList.add('hot'); });
+  setCaption((stepIdx+1)+'/'+seq.length, s.c);
+  stepIdx++;
+}
+$('playBtn').addEventListener('click',function(){
+  if(playTimer){ stopPlay(); return; }
+  stepIdx=0; doStep();
+  $('playBtn').textContent='⏸ Stop';
+  playTimer=setInterval(doStep, reduced?3200:2600);
+});
+$('stopBtn').addEventListener('click',function(){ stopPlay(); setCaption('·','Reset. Press Play flow to step through the '+(mode==='offline'?'offline':'real-time')+' sequence.'); });
+
+applyMode();
+selectNode('store');
+
+/* ---------- heat demo ---------- */
+function shade(t){ var g=Math.round(244-Math.pow(t,0.6)*234); return {bg:'rgb('+g+','+g+','+g+')',fg:Math.pow(t,0.6)>0.45?'#fff':'#0a0a0a',g:g}; }
+var ramp=$('hRamp');
+if(ramp){ var h=''; for(var i=0;i<=40;i++){ h+='<i style="background:'+shade(i/40).bg+'"></i>'; } ramp.innerHTML=h; }
+function heatDemo(){
+  var v=+$('hSlider').value/100, s=shade(v);
+  $('hSw').style.background=v===0?'#f4f3ef':s.bg; $('hSw').style.color=v===0?'#b9b7b1':s.fg;
+  $('hSw').textContent=v===0?'·':Math.round(v*100);
+  $('hOut').textContent='t = '+(Math.pow(v,0.6)).toFixed(3)+'  ·  grey = '+(v===0?'#f4f3ef':s.g)+'  ·  text = '+(v===0?'placeholder':(s.fg==='#fff'?'white':'ink'));
+}
+$('hSlider').addEventListener('input',heatDemo);
+heatDemo();
+})();
+</script>
+</body>
+</html>

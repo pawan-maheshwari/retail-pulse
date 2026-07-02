@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RetailOps Pulse — User Guide</title>
+<style>
+  :root{--ink:#0a0a0a;--paper:#fff;--bone:#f5f4f1;--line:#e5e3dd;--green:#1b7b3c;--green-soft:#e8f2ec;--amber:#c67a00;--red:#b3261e;--mute:#6f6d68}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);background:var(--paper);font-size:14.5px;line-height:1.65}
+  .micro{font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:700}
+  .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12.5px}
+  .mast{background:var(--ink);color:#fff;padding:34px 24px}
+  .mast-in{max-width:880px;margin:0 auto}
+  .mast .dot{width:9px;height:9px;background:var(--green);display:inline-block;margin-right:10px}
+  .mast h1{font-size:24px;letter-spacing:.28em;text-transform:uppercase;font-weight:700;display:inline}
+  .mast .sub{color:#9b9995;margin-top:10px;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+  .toc{background:var(--bone);border-bottom:1px solid var(--line)}
+  .toc-in{max-width:880px;margin:0 auto;padding:16px 24px;display:flex;flex-wrap:wrap;gap:8px 22px}
+  .toc a{color:var(--ink);text-decoration:none;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;border-bottom:2px solid transparent;padding-bottom:2px}
+  .toc a:hover{border-bottom-color:var(--green);color:var(--green)}
+  main{max-width:880px;margin:0 auto;padding:12px 24px 60px}
+  section{margin-top:44px}
+  h2{font-size:13px;letter-spacing:.22em;text-transform:uppercase;border-bottom:2px solid var(--ink);padding-bottom:8px;margin-bottom:18px;display:flex;align-items:baseline;gap:12px}
+  h2 .no{color:var(--green);font-variant-numeric:tabular-nums}
+  h3{font-size:14px;margin:22px 0 8px;font-weight:700;letter-spacing:.02em}
+  p{margin-bottom:10px}
+  ul,ol{padding-left:22px;margin-bottom:12px}
+  li{margin-bottom:5px}
+  b{font-weight:700}
+  .callout{border-left:3px solid var(--green);background:var(--green-soft);padding:12px 16px;margin:14px 0;font-size:13.5px}
+  .callout.warn{border-left-color:var(--amber);background:#faf3e6}
+  .callout .micro{color:var(--green);display:block;margin-bottom:4px}
+  .callout.warn .micro{color:var(--amber)}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
+  th{text-align:left;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);border-bottom:2px solid var(--ink);padding:8px 10px}
+  td{border-bottom:1px solid var(--line);padding:8px 10px;vertical-align:top}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;background:var(--bone);border:1px solid var(--line);padding:1px 5px}
+  pre{background:var(--ink);color:#e8e6e1;padding:14px 16px;overflow-x:auto;font-size:12px;line-height:1.6;margin:12px 0}
+  pre code{background:none;border:0;color:inherit;padding:0}
+  .kbd{display:inline-block;border:1px solid var(--line);border-bottom-width:2px;background:#fff;padding:1px 7px;font-size:11px;font-weight:700}
+  .step{display:flex;gap:14px;margin-bottom:14px}
+  .step .n{flex:none;width:26px;height:26px;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px}
+  .step .b{padding-top:2px}
+  .tag{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.1em;padding:2px 7px;text-transform:uppercase}
+  .tag.p1{background:var(--red);color:#fff}.tag.p2{background:var(--amber);color:#fff}
+  .tag.p3{background:var(--ink);color:#fff}.tag.p4{background:var(--line)}
+  footer{border-top:1px solid var(--line);color:var(--mute);font-size:11px;padding:18px 24px;max-width:880px;margin:0 auto}
+  @media print{.toc{display:none}.mast{padding:20px 0}section{page-break-inside:avoid}pre{white-space:pre-wrap}}
+</style>
+</head>
+<body>
+
+<header class="mast"><div class="mast-in">
+  <span class="dot"></span><h1>RetailOps Pulse</h1>
+  <div class="sub">User guide · v1.0 · Offline archive + Real-time modes</div>
+</div></header>
+
+<nav class="toc"><div class="toc-in">
+  <a href="#s1">01 Overview</a><a href="#s2">02 Getting started</a><a href="#s3">03 Offline mode</a>
+  <a href="#s4">04 Heat wall</a><a href="#s5">05 Service agent</a><a href="#s6">06 Real-time mode</a>
+  <a href="#s7">07 Data formats</a><a href="#s8">08 Troubleshooting</a><a href="#s9">09 Production wiring</a><a href="#s10">10 Tool usage reference</a>
+</div></nav>
+
+<main>
+
+<section id="s1">
+  <h2><span class="no">01</span> Overview</h2>
+  <p>RetailOps Pulse turns your service-management exhaust — Jira issues, ServiceNow incidents, problems and change requests — into two things: a <b>heat wall</b> that shows where issues cluster, and a <b>service agent</b> that answers any problem with a structured <b>Root Cause → Fix Now → Mitigation</b> response drawn from your SOP knowledge bank.</p>
+  <p>It runs in two modes, switched from the black masthead at the top right:</p>
+  <table>
+    <tr><th>Mode</th><th>What it does</th><th>Data path</th></tr>
+    <tr><td><b>Offline archive</b></td><td>You upload dumps; the app analyses them entirely in your browser. Nothing is sent anywhere.</td><td>CSV / JSON files → local analysis</td></tr>
+    <tr><td><b>Real-time</b></td><td>Connector interfaces for Jira, ServiceNow, Confluence and SharePoint stream new records into a proactive alert feed; the heat wall and KPIs update live.</td><td>Connectors → alert stream (simulated in this build)</td></tr>
+  </table>
+  <div class="callout"><span class="micro">Privacy</span>The single HTML file has no backend and makes no network calls. Your dumps never leave the page — safe for client data in demos.</div>
+</section>
+
+<section id="s2">
+  <h2><span class="no">02</span> Getting started in 60 seconds</h2>
+  <div class="step"><div class="n">1</div><div class="b">Open <code>retailops_pulse_app.html</code> in any modern browser (Chrome, Edge, Safari, Firefox). No install, no server.</div></div>
+  <div class="step"><div class="n">2</div><div class="b">Press <span class="kbd">Load demo data</span> in the left panel. 1,000 Jira issues, 1,000 ServiceNow records and 16 SOPs load instantly.</div></div>
+  <div class="step"><div class="n">3</div><div class="b">Watch the KPI band fill and the heat wall render. The darkest cells are your most frequent issue clusters.</div></div>
+  <div class="step"><div class="n">4</div><div class="b">Tap a dark cell → review the records → press <span class="kbd">Ask agent about this pattern</span>. The agent replies with RCA, fix steps and mitigations.</div></div>
+</section>
+
+<section id="s3">
+  <h2><span class="no">03</span> Offline mode — working with your own dumps</h2>
+  <p>The <b>Data sources</b> panel accepts three files. Upload any or all; the heat wall and agent use whatever is loaded.</p>
+  <ul>
+    <li><b>Jira dump (CSV)</b> — an issue export from your retail project.</li>
+    <li><b>ServiceNow dump (CSV)</b> — incidents, problems and change requests in one file.</li>
+    <li><b>Knowledge bank (JSON)</b> — your SOP articles. This is what powers the agent's answers.</li>
+  </ul>
+  <p>Column names are matched case-insensitively, and sensible fallbacks apply (see <a href="#s7">§07</a>). If a row has no <code>category</code>, the app infers one from the summary text. Priorities like <i>Critical / High / Low</i> are normalised to P1–P4.</p>
+  <div class="callout warn"><span class="micro">Good to know</span>Loading a new file replaces the previous dataset for that source — it does not append. Re-upload to refresh after a new export.</div>
+</section>
+
+<section id="s4">
+  <h2><span class="no">04</span> Reading the heat wall</h2>
+  <p>Rows are issue categories, ordered hottest-first. Columns are switchable with the segment control:</p>
+  <ul>
+    <li><b>By month</b> — Jul 25 → Jun 26. Look for seasonal spikes (the demo data peaks in Nov–Dec festive trade).</li>
+    <li><b>By region</b> — SA provinces plus National/Online. Reveals store-network or regional deployment problems.</li>
+    <li><b>By priority</b> — P1–P4 mix per category. A category heavy in P1/P2 deserves a problem record even if its total is modest.</li>
+  </ul>
+  <p>The <b>All / Jira / ServiceNow</b> control filters the source. Cell shading runs light → black with rising frequency; the <b>Total</b> column anchors each row. Every cell is keyboard-accessible (<span class="kbd">Tab</span> + <span class="kbd">Enter</span>).</p>
+  <h3>Drill-down drawer</h3>
+  <p>Tapping a cell opens the drawer with up to 40 underlying records: ID, summary, priority tag (<span class="tag p1">P1</span> <span class="tag p2">P2</span> <span class="tag p3">P3</span> <span class="tag p4">P4</span>), status, region and date. The button at the bottom hands the whole pattern to the agent as a pre-formed question.</p>
+</section>
+
+<section id="s5">
+  <h2><span class="no">05</span> The service agent</h2>
+  <p>The agent runs on <b>local knowledge-bank retrieval</b>: it tokenises your question, scores every SOP on keyword, title and root-cause overlap, and answers from the best match — fully deterministic, works offline, no API keys.</p>
+  <h3>Ways to ask</h3>
+  <ul>
+    <li><b>Describe the symptom</b> — <i>"EFT declines spiking with code 91"</i>, <i>"checkout creating duplicate orders"</i>, <i>"promo price not applying at till"</i>.</li>
+    <li><b>Paste a record number</b> — <code>INC0010042</code>, <code>RET-1042</code>, <code>PRB0004012</code>, <code>CHG0007005</code>. The agent looks the record up, shows its details, and routes to the right SOP.</li>
+    <li><b>From the heat wall</b> — drill into a cell and use <i>Ask agent about this pattern</i>.</li>
+    <li><b>From an alert</b> (real-time) — every alert card has <i>Diagnose with agent</i>.</li>
+    <li><b>Quick chips</b> — the suggestion row above the input covers the five most common retail scenarios.</li>
+  </ul>
+  <h3>Anatomy of an answer</h3>
+  <table>
+    <tr><th>Block</th><th>Contents</th></tr>
+    <tr><td><b>Root cause analysis</b></td><td>The most likely underlying cause, from the matched SOP.</td></tr>
+    <tr><td><b>Fix now</b></td><td>Ordered, actionable recovery steps for the on-call team.</td></tr>
+    <tr><td><b>Mitigate for the future</b></td><td>Preventive measures: alerting thresholds, process changes, automation.</td></tr>
+    <tr><td><b>Data signal</b></td><td>Live stats from <i>your loaded data</i>: matching record count, open now, average resolve hours, regional hotspot, month-over-month trend.</td></tr>
+    <tr><td><b>Source line</b></td><td>SOP ID, service area and match confidence (high / medium).</td></tr>
+  </table>
+  <div class="callout"><span class="micro">If the agent can't match</span>It will say so rather than guess, and suggest naming the service area (POS, EFT, checkout, stock sync, WRewards…) or pasting a record ID. Low-confidence matches are never dressed up as certainty.</div>
+</section>
+
+<section id="s6">
+  <h2><span class="no">06</span> Real-time mode</h2>
+  <div class="step"><div class="n">1</div><div class="b">Switch to <b>Real-time</b> in the masthead. If nothing is loaded yet, the demo dataset auto-loads so the heat wall has a baseline.</div></div>
+  <div class="step"><div class="n">2</div><div class="b">In <b>Connectors</b>, enter an instance URL and token for Jira, ServiceNow, Confluence or SharePoint and press <span class="kbd">Connect</span>. In this build the link is simulated (badge shows <i>Linked · sim</i>).</div></div>
+  <div class="step"><div class="n">3</div><div class="b"><b>Proactive:</b> the alert feed starts streaming new records (~every 8s). P1s get a red edge and a toast; P2s amber. Each alert also lands in the dataset, so the heat wall and KPIs tick up live. Pause anytime with the <b>Stream</b> toggle.</div></div>
+  <div class="step"><div class="n">4</div><div class="b"><b>Reactive:</b> press <i>Diagnose with agent</i> on any alert, or just type your question — the agent behaves exactly as in offline mode.</div></div>
+</section>
+
+<section id="s7">
+  <h2><span class="no">07</span> Data formats</h2>
+  <h3>Jira CSV</h3>
+  <pre><code>key,summary,category,priority,status,created,resolved,team,region,labels
+RET-1000,WRewards linking failing in app with error ERR-397,WRewards Loyalty,P1,Resolved,2025-10-23 16:33,2025-10-23 22:01,Loyalty Platform,KwaZulu-Natal,wrewards-loyalty</code></pre>
+  <p>Required: <code>key</code> (or <code>id</code>), <code>summary</code>, <code>created</code>. Everything else is optional with fallbacks.</p>
+  <h3>ServiceNow CSV</h3>
+  <pre><code>number,type,short_description,category,priority,state,opened_at,resolved_at,assignment_group,region,related_ci
+INC0010000,Incident,Store W373 on 4G failover — degraded POS response,Store Network &amp; Connectivity,3,In Progress,2025-12-21 19:12,,Network Ops,Gauteng,Store-Router-10</code></pre>
+  <p><code>type</code> is one of <i>Incident / Problem / Change Request</i>. Priority accepts <code>1–4</code> or <code>P1–P4</code>.</p>
+  <h3>Knowledge bank JSON</h3>
+  <pre><code>{
+  "name": "Retail Services SOP Knowledge Bank",
+  "sops": [{
+    "id": "SOP-PAY-001",
+    "title": "EFT declines or timeouts spiking",
+    "area": "Payments &amp; EFT",
+    "keywords": ["eft", "decline", "code 91", "timeout"],
+    "rca": "Response code 91 spikes indicate…",
+    "fix": ["Step one…", "Step two…"],
+    "mitigation": ["Preventive measure one…"]
+  }]
+}</code></pre>
+  <p><code>keywords</code> drive matching hardest (4 points each), then title and area words (2), then RCA words (0.4). Write keywords the way engineers actually describe the symptom.</p>
+</section>
+
+<section id="s8">
+  <h2><span class="no">08</span> Troubleshooting</h2>
+  <table>
+    <tr><th>Symptom</th><th>Likely cause &amp; fix</th></tr>
+    <tr><td>Heat wall stays empty after upload</td><td>Date column unreadable — use <code>YYYY-MM-DD HH:MM</code> or ISO 8601. Rows without a parseable created/opened date are skipped.</td></tr>
+    <tr><td>Everything lands in one category</td><td>Your dump has no <code>category</code> column and summaries don't mention service areas. Add the column, or enrich summaries.</td></tr>
+    <tr><td>Agent says it can't match</td><td>SOP JSON not loaded, or the question uses vocabulary absent from your keywords. Extend the SOP <code>keywords</code> arrays.</td></tr>
+    <tr><td>"Could not read that JSON"</td><td>File isn't valid JSON or lacks a <code>sops</code> array. Validate against the schema in §07.</td></tr>
+    <tr><td>Months look wrong on the heat wall</td><td>The month axis covers Jul 2025 – Jun 2026 (the demo window). Records outside it appear in totals but not in month cells — switch to region or priority view.</td></tr>
+    <tr><td>No alerts in real-time mode</td><td>Connect at least one connector, and check the <b>Stream</b> toggle is on.</td></tr>
+  </table>
+</section>
+
+<section id="s9">
+  <h2><span class="no">09</span> Production wiring (beyond this demo)</h2>
+  <p>The real-time connectors are interfaces today; taking them live needs a thin backend because browser pages can't hold credentials or cross CORS boundaries safely:</p>
+  <ul>
+    <li><b>Jira</b> — REST v3 <code>/search</code> for backfill; webhooks (<code>jira:issue_created</code>) for push.</li>
+    <li><b>ServiceNow</b> — Table API on <code>incident</code>/<code>problem</code>/<code>change_request</code>; Business Rules or Event Management to push new records.</li>
+    <li><b>Confluence / SharePoint</b> — CQL search and Microsoft Graph <code>/search</code> to pull SOP pages into the knowledge index on a schedule.</li>
+    <li><b>Stream path</b> — webhook receiver → queue → WebSocket/SSE to the page, replacing the in-browser simulator with the same alert-card contract.</li>
+    <li><b>Agent upgrade path</b> — the local retriever stays as fallback; an LLM layer can compose over the same SOP matches for richer answers.</li>
+  </ul>
+</section>
+
+<section id="s10">
+  <h2><span class="no">10</span> Tool usage reference — every control</h2>
+  <p>A control-by-control map of the interface, top to bottom. Pair this with the companion <b>Architecture &amp; Control Flow</b> page, which animates how these controls connect behind the scenes.</p>
+
+  <h3>Masthead</h3>
+  <table>
+    <tr><th>Control</th><th>What it does</th><th>Notes</th></tr>
+    <tr><td><b>User guide / Architecture</b> buttons</td><td>Open the documentation in a full-page viewer inside the app, with a <b>Pop out ↗</b> button to continue in a new tab.</td><td>The docs load on demand from separate files — keep <code>retailops_pulse_user_guide.html</code> and <code>retailops_pulse_architecture.html</code> in the same folder as the app. Close with × or <span class="kbd">Esc</span>.</td></tr>
+    <tr><td><b>Offline archive / Real-time</b> switch</td><td>Swaps the left panel between file uploads and connectors, and starts/stops the alert stream.</td><td>Switching to Real-time auto-loads demo data if nothing is loaded, so the heat wall has a baseline.</td></tr>
+  </table>
+
+  <h3>KPI band</h3>
+  <table>
+    <tr><th>Metric</th><th>Calculation</th></tr>
+    <tr><td>Records loaded</td><td>Jira + ServiceNow records currently in memory.</td></tr>
+    <tr><td>Open right now</td><td>Records whose status is not Resolved/Closed.</td></tr>
+    <tr><td>P1–P2 share</td><td>High-severity records ÷ total, as a percentage.</td></tr>
+    <tr><td>Avg time to resolve</td><td>Mean of (resolved − opened) across resolved records, in hours.</td></tr>
+    <tr><td>Hottest category</td><td>Category with the highest record count.</td></tr>
+  </table>
+
+  <h3>Data sources panel (offline)</h3>
+  <table>
+    <tr><th>Control</th><th>What it does</th><th>Notes</th></tr>
+    <tr><td><b>Choose file</b> — Jira dump</td><td>Loads a Jira CSV export via the browser's FileReader.</td><td>Replaces (not appends) the previous Jira set. "Loaded ✓" confirms.</td></tr>
+    <tr><td><b>Choose file</b> — ServiceNow dump</td><td>Loads incidents, problems and CRs from one CSV.</td><td>Same replace behaviour.</td></tr>
+    <tr><td><b>Choose file</b> — Knowledge bank</td><td>Loads the SOP JSON that powers agent answers.</td><td>Invalid JSON raises a toast, nothing is overwritten.</td></tr>
+    <tr><td><b>Load demo data</b></td><td>Generates 1,000 Jira + 1,000 ServiceNow records and 16 SOPs instantly.</td><td>Deterministic — identical to the shipped CSV/JSON dumps.</td></tr>
+    <tr><td>Source counters</td><td>Live count of Jira issues, ServiceNow records and SOP articles in memory.</td><td>Sanity-check after every upload.</td></tr>
+  </table>
+
+  <h3>Issue heat wall</h3>
+  <table>
+    <tr><th>Control</th><th>What it does</th><th>Notes</th></tr>
+    <tr><td><b>By month / region / priority</b></td><td>Switches the column dimension of the grid.</td><td>Rows always stay hottest-category-first.</td></tr>
+    <tr><td><b>All / Jira / ServiceNow</b></td><td>Filters which source feeds the grid.</td><td>KPIs stay whole-dataset; only the wall filters.</td></tr>
+    <tr><td>Any cell (tap / <span class="kbd">Enter</span>)</td><td>Opens the drill-down drawer for that category × column.</td><td>Cells announce "category, column: n records" to screen readers.</td></tr>
+    <tr><td>Legend</td><td>Shows the light→black intensity ramp.</td><td>Shading uses a gamma curve — see the Architecture page for the math.</td></tr>
+  </table>
+
+  <h3>Drill-down drawer</h3>
+  <table>
+    <tr><th>Control</th><th>What it does</th></tr>
+    <tr><td>Record list</td><td>Up to 40 records: ID, summary, P-tag, status, type, region, date — P1s sorted first.</td></tr>
+    <tr><td><b>Ask agent about this pattern</b></td><td>Closes the drawer and sends a pre-composed question ("We are seeing n X issues clustered in Y…") to the agent.</td></tr>
+    <tr><td>× / overlay / <span class="kbd">Esc</span></td><td>Three ways to close.</td></tr>
+  </table>
+
+  <h3>Service agent dock</h3>
+  <table>
+    <tr><th>Control</th><th>What it does</th><th>Notes</th></tr>
+    <tr><td>Input + <b>Ask</b> (or <span class="kbd">Enter</span>)</td><td>Sends a free-text question or a record ID.</td><td>IDs matching <code>RET- / INC / PRB / CHG</code> trigger a record lookup first.</td></tr>
+    <tr><td>Suggestion chips</td><td>One-tap questions for the five most common retail scenarios.</td><td>Great for demos — each routes to a different SOP.</td></tr>
+    <tr><td>Engine badge</td><td>Shows the answering engine: <i>Local KB retrieval</i>.</td><td>Deterministic; works fully offline.</td></tr>
+  </table>
+
+  <h3>Real-time panels</h3>
+  <table>
+    <tr><th>Control</th><th>What it does</th><th>Notes</th></tr>
+    <tr><td>Connector card: URL + token + <b>Connect</b></td><td>Links Jira / ServiceNow / Confluence / SharePoint.</td><td>Simulated in this build — badge reads <i>Linked · sim</i>; first link starts the alert stream.</td></tr>
+    <tr><td><b>Stream</b> toggle</td><td>Pauses / resumes the proactive alert intake.</td><td>Paused alerts are not queued — the stream simply skips.</td></tr>
+    <tr><td>Alert card</td><td>New record with ID, time, source, P-tag and summary. P1 = red edge + toast, P2 = amber.</td><td>Every alert also lands in the dataset, so the heat wall ticks live.</td></tr>
+    <tr><td><b>Diagnose with agent →</b></td><td>Sends the alert's ID, priority and summary to the agent for RCA / Fix / Mitigation.</td><td>Same pipeline as typed questions.</td></tr>
+  </table>
+
+  <h3>Keyboard map</h3>
+  <table>
+    <tr><th>Key</th><th>Action</th></tr>
+    <tr><td><span class="kbd">Tab</span></td><td>Moves through every interactive element, including individual heat cells.</td></tr>
+    <tr><td><span class="kbd">Enter</span> / <span class="kbd">Space</span></td><td>Activates the focused cell, button or chip; Enter also sends the agent input.</td></tr>
+    <tr><td><span class="kbd">Esc</span></td><td>Closes the drill-down drawer.</td></tr>
+  </table>
+</section>
+
+</main>
+<footer>RetailOps Pulse · User guide v1.0 · Synthetic demo data · Local-only analysis in offline mode</footer>
+</body>
+</html>

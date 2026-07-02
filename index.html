@@ -156,6 +156,22 @@
 
   .toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(80px);background:var(--ink);color:#fff;padding:10px 18px;font-size:12px;z-index:60;transition:transform .25s ease;letter-spacing:.04em}
   .toast.show{transform:translateX(-50%)}
+
+  /* ---------- docs nav + viewer ---------- */
+  .docsnav{display:flex;gap:1px;border:1px solid #3a3a3a}
+  .docsnav button{background:transparent;color:#b9b7b2;border:0;padding:9px 13px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:600}
+  .docsnav button:hover{background:var(--green);color:#fff}
+  .docview{position:fixed;inset:0;background:#fff;z-index:80;display:none;flex-direction:column}
+  .docview.open{display:flex}
+  .docview-h{background:var(--ink);color:#fff;padding:0 16px;min-height:52px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .docview-h .t{display:flex;align-items:baseline;gap:10px}
+  .docview-h .t i{width:8px;height:8px;background:var(--green);display:inline-block}
+  .docview-h .t b{font-size:12px;letter-spacing:.22em;text-transform:uppercase}
+  .docview-h .acts{display:flex;gap:8px}
+  .docview-h .acts button{border:1px solid #3a3a3a;background:transparent;color:#e8e6e1;padding:7px 13px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:700}
+  .docview-h .acts button:hover{background:var(--green);border-color:var(--green);color:#fff}
+  .docview iframe{flex:1;border:0;width:100%;background:#fff}
+  .docview-f{border-top:1px solid var(--line);background:var(--bone);color:var(--mute);font-size:11px;padding:8px 16px}
   .foot{border-top:1px solid var(--line);margin-top:8px}
   .foot-in{max-width:1400px;margin:0 auto;padding:16px 20px;color:var(--mute);font-size:11px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   .hide{display:none!important}
@@ -170,9 +186,15 @@
       <h1>RetailOps&nbsp;Pulse</h1>
       <span class="sub">Retail service intelligence</span>
     </div>
-    <div class="mode" role="tablist" aria-label="Mode">
-      <button id="tabOffline" class="on" role="tab" aria-selected="true"><span class="led"></span>Offline archive</button>
-      <button id="tabLive" role="tab" aria-selected="false"><span class="led live"></span>Real-time</button>
+    <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+      <div class="docsnav">
+        <button id="docGuide" type="button">User guide</button>
+        <button id="docArch" type="button">Architecture</button>
+      </div>
+      <div class="mode" role="tablist" aria-label="Mode">
+        <button id="tabOffline" class="on" role="tab" aria-selected="true"><span class="led"></span>Offline archive</button>
+        <button id="tabLive" role="tab" aria-selected="false"><span class="led live"></span>Real-time</button>
+      </div>
     </div>
   </div>
 </header>
@@ -292,6 +314,17 @@
   <div class="drawer-b" id="dBody"></div>
   <div class="drawer-f"><button class="btn solid" id="dAsk" style="width:100%;padding:11px">Ask agent about this pattern</button></div>
 </aside>
+<div class="docview" id="docview" role="dialog" aria-modal="true" aria-label="Documentation viewer">
+  <div class="docview-h">
+    <div class="t"><i></i><b id="docTitle">Documentation</b></div>
+    <div class="acts">
+      <button id="docPop" type="button">Pop out ↗</button>
+      <button id="docClose" type="button">Close ×</button>
+    </div>
+  </div>
+  <iframe id="docFrame" title="Documentation"></iframe>
+  <div class="docview-f" id="docHint"></div>
+</div>
 <div class="toast" id="toast"></div>
 
 <script>
@@ -743,6 +776,32 @@
     });
   }
 
+  /* ---------- documentation viewer (docs stay as separate files) ---------- */
+  var DOCS = {
+    guide: { file: 'retailops_pulse_user_guide.html', title: 'User guide' },
+    arch: { file: 'retailops_pulse_architecture.html', title: 'Architecture & control flow' }
+  };
+  var curDoc = null;
+  function openDoc(key) {
+    var d = DOCS[key]; if (!d) return;
+    curDoc = key;
+    $('docTitle').textContent = d.title;
+    $('docHint').textContent = 'Loading ' + d.file + ' from the app\u2019s folder \u2014 keep the documentation files alongside this HTML. Use Pop out to open it in its own tab.';
+    var f = $('docFrame');
+    if (f.getAttribute('src') !== d.file) f.setAttribute('src', d.file); // lazy: only fetched on demand
+    $('docview').classList.add('open');
+    $('docClose').focus();
+  }
+  function closeDoc() { $('docview').classList.remove('open'); curDoc = null; }
+  $('docGuide').addEventListener('click', function () { openDoc('guide'); });
+  $('docArch').addEventListener('click', function () { openDoc('arch'); });
+  $('docClose').addEventListener('click', closeDoc);
+  $('docPop').addEventListener('click', function () {
+    if (!curDoc) return;
+    var w = window.open(DOCS[curDoc].file, '_blank');
+    if (w) closeDoc(); else toast('Pop-up blocked \u2014 allow pop-ups for this page, or keep reading here.');
+  });
+
   /* ---------- drawer ---------- */
   function openDrawer(cat, col, lab) {
     var recs = allRecords().filter(function (r) { return r.category === cat && String(colKey(r)) === String(col); });
@@ -761,7 +820,12 @@
   function closeDrawer() { $('ovl').classList.remove('open'); $('drawer').classList.remove('open'); }
   $('dClose').addEventListener('click', closeDrawer);
   $('ovl').addEventListener('click', closeDrawer);
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeDrawer(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      if ($('docview').classList.contains('open')) { closeDoc(); return; }
+      closeDrawer();
+    }
+  });
   $('dAsk').addEventListener('click', function () {
     var c = state.drawerCtx; if (!c) return;
     closeDrawer();
