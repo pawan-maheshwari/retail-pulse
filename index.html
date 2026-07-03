@@ -224,6 +224,44 @@
   .ph .pw{font-size:9px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--green)}
   .ph .pt{font-weight:700;font-size:13px;margin:3px 0 5px}
   .ph .pd{font-size:11.5px;color:#444;line-height:1.45}
+
+  /* ---------- AI LLM / RAG panel ---------- */
+  .ragstat{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px}
+  .ragstat span{font-size:10px;border:1px solid var(--line);background:#fff;padding:5px 10px;font-variant-numeric:tabular-nums;letter-spacing:.04em}
+  .ragstat span b{color:var(--green)}
+  .play{display:flex;border:1px solid var(--line);background:#fff;margin-bottom:12px}
+  .play input{flex:1;border:0;padding:12px 14px;font-size:13px;font-family:inherit}
+  .play input:focus{outline:none;background:var(--green-soft)}
+  .play button{border:0;background:var(--ink);color:#fff;padding:0 18px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:700}
+  .play button:hover{background:var(--green)}
+  .chunk{border:1px solid var(--line);background:#fff;padding:10px 12px;margin-bottom:8px}
+  .chunk .c1{display:flex;justify-content:space-between;gap:10px;align-items:baseline;margin-bottom:4px}
+  .chunk .ct{font-size:9px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;padding:2px 7px;background:var(--ink);color:#fff}
+  .chunk .ct.rca{background:var(--green)} .chunk .ct.fix{background:var(--amber)} .chunk .ct.mit{background:#555}
+  .chunk .cs{font-variant-numeric:tabular-nums;font-size:11px;font-weight:700}
+  .chunk .cb{font-size:12px;line-height:1.45;color:#333}
+  .chunk .cm{font-size:10px;color:var(--mute);margin-top:5px}
+  .simbar{height:4px;background:var(--line);margin-top:7px}
+  .simbar i{display:block;height:100%;background:var(--green)}
+  .aidia-wrap{overflow-x:auto;background:var(--bone);border:1px solid var(--line)}
+  #aidia{display:block;min-width:820px;width:100%;height:auto}
+  #aidia .node rect{fill:#fff;stroke:var(--ink);stroke-width:1.4}
+  #aidia .node.store rect{stroke:var(--green);stroke-width:2}
+  #aidia .node.prod rect{stroke-dasharray:5 4;stroke:var(--amber)}
+  #aidia .node text.t{font:700 11px "Helvetica Neue",Arial;fill:var(--ink)}
+  #aidia .node text.s{font:600 7.5px "Helvetica Neue",Arial;fill:var(--mute);letter-spacing:.14em;text-transform:uppercase}
+  #aidia .node{cursor:pointer}
+  #aidia .node:hover rect,#aidia .node.sel rect{stroke:var(--green);stroke-width:2.6}
+  #aidia .node.hot rect{fill:var(--green-soft);stroke:var(--green);stroke-width:3}
+  #aidia .edge{fill:none;stroke:#b9b7b1;stroke-width:1.6}
+  #aidia .edge.hot{stroke:var(--green);stroke-width:2.6}
+  #aidia .edge.dash{stroke-dasharray:5 4;stroke:var(--amber)}
+  #aidia .particle{fill:var(--green)}
+  .aicap{background:var(--ink);color:#fff;padding:10px 14px;font-size:12.5px;min-height:42px;display:flex;align-items:center;gap:10px}
+  .aicap .stepno{background:var(--green);font-weight:700;font-size:11px;padding:2px 8px;flex:none}
+  .aidetail{border:1px solid var(--line);border-top:0;background:#fff;padding:12px 14px;font-size:12.5px;min-height:56px}
+  .aidetail b{display:block;margin-bottom:2px}
+  .aidetail .tech{color:var(--mute);font-size:11px;margin-top:4px}
   .foot-in{max-width:1400px;margin:0 auto;padding:16px 20px;color:var(--mute);font-size:11px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   .hide{display:none!important}
 </style>
@@ -241,6 +279,7 @@
       <div class="docsnav">
         <button id="docGuide" type="button">User guide</button>
         <button id="docArch" type="button">Architecture</button>
+        <button id="aiBtn" type="button" class="ent">AI LLM</button>
         <button id="entBtn" type="button" class="ent">Enterprise upgrade</button>
       </div>
       <div class="mode" role="tablist" aria-label="Mode">
@@ -470,6 +509,57 @@
   </div>
   <iframe id="docFrame" title="Documentation"></iframe>
   <div class="docview-f" id="docHint"></div>
+</div>
+<div class="entview" id="aiview" role="dialog" aria-modal="true" aria-label="AI LLM — RAG and vector search">
+  <div class="entview-h">
+    <div class="t"><i></i><b>AI LLM — RAG &amp; vector search</b></div>
+    <button id="aiClose" type="button">Close ×</button>
+  </div>
+  <div class="entbody"><div class="entgrid">
+
+    <div class="entsec">
+      <h3><em>01</em> Vector index — implemented, running in this page</h3>
+      <p>The knowledge bank is <b>chunked</b> (each SOP splits into symptom, RCA, fix and mitigation chunks), every chunk is <b>embedded</b> into a 256-dimension vector using hashed TF-IDF, and stored in an in-memory <b>vector index</b> searched by cosine similarity. This is a genuine vector-retrieval pipeline — lexical embeddings in-browser, with neural embeddings as the production drop-in (§04).</p>
+      <div class="ragstat" id="ragStat"></div>
+      <button class="btn green" id="ragBuild" style="padding:9px 16px">Build vector index</button>
+      <span style="font-size:11px;color:var(--mute);margin-left:10px">Rebuild after loading a new knowledge bank.</span>
+    </div>
+
+    <div class="entsec">
+      <h3><em>02</em> Retrieval playground — watch the search happen</h3>
+      <p>Type a symptom and see the raw retrieval: the top-5 nearest chunks with their cosine scores, before any answer composition.</p>
+      <div class="play">
+        <input id="ragQ" type="text" placeholder="e.g. tap to pay failing and tender timing out at tills…" aria-label="RAG playground query">
+        <button id="ragGo" type="button">Search vectors</button>
+      </div>
+      <div id="ragHits"><p style="color:var(--mute);font-size:12.5px">Build the index, then search.</p></div>
+    </div>
+
+    <div class="entsec">
+      <h3><em>03</em> How RAG works here — interactive diagram</h3>
+      <div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap">
+        <button class="btn" id="aiPlay">▶ Play flow</button>
+        <button class="btn ghost" id="aiReset">Reset</button>
+      </div>
+      <div class="aicap" id="aiCap"><span class="stepno">·</span><span>Green particles trace both paths: ingestion (top) and query-time retrieval (bottom). Click any stage for detail.</span></div>
+      <div class="aidia-wrap"><svg id="aidia" viewBox="0 0 1100 400" role="img" aria-label="RAG pipeline diagram"></svg></div>
+      <div class="aidetail" id="aiDetail">Click a stage in the diagram.</div>
+    </div>
+
+    <div class="entsec">
+      <h3><em>04</em> Using it in the agent + production swap</h3>
+      <p>The agent's engine badge is now a <b>toggle</b>: <i>Keyword retrieval</i> ↔ <i>Vector RAG</i>. In RAG mode the answer is grounded in retrieved chunks (shown with their similarity scores under each reply), while the RCA → Fix now → Mitigation contract stays identical — so you can A/B the two engines on the same question live.</p>
+      <table>
+        <tr><th>Stage</th><th>In this page (today)</th><th>Production swap</th></tr>
+        <tr><td>Chunking</td><td>SOP → symptom / RCA / fix / mitigation chunks</td><td>Same strategy over Confluence &amp; SharePoint pages, 300–500 token chunks with overlap</td></tr>
+        <tr><td>Embeddings</td><td>Hashed TF-IDF, 256-dim, L2-normalised (lexical)</td><td>Neural models: Voyage, OpenAI text-embedding-3, Amazon Titan, Cohere (semantic — handles synonyms &amp; paraphrase)</td></tr>
+        <tr><td>Vector DB</td><td>In-memory Float32 array, exact cosine scan</td><td>pgvector, OpenSearch k-NN, Pinecone, Chroma, Azure AI Search — ANN indexes (HNSW) for millions of chunks</td></tr>
+        <tr><td>Generation</td><td>Deterministic composer over retrieved chunks</td><td>LLM composes over the same top-k context — chunks become citations</td></tr>
+      </table>
+      <p style="font-size:11.5px;color:var(--mute)">Honest limits of the in-page version: lexical embeddings match shared vocabulary, not meaning — "card machine broken" won't reach "EFT terminal fault" unless the words overlap. That semantic gap is exactly what the neural-embedding swap closes; the pipeline, index shape and answer contract are already in place.</p>
+    </div>
+
+  </div></div>
 </div>
 <div class="toast" id="toast"></div>
 
@@ -745,7 +835,7 @@
   var state = {
     mode: 'offline',
     jira: [], snow: [], sops: [],
-    dim: 'month', src: 'all',
+    dim: 'month', src: 'all', engine: 'kw',
     feedTimer: null, alertSeq: 1, drawerCtx: null
   };
 
@@ -995,6 +1085,197 @@
   ['rTick', 'rPct', 'rMin', 'rRate', 'rPlat'].forEach(function (id) { $(id).addEventListener('input', roiCalc); });
   tokCalc(); roiCalc();
 
+  /* ---------- RAG: vector index (hashed TF-IDF, cosine) ---------- */
+  var RAG = { dims: 256, chunks: [], vecs: null, idf: {}, built: false };
+  function ragTok(s) { return String(s || '').toLowerCase().replace(/[^a-z0-9\- ]+/g, ' ').split(/\s+/).filter(function (w) { return w.length > 2; }); }
+  function hash32(str, seed) {
+    var h = seed >>> 0;
+    for (var i = 0; i < str.length; i++) { h = Math.imul(h ^ str.charCodeAt(i), 2654435761); h = (h << 13) | (h >>> 19); }
+    return h >>> 0;
+  }
+  function embed(tokens) {
+    var tf = {}; tokens.forEach(function (t) { tf[t] = (tf[t] || 0) + 1; });
+    var v = new Float32Array(RAG.dims), t;
+    for (t in tf) {
+      var w = (1 + Math.log(tf[t])) * (RAG.idf[t] || 1.0);
+      var idx = hash32(t, 0x9747b28c) % RAG.dims;
+      var sign = (hash32(t, 0x85ebca6b) & 1) ? 1 : -1;
+      v[idx] += sign * w;
+    }
+    var n = 0, i; for (i = 0; i < RAG.dims; i++) n += v[i] * v[i];
+    n = Math.sqrt(n) || 1;
+    for (i = 0; i < RAG.dims; i++) v[i] /= n;
+    return v;
+  }
+  function buildRag() {
+    if (!state.sops.length) { toast('Load a knowledge bank first (demo data works).'); return false; }
+    RAG.chunks = [];
+    state.sops.forEach(function (s) {
+      RAG.chunks.push({ sop: s, type: 'symptom', text: s.title + '. ' + (s.keywords || []).join(', ') + '. ' + s.area });
+      RAG.chunks.push({ sop: s, type: 'rca', text: s.rca });
+      RAG.chunks.push({ sop: s, type: 'fix', text: (s.fix || []).join(' ') });
+      RAG.chunks.push({ sop: s, type: 'mit', text: (s.mitigation || []).join(' ') });
+    });
+    // idf over chunks
+    var df = {}, N = RAG.chunks.length;
+    RAG.chunks.forEach(function (c) {
+      c.toks = ragTok(c.text);
+      var seen = {}; c.toks.forEach(function (t) { if (!seen[t]) { seen[t] = 1; df[t] = (df[t] || 0) + 1; } });
+    });
+    RAG.idf = {}; var t; for (t in df) RAG.idf[t] = Math.log((N + 1) / (df[t] + 0.5));
+    RAG.vecs = RAG.chunks.map(function (c) { return embed(c.toks); });
+    RAG.built = true;
+    renderRagStat();
+    return true;
+  }
+  function ragSearch(q, k) {
+    if (!RAG.built) return [];
+    var qv = embed(ragTok(q)), hits = [];
+    RAG.vecs.forEach(function (v, i) {
+      var d = 0; for (var j = 0; j < RAG.dims; j++) d += v[j] * qv[j];
+      hits.push({ i: i, score: d });
+    });
+    hits.sort(function (a, b) { return b.score - a.score; });
+    return hits.slice(0, k || 5).map(function (h) { var c = RAG.chunks[h.i]; return { chunk: c, score: h.score }; });
+  }
+  function renderRagStat() {
+    var vocab = Object.keys(RAG.idf).length;
+    $('ragStat').innerHTML = RAG.built
+      ? '<span>Status: <b>index built</b></span><span>' + RAG.chunks.length + ' chunks</span><span>' + RAG.dims + ' dimensions</span><span>vocab ' + vocab + ' terms</span><span>metric: cosine</span><span>store: in-memory Float32</span>'
+      : '<span>Status: <b style="color:var(--amber)">not built</b></span><span>load a knowledge bank, then build</span>';
+    $('ragBuild').textContent = RAG.built ? 'Rebuild vector index' : 'Build vector index';
+  }
+  var CHUNK_LABEL = { symptom: 'Symptom', rca: 'RCA', fix: 'Fix', mit: 'Mitigation' };
+  function renderHits(q) {
+    var hits = ragSearch(q, 5);
+    if (!hits.length) { $('ragHits').innerHTML = '<p style="color:var(--mute)">Index not built yet.</p>'; return; }
+    $('ragHits').innerHTML = hits.map(function (h) {
+      var pct = Math.max(0, Math.min(1, h.score));
+      return '<div class="chunk"><div class="c1"><span class="ct ' + h.chunk.type + '">' + CHUNK_LABEL[h.chunk.type] + '</span>' +
+        '<span class="cs">cosine ' + h.score.toFixed(3) + '</span></div>' +
+        '<div class="cb">' + esc(h.chunk.text.slice(0, 220)) + (h.chunk.text.length > 220 ? '…' : '') + '</div>' +
+        '<div class="cm mono">' + esc(h.chunk.sop.id) + ' · ' + esc(h.chunk.sop.area) + '</div>' +
+        '<div class="simbar"><i style="width:' + (pct * 100).toFixed(0) + '%"></i></div></div>';
+    }).join('');
+  }
+  $('ragBuild').addEventListener('click', function () { if (buildRag()) toast('Vector index built — ' + RAG.chunks.length + ' chunks, ' + RAG.dims + ' dims'); });
+  $('ragGo').addEventListener('click', function () { var q = $('ragQ').value.trim(); if (q) { if (!RAG.built) buildRag(); renderHits(q); } });
+  $('ragQ').addEventListener('keydown', function (e) { if (e.key === 'Enter') $('ragGo').click(); });
+
+  /* ---------- AI LLM panel + RAG diagram ---------- */
+  $('aiBtn').addEventListener('click', function () {
+    $('aiview').classList.add('open'); $('aiClose').focus();
+    if (!RAG.built && state.sops.length) buildRag();
+    renderRagStat();
+    if (!aiDiaBuilt) buildAiDia();
+  });
+  $('aiClose').addEventListener('click', function () { $('aiview').classList.remove('open'); aiStop(); });
+
+  var aiDiaBuilt = false, AI_N, AI_E, aiNodeEls = {}, aiEdgeEls = {}, aiTimer = null, aiStep = 0;
+  function buildAiDia() {
+    aiDiaBuilt = true;
+    var SVGNS = 'http://www.w3.org/2000/svg';
+    var svg = $('aidia');
+    function el(tag, attrs) { var e = document.createElementNS(SVGNS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); return e; }
+    AI_N = [
+      { id: 'kb', x: 20, y: 60, w: 165, h: 46, t: 'SOP knowledge bank', s: 'ingestion · source', d: 'The loaded knowledge JSON — 16 SOPs in the demo, Confluence/SharePoint pages in production.', tech: 'JSON · CQL/Graph (prod)' },
+      { id: 'chunk', x: 245, y: 60, w: 165, h: 46, t: 'Chunker', s: 'ingestion', d: 'Each SOP splits into 4 focused chunks: symptom (title+keywords), RCA, fix steps, mitigation. Small chunks keep retrieval precise — a hit points at the exact passage, not a whole document.', tech: '4 chunks / SOP · 300–500 tok w/ overlap (prod)' },
+      { id: 'emb', x: 470, y: 60, w: 175, h: 46, t: 'Embedder', s: 'ingestion · vectorise', d: 'Hashed TF-IDF: term weight = (1+log tf) × idf, feature-hashed into 256 dimensions with a sign hash, then L2-normalised. Production swaps in a neural model (Voyage / text-embedding-3 / Titan) — same in/out shape.', tech: '256-dim Float32 · L2 norm' },
+      { id: 'vdb', x: 705, y: 60, w: 175, h: 46, t: 'Vector index', s: 'store', store: 1, d: 'All chunk vectors in one in-memory Float32 matrix. Search is an exact cosine scan — fine for thousands of chunks. At millions, an ANN index (HNSW) in pgvector / OpenSearch / Pinecone takes over.', tech: 'Exact scan → HNSW (prod)' },
+      { id: 'q', x: 20, y: 250, w: 165, h: 46, t: 'User query', s: 'query time', d: 'From the agent input, the playground above, a heat-wall drill-down or a real-time alert diagnose.', tech: 'Free text' },
+      { id: 'qemb', x: 245, y: 250, w: 165, h: 46, t: 'Query embedder', s: 'query time', d: 'The identical embedder vectorises the question — query and chunks must live in the same vector space or similarity is meaningless.', tech: 'Same 256-dim space' },
+      { id: 'sim', x: 470, y: 250, w: 175, h: 46, t: 'Cosine similarity', s: 'query time · search', d: 'Dot product of the normalised query vector against every chunk vector = cosine similarity. Scores sort descending; below ~0.18 the agent refuses rather than guesses.', tech: 'dot(q̂, ĉ) · threshold 0.18' },
+      { id: 'topk', x: 705, y: 250, w: 175, h: 46, t: 'Top-k chunks', s: 'query time · context', d: 'The 5 nearest chunks with scores — this is the "R" in RAG: retrieved, cited context. You can watch this exact list in the playground above.', tech: 'k = 5 · scores shown in agent' },
+      { id: 'comp', x: 930, y: 250, w: 150, h: 46, t: 'Grounded composer', s: 'generation', d: 'Assembles the answer only from retrieved chunks: best SOP\u2019s RCA, fix and mitigation, plus the live data signal. Deterministic here; the LLM takes this seat in production.', tech: 'Answer contract unchanged' },
+      { id: 'llm', x: 930, y: 150, w: 150, h: 46, t: 'LLM (prod slot)', s: 'generation · swap-in', prod: 1, d: 'Claude / GPT / an open model composes fluent prose over the same top-k chunks — chunks become citations. Nothing upstream changes.', tech: 'API · Bedrock · Azure · self-host' },
+      { id: 'ans', x: 930, y: 60, w: 150, h: 46, t: 'Answer card', s: 'output', d: 'RCA → Fix now → Mitigation → data-signal chips → retrieved-context list with cosine scores.', tech: 'Same contract as keyword engine' }
+    ];
+    AI_E = [
+      { a: 'kb', b: 'chunk' }, { a: 'chunk', b: 'emb' }, { a: 'emb', b: 'vdb' },
+      { a: 'q', b: 'qemb' }, { a: 'qemb', b: 'sim' },
+      { a: 'vdb', b: 'sim', v: 1 },
+      { a: 'sim', b: 'topk' }, { a: 'topk', b: 'comp' },
+      { a: 'comp', b: 'ans', v: 1 },
+      { a: 'llm', b: 'comp', v: 1, dash: 1 }
+    ];
+    var byId = {}; AI_N.forEach(function (n) { byId[n.id] = n; });
+    function path(e) {
+      var A = byId[e.a], B = byId[e.b];
+      if (e.v) {
+        var x1 = A.x + A.w / 2, x2 = B.x + B.w / 2;
+        var y1 = A.y < B.y ? A.y + A.h : A.y, y2 = A.y < B.y ? B.y : B.y + B.h;
+        if (Math.abs(x1 - x2) < 4) return 'M' + x1 + ' ' + y1 + ' L' + x2 + ' ' + y2;
+        return 'M' + x1 + ' ' + y1 + ' C ' + x1 + ' ' + ((y1 + y2) / 2) + ', ' + x2 + ' ' + ((y1 + y2) / 2) + ', ' + x2 + ' ' + y2;
+      }
+      var x1 = A.x + A.w, y1 = A.y + A.h / 2, x2 = B.x, y2 = B.y + B.h / 2, mx = (x1 + x2) / 2;
+      return 'M' + x1 + ' ' + y1 + ' C ' + mx + ' ' + y1 + ', ' + mx + ' ' + y2 + ', ' + x2 + ' ' + y2;
+    }
+    var defs = el('defs', {});
+    defs.innerHTML = '<marker id="aiarr" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L8 4 L0 8 z" fill="#b9b7b1"/></marker>';
+    svg.appendChild(defs);
+    [['INGESTION — ONCE PER KNOWLEDGE LOAD', 20, 34], ['QUERY TIME — EVERY QUESTION', 20, 224]].forEach(function (l) {
+      var t = el('text', { x: l[1], y: l[2], style: 'font:700 9px Helvetica,Arial;fill:#6f6d68;letter-spacing:.2em' }); t.textContent = l[0]; svg.appendChild(t);
+    });
+    svg.appendChild(el('line', { x1: 0, y1: 196, x2: 1100, y2: 196, stroke: '#dcdad4', 'stroke-dasharray': '4 5' }));
+    AI_E.forEach(function (e, i) {
+      e.id = 'aie' + i;
+      var p = el('path', { d: path(e), 'class': 'edge' + (e.dash ? ' dash' : ''), id: e.id, 'marker-end': 'url(#aiarr)' });
+      svg.appendChild(p); aiEdgeEls[e.id] = p;
+    });
+    AI_N.forEach(function (n) {
+      var g = el('g', { 'class': 'node' + (n.store ? ' store' : '') + (n.prod ? ' prod' : ''), tabindex: 0, role: 'button', 'aria-label': n.t });
+      g.appendChild(el('rect', { x: n.x, y: n.y, width: n.w, height: n.h }));
+      var t1 = el('text', { x: n.x + 11, y: n.y + 19, 'class': 't' }); t1.textContent = n.t; g.appendChild(t1);
+      var t2 = el('text', { x: n.x + 11, y: n.y + 34, 'class': 's' }); t2.textContent = n.s; g.appendChild(t2);
+      svg.appendChild(g); aiNodeEls[n.id] = g;
+      var sel = function () {
+        AI_N.forEach(function (m) { aiNodeEls[m.id].classList.toggle('sel', m.id === n.id); });
+        $('aiDetail').innerHTML = '<b>' + n.t + '</b>' + n.d + '<div class="tech">' + n.tech + '</div>';
+      };
+      g.addEventListener('click', sel);
+      g.addEventListener('keydown', function (ev) { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); sel(); } });
+    });
+    // particles
+    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduced) AI_E.forEach(function (e, i) {
+      if (e.dash) return;
+      var c = el('circle', { r: 3.2, 'class': 'particle' });
+      var m = el('animateMotion', { dur: (2.4 + (i % 4) * 0.5) + 's', repeatCount: 'indefinite', begin: (i * 0.3) + 's' });
+      var mp = el('mpath', {}); mp.setAttributeNS('http://www.w3.org/1999/xlink', 'href', '#' + e.id);
+      m.appendChild(mp); c.appendChild(m); svg.appendChild(c);
+    });
+  }
+  var AI_SEQ = [
+    { n: ['kb'], c: 'Ingestion starts: the SOP knowledge bank is loaded (16 SOPs in the demo).' },
+    { n: ['chunk'], c: 'Each SOP splits into 4 focused chunks — symptom, RCA, fix, mitigation — so retrieval lands on the exact passage.' },
+    { n: ['emb'], c: 'Every chunk is embedded: TF-IDF weights feature-hashed into a 256-dim vector, L2-normalised.' },
+    { n: ['vdb'], c: 'Vectors land in the in-memory index. Ingestion is done — it only reruns when the knowledge bank changes.' },
+    { n: ['q', 'qemb'], c: 'Query time: your question is embedded by the identical embedder into the same vector space.' },
+    { n: ['sim', 'vdb'], c: 'Cosine similarity scores the query vector against every chunk vector in the index.' },
+    { n: ['topk'], c: 'The 5 nearest chunks are retrieved with their scores — the grounded context (the "R" in RAG).' },
+    { n: ['comp', 'llm'], c: 'The composer builds the answer only from retrieved chunks. In production an LLM takes this seat — dashed slot.' },
+    { n: ['ans'], c: 'The answer card renders: RCA → Fix now → Mitigation → data signal → retrieved context with cosine scores.' }
+  ];
+  function aiCap(no, txt) { $('aiCap').innerHTML = '<span class="stepno">' + no + '</span><span>' + txt + '</span>'; }
+  function aiClearHot() { AI_N && AI_N.forEach(function (n) { aiNodeEls[n.id].classList.remove('hot'); }); }
+  function aiStop() { clearInterval(aiTimer); aiTimer = null; aiStep = 0; aiClearHot(); if ($('aiPlay')) $('aiPlay').textContent = '▶ Play flow'; }
+  function aiDoStep() {
+    aiClearHot();
+    if (aiStep >= AI_SEQ.length) { aiStop(); aiCap('✓', 'Flow complete. Try the playground above, or toggle the agent to Vector RAG and ask it something.'); return; }
+    var s = AI_SEQ[aiStep];
+    s.n.forEach(function (id) { aiNodeEls[id].classList.add('hot'); });
+    aiCap((aiStep + 1) + '/' + AI_SEQ.length, s.c);
+    aiStep++;
+  }
+  $('aiPlay').addEventListener('click', function () {
+    if (aiTimer) { aiStop(); return; }
+    if (!aiDiaBuilt) buildAiDia();
+    aiStep = 0; aiDoStep();
+    $('aiPlay').textContent = '⏸ Stop';
+    aiTimer = setInterval(aiDoStep, 2600);
+  });
+  $('aiReset').addEventListener('click', function () { aiStop(); aiCap('·', 'Reset. Press Play flow to step through ingestion and retrieval.'); });
+
   /* ---------- drawer ---------- */
   function openDrawer(cat, col, lab) {
     var recs = allRecords().filter(function (r) { return r.category === cat && String(colKey(r)) === String(col); });
@@ -1015,6 +1296,7 @@
   $('ovl').addEventListener('click', closeDrawer);
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') {
+      if ($('aiview').classList.contains('open')) { $('aiview').classList.remove('open'); aiStop(); return; }
       if ($('entview').classList.contains('open')) { $('entview').classList.remove('open'); return; }
       if ($('docview').classList.contains('open')) { closeDoc(); return; }
       closeDrawer();
@@ -1076,15 +1358,33 @@
     var qRaw = q.toLowerCase(), qTokens = tokenize(q);
     if (rec) { qRaw += ' ' + rec.summary.toLowerCase() + ' ' + rec.category.toLowerCase(); qTokens = qTokens.concat(tokenize(rec.summary), tokenize(rec.category)); }
 
-    var ranked = state.sops.map(function (s) { return { s: s, sc: scoreSop(s, qTokens, qRaw) }; })
-      .sort(function (a, b) { return b.sc - a.sc; });
-    var best = ranked[0];
-
-    if (!best || best.sc < 3) {
-      addMsg('agent', '<p>I could not confidently match that to an SOP in the knowledge bank. Try naming the service area (e.g. <b>POS</b>, <b>EFT</b>, <b>checkout</b>, <b>stock sync</b>, <b>WRewards</b>) or paste a record number like <span class="mono">INC0010042</span>.</p>');
-      return;
+    var sop = null, confLine = '', ragHits = null;
+    if (state.engine === 'rag') {
+      if (!RAG.built && !buildRag()) return;
+      ragHits = ragSearch(qRaw, 5);
+      var top = ragHits[0];
+      if (!top || top.score < 0.18) {
+        addMsg('agent', '<p><b>Vector RAG:</b> nothing in the knowledge index is close enough to that (best cosine ' + (top ? top.score.toFixed(2) : '0') + ', threshold 0.18) — I won\u2019t guess. Try naming the service area, paste a record ID, or switch the engine badge back to keyword retrieval.</p>');
+        return;
+      }
+      // aggregate scores per SOP across retrieved chunks
+      var agg = {}; ragHits.forEach(function (h) { var id = h.chunk.sop.id; agg[id] = (agg[id] || 0) + h.score; });
+      var bestId = Object.keys(agg).sort(function (a, b) { return agg[b] - agg[a]; })[0];
+      sop = state.sops.filter(function (s) { return s.id === bestId; })[0];
+      confLine = 'via vector RAG · top cosine ' + top.score.toFixed(3) + ' · ' + (top.score >= 0.4 ? 'high' : 'medium') + ' confidence';
+    } else {
+      var ranked = state.sops.map(function (s) { return { s: s, sc: scoreSop(s, qTokens, qRaw) }; })
+        .sort(function (a, b) { return b.sc - a.sc; });
+      var best = ranked[0];
+      if (!best || best.sc < 3) {
+        addMsg('agent', '<p>I could not confidently match that to an SOP in the knowledge bank. Try naming the service area (e.g. <b>POS</b>, <b>EFT</b>, <b>checkout</b>, <b>stock sync</b>, <b>WRewards</b>) or paste a record number like <span class="mono">INC0010042</span>.</p>');
+        return;
+      }
+      sop = best.s;
+      confLine = 'via keyword retrieval · match confidence ' + (best.sc >= 8 ? 'high' : 'medium');
     }
-    var sop = best.s, st = categoryStats(sop.area);
+
+    var st = categoryStats(sop.area);
     var h = '';
     if (rec) {
       h += '<p style="margin-bottom:4px"><span class="mono"><b>' + esc(rec.id) + '</b></span> — ' + esc(rec.summary) + '<br><span style="color:var(--mute);font-size:11px">' + esc(rec.priority + ' · ' + rec.status + ' · ' + rec.region) + '</span></p>';
@@ -1101,7 +1401,13 @@
         '<span>hotspot: ' + esc(st.topReg) + '</span>' +
         (st.trend ? '<span>' + (st.trend > 0 ? '▲ +' : '▼ ') + st.trend + '% vs last month</span>' : '') + '</div>';
     }
-    h += '<div class="sopref">Source: ' + esc(sop.id) + ' · ' + esc(sop.area) + ' · match confidence ' + (best.sc >= 8 ? 'high' : 'medium') + '</div>';
+    if (ragHits) {
+      h += '<div class="sec"><div class="sh">Retrieved context (vector search)</div><ul>' +
+        ragHits.slice(0, 3).map(function (x) {
+          return '<li><span class="mono">' + x.score.toFixed(3) + '</span> · ' + esc(CHUNK_LABEL[x.chunk.type]) + ' · ' + esc(x.chunk.sop.id) + '</li>';
+        }).join('') + '</ul></div>';
+    }
+    h += '<div class="sopref">Source: ' + esc(sop.id) + ' · ' + esc(sop.area) + ' · ' + confLine + '</div>';
     addMsg('agent', h);
   }
   function ask(q) {
@@ -1123,6 +1429,24 @@
   $('chips').querySelectorAll('button').forEach(function (b) {
     b.addEventListener('click', function () { ask(b.textContent); });
   });
+
+  /* ---------- engine toggle (keyword <-> vector RAG) ---------- */
+  function renderEngine() {
+    $('engineBadge').textContent = state.engine === 'rag' ? 'Vector RAG \u2726' : 'Keyword retrieval';
+    $('engineBadge').title = 'Click to switch retrieval engine';
+  }
+  $('engineBadge').style.cursor = 'pointer';
+  $('engineBadge').setAttribute('role', 'button');
+  $('engineBadge').setAttribute('tabindex', '0');
+  function toggleEngine() {
+    state.engine = state.engine === 'rag' ? 'kw' : 'rag';
+    if (state.engine === 'rag' && !RAG.built && state.sops.length) buildRag();
+    renderEngine();
+    toast(state.engine === 'rag' ? 'Agent engine: Vector RAG \u2014 answers grounded in retrieved chunks' : 'Agent engine: keyword retrieval');
+  }
+  $('engineBadge').addEventListener('click', toggleEngine);
+  $('engineBadge').addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleEngine(); } });
+  renderEngine();
 
   /* ---------- uploads / demo ---------- */
   function readFile(input, cb) {

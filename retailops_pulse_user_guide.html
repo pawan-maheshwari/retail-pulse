@@ -200,6 +200,7 @@ INC0010000,Incident,Store W373 on 4G failover — degraded POS response,Store Ne
   <h3>Masthead</h3>
   <table>
     <tr><th>Control</th><th>What it does</th><th>Notes</th></tr>
+    <tr><td><b>AI LLM</b> button</td><td>Opens the RAG &amp; vector-search panel: index status, a retrieval playground showing top-5 chunks with cosine scores, and an animated pipeline diagram.</td><td>The index auto-builds from the loaded knowledge bank on first open; rebuild after uploading a new SOP file.</td></tr>
     <tr><td><b>User guide / Architecture</b> buttons</td><td>Open the documentation in a full-page viewer inside the app, with a <b>Pop out ↗</b> button to continue in a new tab.</td><td>The docs load on demand from separate files — keep <code>retailops_pulse_user_guide.html</code> and <code>retailops_pulse_architecture.html</code> in the same folder as the app. Close with × or <span class="kbd">Esc</span>.</td></tr>
     <tr><td><b>Offline archive / Real-time</b> switch</td><td>Swaps the left panel between file uploads and connectors, and starts/stops the alert stream.</td><td>Switching to Real-time auto-loads demo data if nothing is loaded, so the heat wall has a baseline.</td></tr>
   </table>
@@ -246,7 +247,7 @@ INC0010000,Incident,Store W373 on 4G failover — degraded POS response,Store Ne
     <tr><th>Control</th><th>What it does</th><th>Notes</th></tr>
     <tr><td>Input + <b>Ask</b> (or <span class="kbd">Enter</span>)</td><td>Sends a free-text question or a record ID.</td><td>IDs matching <code>RET- / INC / PRB / CHG</code> trigger a record lookup first.</td></tr>
     <tr><td>Suggestion chips</td><td>One-tap questions for the five most common retail scenarios.</td><td>Great for demos — each routes to a different SOP.</td></tr>
-    <tr><td>Engine badge</td><td>Shows the answering engine: <i>Local KB retrieval</i>.</td><td>Deterministic; works fully offline.</td></tr>
+    <tr><td>Engine badge (click to toggle)</td><td>Switches the agent between <i>Keyword retrieval</i> and <i>Vector RAG</i>. In RAG mode replies include a Retrieved-context list with cosine scores.</td><td>Both engines are deterministic and fully offline; RAG answers only above a 0.18 cosine threshold — otherwise it declines.</td></tr>
   </table>
 
   <h3>Real-time panels</h3>
